@@ -1,14 +1,7 @@
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, MessageCircle, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const navLinks = [
-  { label: "Leistungen", href: "#leistungen" },
-  { label: "Projekte", href: "#projekte" },
-  { label: "Über Uns", href: "#ueber-uns" },
-  { label: "Bewertungen", href: "#bewertungen" },
-  { label: "Kontakt", href: "#kontakt" },
-];
+import { navLinks, siteConfig } from "@/lib/siteContent";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -17,9 +10,12 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b">
       <div className="container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <a href="#" className="flex items-center gap-2 font-bold text-xl text-primary">
-          <span className="text-2xl">🌿</span>
-          <span>Haus&Garten Profi</span>
+        <a href="/" className="flex items-center gap-2 font-bold text-xl text-primary">
+          <img
+            src="/logo-haus-garten-profi.svg"
+            alt={`${siteConfig.brandName} Logo`}
+            className="h-12 w-auto md:h-14"
+          />
         </a>
 
         {/* Desktop Nav */}
@@ -37,19 +33,31 @@ const Header = () => {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          <a href="tel:+4921812345678" className="flex items-center gap-1.5 text-sm text-foreground/70 hover:text-primary transition-colors">
+          <a
+            href={siteConfig.phoneHref}
+            className="flex items-center gap-1.5 text-sm text-foreground/70 hover:text-primary transition-colors"
+          >
             <Phone className="w-4 h-4" />
             Anrufen
           </a>
-          <Button asChild>
-            <a href="#kontakt">Kostenlose Beratung</a>
+          <a
+            href={siteConfig.whatsappHref}
+            target="_blank"
+            rel="noreferrer"
+            className="flex items-center gap-1.5 text-sm text-foreground/70 hover:text-primary transition-colors"
+          >
+            <MessageCircle className="w-4 h-4" />
+            WhatsApp
+          </a>
+          <Button asChild className="shadow-sm">
+            <a href="/#kontakt">Kostenlose Beratung</a>
           </Button>
         </div>
 
         {/* Mobile buttons */}
         <div className="flex lg:hidden items-center gap-2">
           <a
-            href="tel:+4921812345678"
+            href={siteConfig.phoneHref}
             className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-primary text-primary-foreground"
           >
             <Phone className="w-5 h-5" />
@@ -78,7 +86,9 @@ const Header = () => {
               </a>
             ))}
             <Button asChild className="mt-2">
-              <a href="#kontakt" onClick={() => setOpen(false)}>Kostenlose Beratung</a>
+              <a href="/#kontakt" onClick={() => setOpen(false)}>
+                Kostenlose Beratung
+              </a>
             </Button>
           </nav>
         </div>

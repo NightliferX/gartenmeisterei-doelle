@@ -1,9 +1,22 @@
-import { Shield, Heart, Users } from "lucide-react";
+import { Heart, Shield, Users } from "lucide-react";
+import { siteConfig } from "@/lib/siteContent";
 
 const values = [
-  { icon: Shield, title: "Qualität", text: "Hochwertige Materialien und sorgfältige Ausführung bei jedem Projekt." },
-  { icon: Heart, title: "Leidenschaft", text: "Wir lieben, was wir tun – und das sieht man an unseren Ergebnissen." },
-  { icon: Users, title: "Persönlich", text: "Direkte Kommunikation mit dem Inhaber – keine Callcenter, keine Umwege." },
+  {
+    icon: Shield,
+    title: "Sorgfalt im Detail",
+    text: "Material, Untergrund und Verarbeitung werden so abgestimmt, dass das Ergebnis langfristig funktioniert.",
+  },
+  {
+    icon: Heart,
+    title: "Saubere Kommunikation",
+    text: "Sie erhalten klare Aussagen zu Aufwand, Ablauf und den nachsten Schritten statt unklarer Baustellenkommunikation.",
+  },
+  {
+    icon: Users,
+    title: "Personlich betreut",
+    text: "Direkter Kontakt mit dem Inhaber und einem Team, das auch wahrend der Umsetzung ansprechbar bleibt.",
+  },
 ];
 
 const About = () => {
@@ -30,10 +43,18 @@ const About = () => {
               Robert Jovanovic & sein Team
             </h2>
             <p className="mt-5 text-muted-foreground leading-relaxed">
-              Als Inhaber von Haus&Garten Profi stehe ich persönlich für jedes Projekt. 
-              Mit meinem erfahrenen Team realisieren wir Sanierungs- und Gestaltungsprojekte 
-              in Grevenbroich, Köln und dem gesamten Rhein-Kreis Neuss. Ob kleine Reparatur 
-              oder Komplettsanierung – bei uns ist Ihr Projekt in guten Händen.
+              Als Inhaber von {siteConfig.brandName} begleite ich Projekte
+              personlich von der ersten Besichtigung bis zur finalen Abnahme.
+              Gemeinsam mit meinem Team realisieren wir Sanierungs- und
+              Gestaltungsarbeiten in Grevenbroich und im Umland mit einem klaren
+              Anspruch: verlassliche Kommunikation, saubere Arbeit und ein
+              Ergebnis, das zum Haus und zur Nutzung passt.
+            </p>
+            <p className="mt-4 text-muted-foreground leading-relaxed">
+              Besonders wichtig ist uns, dass Sanierung, Garten und Innenausbau
+              nicht wie einzelne Inseln geplant werden. Wir betrachten das
+              Gesamtbild, damit Aussenwirkung, Funktion und Wohngefuhl
+              zusammenpassen.
             </p>
 
             <div className="mt-8 space-y-5">
@@ -48,6 +69,33 @@ const About = () => {
                   </div>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-8 grid gap-4 rounded-3xl border border-border/80 bg-card p-5 shadow-sm sm:grid-cols-3">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+                  Region
+                </p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Grevenbroich, Neuss, Dormagen und Umgebung
+                </p>
+              </div>
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+                  Fokus
+                </p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Haus, Garten, Innenausbau und Aussenanlagen
+                </p>
+              </div>
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+                  Anspruch
+                </p>
+                <p className="mt-2 text-sm text-muted-foreground">
+                  Strukturierte Baustellen mit klarer Abstimmung
+                </p>
+              </div>
             </div>
           </div>
         </div>

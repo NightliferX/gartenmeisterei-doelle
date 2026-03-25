@@ -3,31 +3,107 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { services, siteConfig } from "@/lib/siteContent";
 
 const contactInfo = [
-  { icon: MapPin, label: "Adresse", value: "Am Hammerwerk 38, 41515 Grevenbroich" },
-  { icon: Phone, label: "Telefon", value: "0 21 81 / 123 45 67" },
-  { icon: Mail, label: "E-Mail", value: "info@hausgartenprofi.eu" },
-  { icon: Clock, label: "Erreichbar", value: "Mo–Fr: 8:00 – 18:00 Uhr" },
+  {
+    icon: MapPin,
+    label: "Adresse",
+    value: `${siteConfig.streetAddress}, ${siteConfig.postalCode} ${siteConfig.city}`,
+  },
+  { icon: Phone, label: "Telefon", value: siteConfig.phoneDisplay },
+  { icon: Mail, label: "E-Mail", value: siteConfig.email },
+  { icon: Clock, label: "Erreichbar", value: siteConfig.openingHoursDisplay },
 ];
+
+const contactEndpoint =
+  import.meta.env.VITE_CONTACT_FORM_ENDPOINT ||
+  `https://formsubmit.co/ajax/${siteConfig.email}`;
+
+type FormState = {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  message: string;
+  website: string;
+};
 
 const Contact = () => {
   const { toast } = useToast();
   const [sending, setSending] = useState(false);
+  const [service, setService] = useState("");
+  const [formState, setFormState] = useState<FormState>({
+    name: "",
+    email: "",
+    phone: "",
+    service: "",
+    message: "",
+    website: "",
+  });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const form = e.currentTarget;
     setSending(true);
-    setTimeout(() => {
+
+    if (formState.website) {
       setSending(false);
-      toast({
-        title: "Anfrage gesendet!",
-        description: "Wir melden uns innerhalb von 24 Stunden bei Ihnen.",
+      return;
+    }
+
+    try {
+      const payload = new FormData();
+      payload.append("name", formState.name);
+      payload.append("email", formState.email);
+      payload.append("phone", formState.phone);
+      payload.append("service", formState.service || "Nicht angegeben");
+      payload.append("message", formState.message);
+      payload.append("_subject", `Neue Anfrage uber die Website von ${siteConfig.brandName}`);
+      payload.append("_template", "table");
+      payload.append("_captcha", "false");
+      payload.append("_honey", formState.website);
+
+      const response = await fetch(contactEndpoint, {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+        },
+        body: payload,
       });
-      (e.target as HTMLFormElement).reset();
-    }, 1000);
+
+      if (!response.ok) {
+        throw new Error("Kontaktformular konnte nicht gesendet werden.");
+      }
+
+      toast({
+        title: "Anfrage gesendet",
+        description:
+          "Vielen Dank. Wir melden uns in der Regel innerhalb von 24 Stunden zuruck.",
+      });
+      setFormState({
+        name: "",
+        email: "",
+        phone: "",
+        service: "",
+        message: "",
+        website: "",
+      });
+      setService("");
+      form.reset();
+    } catch (error) {
+      toast({
+        title: "Senden fehlgeschlagen",
+        description:
+          "Die Anfrage konnte gerade nicht ubermittelt werden. Bitte rufen Sie uns an oder schreiben Sie per WhatsApp.",
+        variant: "destructive",
+      });
+      console.error(error);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -41,7 +117,8 @@ const Contact = () => {
             Kostenlose Beratung anfragen
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Beschreiben Sie uns Ihr Projekt – wir erstellen Ihnen ein unverbindliches Angebot.
+            Beschreiben Sie uns Ihr Projekt. Wir melden uns personlich mit einer
+            ersten Einschatzung und den nachsten Schritten.
           </p>
         </div>
 
@@ -52,29 +129,55 @@ const Contact = () => {
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="text-sm font-medium mb-1.5 block">Name *</label>
-                  <Input placeholder="Ihr Name" required />
+                  <Input
+                    name="name"
+                    placeholder="Ihr Name"
+                    required
+                    value={formState.name}
+                    onChange={(e) => setFormState((prev) => ({ ...prev, name: e.target.value }))}
+                  />
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-1.5 block">E-Mail *</label>
-                  <Input type="email" placeholder="ihre@email.de" required />
+                  <Input
+                    name="email"
+                    type="email"
+                    placeholder="ihre@email.de"
+                    required
+                    value={formState.email}
+                    onChange={(e) => setFormState((prev) => ({ ...prev, email: e.target.value }))}
+                  />
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="text-sm font-medium mb-1.5 block">Telefon</label>
-                  <Input type="tel" placeholder="Ihre Telefonnummer" />
+                  <Input
+                    name="phone"
+                    type="tel"
+                    placeholder="Ihre Telefonnummer"
+                    value={formState.phone}
+                    onChange={(e) => setFormState((prev) => ({ ...prev, phone: e.target.value }))}
+                  />
                 </div>
                 <div>
                   <label className="text-sm font-medium mb-1.5 block">Leistung</label>
-                  <Select>
+                  <Select
+                    value={service}
+                    onValueChange={(value) => {
+                      setService(value);
+                      setFormState((prev) => ({ ...prev, service: value }));
+                    }}
+                  >
                     <SelectTrigger>
                       <SelectValue placeholder="Bitte wählen" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="haussanierung">Haussanierung</SelectItem>
-                      <SelectItem value="gartengestaltung">Gartengestaltung</SelectItem>
-                      <SelectItem value="innenausbau">Innenausbau</SelectItem>
-                      <SelectItem value="gewerbesanierung">Gewerbesanierung</SelectItem>
+                      {services.map((item) => (
+                        <SelectItem key={item.id} value={item.title}>
+                          {item.title}
+                        </SelectItem>
+                      ))}
                       <SelectItem value="sonstiges">Sonstiges</SelectItem>
                     </SelectContent>
                   </Select>
@@ -82,8 +185,31 @@ const Contact = () => {
               </div>
               <div>
                 <label className="text-sm font-medium mb-1.5 block">Nachricht *</label>
-                <Textarea placeholder="Beschreiben Sie Ihr Projekt..." rows={5} required />
+                <Textarea
+                  name="message"
+                  placeholder="Beschreiben Sie Ihr Projekt..."
+                  rows={5}
+                  required
+                  value={formState.message}
+                  onChange={(e) => setFormState((prev) => ({ ...prev, message: e.target.value }))}
+                />
               </div>
+              <div className="hidden">
+                <label htmlFor="website">Website</label>
+                <Input
+                  id="website"
+                  name="website"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={formState.website}
+                  onChange={(e) => setFormState((prev) => ({ ...prev, website: e.target.value }))}
+                />
+              </div>
+              <p className="rounded-xl bg-secondary/80 px-4 py-3 text-sm text-muted-foreground">
+                Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben zur
+                Bearbeitung Ihrer Anfrage zu. Alternativ erreichen Sie uns direkt
+                per Telefon oder WhatsApp.
+              </p>
               <Button type="submit" size="lg" className="w-full" disabled={sending}>
                 {sending ? "Wird gesendet..." : "Anfrage senden"}
               </Button>
@@ -99,10 +225,47 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">{item.label}</p>
-                  <p className="font-medium">{item.value}</p>
+                  {item.label === "Telefon" ? (
+                    <a className="font-medium hover:text-primary" href={siteConfig.phoneHref}>
+                      {item.value}
+                    </a>
+                  ) : item.label === "E-Mail" ? (
+                    <a
+                      className="font-medium hover:text-primary"
+                      href={`mailto:${siteConfig.email}`}
+                    >
+                      {item.value}
+                    </a>
+                  ) : (
+                    <p className="font-medium">{item.value}</p>
+                  )}
                 </div>
               </div>
             ))}
+
+            <div className="rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
+              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
+                Direkt erreichbar
+              </p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <a
+                  href={siteConfig.phoneHref}
+                  className="flex items-center justify-center gap-2 rounded-xl border border-border bg-background px-4 py-3 text-sm font-semibold shadow-sm transition-colors hover:bg-muted"
+                >
+                  <Phone className="h-4 w-4 text-primary" />
+                  Telefon
+                </a>
+                <a
+                  href={siteConfig.whatsappHref}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
+                >
+                  <MessageCircle className="h-4 w-4" />
+                  WhatsApp
+                </a>
+              </div>
+            </div>
 
             {/* Map */}
             <div className="rounded-xl overflow-hidden border h-56 mt-6">

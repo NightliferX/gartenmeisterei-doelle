@@ -1,35 +1,20 @@
-import { Home, TreePine, PaintBucket, Building2 } from "lucide-react";
+import {
+  Building2,
+  Home,
+  PaintBucket,
+  TreePine,
+} from "lucide-react";
+import { services } from "@/lib/siteContent";
 
-const services = [
-  {
-    icon: Home,
-    title: "Haussanierung",
-    description:
-      "Komplettsanierung, Fassadenarbeiten, Dach- und Kellerarbeiten. Wir bringen Ihr Haus in neuem Glanz erstrahlen.",
-    image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80",
-  },
-  {
-    icon: TreePine,
-    title: "Gartengestaltung",
-    description:
-      "Gartenplanung, Terrassen, Zäune, Pflasterarbeiten und Bepflanzung – Ihr Traumgarten wird Wirklichkeit.",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80",
-  },
-  {
-    icon: PaintBucket,
-    title: "Innenausbau",
-    description:
-      "Malerarbeiten, Bodenverlegung, Trockenbau und Badezimmer-Renovierung – alles aus einer Hand.",
-    image: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=600&q=80",
-  },
-  {
-    icon: Building2,
-    title: "Gewerbesanierung",
-    description:
-      "Renovierung und Sanierung von Gewerbeimmobilien. Büros, Ladenlokale und mehr – termingerecht und professionell.",
-    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&q=80",
-  },
-];
+const iconMap = {
+  haussanierung: Home,
+  gartengestaltung: TreePine,
+  innenausbau: PaintBucket,
+  gewerbesanierung: Building2,
+  pflasterarbeiten: Home,
+  terrassenbau: TreePine,
+  zaunbau: Building2,
+};
 
 const Services = () => {
   return (
@@ -47,11 +32,11 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
           {services.map((service, i) => (
             <div
-              key={service.title}
-              className="scroll-fade-in group bg-card rounded-xl overflow-hidden border shadow-sm hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+              key={service.id}
+              className="scroll-fade-in group overflow-hidden rounded-3xl border border-border/80 bg-card shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
               style={{ transitionDelay: `${i * 100}ms` }}
             >
               <div className="h-48 overflow-hidden">
@@ -63,13 +48,24 @@ const Services = () => {
                 />
               </div>
               <div className="p-6">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <service.icon className="w-6 h-6 text-primary" />
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/10">
+                  {(() => {
+                    const Icon = iconMap[service.id as keyof typeof iconMap];
+                    return <Icon className="h-6 w-6 text-primary" />;
+                  })()}
                 </div>
                 <h3 className="text-lg font-semibold mb-2">{service.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">
+                <p className="text-sm leading-relaxed text-muted-foreground">
                   {service.description}
                 </p>
+                <ul className="mt-5 space-y-2 text-sm text-foreground/80">
+                  {service.highlights.map((highlight) => (
+                    <li key={highlight} className="flex items-start gap-2">
+                      <span className="mt-1 h-2 w-2 rounded-full bg-primary/60" />
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
             </div>
           ))}

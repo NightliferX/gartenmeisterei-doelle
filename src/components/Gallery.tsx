@@ -1,20 +1,18 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { projects } from "@/lib/siteContent";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 
 const categories = ["Alle", "Haus", "Garten", "Innen"];
-
-const projects = [
-  { src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80", category: "Haus", title: "Fassadensanierung Grevenbroich" },
-  { src: "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80", category: "Garten", title: "Gartenanlage mit Terrasse" },
-  { src: "https://images.unsplash.com/photo-1631679706909-1844bbd07221?w=600&q=80", category: "Innen", title: "Badezimmer Komplettrenovierung" },
-  { src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80", category: "Haus", title: "Dachsanierung & Dämmung" },
-  { src: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80", category: "Garten", title: "Pflasterarbeiten & Wege" },
-  { src: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80", category: "Innen", title: "Wohnzimmer Modernisierung" },
-];
 
 const Gallery = () => {
   const [active, setActive] = useState("Alle");
 
-  const filtered = active === "Alle" ? projects : projects.filter((p) => p.category === active);
+  const filtered = useMemo(
+    () => (active === "Alle" ? projects : projects.filter((p) => p.category === active)),
+    [active],
+  );
 
   return (
     <section id="projekte" className="py-20 md:py-28">
@@ -27,7 +25,8 @@ const Gallery = () => {
             Referenzprojekte
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Einblicke in unsere abgeschlossenen Projekte – Qualität, die man sieht.
+            Vorher-/Nachher-Vergleiche zeigen am besten, wie stark eine saubere
+            Umsetzung auf Haus, Garten und Innenraume wirkt.
           </p>
         </div>
 
@@ -36,6 +35,7 @@ const Gallery = () => {
           {categories.map((cat) => (
             <button
               key={cat}
+              type="button"
               onClick={() => setActive(cat)}
               className={`px-5 py-2 rounded-full text-sm font-medium transition-colors ${
                 active === cat
@@ -49,31 +49,66 @@ const Gallery = () => {
         </div>
 
         {/* Grid */}
-        <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {filtered.map((project, i) => (
             <div
               key={project.title}
-              className="scroll-fade-in group relative rounded-xl overflow-hidden aspect-[4/3] cursor-pointer"
+              className="scroll-fade-in visible group overflow-hidden rounded-3xl border border-border/80 bg-card shadow-sm"
               style={{ transitionDelay: `${i * 80}ms` }}
             >
-              <img
-                src={project.src}
-                alt={project.title}
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                loading="lazy"
+              <BeforeAfterSlider
+                title={project.title}
+                beforeImage={project.beforeImage}
+                afterImage={project.afterImage}
+                beforeAlt={project.beforeAlt}
+                afterAlt={project.afterAlt}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
-                <div>
-                  <span className="text-xs font-semibold uppercase tracking-wider text-primary-foreground/70">
+              <div className="p-5">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="text-xs font-semibold uppercase tracking-wider text-primary">
                     {project.category}
                   </span>
-                  <p className="text-primary-foreground font-semibold text-lg">
-                    {project.title}
-                  </p>
+                  <span className="text-xs text-muted-foreground">{project.location}</span>
                 </div>
+                <h3 className="mt-3 text-lg font-semibold">{project.title}</h3>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.serviceTags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full bg-secondary px-3 py-1 text-xs font-medium text-foreground/80"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-medium text-foreground">Projekt:</span>{" "}
+                  {project.summary}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-medium text-foreground">Ausgangslage:</span>{" "}
+                  {project.challenge}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-medium text-foreground">Umsetzung:</span>{" "}
+                  {project.solution}
+                </p>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  <span className="font-medium text-foreground">Ergebnis:</span>{" "}
+                  {project.result}
+                </p>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="scroll-fade-in mt-12 text-center">
+          <Button asChild size="lg">
+            <a href="/#kontakt">
+              Ihr Projekt unverbindlich besprechen
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </Button>
         </div>
       </div>
     </section>

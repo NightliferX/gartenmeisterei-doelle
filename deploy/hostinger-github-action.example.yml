@@ -1,0 +1,24 @@
+name: Deploy to Hostinger VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to Hostinger
+        uses: hostinger/vps-deploy-action@v1.0.19
+        with:
+          host: ${{ secrets.HOSTINGER_HOST }}
+          username: ${{ secrets.HOSTINGER_USERNAME }}
+          ssh_key: ${{ secrets.HOSTINGER_SSH_KEY }}
+          path: /root/apps/hausgartenprofi
+          github_token: ${{ secrets.GITHUB_TOKEN }}

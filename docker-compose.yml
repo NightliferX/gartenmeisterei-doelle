@@ -1,0 +1,9 @@
+services:
+  hausgartenprofi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: hausgartenprofi-web
+    restart: unless-stopped
+    ports:
+      - "80:80"

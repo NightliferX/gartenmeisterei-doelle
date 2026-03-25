@@ -77,6 +77,12 @@
   html {
     scroll-behavior: smooth;
   }
+  body {
+    background-image:
+      radial-gradient(circle at top, hsl(var(--primary) / 0.06), transparent 24%),
+      linear-gradient(to bottom, hsl(var(--background)), hsl(var(--background)));
+    background-attachment: fixed;
+  }
 }
 
 @layer utilities {
