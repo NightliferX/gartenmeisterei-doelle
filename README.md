@@ -84,8 +84,8 @@ cd /root/apps/hausgartenprofi
 docker compose up -d --build
 ```
 
-5. Domain in Hostinger auf den VPS zeigen lassen
-6. Nginx im Container liefert die App auf Port `80` aus
+5. Testweise ist die Website danach auf `http://DEINE-SERVER-IP:8081` erreichbar
+6. Nginx im Container liefert die App intern auf Port `80` aus, nach aussen ist aktuell `8081` freigegeben
 
 ### Variante B: GitHub + Hostinger Deploy Action
 
