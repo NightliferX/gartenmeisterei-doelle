@@ -258,7 +258,7 @@ const HeroV4 = () => {
         <div className="absolute inset-0 bg-black/45" />
         <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black/70 to-transparent" />
 
-        <div className="container relative z-10 px-4 pt-16 text-center">
+        <div className="container relative z-10 px-4 pb-48 pt-28 text-center">
           <h1 className="v4-rise mx-auto max-w-5xl text-[clamp(2.9rem,8vw,6.5rem)] leading-[0.98] text-white">
             Ihr Garten.
             <br />
@@ -287,23 +287,26 @@ const HeroV4 = () => {
         </div>
       </section>
 
-      <section className="bg-[#0d120d] py-24 text-white md:py-32">
+      {/* Gartenjahr als Block, der von unten in den Hero-Header ragt */}
+      <section className="relative z-20 -mt-36 pb-4">
         <div className="container px-4">
-          <h2 className="mx-auto max-w-4xl text-center text-[clamp(2rem,5vw,3.8rem)] leading-[1.04] text-white">
-            Das Gartenjahr.
-          </h2>
-          <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-white/70">
-            Jede Jahreszeit hat ihre Arbeit. Wir kennen den Takt — und sind
-            zur richtigen Zeit in Ihrem Garten.
-          </p>
+          <div className="mx-auto max-w-6xl rounded-[2rem] bg-[#0d120d] p-4 text-white shadow-2xl shadow-black/30 sm:p-6">
+            <div className="flex flex-col gap-1 px-3 pb-5 pt-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
+              <h2 className="text-[clamp(1.6rem,3vw,2.2rem)] leading-tight text-white">
+                Das Gartenjahr.
+              </h2>
+              <p className="text-base text-white/60">
+                Jede Jahreszeit hat ihre Arbeit — wir kennen den Takt.
+              </p>
+            </div>
 
-          <div className="mx-auto mt-14 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {gartenjahr.map((entry) => {
               const active = entry.months.includes(month);
               return (
                 <div
                   key={entry.season}
-                  className={`flex flex-col rounded-[1.4rem] p-7 sm:min-h-[15rem] ${
+                  className={`flex flex-col rounded-[1.4rem] p-6 sm:min-h-[13rem] ${
                     active ? "bg-white text-foreground" : "bg-white/[0.06] text-white"
                   }`}
                 >
@@ -332,6 +335,7 @@ const HeroV4 = () => {
                 </div>
               );
             })}
+          </div>
           </div>
         </div>
       </section>
