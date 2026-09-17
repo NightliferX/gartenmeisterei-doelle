@@ -1,9 +1,95 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
-import { siteConfig, trustItems } from "@/lib/siteContent";
+import { ArrowRight, CheckCircle2, MessageCircle, Sprout } from "lucide-react";
+import { gartenjahr, siteConfig, trustItems } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
 
+const isV2 = import.meta.env.VITE_THEME === "v2";
+
+// Design-Variante 2: Split-Hero + Gartenjahr-Leiste mit Saison-Hervorhebung
+const HeroV2 = () => {
+  const month = new Date().getMonth();
+  const currentSeason = gartenjahr.find((s) => s.months.includes(month))?.season;
+
+  return (
+    <section id="start" className="overflow-hidden pb-10 pt-24 md:pt-28">
+      <div className="container px-4">
+        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr]">
+          <div>
+            <p className="flex items-center gap-2 text-base font-medium text-[hsl(var(--v2-pollen))]">
+              <Sprout className="h-5 w-5" />
+              Meisterbetrieb von Benedikt Dölle, Gärtnermeister
+            </p>
+            <h1 className="mt-4 text-4xl leading-[1.08] text-foreground sm:text-5xl lg:text-6xl">
+              Gepflegte Gärten sind kein Zufall.
+              <br />
+              Sie haben einen Gärtner.
+            </h1>
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+              Die {siteConfig.brandName} hält Gärten in Düsseldorf und Umgebung
+              das ganze Jahr in Form — vom Hecken- und Baumschnitt über Rasen-
+              und Beetpflege bis zu Laub- und Winterservice.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button size="lg" asChild className="px-8 py-6 text-base">
+                <a href={withBase("/#kontakt")}>
+                  Kostenlose Beratung anfragen
+                  <ArrowRight className="h-5 w-5" />
+                </a>
+              </Button>
+              <Button size="lg" variant="outline" asChild className="px-8 py-6 text-base">
+                <a href={siteConfig.whatsappHref} target="_blank" rel="noreferrer">
+                  WhatsApp starten
+                  <MessageCircle className="h-5 w-5" />
+                </a>
+              </Button>
+            </div>
+            <p className="mt-5 text-sm text-muted-foreground">
+              {siteConfig.responsePromise} · {siteConfig.consultationPromise}
+            </p>
+          </div>
+
+          <img
+            src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1100&q=80"
+            alt="Gepflegter Gartenweg mit akkurat geschnittenen Hecken"
+            className="v2-organic aspect-[4/5] w-full object-cover shadow-lg shadow-[hsl(var(--v2-pine)/0.18)] lg:aspect-[5/6]"
+          />
+        </div>
+
+        {/* Gartenjahr-Leiste: was wann ansteht — die aktuelle Saison ist markiert */}
+        <div className="mt-12 overflow-hidden rounded-[var(--radius)] bg-[hsl(var(--v2-pine))] text-white shadow-lg shadow-[hsl(var(--v2-pine)/0.25)]">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4">
+            {gartenjahr.map((entry) => {
+              const active = entry.season === currentSeason;
+              return (
+                <div
+                  key={entry.season}
+                  className={`border-white/10 p-6 max-lg:border-b lg:border-r lg:last:border-r-0 ${
+                    active ? "bg-white/10" : ""
+                  }`}
+                >
+                  <div className="flex items-baseline justify-between gap-2">
+                    <h3 className="text-xl text-white">{entry.season}</h3>
+                    {active ? (
+                      <span className="rounded-full bg-[hsl(var(--v2-pollen))] px-3 py-1 text-xs font-semibold text-[hsl(var(--v2-pine))]">
+                        Jetzt gefragt
+                      </span>
+                    ) : null}
+                  </div>
+                  <p className="mt-2 text-sm leading-relaxed text-white/75">
+                    {entry.work}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Hero = () => {
+  if (isV2) return <HeroV2 />;
   return (
     <section
       id="start"

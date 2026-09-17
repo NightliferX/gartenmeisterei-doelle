@@ -96,3 +96,63 @@
     transform: translateY(0);
   }
 }
+
+/* ============================================================
+   Design-Variante 2: „Das Gartenjahr"
+   Aktiv, wenn <html class="theme-v2"> (Build mit VITE_THEME=v2).
+   Palette: Tannengrün / Blattgrün / Salbei-Hintergrund / Pollen-Akzent.
+   Typo: Zilla Slab für Überschriften, Inter bleibt Fließtext.
+   ============================================================ */
+.theme-v2 {
+  --background: 90 23% 95%;
+  --foreground: 110 22% 15%;
+  --card: 0 0% 100%;
+  --card-foreground: 110 22% 15%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 110 22% 15%;
+  --primary: 136 33% 33%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 96 20% 90%;
+  --secondary-foreground: 110 22% 15%;
+  --muted: 96 15% 89%;
+  --muted-foreground: 120 8% 38%;
+  --accent: 41 70% 47%;
+  --accent-foreground: 110 22% 12%;
+  --border: 96 14% 84%;
+  --input: 96 14% 84%;
+  --ring: 136 33% 33%;
+  --radius: 1.1rem;
+  --v2-pine: 145 34% 18%;
+  --v2-pollen: 41 70% 47%;
+}
+
+.theme-v2 h1,
+.theme-v2 h2,
+.theme-v2 h3,
+.theme-v2 .font-display {
+  font-family: "Zilla Slab", "Iowan Old Style", Georgia, serif;
+  letter-spacing: 0;
+}
+
+.theme-v2 h1 { font-weight: 700; }
+.theme-v2 h2, .theme-v2 h3 { font-weight: 600; }
+
+/* Eyebrow-Labels: statt ALL-CAPS-Tracking eine ruhige Serif-Zeile */
+.theme-v2 .uppercase.tracking-widest,
+.theme-v2 [class*="tracking-[0.2em]"],
+.theme-v2 [class*="tracking-[0.18em]"] {
+  text-transform: none;
+  letter-spacing: 0 !important;
+  font-family: "Zilla Slab", Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1rem;
+  color: hsl(var(--v2-pollen));
+}
+
+/* Fotos bekommen die organische Ecke (eine Ecke stärker gerundet) */
+.theme-v2 .v2-organic {
+  border-radius: 1.25rem 4.5rem 1.25rem 1.25rem;
+}
+
+.theme-v2 body { background-attachment: scroll; }

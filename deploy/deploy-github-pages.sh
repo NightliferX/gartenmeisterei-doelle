@@ -12,6 +12,16 @@ BASE="${VITE_BASE:-/gartenmeisterei-doelle/}"
 echo "==> Build mit Basispfad: $BASE"
 VITE_BASE="$BASE" npm run build
 
+# Design-Variante 2 („Das Gartenjahr") zusätzlich unter <base>/v2/ veröffentlichen
+if [[ "${SKIP_V2:-}" != "1" ]]; then
+  echo "==> Build Design-Variante 2 unter ${BASE}v2/"
+  VITE_BASE="${BASE}v2/" VITE_THEME=v2 npx vite build --outDir dist-v2
+  mkdir -p dist/v2
+  cp -R dist-v2/. dist/v2/
+  cp dist/v2/index.html dist/v2/404.html
+  rm -rf dist-v2
+fi
+
 # SPA-Fallback: GitHub Pages liefert 404.html für unbekannte Pfade (z. B. /impressum)
 cp dist/index.html dist/404.html
 

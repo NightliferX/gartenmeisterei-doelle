@@ -287,3 +287,28 @@ export const legalLinks = {
   impressum: "/impressum",
   datenschutz: "/datenschutz",
 };
+
+// Das Gartenjahr — Grundlage der Saison-Leiste in Design-Variante 2.
+// months: Monatsindizes (0 = Januar), in denen die Saison als „Jetzt gefragt" gilt.
+export const gartenjahr = [
+  {
+    season: "Frühjahr",
+    months: [2, 3, 4],
+    work: "Startschnitt, Beete vorbereiten, Rasen in Schwung bringen",
+  },
+  {
+    season: "Sommer",
+    months: [5, 6, 7],
+    work: "Hecken in Form halten, Rasen mähen, Beete pflegen",
+  },
+  {
+    season: "Herbst",
+    months: [8, 9, 10],
+    work: "Laub entsorgen, letzter Schnitt, Garten winterfest machen",
+  },
+  {
+    season: "Winter",
+    months: [11, 0, 1],
+    work: "Obstbaum- und Gehölzschnitt, Planung fürs neue Gartenjahr",
+  },
+];
