@@ -235,7 +235,18 @@ const HeroV3 = () => {
 
 // Design-Variante 4: cinematischer Auftritt — Vollbild-Statement,
 // dann eine dunkle Filmsequenz mit dem Handwerk in Großaufnahme.
+const MONTH_NAMES = [
+  "Januar", "Februar", "März", "April", "Mai", "Juni",
+  "Juli", "August", "September", "Oktober", "November", "Dezember",
+];
+
+// months sind in Saison-Reihenfolge angegeben (Winter: [11, 0, 1]).
+const monthRange = (months: number[]) =>
+  `${MONTH_NAMES[months[0]]} – ${MONTH_NAMES[months[months.length - 1]]}`;
+
 const HeroV4 = () => {
+  const month = new Date().getMonth();
+
   return (
     <>
       <section id="start" className="relative flex min-h-screen items-center justify-center overflow-hidden">
@@ -279,31 +290,49 @@ const HeroV4 = () => {
       <section className="bg-[#0d120d] py-24 text-white md:py-32">
         <div className="container px-4">
           <h2 className="mx-auto max-w-4xl text-center text-[clamp(2rem,5vw,3.8rem)] leading-[1.04] text-white">
-            Der richtige Schnitt.
-            <br />
-            Zur richtigen Zeit.
+            Das Gartenjahr.
           </h2>
           <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-white/70">
-            Hecken, Bäume, Rasen und Beete folgen dem Gartenjahr — wir kennen
-            seinen Takt. Deshalb bleibt Ihr Garten gesund, dicht und in Form.
+            Jede Jahreszeit hat ihre Arbeit. Wir kennen den Takt — und sind
+            zur richtigen Zeit in Ihrem Garten.
           </p>
-          <div className="mx-auto mt-14 grid max-w-5xl gap-5 sm:grid-cols-2">
-            <img
-              src={withBase("/references/nachher-hecke.jpg")}
-              alt="Akkurat in Form geschnittene Hecke"
-              className="aspect-[4/3] w-full rounded-[1.4rem] object-cover"
-              loading="lazy"
-            />
-            <img
-              src={withBase("/references/nachher-obstbaum.jpg")}
-              alt="Fachgerecht geschnittener Obstbaum mit lichter Krone"
-              className="aspect-[4/3] w-full rounded-[1.4rem] object-cover"
-              loading="lazy"
-            />
+
+          <div className="mx-auto mt-14 grid max-w-6xl gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {gartenjahr.map((entry) => {
+              const active = entry.months.includes(month);
+              return (
+                <div
+                  key={entry.season}
+                  className={`flex flex-col rounded-[1.4rem] p-7 sm:min-h-[15rem] ${
+                    active ? "bg-white text-foreground" : "bg-white/[0.06] text-white"
+                  }`}
+                >
+                  <p className={`text-sm ${active ? "text-muted-foreground" : "text-white/50"}`}>
+                    {monthRange(entry.months)}
+                  </p>
+                  <h3
+                    className={`mt-2 text-[clamp(1.9rem,3vw,2.4rem)] leading-none ${
+                      active ? "text-foreground" : "text-white"
+                    }`}
+                  >
+                    {entry.season}
+                  </h3>
+                  {active ? (
+                    <span className="mt-4 inline-flex w-fit rounded-full bg-[hsl(var(--v4-green))] px-3 py-1 text-xs font-semibold text-white">
+                      Jetzt gefragt
+                    </span>
+                  ) : null}
+                  <p
+                    className={`mt-auto pt-6 text-base leading-relaxed ${
+                      active ? "text-foreground/80" : "text-white/65"
+                    }`}
+                  >
+                    {entry.work}
+                  </p>
+                </div>
+              );
+            })}
           </div>
-          <p className="mt-6 text-center text-sm text-white/50">
-            Beispiele: Formschnitt einer Ligusterhecke, Verjüngungsschnitt eines Apfelbaums
-          </p>
         </div>
       </section>
     </>
