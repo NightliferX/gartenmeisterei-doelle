@@ -9,6 +9,7 @@ import Impressum from "./pages/Impressum.tsx";
 import Datenschutz from "./pages/Datenschutz.tsx";
 import ServicePage from "./pages/ServicePage.tsx";
 import AreaPage from "./pages/AreaPage.tsx";
+import DesignSwitcher from "./components/DesignSwitcher.tsx";
 import { areaPages, servicePages } from "@/lib/subpages";
 
 const queryClient = new QueryClient();
@@ -18,6 +19,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <DesignSwitcher />
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route path="/" element={<Index />} />

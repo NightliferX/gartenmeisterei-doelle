@@ -234,3 +234,88 @@
   background-image: none;
   background-attachment: scroll;
 }
+
+/* ============================================================
+   Design-Variante 4: „Cinematic" (Apple-Ästhetik)
+   Aktiv, wenn <html class="theme-v4"> (Build mit VITE_THEME=v4).
+   Exaggerated Minimalism: riesige, enge Typografie (Inter Tight),
+   massiver Weißraum, Fast-Monochrom — die Farbe kommt aus den Fotos.
+   ============================================================ */
+.theme-v4 {
+  --background: 0 0% 98%;
+  --foreground: 120 10% 7%;
+  --card: 0 0% 100%;
+  --card-foreground: 120 10% 7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 120 10% 7%;
+  --primary: 120 10% 7%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 120 6% 94%;
+  --secondary-foreground: 120 10% 7%;
+  --muted: 120 6% 94%;
+  --muted-foreground: 120 5% 38%;
+  --accent: 147 62% 30%;
+  --accent-foreground: 0 0% 100%;
+  --border: 120 6% 88%;
+  --input: 120 6% 88%;
+  --ring: 147 62% 30%;
+  --radius: 1.4rem;
+  --v4-green: 147 62% 30%;
+}
+
+.theme-v4 h1,
+.theme-v4 h2,
+.theme-v4 h3 {
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", sans-serif;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+.theme-v4 h1 { font-weight: 800; }
+
+/* Übergroße Section-Überschriften, großzügiger Weißraum */
+.theme-v4 main section h2 {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 1.05;
+}
+.theme-v4 section[class*="py-20"] {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+
+/* Eyebrow-Labels: unauffällig grau, keine Versalien */
+.theme-v4 .uppercase.tracking-widest,
+.theme-v4 [class*="tracking-[0.2em]"],
+.theme-v4 [class*="tracking-[0.18em]"] {
+  text-transform: none;
+  letter-spacing: 0 !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: hsl(var(--muted-foreground));
+}
+
+/* Apple-Pill-Buttons, Karten ohne Rahmen mit weichem Schatten */
+.theme-v4 a[class*="rounded-md"],
+.theme-v4 button[class*="rounded-md"] {
+  border-radius: 9999px;
+}
+.theme-v4 [class*="rounded-3xl"] {
+  border-color: transparent;
+  box-shadow: 0 2px 10px rgba(10, 20, 10, 0.05), 0 12px 32px rgba(10, 20, 10, 0.06);
+}
+
+/* Cinematischer Auftritt der Hero-Headline: eine Bewegung, dann Ruhe */
+@keyframes v4-rise {
+  from { opacity: 0; transform: translateY(18px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.theme-v4 .v4-rise { animation: v4-rise 1s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.theme-v4 .v4-rise-2 { animation: v4-rise 1s 0.18s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.theme-v4 .v4-rise-3 { animation: v4-rise 1s 0.36s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .theme-v4 .v4-rise, .theme-v4 .v4-rise-2, .theme-v4 .v4-rise-3 { animation: none; }
+}
+
+.theme-v4 body {
+  background-image: none;
+  background-attachment: scroll;
+}

@@ -6,6 +6,7 @@ import { withBase } from "@/lib/utils";
 
 const isV2 = import.meta.env.VITE_THEME === "v2";
 const isV3 = import.meta.env.VITE_THEME === "v3";
+const isV4 = import.meta.env.VITE_THEME === "v4";
 
 // Design-Variante 2: Split-Hero + Gartenjahr-Leiste mit Saison-Hervorhebung
 const HeroV2 = () => {
@@ -213,9 +214,87 @@ const HeroV3 = () => {
   );
 };
 
+// Design-Variante 4: cinematischer Auftritt — Vollbild-Statement,
+// dann eine dunkle Filmsequenz mit dem Handwerk in Großaufnahme.
+const HeroV4 = () => {
+  return (
+    <>
+      <section id="start" className="relative flex min-h-screen items-center justify-center overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1920&q=80"
+          alt="Gepflegter Gartenweg zwischen hohen, geschnittenen Hecken"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-black/45" />
+        <div className="absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black/70 to-transparent" />
+
+        <div className="container relative z-10 px-4 pt-16 text-center">
+          <h1 className="v4-rise mx-auto max-w-5xl text-[clamp(2.9rem,8vw,6.5rem)] leading-[0.98] text-white">
+            Ihr Garten.
+            <br />
+            In Meisterhand.
+          </h1>
+          <p className="v4-rise-2 mx-auto mt-7 max-w-2xl text-lg text-white/85 md:text-xl">
+            Gartenpflege von Gärtnermeister Benedikt Dölle — für Düsseldorf und
+            Umgebung, durch alle Jahreszeiten.
+          </p>
+          <div className="v4-rise-3 mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Button
+              size="lg"
+              asChild
+              className="bg-white px-8 py-6 text-base font-semibold text-foreground hover:bg-white/90"
+            >
+              <a href={withBase("/#kontakt")}>Kostenlose Beratung anfragen</a>
+            </Button>
+            <a
+              href={withBase("/#leistungen")}
+              className="inline-flex items-center gap-1 text-base font-medium text-white/90 underline-offset-4 hover:underline"
+            >
+              Leistungen ansehen
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-[#0d120d] py-24 text-white md:py-32">
+        <div className="container px-4">
+          <h2 className="mx-auto max-w-4xl text-center text-[clamp(2rem,5vw,3.8rem)] leading-[1.04] text-white">
+            Der richtige Schnitt.
+            <br />
+            Zur richtigen Zeit.
+          </h2>
+          <p className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-white/70">
+            Hecken, Bäume, Rasen und Beete folgen dem Gartenjahr — wir kennen
+            seinen Takt. Deshalb bleibt Ihr Garten gesund, dicht und in Form.
+          </p>
+          <div className="mx-auto mt-14 grid max-w-5xl gap-5 sm:grid-cols-2">
+            <img
+              src={withBase("/references/nachher-hecke.jpg")}
+              alt="Akkurat in Form geschnittene Hecke"
+              className="aspect-[4/3] w-full rounded-[1.4rem] object-cover"
+              loading="lazy"
+            />
+            <img
+              src={withBase("/references/nachher-obstbaum.jpg")}
+              alt="Fachgerecht geschnittener Obstbaum mit lichter Krone"
+              className="aspect-[4/3] w-full rounded-[1.4rem] object-cover"
+              loading="lazy"
+            />
+          </div>
+          <p className="mt-6 text-center text-sm text-white/50">
+            Beispiele: Formschnitt einer Ligusterhecke, Verjüngungsschnitt eines Apfelbaums
+          </p>
+        </div>
+      </section>
+    </>
+  );
+};
+
 const Hero = () => {
   if (isV2) return <HeroV2 />;
   if (isV3) return <HeroV3 />;
+  if (isV4) return <HeroV4 />;
   return (
     <section
       id="start"

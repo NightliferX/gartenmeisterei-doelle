@@ -32,6 +32,16 @@ if [[ "${SKIP_V3:-}" != "1" ]]; then
   rm -rf dist-v3
 fi
 
+# Design-Variante 4 zusätzlich unter <base>/v4/ veröffentlichen
+if [[ "${SKIP_V4:-}" != "1" ]]; then
+  echo "==> Build Design-Variante 4 unter ${BASE}v4/"
+  VITE_BASE="${BASE}v4/" VITE_THEME=v4 npx vite build --outDir dist-v4
+  mkdir -p dist/v4
+  cp -R dist-v4/. dist/v4/
+  cp dist/v4/index.html dist/v4/404.html
+  rm -rf dist-v4
+fi
+
 # SPA-Fallback: GitHub Pages liefert 404.html für unbekannte Pfade (z. B. /impressum)
 cp dist/index.html dist/404.html
 
