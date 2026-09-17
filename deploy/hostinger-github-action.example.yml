@@ -20,5 +20,5 @@ jobs:
           host: ${{ secrets.HOSTINGER_HOST }}
           username: ${{ secrets.HOSTINGER_USERNAME }}
           ssh_key: ${{ secrets.HOSTINGER_SSH_KEY }}
-          path: /root/apps/hausgartenprofi
+          path: /root/apps/gartenmeisterei
           github_token: ${{ secrets.GITHUB_TOKEN }}

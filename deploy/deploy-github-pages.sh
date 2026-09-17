@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # Baut die Website und veröffentlicht sie auf dem gh-pages-Branch (GitHub Pages).
 # Aufruf:                ./deploy/deploy-github-pages.sh
-# Mit eigener Domain:    VITE_BASE=/ CUSTOM_DOMAIN=www.hausgartenprofi.eu ./deploy/deploy-github-pages.sh
+# Mit eigener Domain:    VITE_BASE=/ CUSTOM_DOMAIN=www.gartenmeisterei-doelle.de ./deploy/deploy-github-pages.sh
 set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
 REPO_URL="$(git remote get-url origin)"
-BASE="${VITE_BASE:-/hausgartenprofi-pro-boost/}"
+BASE="${VITE_BASE:-/gartenmeisterei-doelle/}"
 
 echo "==> Build mit Basispfad: $BASE"
 VITE_BASE="$BASE" npm run build

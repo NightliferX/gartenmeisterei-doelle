@@ -1,9 +1,9 @@
 services:
-  hausgartenprofi:
+  gartenmeisterei:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: hausgartenprofi-web
+    container_name: gartenmeisterei-web
     restart: unless-stopped
     ports:
       - "8081:80"
