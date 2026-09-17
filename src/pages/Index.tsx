@@ -13,7 +13,10 @@ import Faq from "@/components/Faq";
 import Seo from "@/components/Seo";
 import ValuePropsSection from "@/components/ValuePropsSection";
 import ProofSection from "@/components/ProofSection";
+import LandingV5 from "@/components/v5/LandingV5";
 import { faqItems, projects, serviceAreas, services, siteConfig } from "@/lib/siteContent";
+
+const isV5 = import.meta.env.VITE_THEME === "v5";
 
 const Index = () => {
   useScrollAnimation();
@@ -104,14 +107,20 @@ const Index = () => {
       <div className="min-h-screen">
         <Header />
         <main>
-          <Hero />
-          <ValuePropsSection />
-          <ProofSection />
-          <Services />
-          <Gallery />
-          <About />
-          <Testimonials />
-          <ServiceAreas />
+          {isV5 ? (
+            <LandingV5 />
+          ) : (
+            <>
+              <Hero />
+              <ValuePropsSection />
+              <ProofSection />
+              <Services />
+              <Gallery />
+              <About />
+              <Testimonials />
+              <ServiceAreas />
+            </>
+          )}
           <Faq />
           <Contact />
         </main>

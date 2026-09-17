@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, MessageCircle, Sprout } from "lucide-react";
-import { gartenjahr, siteConfig, trustItems } from "@/lib/siteContent";
+import { gartenjahr, monthRange, siteConfig, trustItems } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
 
 const isV2 = import.meta.env.VITE_THEME === "v2";
@@ -235,15 +235,6 @@ const HeroV3 = () => {
 
 // Design-Variante 4: cinematischer Auftritt — Vollbild-Statement,
 // dann eine dunkle Filmsequenz mit dem Handwerk in Großaufnahme.
-const MONTH_NAMES = [
-  "Januar", "Februar", "März", "April", "Mai", "Juni",
-  "Juli", "August", "September", "Oktober", "November", "Dezember",
-];
-
-// months sind in Saison-Reihenfolge angegeben (Winter: [11, 0, 1]).
-const monthRange = (months: number[]) =>
-  `${MONTH_NAMES[months[0]]} – ${MONTH_NAMES[months[months.length - 1]]}`;
-
 const HeroV4 = () => {
   const month = new Date().getMonth();
 

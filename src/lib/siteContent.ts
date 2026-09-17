@@ -312,3 +312,12 @@ export const gartenjahr = [
     work: "Obstbaum- und Gehölzschnitt, Planung fürs neue Gartenjahr",
   },
 ];
+
+const MONTH_NAMES = [
+  "Januar", "Februar", "März", "April", "Mai", "Juni",
+  "Juli", "August", "September", "Oktober", "November", "Dezember",
+];
+
+// months sind in Saison-Reihenfolge angegeben (Winter: [11, 0, 1]).
+export const monthRange = (months: number[]) =>
+  `${MONTH_NAMES[months[0]]} – ${MONTH_NAMES[months[months.length - 1]]}`;

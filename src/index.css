@@ -319,3 +319,93 @@
   background-image: none;
   background-attachment: scroll;
 }
+
+/* ============================================================
+   Design-Variante 5: „Aus Wildwuchs wird Garten"
+   Aktiv, wenn <html class="theme-v5"> (Build mit VITE_THEME=v5).
+   Moorschwarz #10150F / Kalk #F3F4EF / Flechte #5E655A / Triebgrün #B6D66B.
+   Fraunces (weiche, gewachsene Serifen) für Display, Geist für Text.
+   ============================================================ */
+.theme-v5 {
+  --background: 72 19% 95%;
+  --foreground: 110 17% 7%;
+  --card: 0 0% 100%;
+  --card-foreground: 110 17% 7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 110 17% 7%;
+  --primary: 110 17% 7%;
+  --primary-foreground: 72 19% 95%;
+  --secondary: 84 13% 89%;
+  --secondary-foreground: 110 17% 7%;
+  --muted: 84 13% 89%;
+  --muted-foreground: 97 6% 37%;
+  --accent: 78 57% 63%;
+  --accent-foreground: 110 17% 7%;
+  --border: 84 13% 84%;
+  --input: 84 13% 84%;
+  --ring: 110 17% 7%;
+  --radius: 1.2rem;
+}
+
+.theme-v5 body {
+  font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+  background-image: none;
+  background-attachment: scroll;
+  -webkit-font-smoothing: antialiased;
+}
+
+.theme-v5 h1,
+.theme-v5 h2,
+.theme-v5 h3,
+.theme-v5 .v5-display {
+  font-family: "Fraunces", "Iowan Old Style", Georgia, serif;
+  font-weight: 380;
+  font-variation-settings: "SOFT" 70, "WONK" 1;
+  letter-spacing: -0.025em;
+}
+
+/* Gemeinsame Sektionen (FAQ, Kontakt): ruhige Labels statt Versalien */
+.theme-v5 .uppercase.tracking-widest,
+.theme-v5 [class*="tracking-[0.2em]"],
+.theme-v5 [class*="tracking-[0.18em]"] {
+  text-transform: none;
+  letter-spacing: 0 !important;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: hsl(var(--muted-foreground));
+}
+.theme-v5 main section h2 { line-height: 1; }
+.theme-v5 a[class*="rounded-md"],
+.theme-v5 button[class*="rounded-md"] { border-radius: 9999px; }
+
+/* Druck-Feedback für alles Anklickbare */
+.theme-v5 .v5-press {
+  transition: transform 160ms cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+.theme-v5 .v5-press:active { transform: scale(0.97); }
+
+.theme-v5 a:focus-visible,
+.theme-v5 button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+/* Scroll-Hinweis im Hero: kleiner Strich, der nach unten läuft */
+@keyframes v5-cue {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(250%); }
+}
+.theme-v5 .v5-scroll-cue { animation: v5-cue 1.6s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
+
+/* Laufband der Einsatzgebiete — konstante Bewegung, daher linear */
+@keyframes v5-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.theme-v5 .v5-marquee { animation: v5-marquee 55s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-v5 .v5-scroll-cue,
+  .theme-v5 .v5-marquee { animation: none; }
+}
