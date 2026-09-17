@@ -174,40 +174,59 @@ const CompareSlider = () => {
 
 const HeroV3 = () => {
   return (
-    <section id="start" className="pb-8 pt-28 md:pt-32">
-      <div className="container px-4">
-        <div className="max-w-3xl">
-          <h1 className="text-4xl leading-[1.05] sm:text-5xl lg:text-6xl">
-            Der Unterschied ist Handwerk.
-          </h1>
-          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-            Gartenpflege vom Gärtnermeister in Düsseldorf: Hecken, Bäume, Rasen
-            und alles, was das Gartenjahr verlangt. Ziehen Sie den Regler — so
-            sieht ein Termin bei uns aus.
-          </p>
-        </div>
+    <section id="start" className="pb-8">
+      {/* Vollflächiger Hero-Header; der Vorher/Nachher-Regler ragt von unten hinein */}
+      <div className="relative flex min-h-[78vh] items-center">
+        <img
+          src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1920&q=80"
+          alt="Gepflegter Vorgarten mit klaren Kanten und sattem Rasen"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[hsl(var(--v3-loden)/0.5)]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--v3-loden)/0.85)] via-[hsl(var(--v3-loden)/0.35)] to-transparent" />
 
-        <div className="mt-8">
-          <CompareSlider />
-          <div className="mt-3 flex flex-col gap-2 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <p>Beispiel Heckenschnitt: Form- und Rückschnitt, Abtransport inklusive.</p>
-            <p>{siteConfig.responsePromise}</p>
+        <div className="container relative z-10 px-4 pb-44 pt-28">
+          <div className="max-w-2xl">
+            <h1 className="text-4xl leading-[1.05] text-white sm:text-5xl lg:text-6xl">
+              Der Unterschied ist Handwerk.
+            </h1>
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">
+              Gartenpflege vom Gärtnermeister in Düsseldorf: Hecken, Bäume,
+              Rasen und alles, was das Gartenjahr verlangt.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button size="lg" asChild className="px-8 py-6 text-base shadow-lg shadow-black/15">
+                <a href={withBase("/#kontakt")}>
+                  Kostenlose Beratung anfragen
+                  <ArrowRight className="h-5 w-5" />
+                </a>
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="border-white/40 bg-white/10 px-8 py-6 text-base text-white hover:bg-white/20 hover:text-white"
+              >
+                <a href={siteConfig.whatsappHref} target="_blank" rel="noreferrer">
+                  WhatsApp starten
+                  <MessageCircle className="h-5 w-5" />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
+      </div>
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-          <Button size="lg" asChild className="px-8 py-6 text-base">
-            <a href={withBase("/#kontakt")}>
-              Kostenlose Beratung anfragen
-              <ArrowRight className="h-5 w-5" />
-            </a>
-          </Button>
-          <Button size="lg" variant="outline" asChild className="px-8 py-6 text-base">
-            <a href={siteConfig.whatsappHref} target="_blank" rel="noreferrer">
-              WhatsApp starten
-              <MessageCircle className="h-5 w-5" />
-            </a>
-          </Button>
+      <div className="container relative z-20 -mt-32 px-4">
+        <div className="max-w-3xl">
+          <p className="mb-3 inline-block rounded-full bg-white/95 px-4 py-1.5 text-sm font-semibold text-foreground shadow-sm">
+            Ziehen Sie den Regler — so sieht ein Termin bei uns aus.
+          </p>
+        </div>
+        <CompareSlider />
+        <div className="mt-3 flex flex-col gap-2 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <p>Beispiel Heckenschnitt: Form- und Rückschnitt, Abtransport inklusive.</p>
+          <p>{siteConfig.responsePromise}</p>
         </div>
       </div>
     </section>

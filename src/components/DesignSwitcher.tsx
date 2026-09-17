@@ -13,7 +13,15 @@ const VERSIONS = [
 // Basis ohne Varianten-Suffix, z. B. "/gartenmeisterei-doelle/v3/" → "/gartenmeisterei-doelle/"
 const rootBase = (import.meta.env.BASE_URL ?? "/").replace(/v[234]\/$/, "");
 
-const hrefFor = (id: string) => (id === "v1" ? rootBase : `${rootBase}${id}/`);
+// Im Dev-Modus laufen die Varianten auf eigenen Ports (npm run dev / dev:v2 / dev:v3 / dev:v4).
+const DEV_PORTS: Record<string, string> = { v1: "8080", v2: "8085", v3: "8086", v4: "8087" };
+
+const hrefFor = (id: string) => {
+  if (import.meta.env.DEV) {
+    return `${window.location.protocol}//${window.location.hostname}:${DEV_PORTS[id]}/`;
+  }
+  return id === "v1" ? rootBase : `${rootBase}${id}/`;
+};
 
 const DesignSwitcher = () => {
   return (

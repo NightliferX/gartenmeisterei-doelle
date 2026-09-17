@@ -6,8 +6,197 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { withBase } from "@/lib/utils";
 
 const categories = ["Alle", "Schnitt", "Pflege", "Saison"];
+const theme = import.meta.env.VITE_THEME;
 
-const Gallery = () => {
+// V2 „Das Gartenjahr": Magazin-Strecke — ein Projekt pro Zeile, Bilder im Wechsel.
+const GalleryV2 = () => {
+  return (
+    <section id="projekte" className="bg-secondary/50 py-20 md:py-28">
+      <div className="container px-4">
+        <div className="max-w-2xl">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
+            Aus unserer Arbeit
+          </p>
+          <h2 className="text-3xl font-bold tracking-tight md:text-5xl">
+            So arbeiten wir
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            Beispielprojekte zeigen, was gute Gartenpflege ausmacht — echte
+            Kundengärten folgen mit den ersten Projekten.
+          </p>
+        </div>
+
+        <div className="mt-14 space-y-16 md:space-y-24">
+          {projects.map((project, i) => {
+            const reversed = i % 2 === 1;
+            return (
+              <div
+                key={project.title}
+                className={`grid items-center gap-8 md:gap-14 lg:grid-cols-[1.15fr_1fr] ${
+                  reversed ? "lg:[&>*:first-child]:order-2" : ""
+                }`}
+              >
+                <div className="overflow-hidden rounded-3xl shadow-sm">
+                  <BeforeAfterSlider
+                    title={project.title}
+                    beforeImage={project.beforeImage ? withBase(project.beforeImage) : undefined}
+                    afterImage={project.afterImage ? withBase(project.afterImage) : undefined}
+                    beforeAlt={project.beforeAlt}
+                    afterAlt={project.afterAlt}
+                  />
+                </div>
+                <div>
+                  <p className="text-sm font-medium text-muted-foreground">
+                    {project.location}
+                  </p>
+                  <h3 className="mt-2 text-2xl font-semibold md:text-3xl">
+                    {project.title}
+                  </h3>
+                  <p className="mt-4 text-lg leading-relaxed text-muted-foreground">
+                    {project.summary}
+                  </p>
+                  <p className="mt-3 leading-relaxed text-foreground/80">
+                    {project.result}.
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        <div className="mt-16 text-center">
+          <Button asChild size="lg">
+            <a href={withBase("/#kontakt")}>
+              Ihr Projekt unverbindlich besprechen
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// V3 „Der Unterschied ist Handwerk": Arbeitsprotokoll — große Zeilen mit Trennlinien.
+const GalleryV3 = () => {
+  return (
+    <section id="projekte" className="py-20 md:py-28">
+      <div className="container px-4">
+        <div className="max-w-3xl">
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+            Vorher. Nachher.
+          </h2>
+          <p className="mt-4 text-muted-foreground">
+            Sechs Beispiele dafür, was ein Termin ausmacht — dokumentiert wie
+            im Arbeitsprotokoll. Echte Kundengärten folgen mit den ersten
+            Projekten.
+          </p>
+        </div>
+
+        <div className="mt-12 divide-y divide-border border-y border-border">
+          {projects.map((project) => (
+            <div
+              key={project.title}
+              className="grid gap-8 py-12 lg:grid-cols-[1.15fr_1fr] lg:items-center"
+            >
+              <div className="overflow-hidden rounded-[var(--radius)]">
+                <BeforeAfterSlider
+                  title={project.title}
+                  beforeImage={project.beforeImage ? withBase(project.beforeImage) : undefined}
+                  afterImage={project.afterImage ? withBase(project.afterImage) : undefined}
+                  beforeAlt={project.beforeAlt}
+                  afterAlt={project.afterAlt}
+                />
+              </div>
+              <div>
+                <h3 className="text-2xl font-semibold">{project.title}</h3>
+                <p className="mt-1 text-sm text-muted-foreground">{project.location}</p>
+                <dl className="mt-5 space-y-3 text-sm leading-relaxed">
+                  <div>
+                    <dt className="font-semibold text-foreground">Ausgangslage</dt>
+                    <dd className="text-muted-foreground">{project.challenge}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-foreground">Umsetzung</dt>
+                    <dd className="text-muted-foreground">{project.solution}</dd>
+                  </div>
+                  <div>
+                    <dt className="font-semibold text-foreground">Ergebnis</dt>
+                    <dd className="text-muted-foreground">{project.result}</dd>
+                  </div>
+                </dl>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-12">
+          <Button asChild size="lg">
+            <a href={withBase("/#kontakt")}>
+              Ihr Projekt unverbindlich besprechen
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// V4 „Cinematic": filmische Wisch-Galerie mit Scroll-Snap.
+const GalleryV4 = () => {
+  return (
+    <section id="projekte" className="bg-secondary/50 py-20 md:py-28">
+      <div className="container px-4">
+        <div className="mx-auto max-w-3xl text-center">
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
+            Die Arbeit spricht.
+          </h2>
+          <p className="mt-4 text-lg text-muted-foreground">
+            Wischen Sie durch die Beispiele — jedes Bild lässt sich zwischen
+            Vorher und Nachher umschalten.
+          </p>
+        </div>
+      </div>
+
+      <div className="mt-12 flex snap-x snap-mandatory gap-6 overflow-x-auto px-[max(1rem,calc((100vw-72rem)/2))] pb-6">
+        {projects.map((project) => (
+          <div
+            key={project.title}
+            className="w-[85%] flex-none snap-center overflow-hidden rounded-[2rem] bg-card shadow-sm sm:w-[60%] lg:w-[44%]"
+          >
+            <BeforeAfterSlider
+              title={project.title}
+              beforeImage={project.beforeImage ? withBase(project.beforeImage) : undefined}
+              afterImage={project.afterImage ? withBase(project.afterImage) : undefined}
+              beforeAlt={project.beforeAlt}
+              afterAlt={project.afterAlt}
+            />
+            <div className="p-6">
+              <h3 className="text-lg font-semibold">{project.title}</h3>
+              <p className="mt-1 text-sm text-muted-foreground">
+                {project.location} · {project.result}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <div className="container px-4">
+        <div className="mt-8 text-center">
+          <Button asChild size="lg">
+            <a href={withBase("/#kontakt")}>
+              Ihr Projekt unverbindlich besprechen
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const GalleryDefault = () => {
   const [active, setActive] = useState("Alle");
 
   const filtered = useMemo(
@@ -115,6 +304,13 @@ const Gallery = () => {
       </div>
     </section>
   );
+};
+
+const Gallery = () => {
+  if (theme === "v2") return <GalleryV2 />;
+  if (theme === "v3") return <GalleryV3 />;
+  if (theme === "v4") return <GalleryV4 />;
+  return <GalleryDefault />;
 };
 
 export default Gallery;
