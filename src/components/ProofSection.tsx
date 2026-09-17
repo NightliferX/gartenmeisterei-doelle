@@ -17,6 +17,7 @@ import {
   CarouselItem,
 } from "@/components/ui/carousel";
 import { useCarouselAutoplay } from "@/hooks/useCarouselAutoplay";
+import { withBase } from "@/lib/utils";
 
 const proofItems = [
   {
@@ -162,7 +163,7 @@ const ProofSection = () => {
               </p>
             </div>
             <Button asChild className="mt-7 w-full sm:w-auto">
-              <a href="/#kontakt">
+              <a href={withBase("/#kontakt")}>
                 Beratung unverbindlich anfragen
                 <ArrowRight className="h-4 w-4" />
               </a>

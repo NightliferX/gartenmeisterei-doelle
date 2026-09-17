@@ -3,6 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { projects } from "@/lib/siteContent";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import { withBase } from "@/lib/utils";
 
 const categories = ["Alle", "Haus", "Garten", "Innen"];
 
@@ -58,8 +59,8 @@ const Gallery = () => {
             >
               <BeforeAfterSlider
                 title={project.title}
-                beforeImage={project.beforeImage}
-                afterImage={project.afterImage}
+                beforeImage={project.beforeImage ? withBase(project.beforeImage) : undefined}
+                afterImage={project.afterImage ? withBase(project.afterImage) : undefined}
                 beforeAlt={project.beforeAlt}
                 afterAlt={project.afterAlt}
               />
@@ -104,7 +105,7 @@ const Gallery = () => {
 
         <div className="scroll-fade-in mt-12 text-center">
           <Button asChild size="lg">
-            <a href="/#kontakt">
+            <a href={withBase("/#kontakt")}>
               Ihr Projekt unverbindlich besprechen
               <ArrowRight className="h-4 w-4" />
             </a>

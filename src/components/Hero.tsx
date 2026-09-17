@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, MessageCircle } from "lucide-react";
 import { siteConfig, trustItems } from "@/lib/siteContent";
+import { withBase } from "@/lib/utils";
 
 const Hero = () => {
   return (
@@ -38,7 +39,7 @@ const Hero = () => {
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Button size="lg" asChild className="px-8 py-6 text-base shadow-lg shadow-black/10">
-              <a href="/#kontakt">
+              <a href={withBase("/#kontakt")}>
                 Jetzt Beratung anfragen
                 <ArrowRight className="h-5 w-5" />
               </a>

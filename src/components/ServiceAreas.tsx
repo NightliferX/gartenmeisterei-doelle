@@ -1,6 +1,7 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { serviceAreas } from "@/lib/siteContent";
+import { withBase } from "@/lib/utils";
 
 const ServiceAreas = () => {
   return (
@@ -50,7 +51,7 @@ const ServiceAreas = () => {
               <li>Abgestimmte Leistungen aus einer Hand statt Stuckwerk</li>
             </ul>
             <Button asChild className="mt-7 w-full sm:w-auto">
-              <a href="/#kontakt">
+              <a href={withBase("/#kontakt")}>
                 Projekt in Ihrer Region anfragen
                 <ArrowRight className="h-4 w-4" />
               </a>

@@ -5,6 +5,7 @@ import {
   TreePine,
 } from "lucide-react";
 import { services } from "@/lib/siteContent";
+import { withBase } from "@/lib/utils";
 
 const iconMap = {
   haussanierung: Home,
@@ -41,7 +42,7 @@ const Services = () => {
             >
               <div className="h-48 overflow-hidden">
                 <img
-                  src={service.image}
+                  src={withBase(service.image)}
                   alt={service.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"

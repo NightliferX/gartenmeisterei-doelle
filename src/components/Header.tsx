@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Menu, MessageCircle, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { navLinks, siteConfig } from "@/lib/siteContent";
+import { withBase } from "@/lib/utils";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -10,9 +11,9 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-md border-b">
       <div className="container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <a href="/" className="flex items-center gap-2 font-bold text-xl text-primary">
+        <a href={withBase("/")} className="flex items-center gap-2 font-bold text-xl text-primary">
           <img
-            src="/logo-haus-garten-profi.svg"
+            src={withBase("/logo-haus-garten-profi.svg")}
             alt={`${siteConfig.brandName} Logo`}
             className="h-12 w-auto md:h-14"
           />
@@ -23,7 +24,7 @@ const Header = () => {
           {navLinks.map((link) => (
             <a
               key={link.href}
-              href={link.href}
+              href={withBase(link.href)}
               className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors"
             >
               {link.label}
@@ -50,7 +51,7 @@ const Header = () => {
             WhatsApp
           </a>
           <Button asChild className="shadow-sm">
-            <a href="/#kontakt">Kostenlose Beratung</a>
+            <a href={withBase("/#kontakt")}>Kostenlose Beratung</a>
           </Button>
         </div>
 
@@ -78,7 +79,7 @@ const Header = () => {
             {navLinks.map((link) => (
               <a
                 key={link.href}
-                href={link.href}
+                href={withBase(link.href)}
                 onClick={() => setOpen(false)}
                 className="py-3 px-4 rounded-lg text-sm font-medium hover:bg-muted transition-colors"
               >
@@ -86,7 +87,7 @@ const Header = () => {
               </a>
             ))}
             <Button asChild className="mt-2">
-              <a href="/#kontakt" onClick={() => setOpen(false)}>
+              <a href={withBase("/#kontakt")} onClick={() => setOpen(false)}>
                 Kostenlose Beratung
               </a>
             </Button>

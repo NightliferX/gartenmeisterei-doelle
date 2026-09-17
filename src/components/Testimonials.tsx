@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/carousel";
 import { testimonials } from "@/lib/siteContent";
 import { useCarouselAutoplay } from "@/hooks/useCarouselAutoplay";
+import { withBase } from "@/lib/utils";
 
 const Testimonials = () => {
   const [api, setApi] = useState<CarouselApi>();
@@ -87,7 +88,7 @@ const Testimonials = () => {
 
         <div className="scroll-fade-in mt-12 text-center">
           <Button asChild size="lg">
-            <a href="/#kontakt">
+            <a href={withBase("/#kontakt")}>
               Eigenes Projekt anfragen
               <ArrowRight className="h-4 w-4" />
             </a>
