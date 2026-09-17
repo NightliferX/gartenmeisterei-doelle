@@ -12,6 +12,15 @@ BASE="${VITE_BASE:-/gartenmeisterei-doelle/}"
 echo "==> Build mit Basispfad: $BASE"
 VITE_BASE="$BASE" npm run build
 
+# ACHTUNG: gh-pages wird komplett überschrieben. SKIP_V2/SKIP_V3/SKIP_V4=1
+# entfernt die jeweilige Variante also von der Live-Seite — nur nutzen,
+# wenn sie wirklich offline gehen soll.
+for flag in SKIP_V2 SKIP_V3 SKIP_V4; do
+  if [[ "${!flag:-}" == "1" ]]; then
+    echo "!!  $flag=1: diese Variante wird von der Live-Seite ENTFERNT"
+  fi
+done
+
 # Design-Variante 2 („Das Gartenjahr") zusätzlich unter <base>/v2/ veröffentlichen
 if [[ "${SKIP_V2:-}" != "1" ]]; then
   echo "==> Build Design-Variante 2 unter ${BASE}v2/"
