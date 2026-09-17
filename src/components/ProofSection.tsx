@@ -176,7 +176,7 @@ const ProofSection = () => {
             </Carousel>
             <div className="mt-8 rounded-2xl border border-border/80 bg-card px-5 py-4">
               <p className="text-sm text-muted-foreground">
-                {siteConfig.consultationPromise} und {siteConfig.responsePromise.toLowerCase()}.
+                {siteConfig.consultationPromise} — {siteConfig.responsePromise}.
               </p>
             </div>
             <Button asChild className="mt-7 w-full sm:w-auto">

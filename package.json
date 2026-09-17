@@ -11,7 +11,8 @@
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
-    "dev:v2": "VITE_THEME=v2 vite --port 8085"
+    "dev:v2": "VITE_THEME=v2 vite --port 8085",
+    "dev:v3": "VITE_THEME=v3 vite --port 8086"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

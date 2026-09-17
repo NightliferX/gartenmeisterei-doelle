@@ -2,10 +2,12 @@ import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 
-// Design-Variante 2 („Das Gartenjahr") wird per Build-Flag aktiviert:
-// VITE_THEME=v2 npm run build  →  Tokens/Fonts aus .theme-v2 in index.css
-if (import.meta.env.VITE_THEME === "v2") {
-  document.documentElement.classList.add("theme-v2");
+// Design-Varianten werden per Build-Flag aktiviert:
+// VITE_THEME=v2 („Das Gartenjahr") bzw. v3 („Der Unterschied ist Handwerk")
+// → Tokens/Overrides aus .theme-v2 / .theme-v3 in index.css
+const theme = import.meta.env.VITE_THEME;
+if (theme === "v2" || theme === "v3") {
+  document.documentElement.classList.add(`theme-${theme}`);
 }
 
 createRoot(document.getElementById("root")!).render(<App />);

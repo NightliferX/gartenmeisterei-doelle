@@ -1,9 +1,11 @@
+import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CheckCircle2, MessageCircle, Sprout } from "lucide-react";
 import { gartenjahr, siteConfig, trustItems } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
 
 const isV2 = import.meta.env.VITE_THEME === "v2";
+const isV3 = import.meta.env.VITE_THEME === "v3";
 
 // Design-Variante 2: Split-Hero + Gartenjahr-Leiste mit Saison-Hervorhebung
 const HeroV2 = () => {
@@ -98,8 +100,122 @@ const HeroV2 = () => {
   );
 };
 
+// Design-Variante 3: Der Hero ist eine Arbeitsprobe — ein Vorher/Nachher-Regler.
+const CompareSlider = () => {
+  const [pos, setPos] = useState(16);
+
+  useEffect(() => {
+    // Eine orchestrierte Bewegung beim Laden: der Regler fährt auf die Mitte.
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setPos(50);
+      return;
+    }
+    const start = performance.now();
+    let raf = 0;
+    const tick = (now: number) => {
+      const t = Math.min((now - start) / 1400, 1);
+      const eased = 1 - Math.pow(1 - t, 3);
+      setPos(16 + eased * 34);
+      if (t < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  return (
+    <div className="relative select-none overflow-hidden rounded-[var(--radius)] border border-border shadow-lg shadow-black/10">
+      <img
+        src={withBase("/references/nachher-hecke.jpg")}
+        alt="Akkurat geschnittene Hecke nach dem Termin"
+        className="block aspect-[3/2] w-full object-cover"
+        draggable={false}
+      />
+      <img
+        src={withBase("/references/vorher-hecke.jpg")}
+        alt="Ausgewachsene Hecke vor dem Termin"
+        className="absolute inset-0 h-full w-full object-cover"
+        style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
+        draggable={false}
+      />
+
+      {/* Griff in Messing — die eine Akzentstelle der Seite */}
+      <div
+        className="pointer-events-none absolute inset-y-0 w-0.5 bg-white/90"
+        style={{ left: `${pos}%` }}
+      >
+        <div className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2">
+          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[hsl(var(--v3-brass))] text-white shadow-md">
+            <ArrowRight className="h-4 w-4 rotate-180" />
+            <ArrowRight className="h-4 w-4" />
+          </div>
+        </div>
+      </div>
+
+      <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-[hsl(var(--v3-loden)/0.75)] px-3 py-1 text-sm font-medium text-white">
+        Vorher
+      </span>
+      <span className="pointer-events-none absolute right-4 top-4 rounded-full bg-[hsl(var(--v3-loden)/0.75)] px-3 py-1 text-sm font-medium text-white">
+        Nachher
+      </span>
+
+      <input
+        type="range"
+        min={0}
+        max={100}
+        value={pos}
+        onChange={(e) => setPos(Number(e.target.value))}
+        aria-label="Vorher-Nachher-Vergleich verschieben"
+        className="absolute inset-0 h-full w-full cursor-ew-resize opacity-0"
+      />
+    </div>
+  );
+};
+
+const HeroV3 = () => {
+  return (
+    <section id="start" className="pb-8 pt-28 md:pt-32">
+      <div className="container px-4">
+        <div className="max-w-3xl">
+          <h1 className="text-4xl leading-[1.05] sm:text-5xl lg:text-6xl">
+            Der Unterschied ist Handwerk.
+          </h1>
+          <p className="mt-5 max-w-2xl text-lg leading-relaxed text-muted-foreground">
+            Gartenpflege vom Gärtnermeister in Düsseldorf: Hecken, Bäume, Rasen
+            und alles, was das Gartenjahr verlangt. Ziehen Sie den Regler — so
+            sieht ein Termin bei uns aus.
+          </p>
+        </div>
+
+        <div className="mt-8">
+          <CompareSlider />
+          <div className="mt-3 flex flex-col gap-2 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+            <p>Beispiel Heckenschnitt: Form- und Rückschnitt, Abtransport inklusive.</p>
+            <p>{siteConfig.responsePromise}</p>
+          </div>
+        </div>
+
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <Button size="lg" asChild className="px-8 py-6 text-base">
+            <a href={withBase("/#kontakt")}>
+              Kostenlose Beratung anfragen
+              <ArrowRight className="h-5 w-5" />
+            </a>
+          </Button>
+          <Button size="lg" variant="outline" asChild className="px-8 py-6 text-base">
+            <a href={siteConfig.whatsappHref} target="_blank" rel="noreferrer">
+              WhatsApp starten
+              <MessageCircle className="h-5 w-5" />
+            </a>
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Hero = () => {
   if (isV2) return <HeroV2 />;
+  if (isV3) return <HeroV3 />;
   return (
     <section
       id="start"

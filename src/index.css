@@ -156,3 +156,81 @@
 }
 
 .theme-v2 body { background-attachment: scroll; }
+
+/* ============================================================
+   Design-Variante 3: „Der Unterschied ist Handwerk"
+   Aktiv, wenn <html class="theme-v3"> (Build mit VITE_THEME=v3).
+   Fast monochrom Loden/Papier, Moos für Aktionen, Messing nur am
+   Vorher/Nachher-Regler. Bricolage Grotesque für Überschriften.
+   ============================================================ */
+.theme-v3 {
+  --background: 60 27% 98%;
+  --foreground: 104 16% 18%;
+  --card: 0 0% 100%;
+  --card-foreground: 104 16% 18%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 104 16% 18%;
+  --primary: 93 28% 34%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 107 20% 91%;
+  --secondary-foreground: 104 16% 18%;
+  --muted: 107 15% 91%;
+  --muted-foreground: 104 8% 40%;
+  --accent: 35 63% 38%;
+  --accent-foreground: 0 0% 100%;
+  --border: 104 12% 86%;
+  --input: 104 12% 86%;
+  --ring: 93 28% 34%;
+  --radius: 0.9rem;
+  --v3-loden: 104 16% 18%;
+  --v3-brass: 35 63% 38%;
+}
+
+.theme-v3 h1,
+.theme-v3 h2,
+.theme-v3 h3 {
+  font-family: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", sans-serif;
+  letter-spacing: -0.01em;
+}
+.theme-v3 h1 { font-weight: 800; }
+.theme-v3 h2 { font-weight: 700; }
+.theme-v3 h3 { font-weight: 600; }
+
+/* Eyebrow-Labels: ruhig, klein, Moosgrün — keine Versalien, kein Tracking */
+.theme-v3 .uppercase.tracking-widest,
+.theme-v3 [class*="tracking-[0.2em]"],
+.theme-v3 [class*="tracking-[0.18em]"] {
+  text-transform: none;
+  letter-spacing: 0 !important;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: hsl(var(--primary));
+}
+
+/* Leistungen als Verzeichnis-Zeilen statt Kartengitter */
+.theme-v3 #leistungen .grid {
+  grid-template-columns: 1fr;
+  max-width: 58rem;
+  margin-inline: auto;
+  gap: 1rem;
+}
+@media (min-width: 640px) {
+  .theme-v3 #leistungen .grid > div {
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+    align-items: stretch;
+  }
+  .theme-v3 #leistungen .grid > div > div.h-48 {
+    height: 100%;
+    min-height: 100%;
+  }
+}
+.theme-v3 #leistungen .grid > div:hover {
+  transform: none;
+}
+
+/* Ruhige Fläche statt Verlaufs-Hintergrund */
+.theme-v3 body {
+  background-image: none;
+  background-attachment: scroll;
+}
