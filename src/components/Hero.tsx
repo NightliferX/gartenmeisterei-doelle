@@ -11,52 +11,62 @@ const HeroV2 = () => {
   const currentSeason = gartenjahr.find((s) => s.months.includes(month))?.season;
 
   return (
-    <section id="start" className="overflow-hidden pb-10 pt-24 md:pt-28">
-      <div className="container px-4">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_.95fr]">
-          <div>
+    <section id="start" className="overflow-hidden pb-10">
+      {/* Vollflächiger Hero-Header in V2-Sprache: Foto + Tannengrün-Verlauf, Text linksbündig */}
+      <div className="relative flex min-h-[88vh] items-center">
+        <img
+          src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1920&q=80"
+          alt="Gepflegter Gartenweg mit akkurat geschnittenen Hecken"
+          className="absolute inset-0 h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-[hsl(var(--v2-pine)/0.45)]" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--v2-pine)/0.85)] via-[hsl(var(--v2-pine)/0.4)] to-transparent" />
+
+        <div className="container relative z-10 px-4 pb-36 pt-28">
+          <div className="max-w-2xl">
             <p className="flex items-center gap-2 text-base font-medium text-[hsl(var(--v2-pollen))]">
               <Sprout className="h-5 w-5" />
               Meisterbetrieb von Benedikt Dölle, Gärtnermeister
             </p>
-            <h1 className="mt-4 text-4xl leading-[1.08] text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="mt-4 text-4xl leading-[1.08] text-white sm:text-5xl lg:text-6xl">
               Gepflegte Gärten sind kein Zufall.
               <br />
               Sie haben einen Gärtner.
             </h1>
-            <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
+            <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
               Die {siteConfig.brandName} hält Gärten in Düsseldorf und Umgebung
               das ganze Jahr in Form — vom Hecken- und Baumschnitt über Rasen-
               und Beetpflege bis zu Laub- und Winterservice.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button size="lg" asChild className="px-8 py-6 text-base">
+              <Button size="lg" asChild className="px-8 py-6 text-base shadow-lg shadow-black/15">
                 <a href={withBase("/#kontakt")}>
                   Kostenlose Beratung anfragen
                   <ArrowRight className="h-5 w-5" />
                 </a>
               </Button>
-              <Button size="lg" variant="outline" asChild className="px-8 py-6 text-base">
+              <Button
+                size="lg"
+                variant="outline"
+                asChild
+                className="border-white/40 bg-white/10 px-8 py-6 text-base text-white hover:bg-white/20 hover:text-white"
+              >
                 <a href={siteConfig.whatsappHref} target="_blank" rel="noreferrer">
                   WhatsApp starten
                   <MessageCircle className="h-5 w-5" />
                 </a>
               </Button>
             </div>
-            <p className="mt-5 text-sm text-muted-foreground">
+            <p className="mt-5 text-sm text-white/70">
               {siteConfig.responsePromise} · {siteConfig.consultationPromise}
             </p>
           </div>
-
-          <img
-            src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1100&q=80"
-            alt="Gepflegter Gartenweg mit akkurat geschnittenen Hecken"
-            className="v2-organic aspect-[4/5] w-full object-cover shadow-lg shadow-[hsl(var(--v2-pine)/0.18)] lg:aspect-[5/6]"
-          />
         </div>
+      </div>
 
+      <div className="container relative z-20 -mt-24 px-4">
         {/* Gartenjahr-Leiste: was wann ansteht — die aktuelle Saison ist markiert */}
-        <div className="mt-12 overflow-hidden rounded-[var(--radius)] bg-[hsl(var(--v2-pine))] text-white shadow-lg shadow-[hsl(var(--v2-pine)/0.25)]">
+        <div className="overflow-hidden rounded-[var(--radius)] bg-[hsl(var(--v2-pine))] text-white shadow-xl shadow-[hsl(var(--v2-pine)/0.3)]">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4">
             {gartenjahr.map((entry) => {
               const active = entry.season === currentSeason;
