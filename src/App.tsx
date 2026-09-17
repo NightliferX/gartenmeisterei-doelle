@@ -7,6 +7,9 @@ import Index from "./pages/Index.tsx";
 import NotFound from "./pages/NotFound.tsx";
 import Impressum from "./pages/Impressum.tsx";
 import Datenschutz from "./pages/Datenschutz.tsx";
+import ServicePage from "./pages/ServicePage.tsx";
+import AreaPage from "./pages/AreaPage.tsx";
+import { areaPages, servicePages } from "@/lib/subpages";
 
 const queryClient = new QueryClient();
 
@@ -20,6 +23,12 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
+          {servicePages.map((page) => (
+            <Route key={page.slug} path={`/${page.slug}`} element={<ServicePage page={page} />} />
+          ))}
+          {areaPages.map((page) => (
+            <Route key={page.slug} path={`/${page.slug}`} element={<AreaPage page={page} />} />
+          ))}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

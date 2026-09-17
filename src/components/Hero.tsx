@@ -17,7 +17,7 @@ const Hero = () => {
             "url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1920&q=80')",
         }}
       />
-      <div className="absolute inset-0 bg-foreground/60" />
+      <div className="absolute inset-0 bg-foreground/70" />
 
       {/* Content */}
       <div className="relative z-10 container px-4 pt-24">
@@ -25,7 +25,7 @@ const Hero = () => {
           <h1 className="mx-auto max-w-4xl text-4xl font-extrabold leading-tight tracking-tight text-primary-foreground sm:text-5xl md:text-6xl lg:text-7xl">
             Ihr Gärtnermeister für
             <br />
-            <span className="text-green-300 drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+            <span className="text-primary brightness-150 drop-shadow-[0_2px_10px_rgba(0,0,0,0.55)]">
               gepflegte Gärten
             </span>
             <br />

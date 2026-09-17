@@ -24,10 +24,12 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Leistungen</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/60">
-              <li><a href={withBase("/#leistungen")} className="hover:text-primary-foreground transition-colors">Gartenpflege</a></li>
-              <li><a href={withBase("/#leistungen")} className="hover:text-primary-foreground transition-colors">Hecken- & Baumschnitt</a></li>
-              <li><a href={withBase("/#leistungen")} className="hover:text-primary-foreground transition-colors">Rasenpflege</a></li>
-              <li><a href={withBase("/#leistungen")} className="hover:text-primary-foreground transition-colors">Laub- & Winterservice</a></li>
+              <li><a href={withBase("/gartenpflege-duesseldorf")} className="hover:text-primary-foreground transition-colors">Gartenpflege</a></li>
+              <li><a href={withBase("/heckenschnitt-duesseldorf")} className="hover:text-primary-foreground transition-colors">Heckenschnitt</a></li>
+              <li><a href={withBase("/baumschnitt-duesseldorf")} className="hover:text-primary-foreground transition-colors">Baumschnitt</a></li>
+              <li><a href={withBase("/rasenpflege-duesseldorf")} className="hover:text-primary-foreground transition-colors">Rasenpflege</a></li>
+              <li><a href={withBase("/laubentsorgung-duesseldorf")} className="hover:text-primary-foreground transition-colors">Laubentsorgung</a></li>
+              <li><a href={withBase("/winterservice-duesseldorf")} className="hover:text-primary-foreground transition-colors">Winterservice</a></li>
             </ul>
           </div>
 

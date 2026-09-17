@@ -1,6 +1,7 @@
 import { ArrowRight, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { serviceAreas } from "@/lib/siteContent";
+import { areaPages } from "@/lib/subpages";
 import { withBase } from "@/lib/utils";
 
 const ServiceAreas = () => {
@@ -21,15 +22,33 @@ const ServiceAreas = () => {
               feste Pflegetermine ohne lange Anfahrt.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
-              {serviceAreas.map((area) => (
-                <span
-                  key={area}
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground shadow-sm"
-                >
-                  <MapPin className="h-4 w-4 text-primary" />
-                  {area}
-                </span>
-              ))}
+              {serviceAreas.map((area) => {
+                const page = areaPages.find((p) =>
+                  p.name.replace("Düsseldorf-", "") === area || p.name === area,
+                );
+                const chip = (
+                  <>
+                    <MapPin className="h-4 w-4 text-primary" />
+                    {area}
+                  </>
+                );
+                return page ? (
+                  <a
+                    key={area}
+                    href={withBase(`/${page.slug}`)}
+                    className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground shadow-sm transition-colors hover:border-primary/50 hover:text-primary"
+                  >
+                    {chip}
+                  </a>
+                ) : (
+                  <span
+                    key={area}
+                    className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium text-foreground shadow-sm"
+                  >
+                    {chip}
+                  </span>
+                );
+              })}
             </div>
           </div>
 

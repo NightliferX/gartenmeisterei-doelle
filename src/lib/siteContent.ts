@@ -160,9 +160,10 @@ export const projects: ProjectReference[] = [
     challenge: "Die Hecken waren aus der Form gewachsen und nahmen Wegen und Beeten das Licht.",
     solution: "Fachgerechter Form- und Rückschnitt mit sauberer Kante und Abtransport des Schnittguts.",
     result: "Dichte, gleichmäßige Hecken, die den Garten wieder rahmen",
-    afterImage:
-      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=900&q=80",
-    afterAlt: "In Form geschnittene Hecken entlang eines Gartenwegs",
+    beforeImage: "/references/vorher-hecke.jpg",
+    afterImage: "/references/nachher-hecke.jpg",
+    beforeAlt: "Ausgewachsene, unförmige Hecke vor dem Formschnitt",
+    afterAlt: "Akkurat in Form geschnittene Hecke nach dem Heckenschnitt",
   },
   {
     title: "Verwilderten Garten zurückgeschnitten",
@@ -173,12 +174,10 @@ export const projects: ProjectReference[] = [
     challenge: "Beete, Sträucher und Rasen waren so zugewachsen, dass der Garten kaum noch nutzbar war.",
     solution: "Kompletter Rückschnitt, Grundpflege der Beete und Neuaufbau der Rasenkanten.",
     result: "Ein aufgeräumter Garten als Basis für die regelmäßige Pflege",
-    beforeImage:
-      "https://images.unsplash.com/photo-1416339306562-f3d12fefd36f?auto=format&fit=crop&w=900&q=80",
-    afterImage:
-      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=900&q=80",
-    beforeAlt: "Zugewachsener Garten vor dem Rückschnitt in Düsseldorf",
-    afterAlt: "Aufgeräumter Garten mit klaren Kanten nach der Grundpflege",
+    beforeImage: "/references/vorher-verwildert.jpg",
+    afterImage: "/references/nachher-verwildert.jpg",
+    beforeAlt: "Zugewachsener Garten vor dem Rückschnitt",
+    afterAlt: "Aufgeräumter Garten mit gemähtem Rasen und freiem Weg nach der Grundpflege",
   },
   {
     title: "Obstbäume fachgerecht geschnitten",
@@ -189,9 +188,10 @@ export const projects: ProjectReference[] = [
     challenge: "Die Kronen waren dicht und ungepflegt, die Bäume trugen kaum noch Früchte.",
     solution: "Fachgerechter Erhaltungs- und Verjüngungsschnitt mit Entfernung des Totholzes.",
     result: "Lichte, gesunde Kronen und wieder deutlich mehr Ertrag",
-    afterImage:
-      "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=900&q=80",
-    afterAlt: "Gesunde, lichte Baumkrone nach dem fachgerechten Schnitt",
+    beforeImage: "/references/vorher-obstbaum.jpg",
+    afterImage: "/references/nachher-obstbaum.jpg",
+    beforeAlt: "Ungeschnittener Apfelbaum mit dichter, verwachsener Krone",
+    afterAlt: "Fachgerecht geschnittener Apfelbaum mit lichter Krone",
   },
   {
     title: "Rasenfläche regeneriert",
@@ -202,9 +202,10 @@ export const projects: ProjectReference[] = [
     challenge: "Der Rasen war vermoost, lückig und erholte sich trotz Mähens nicht mehr.",
     solution: "Vertikutieren, gezielte Düngung und Nachsaat der kahlen Stellen.",
     result: "Dichte, belastbare Rasenfläche über die ganze Saison",
-    afterImage:
-      "https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=900&q=80",
-    afterAlt: "Dichte, gepflegte Rasenfläche nach der Regeneration",
+    beforeImage: "/references/vorher-rasen.jpg",
+    afterImage: "/references/nachher-rasen.jpg",
+    beforeAlt: "Vermooste, lückige Rasenfläche vor der Regeneration",
+    afterAlt: "Dichte, sattgrüne Rasenfläche nach Vertikutieren, Düngung und Nachsaat",
   },
   {
     title: "Garten winterfest gemacht",

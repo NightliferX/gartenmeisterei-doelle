@@ -6,7 +6,9 @@ import {
   Trash2,
   TreePine,
 } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { services } from "@/lib/siteContent";
+import { servicePages } from "@/lib/subpages";
 import { withBase } from "@/lib/utils";
 
 const iconMap = {
@@ -69,6 +71,18 @@ const Services = () => {
                     </li>
                   ))}
                 </ul>
+                {(() => {
+                  const page = servicePages.find((p) => p.serviceId === service.id);
+                  return page ? (
+                    <a
+                      href={withBase(`/${page.slug}`)}
+                      className="mt-5 inline-flex items-center gap-1 text-sm font-semibold text-primary hover:underline"
+                    >
+                      Mehr erfahren
+                      <ArrowRight className="h-4 w-4" />
+                    </a>
+                  ) : null;
+                })()}
               </div>
             </div>
           ))}
