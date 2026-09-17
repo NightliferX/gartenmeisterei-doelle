@@ -12,10 +12,10 @@ BASE="${VITE_BASE:-/gartenmeisterei-doelle/}"
 echo "==> Build mit Basispfad: $BASE"
 VITE_BASE="$BASE" npm run build
 
-# ACHTUNG: gh-pages wird komplett überschrieben. SKIP_V2 … SKIP_V5=1
+# ACHTUNG: gh-pages wird komplett überschrieben. SKIP_V2 … SKIP_V6=1
 # entfernt die jeweilige Variante also von der Live-Seite — nur nutzen,
 # wenn sie wirklich offline gehen soll.
-for flag in SKIP_V2 SKIP_V3 SKIP_V4 SKIP_V5; do
+for flag in SKIP_V2 SKIP_V3 SKIP_V4 SKIP_V5 SKIP_V6; do
   if [[ "${!flag:-}" == "1" ]]; then
     echo "!!  $flag=1: diese Variante wird von der Live-Seite ENTFERNT"
   fi
@@ -59,6 +59,16 @@ if [[ "${SKIP_V5:-}" != "1" ]]; then
   cp -R dist-v5/. dist/v5/
   cp dist/v5/index.html dist/v5/404.html
   rm -rf dist-v5
+fi
+
+# Design-Variante 6 (Apple-Produktseite) zusätzlich unter <base>/v6/ veröffentlichen
+if [[ "${SKIP_V6:-}" != "1" ]]; then
+  echo "==> Build Design-Variante 6 unter ${BASE}v6/"
+  VITE_BASE="${BASE}v6/" VITE_THEME=v6 npx vite build --outDir dist-v6
+  mkdir -p dist/v6
+  cp -R dist-v6/. dist/v6/
+  cp dist/v6/index.html dist/v6/404.html
+  rm -rf dist-v6
 fi
 
 # SPA-Fallback: GitHub Pages liefert 404.html für unbekannte Pfade (z. B. /impressum)

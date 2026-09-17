@@ -409,3 +409,161 @@
   .theme-v5 .v5-scroll-cue,
   .theme-v5 .v5-marquee { animation: none; }
 }
+
+/* ============================================================
+   Design-Variante 6: Apple-Produktseite, Thema Garten
+   Aktiv, wenn <html class="theme-v6"> (Build mit VITE_THEME=v6).
+   Weiß / #F5F5F7 / #1D1D1F / #6E6E73, Blattgrün #1E7F3C statt Apple-Blau,
+   Systemschrift (SF auf Apple-Geräten), Tracking abhängig von der Größe.
+   ============================================================ */
+.theme-v6 {
+  --background: 0 0% 100%;
+  --foreground: 240 3% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 3% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 3% 12%;
+  --primary: 140 62% 31%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 11% 96%;
+  --secondary-foreground: 240 3% 12%;
+  --muted: 240 11% 96%;
+  --muted-foreground: 240 2% 44%;
+  --accent: 140 62% 31%;
+  --accent-foreground: 0 0% 100%;
+  --border: 240 5% 84%;
+  --input: 240 5% 84%;
+  --ring: 140 62% 31%;
+  --radius: 1.1rem;
+  --v6-green-on-dark: 136 47% 58%;
+}
+
+.theme-v6 body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Inter, system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.022em;
+  background-image: none;
+  background-attachment: scroll;
+  -webkit-font-smoothing: antialiased;
+}
+
+.theme-v6 h1,
+.theme-v6 h2,
+.theme-v6 h3 {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, system-ui, sans-serif;
+  font-weight: 600;
+}
+
+/* Typo-Skala: je größer, desto enger */
+.theme-v6 .v6-hero {
+  font-size: clamp(2.75rem, 7.5vw, 5.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+}
+.theme-v6 .v6-headline {
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
+  line-height: 1.07;
+  letter-spacing: -0.005em;
+  font-weight: 600;
+}
+.theme-v6 .v6-title {
+  font-size: clamp(1.5rem, 3.2vw, 2rem);
+  line-height: 1.12;
+  letter-spacing: 0.004em;
+  font-weight: 600;
+}
+.theme-v6 .v6-eyebrow {
+  font-size: clamp(1.2rem, 2.4vw, 1.5rem);
+  line-height: 1.17;
+  letter-spacing: 0.009em;
+  font-weight: 600;
+}
+.theme-v6 .v6-lead {
+  font-size: clamp(1.1rem, 2vw, 1.3rem);
+  line-height: 1.4;
+  letter-spacing: 0.012em;
+}
+.theme-v6 .v6-fine {
+  font-size: 0.8rem;
+  line-height: 1.33;
+  letter-spacing: -0.01em;
+}
+
+/* Gemeinsame Sektionen (FAQ, Kontakt): ruhige Labels statt Versalien */
+.theme-v6 .uppercase.tracking-widest,
+.theme-v6 [class*="tracking-[0.2em]"],
+.theme-v6 [class*="tracking-[0.18em]"] {
+  text-transform: none;
+  letter-spacing: 0 !important;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: hsl(var(--muted-foreground));
+}
+.theme-v6 a[class*="rounded-md"],
+.theme-v6 button[class*="rounded-md"] { border-radius: 9999px; }
+
+/* Apple-Links: Farbe + Chevron, Unterstreichung nur bei Hover */
+.theme-v6 .v6-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.1em;
+  color: hsl(var(--accent));
+}
+@media (hover: hover) and (pointer: fine) {
+  .theme-v6 .v6-link:hover { text-decoration: underline; text-underline-offset: 0.18em; }
+}
+
+/* Druck-Feedback sofort beim Drücken */
+.theme-v6 .v6-press {
+  transition: transform 100ms ease-out;
+  -webkit-tap-highlight-color: transparent;
+}
+.theme-v6 .v6-press:active { transform: scale(0.97); }
+
+.theme-v6 a:focus-visible,
+.theme-v6 button:focus-visible {
+  outline: 2px solid hsl(var(--accent));
+  outline-offset: 3px;
+}
+
+/* Material: durchscheinende Navigation, Inhalt scrollt darunter */
+.theme-v6 .v6-material {
+  background: rgba(255, 255, 255, 0.72);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .theme-v6 .v6-material {
+    background: #fff;
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+/* Scroll-Hinweis im Hero */
+@keyframes v6-cue {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(250%); }
+}
+.theme-v6 .v6-scroll-cue { animation: v6-cue 1.6s cubic-bezier(0.77, 0, 0.175, 1) infinite; }
+
+/* Galerie-Fortschritt (Autoplay) */
+@keyframes v6-progress {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.theme-v6 .v6-progress {
+  transform-origin: left center;
+  animation: v6-progress var(--v6-duration, 5s) linear forwards;
+}
+.theme-v6 .v6-progress[data-paused="true"] { animation-play-state: paused; }
+
+.theme-v6 .v6-no-scrollbar { scrollbar-width: none; }
+.theme-v6 .v6-no-scrollbar::-webkit-scrollbar { display: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-v6 .v6-scroll-cue { animation: none; }
+  .theme-v6 .v6-press:active { transform: none; }
+}

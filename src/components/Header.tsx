@@ -3,8 +3,9 @@ import { Menu, MessageCircle, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { navLinks, siteConfig } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
+import HeaderV6 from "@/components/v6/HeaderV6";
 
-const Header = () => {
+const HeaderDefault = () => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -97,5 +98,8 @@ const Header = () => {
     </header>
   );
 };
+
+// Variante 6 bekommt die Apple-Produktnavigation — auf Start- und Unterseiten.
+const Header = import.meta.env.VITE_THEME === "v6" ? HeaderV6 : HeaderDefault;
 
 export default Header;
