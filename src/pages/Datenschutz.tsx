@@ -11,7 +11,7 @@ const Datenschutz = () => {
     <>
       <Seo
         title={`Datenschutz | ${siteConfig.brandName}`}
-        description={`Datenschutzhinweise fur die Website von ${siteConfig.brandName}.`}
+        description={`Datenschutzhinweise für die Website von ${siteConfig.brandName}.`}
         path="/datenschutz"
       />
       <div className="min-h-screen bg-background">
@@ -22,10 +22,10 @@ const Datenschutz = () => {
               Rechtliches
             </p>
             <h1 className="mt-3 text-3xl font-bold tracking-tight md:text-4xl">
-              Datenschutzerklarung
+              Datenschutzerklärung
             </h1>
             <p className="mt-4 text-sm text-muted-foreground">
-              Stand: 24. Marz 2026
+              Stand: 24. März 2026
             </p>
 
             <div className="mt-8 space-y-8 text-sm leading-7 text-muted-foreground">
@@ -34,7 +34,7 @@ const Datenschutz = () => {
                   1. Verantwortlicher
                 </h2>
                 <p className="mt-3">
-                  Verantwortlich fur die Datenverarbeitung auf dieser Website ist:
+                  Verantwortlich für die Datenverarbeitung auf dieser Website ist:
                   <br />
                   {siteConfig.brandName}
                   <br />
@@ -61,11 +61,11 @@ const Datenschutz = () => {
                 <p className="mt-3">
                   Wir verarbeiten personenbezogene Daten nur, soweit dies zur
                   Bereitstellung dieser Website, zur Bearbeitung von Anfragen,
-                  zur Kommunikation mit Interessenten sowie fur einen sicheren
+                  zur Kommunikation mit Interessenten sowie für einen sicheren
                   technischen Betrieb erforderlich ist. Rechtsgrundlagen sind
                   insbesondere Art. 6 Abs. 1 lit. a DSGVO, sofern Sie eine
-                  Einwilligung erteilen, Art. 6 Abs. 1 lit. b DSGVO fur die
-                  Anbahnung und Durchfuhrung vorvertraglicher Massnahmen sowie
+                  Einwilligung erteilen, Art. 6 Abs. 1 lit. b DSGVO für die
+                  Anbahnung und Durchführung vorvertraglicher Maßnahmen sowie
                   Art. 6 Abs. 1 lit. f DSGVO auf Grundlage unseres berechtigten
                   Interesses an einem sicheren, funktionierenden und
                   wirtschaftlichen Webauftritt.
@@ -79,10 +79,10 @@ const Datenschutz = () => {
                 <p className="mt-3">
                   Beim Aufruf dieser Website verarbeitet unser Hosting-Anbieter
                   die technisch erforderlichen Verbindungsdaten, um die Website
-                  auszuliefern und die Stabilitat sowie Sicherheit des Systems zu
-                  gewahrleisten. Dazu konnen insbesondere IP-Adresse, Datum und
+                  auszuliefern und die Stabilität sowie Sicherheit des Systems zu
+                  gewährleisten. Dazu können insbesondere IP-Adresse, Datum und
                   Uhrzeit des Zugriffs, aufgerufene Seiten, Browsertyp,
-                  Betriebssystem sowie Referrer-URL gehoren. Die Verarbeitung
+                  Betriebssystem sowie Referrer-URL gehören. Die Verarbeitung
                   erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Die
                   Speicherdauer richtet sich nach den technischen und
                   organisatorischen Erfordernissen des jeweils eingesetzten
@@ -95,25 +95,25 @@ const Datenschutz = () => {
                   4. Kontaktformular und Kontaktaufnahme
                 </h2>
                 <p className="mt-3">
-                  Wenn Sie uns uber das Kontaktformular kontaktieren,
+                  Wenn Sie uns über das Kontaktformular kontaktieren,
                   verarbeiten wir die von Ihnen eingegebenen Daten zur
-                  Bearbeitung Ihrer Anfrage. Dazu gehoren insbesondere Name,
-                  E-Mail-Adresse, Telefonnummer, gewahlte Leistung und Ihre
+                  Bearbeitung Ihrer Anfrage. Dazu gehören insbesondere Name,
+                  E-Mail-Adresse, Telefonnummer, gewählte Leistung und Ihre
                   Nachricht. Die Verarbeitung erfolgt zur Bearbeitung Ihrer
-                  Anfrage und zur Anbahnung moglicher vertraglicher Leistungen
-                  auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO sowie erganzend
+                  Anfrage und zur Anbahnung möglicher vertraglicher Leistungen
+                  auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO sowie ergänzend
                   auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
                 </p>
                 <p className="mt-3">
                   {usesDefaultFormSubmit
-                    ? "Nach der derzeitigen technischen Standard-Konfiguration dieser Website wird das Formular uber einen externen Formular-Dienst verarbeitet. Dabei konnen die von Ihnen eingegebenen Daten an diesen Dienst ubermittelt werden, bevor sie an uns weitergeleitet werden. Vor dem finalen Livegang sollten die konkrete Live-Konfiguration und der tatsachlich eingesetzte Formular-Dienst nochmals gepruft und diese Datenschutzerklarung bei Bedarf angepasst werden."
-                    : "Fur das Kontaktformular ist in der aktuellen Build-Konfiguration ein individueller Formular-Endpunkt hinterlegt. Welche Empfanger oder Dienstleister dabei konkret eingebunden sind, richtet sich nach der jeweiligen Live-Konfiguration des Hostings und sollte vor dem finalen Livegang nochmals gepruft und dokumentiert werden."}
+                    ? "Nach der derzeitigen technischen Standard-Konfiguration dieser Website wird das Formular über einen externen Formular-Dienst verarbeitet. Dabei können die von Ihnen eingegebenen Daten an diesen Dienst übermittelt werden, bevor sie an uns weitergeleitet werden. Vor dem finalen Livegang sollten die konkrete Live-Konfiguration und der tatsächlich eingesetzte Formular-Dienst nochmals geprüft und diese Datenschutzerklärung bei Bedarf angepasst werden."
+                    : "Für das Kontaktformular ist in der aktuellen Build-Konfiguration ein individueller Formular-Endpunkt hinterlegt. Welche Empfänger oder Dienstleister dabei konkret eingebunden sind, richtet sich nach der jeweiligen Live-Konfiguration des Hostings und sollte vor dem finalen Livegang nochmals geprüft und dokumentiert werden."}
                 </p>
                 <p className="mt-3">
                   Wenn Sie uns per E-Mail, Telefon oder auf anderem Weg
                   kontaktieren, verarbeiten wir Ihre Angaben ebenfalls zur
-                  Bearbeitung Ihres Anliegens. Die Daten werden geloescht, sobald
-                  sie fur die Bearbeitung nicht mehr erforderlich sind und keine
+                  Bearbeitung Ihres Anliegens. Die Daten werden gelöscht, sobald
+                  sie für die Bearbeitung nicht mehr erforderlich sind und keine
                   gesetzlichen Aufbewahrungspflichten entgegenstehen.
                 </p>
               </section>
@@ -127,13 +127,13 @@ const Datenschutz = () => {
                   WhatsApp-Verlinkungen. Wenn Sie auf einen solchen Link klicken,
                   verlassen Sie gegebenenfalls diese Website oder es wird eine
                   Verbindung zu dem jeweiligen Kommunikationsanbieter hergestellt.
-                  Dabei konnen technische Daten, insbesondere Ihre IP-Adresse und
+                  Dabei können technische Daten, insbesondere Ihre IP-Adresse und
                   Nutzungsdaten, durch den jeweiligen Anbieter verarbeitet werden.
                   Die Nutzung dieser Kommunikationswege erfolgt freiwillig.
                 </p>
                 <p className="mt-3">
-                  Bei einer Kontaktaufnahme uber WhatsApp gelten zusatzlich die
-                  Datenschutzbestimmungen des jeweiligen Anbieters. Bitte nutzen
+                  Bei einer Kontaktaufnahme über WhatsApp gelten zusätzlich die
+                  Datenschutzbestimmungen des jeweiligen Anbieters. Bitte nutzen Sie
                   diesen Kontaktweg nur, wenn Sie mit der damit verbundenen
                   Datenverarbeitung einverstanden sind.
                 </p>
@@ -146,7 +146,7 @@ const Datenschutz = () => {
                 <p className="mt-3">
                   Im Kontaktbereich dieser Website ist eine Karte von Google Maps
                   eingebunden. Beim Laden der Karte kann eine Verbindung zu
-                  Servern von Google hergestellt werden. Dabei konnen
+                  Servern von Google hergestellt werden. Dabei können
                   insbesondere Ihre IP-Adresse, Browserinformationen und weitere
                   technische Nutzungsdaten verarbeitet werden. Die Einbindung
                   dient einer nutzerfreundlichen Darstellung unseres Standorts
@@ -155,9 +155,9 @@ const Datenschutz = () => {
                 </p>
                 <p className="mt-3">
                   Bitte beachten Sie, dass hierbei eine Verarbeitung auch
-                  ausserhalb der Europaischen Union nicht ausgeschlossen werden
-                  kann. Vor dem finalen Livegang sollte gepruft werden, ob fur
-                  die konkrete Einbindung eine vorgelagerte Einwilligungslosung
+                  außerhalb der Europäischen Union nicht ausgeschlossen werden
+                  kann. Vor dem finalen Livegang sollte geprüft werden, ob für
+                  die konkrete Einbindung eine vorgelagerte Einwilligungslösung
                   eingesetzt werden soll.
                 </p>
               </section>
@@ -169,13 +169,13 @@ const Datenschutz = () => {
                 <p className="mt-3">
                   Diese Website bindet Schriftarten von Google Fonts ein. Beim
                   Laden der Schriftarten kann eine Verbindung zu Servern von
-                  Google aufgebaut werden. Dabei konnen insbesondere die
+                  Google aufgebaut werden. Dabei können insbesondere die
                   IP-Adresse sowie technische Informationen zum verwendeten
                   Browser verarbeitet werden. Die Einbindung dient einer
                   einheitlichen und ansprechenden Darstellung der Website.
                 </p>
                 <p className="mt-3">
-                  Auch hier sollte vor dem Livegang gepruft werden, ob die
+                  Auch hier sollte vor dem Livegang geprüft werden, ob die
                   Schriftarten lokal eingebunden werden sollen, um externe
                   Verbindungen zu vermeiden.
                 </p>
@@ -190,15 +190,15 @@ const Datenschutz = () => {
                   Analyse- oder Marketing-Tools wie Google Analytics, Meta Pixel,
                   Matomo oder vergleichbare Tracking-Dienste eingesetzt. Soweit
                   technisch erforderliche Speichermechanismen oder
-                  Verbindungsdaten verwendet werden, dienen diese ausschliesslich
+                  Verbindungsdaten verwendet werden, dienen diese ausschließlich
                   dem sicheren und funktionalen Betrieb der Website.
                 </p>
                 <p className="mt-3">
-                  Falls spaeter Analyse-, Marketing- oder weitere externe
+                  Falls später Analyse-, Marketing- oder weitere externe
                   Drittanbieter-Dienste eingebunden werden, ist diese
-                  Datenschutzerklarung entsprechend zu aktualisieren und
-                  gegebenenfalls eine Einwilligungs- oder Cookie-Losung zu
-                  erganzen.
+                  Datenschutzerklärung entsprechend zu aktualisieren und
+                  gegebenenfalls eine Einwilligungs- oder Cookie-Lösung zu
+                  ergänzen.
                 </p>
               </section>
 
@@ -207,10 +207,10 @@ const Datenschutz = () => {
                   9. Speicherdauer
                 </h2>
                 <p className="mt-3">
-                  Wir speichern personenbezogene Daten nur so lange, wie dies fur
+                  Wir speichern personenbezogene Daten nur so lange, wie dies für
                   die jeweiligen Zwecke erforderlich ist oder gesetzliche
                   Aufbewahrungspflichten bestehen. Kontaktanfragen werden
-                  regelmassig geloescht, sobald die Bearbeitung abgeschlossen ist
+                  regelmäßig gelöscht, sobald die Bearbeitung abgeschlossen ist
                   und keine weitere Korrespondenz oder gesetzliche Pflicht zur
                   Aufbewahrung besteht.
                 </p>
@@ -221,18 +221,18 @@ const Datenschutz = () => {
                   10. Ihre Rechte
                 </h2>
                 <p className="mt-3">
-                  Sie haben nach Massgabe der gesetzlichen Bestimmungen das Recht
-                  auf Auskunft uber die Sie betreffenden personenbezogenen Daten,
-                  auf Berichtigung unrichtiger Daten, auf Loschung, auf
-                  Einschrankung der Verarbeitung, auf Datenubertragbarkeit sowie
+                  Sie haben nach Maßgabe der gesetzlichen Bestimmungen das Recht
+                  auf Auskunft über die Sie betreffenden personenbezogenen Daten,
+                  auf Berichtigung unrichtiger Daten, auf Löschung, auf
+                  Einschränkung der Verarbeitung, auf Datenübertragbarkeit sowie
                   auf Widerspruch gegen bestimmte Verarbeitungen. Erteilte
-                  Einwilligungen konnen Sie jederzeit mit Wirkung fur die Zukunft
+                  Einwilligungen können Sie jederzeit mit Wirkung für die Zukunft
                   widerrufen.
                 </p>
                 <p className="mt-3">
-                  Ausserdem haben Sie das Recht, sich bei einer
-                  Datenschutz-Aufsichtsbehorde zu beschweren. Fur Nordrhein-
-                  Westfalen ist dies insbesondere die Landesbeauftragte fur
+                  Außerdem haben Sie das Recht, sich bei einer
+                  Datenschutz-Aufsichtsbehörde zu beschweren. Für Nordrhein-
+                  Westfalen ist dies insbesondere die Landesbeauftragte für
                   Datenschutz und Informationsfreiheit Nordrhein-Westfalen.
                 </p>
               </section>
@@ -242,12 +242,12 @@ const Datenschutz = () => {
                   11. Aktualisierungshinweis
                 </h2>
                 <p className="mt-3">
-                  Diese Datenschutzerklarung bildet den derzeit erkennbaren
+                  Diese Datenschutzerklärung bildet den derzeit erkennbaren
                   technischen Stand dieser Website ab. Wenn Hosting, Formular-
                   Versand, Karten-Einbindung, Schriftarten, Analyse-Tools oder
-                  sonstige Drittanbieter-Dienste geandert werden, muss diese
+                  sonstige Drittanbieter-Dienste geändert werden, muss diese
                   Seite entsprechend angepasst werden. Vor dem finalen Livegang
-                  empfehlen wir eine rechtliche Prufung der verwendeten Angaben,
+                  empfehlen wir eine rechtliche Prüfung der verwendeten Angaben,
                   Unternehmensdaten und Dienstleister.
                 </p>
               </section>

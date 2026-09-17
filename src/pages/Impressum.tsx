@@ -26,7 +26,7 @@ const Impressum = () => {
             <div className="mt-8 space-y-8 text-sm leading-7 text-muted-foreground">
               <section>
                 <h2 className="text-base font-semibold text-foreground">
-                  Angaben gemass § 5 TMG
+                  Angaben gemäß § 5 TMG
                 </h2>
                 <p className="mt-3">
                   {siteConfig.brandName}
@@ -63,7 +63,7 @@ const Impressum = () => {
 
               <section>
                 <h2 className="text-base font-semibold text-foreground">
-                  Verantwortlich fur den Inhalt nach § 18 Abs. 2 MStV
+                  Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
                 </h2>
                 <p className="mt-3">
                   {siteConfig.legalRepresentative}
@@ -79,7 +79,7 @@ const Impressum = () => {
                   Hinweis
                 </h2>
                 <p className="mt-3">
-                  Dieses Impressum wurde fur die aktuelle Website-Struktur
+                  Dieses Impressum wurde für die aktuelle Website-Struktur
                   angelegt. Vor dem finalen Livegang sollten Unternehmensdaten,
                   Rechtsform und gegebenenfalls steuerliche Angaben nochmals mit
                   den offiziellen Firmendaten abgeglichen werden.

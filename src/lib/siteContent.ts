@@ -24,7 +24,7 @@ export const siteConfig = {
   ],
   responsePromise: "Antwort meist innerhalb von 24 Stunden",
   consultationPromise: "Kostenlose Vor-Ort-Beratung",
-  serviceAreaLabel: "Grevenbroich, Neuss, Dormagen, Juchen, Rommerskirchen, Koln & Umgebung",
+  serviceAreaLabel: "Grevenbroich, Neuss, Dormagen, Jüchen, Rommerskirchen, Köln & Umgebung",
   ogImage:
     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
 };
@@ -61,7 +61,7 @@ export const navLinks = [
   { label: "Start", href: "/#start" },
   { label: "Leistungen", href: "/#leistungen" },
   { label: "Referenzen", href: "/#projekte" },
-  { label: "Uber Uns", href: "/#ueber-uns" },
+  { label: "Über Uns", href: "/#ueber-uns" },
   { label: "Einsatzgebiete", href: "/#einsatzgebiete" },
   { label: "Kontakt", href: "/#kontakt" },
 ];
@@ -70,7 +70,7 @@ export const trustItems = [
   "Grevenbroich & Rhein-Kreis Neuss",
   "Antwort meist innerhalb von 24 Stunden",
   "Kostenlose Erstberatung vor Ort",
-  "Saubere Ausfuhrung aus einer Hand",
+  "Saubere Ausführung aus einer Hand",
 ];
 
 export const valueProps = [
@@ -79,12 +79,12 @@ export const valueProps = [
     text: "Fassade, Renovierung, Innenausbau und Modernisierung mit klarer Projektbegleitung.",
   },
   {
-    title: "Garten & Aussenbereich",
-    text: "Terrassen, Pflaster, Zaune, Bepflanzung und funktionale Aussenanlagen fur jedes Grundstuck.",
+    title: "Garten & Außenbereich",
+    text: "Terrassen, Pflaster, Zäune, Bepflanzung und funktionale Außenanlagen für jedes Grundstück.",
   },
   {
     title: "Direkter Draht",
-    text: "Kein Callcenter: Sie sprechen direkt mit dem Inhaber und erhalten schnelle Ruckmeldung.",
+    text: "Kein Callcenter: Sie sprechen direkt mit dem Inhaber und erhalten schnelle Rückmeldung.",
   },
 ];
 
@@ -94,7 +94,7 @@ export const services = [
     title: "Haussanierung",
     description:
       "Von der Teilmodernisierung bis zur Komplettsanierung: Wir koordinieren Arbeiten sauber, termintreu und mit Blick aufs Gesamtbild.",
-    highlights: ["Fassade & Aussenhaut", "Dach- und Kellerbereiche", "Risssanierung & Anstrich"],
+    highlights: ["Fassade & Außenhaut", "Dach- und Kellerbereiche", "Risssanierung & Anstrich"],
     image:
       "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
   },
@@ -102,7 +102,7 @@ export const services = [
     id: "gartengestaltung",
     title: "Gartengestaltung",
     description:
-      "Wir gestalten Garten und Hofe so, dass sie alltagstauglich, pflegeleicht und optisch hochwertig wirken.",
+      "Wir gestalten Gärten und Höfe so, dass sie alltagstauglich, pflegeleicht und optisch hochwertig wirken.",
     highlights: ["Planung & Bepflanzung", "Mauern, Beete, Rasen", "Regen- und Wegekonzepte"],
     image: "/services/gartengestaltung.png",
   },
@@ -110,8 +110,8 @@ export const services = [
     id: "innenausbau",
     title: "Innenausbau",
     description:
-      "Wohnraume, Flure, Bader und Nutzbereiche modernisieren wir in einer klaren Linie und mit sauberer Ausfuhrung.",
-    highlights: ["Trockenbau & Malerarbeiten", "Boden- und Oberflachen", "Bad- und Wohnraumumbau"],
+      "Wohnräume, Flure, Bäder und Nutzbereiche modernisieren wir in einer klaren Linie und mit sauberer Ausführung.",
+    highlights: ["Trockenbau & Malerarbeiten", "Boden- und Oberflächen", "Bad- und Wohnraumumbau"],
     image:
       "https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=900&q=80",
   },
@@ -119,8 +119,8 @@ export const services = [
     id: "pflasterarbeiten",
     title: "Pflasterarbeiten",
     description:
-      "Einfahrten, Wege und Hofe bauen wir robust, sauber eingefasst und passend zum Stil Ihres Hauses.",
-    highlights: ["Einfahrten & Hofe", "Wege & Eingangsbereiche", "Entwasserung mitgedacht"],
+      "Einfahrten, Wege und Höfe bauen wir robust, sauber eingefasst und passend zum Stil Ihres Hauses.",
+    highlights: ["Einfahrten & Höfe", "Wege & Eingangsbereiche", "Entwässerung mitgedacht"],
     image:
       "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80",
   },
@@ -129,15 +129,15 @@ export const services = [
     title: "Terrassenbau",
     description:
       "Terrassen entstehen bei uns als echter Wohnraum im Freien, abgestimmt auf Nutzung, Sonne und Materialwirkung.",
-    highlights: ["Stein- oder Plattenbelage", "Gefalle & Unterbau", "Anschluss an Garten und Haus"],
+    highlights: ["Stein- oder Plattenbeläge", "Gefälle & Unterbau", "Anschluss an Garten und Haus"],
     image: "/services/terrassenbau.png",
   },
   {
     id: "zaunbau",
     title: "Zaunbau & Sichtschutz",
     description:
-      "Funktion, Sicherheit und ein sauberer Abschluss des Grundstucks stehen beim Zaun- und Sichtschutzbau im Mittelpunkt.",
-    highlights: ["Holz, Metall oder Verbund", "Tore & Zugange", "Sichtschutz passend zur Umgebung"],
+      "Funktion, Sicherheit und ein sauberer Abschluss des Grundstücks stehen beim Zaun- und Sichtschutzbau im Mittelpunkt.",
+    highlights: ["Holz, Metall oder Verbund", "Tore & Zugänge", "Sichtschutz passend zur Umgebung"],
     image:
       "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80",
   },
@@ -149,8 +149,8 @@ export const projects: ProjectReference[] = [
     category: "Haus",
     location: "Grevenbroich",
     serviceTags: ["Fassade", "Ausbesserung", "Anstrich"],
-    summary: "Fassadensanierung fur ein Wohnhaus mit sichtbar aufgewerteter Aussenwirkung.",
-    challenge: "Uneinheitliche Oberflachen und ein insgesamt gealterter Eindruck im Eingangsbereich.",
+    summary: "Fassadensanierung für ein Wohnhaus mit sichtbar aufgewerteter Außenwirkung.",
+    challenge: "Uneinheitliche Oberflächen und ein insgesamt gealterter Eindruck im Eingangsbereich.",
     solution: "Ausbesserung, saubere Vorbereitung und ein neues, abgestimmtes Farbkonzept.",
     result: "Frischer Gesamteindruck und verbesserter Wetterschutz",
     beforeImage:
@@ -163,28 +163,28 @@ export const projects: ProjectReference[] = [
   {
     title: "Terrasse mit Pflaster und klaren Gartenachsen",
     category: "Garten",
-    location: "Juchen",
+    location: "Jüchen",
     serviceTags: ["Terrasse", "Pflaster", "Gartenwege"],
-    summary: "Neuordnung eines Aussenbereichs mit ruhiger Linienfuhrung und hochwertiger Nutzung.",
-    challenge: "Der Garten wirkte unstrukturiert und bot wenig alltagstaugliche Aufenthaltsflache.",
-    solution: "Terrassenflache, Randsteine und Wege wurden neu definiert und sauber verbunden.",
-    result: "Mehr Nutzflache und ruhiger, hochwertiger Aussenbereich",
+    summary: "Neuordnung eines Außenbereichs mit ruhiger Linienführung und hochwertiger Nutzung.",
+    challenge: "Der Garten wirkte unstrukturiert und bot wenig alltagstaugliche Aufenthaltsfläche.",
+    solution: "Terrassenfläche, Randsteine und Wege wurden neu definiert und sauber verbunden.",
+    result: "Mehr Nutzfläche und ruhiger, hochwertiger Außenbereich",
     beforeImage:
       "https://images.unsplash.com/photo-1416339306562-f3d12fefd36f?auto=format&fit=crop&w=900&q=80",
     afterImage:
       "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=900&q=80",
-    beforeAlt: "Gartenbereich vor der Neugestaltung in Juchen",
-    afterAlt: "Neu angelegte Terrasse mit Pflaster und Gartenachsen in Juchen",
+    beforeAlt: "Gartenbereich vor der Neugestaltung in Jüchen",
+    afterAlt: "Neu angelegte Terrasse mit Pflaster und Gartenachsen in Jüchen",
   },
   {
     title: "Badmodernisierung mit neuer Raumaufteilung",
     category: "Innen",
     location: "Neuss",
-    serviceTags: ["Bad", "Trockenbau", "Oberflachen"],
-    summary: "Badumbau mit hellerem Raumgefuhl und klarerer Aufteilung fur den Alltag.",
-    challenge: "Beengte Situation und veraltete Flachen im Badbereich.",
-    solution: "Neue Oberflachen, verbesserte Raumaufteilung und modernisierte Details.",
-    result: "Zeitgemasses Bad mit hellerem Raumgefuhl",
+    serviceTags: ["Bad", "Trockenbau", "Oberflächen"],
+    summary: "Badumbau mit hellerem Raumgefühl und klarerer Aufteilung für den Alltag.",
+    challenge: "Beengte Situation und veraltete Flächen im Badbereich.",
+    solution: "Neue Oberflächen, verbesserte Raumaufteilung und modernisierte Details.",
+    result: "Zeitgemäßes Bad mit hellerem Raumgefühl",
     beforeImage:
       "https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=900&q=80",
     afterImage:
@@ -193,13 +193,13 @@ export const projects: ProjectReference[] = [
     afterAlt: "Modernisiertes Badezimmer nach dem Umbau in Neuss",
   },
   {
-    title: "Innenausbau fur ein Einfamilienhaus",
+    title: "Innenausbau für ein Einfamilienhaus",
     category: "Innen",
     location: "Dormagen",
     serviceTags: ["Innenausbau", "Malerarbeiten", "Boden"],
     summary: "Wohnbereich modernisiert mit einheitlicher Gestaltung vom Eingang bis zum Aufenthaltsraum.",
     challenge: "Unruhiger Bestand mit wenig gestalterischem Zusammenhang zwischen den Zimmern.",
-    solution: "Neue Farben, abgestimmte Bodenwirkung und sauberer Feinschliff in den Ubergangen.",
+    solution: "Neue Farben, abgestimmte Bodenwirkung und sauberer Feinschliff in den Übergängen.",
     result: "Einheitlicher Look vom Eingangsbereich bis zum Wohnraum",
     beforeImage: "/references/vorher-innenausbau-einfamilienhaus.webp",
     afterImage: "/references/nachher-innenausbau-einfamilienhaus.png",
@@ -210,28 +210,28 @@ export const projects: ProjectReference[] = [
     title: "Hof- und Einfahrtsbereich neu gepflastert",
     category: "Garten",
     location: "Rommerskirchen",
-    serviceTags: ["Pflaster", "Einfahrt", "Entwasserung"],
+    serviceTags: ["Pflaster", "Einfahrt", "Entwässerung"],
     summary: "Neu strukturierter Hof- und Zufahrtsbereich mit pflegeleichter Nutzung.",
-    challenge: "Unebene Flachen und wenig klare Wegefuhrung im Einfahrtsbereich.",
-    solution: "Neuer Unterbau, Pflasterung und mitgedachte Entwasserung fur langlebige Nutzung.",
-    result: "Pflegeleichte Zufahrt mit sauberer Linienfuhrung",
+    challenge: "Unebene Flächen und wenig klare Wegeführung im Einfahrtsbereich.",
+    solution: "Neuer Unterbau, Pflasterung und mitgedachte Entwässerung für langlebige Nutzung.",
+    result: "Pflegeleichte Zufahrt mit sauberer Linienführung",
     beforeImage: "/references/vorher-hof-einfahrtsbereich-gepflastert.png",
     afterImage: "/references/nachher-hof-einfahrtsbereich-gepflastert.jpg",
     beforeAlt: "Hof- und Einfahrtsbereich vor den Pflasterarbeiten",
     afterAlt: "Neu gepflasterter Hof- und Einfahrtsbereich nach der Umsetzung",
   },
   {
-    title: "Gewerbeflache modernisiert und aufgefrischt",
+    title: "Gewerbefläche modernisiert und aufgefrischt",
     category: "Haus",
-    location: "Koln",
-    serviceTags: ["Gewerbesanierung", "Renovierung", "Oberflachen"],
-    summary: "Reprasentative Gewerbeflache mit ruhigerer Optik und sauber koordinierten Arbeiten.",
-    challenge: "Veraltete Wirkung und hoher Abstimmungsbedarf wahrend der laufenden Nutzung.",
-    solution: "Renovierung der Flachen mit klarer Koordination und einheitlichem Auftritt.",
-    result: "Reprasentativer Auftritt fur Kunden und Mitarbeitende",
+    location: "Köln",
+    serviceTags: ["Gewerbesanierung", "Renovierung", "Oberflächen"],
+    summary: "Repräsentative Gewerbefläche mit ruhigerer Optik und sauber koordinierten Arbeiten.",
+    challenge: "Veraltete Wirkung und hoher Abstimmungsbedarf während der laufenden Nutzung.",
+    solution: "Renovierung der Flächen mit klarer Koordination und einheitlichem Auftritt.",
+    result: "Repräsentativer Auftritt für Kunden und Mitarbeitende",
     afterImage:
       "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80",
-    afterAlt: "Modernisierte Gewerbeflache nach der Renovierung in Koln",
+    afterAlt: "Modernisierte Gewerbefläche nach der Renovierung in Köln",
   },
 ];
 
@@ -241,10 +241,10 @@ export const testimonials: Testimonial[] = [
     displayName: "Oliver H. aus Grevenbroich",
     location: "Grevenbroich",
     quote:
-      "Die Abstimmung lief direkt, die Baustelle war sauber organisiert und das Ergebnis hat unsere Erwartungen deutlich ubertroffen.",
+      "Die Abstimmung lief direkt, die Baustelle war sauber organisiert und das Ergebnis hat unsere Erwartungen deutlich übertroffen.",
     rating: 5,
     project: "Haussanierung",
-    projectType: "Fassade und Aussenbereich",
+    projectType: "Fassade und Außenbereich",
     year: "2025",
     isVerified: true,
   },
@@ -265,7 +265,7 @@ export const testimonials: Testimonial[] = [
     displayName: "Thomas M. aus Dormagen",
     location: "Dormagen",
     quote:
-      "Klare Kommunikation, gute Ideen im Innenausbau und eine Ausfuhrung, die ordentlich und termintreu war. Genau so wunscht man sich das.",
+      "Klare Kommunikation, gute Ideen im Innenausbau und eine Ausführung, die ordentlich und termintreu war. Genau so wünscht man sich das.",
     rating: 5,
     project: "Innenausbau",
     projectType: "Wohnbereich und Feinschliff",
@@ -286,10 +286,10 @@ export const testimonials: Testimonial[] = [
   },
   {
     name: "Sabine K.",
-    displayName: "Sabine K. aus Juchen",
-    location: "Juchen",
+    displayName: "Sabine K. aus Jüchen",
+    location: "Jüchen",
     quote:
-      "Wir wollten endlich einen Aussenbereich, der gepflegt aussieht und sich gut nutzen lasst. Genau das wurde sauber umgesetzt.",
+      "Wir wollten endlich einen Außenbereich, der gepflegt aussieht und sich gut nutzen lässt. Genau das wurde sauber umgesetzt.",
     rating: 5,
     project: "Terrassenbau",
     projectType: "Terrasse und Gartenstruktur",
@@ -301,22 +301,22 @@ export const testimonials: Testimonial[] = [
     displayName: "Claudia R. aus Grevenbroich",
     location: "Grevenbroich",
     quote:
-      "Wir wollten einen verlasslichen Ansprechpartner fur Haus und Aussenbereich. Die Abstimmung war schnell und das Ergebnis wirkt jetzt deutlich hochwertiger.",
+      "Wir wollten einen verlässlichen Ansprechpartner für Haus und Außenbereich. Die Abstimmung war schnell und das Ergebnis wirkt jetzt deutlich hochwertiger.",
     rating: 5,
-    project: "Sanierung und Aussenbereich",
+    project: "Sanierung und Außenbereich",
     projectType: "Eingang und Fassade",
     year: "2025",
     isVerified: false,
   },
   {
     name: "Daniel P.",
-    displayName: "Daniel P. aus Monchengladbach",
-    location: "Monchengladbach",
+    displayName: "Daniel P. aus Mönchengladbach",
+    location: "Mönchengladbach",
     quote:
-      "Besonders gut fanden wir, dass sauber gearbeitet und alles nachvollziehbar erklart wurde. So stellt man sich eine Zusammenarbeit vor.",
+      "Besonders gut fanden wir, dass sauber gearbeitet und alles nachvollziehbar erklärt wurde. So stellt man sich eine Zusammenarbeit vor.",
     rating: 5,
     project: "Innenausbau",
-    projectType: "Wohnbereich und Oberflachen",
+    projectType: "Wohnbereich und Oberflächen",
     year: "2024",
     isVerified: false,
   },
@@ -325,7 +325,7 @@ export const testimonials: Testimonial[] = [
     displayName: "Andrea W. aus Grevenbroich",
     location: "Grevenbroich",
     quote:
-      "Vom ersten Termin bis zur finalen Ausfuhrung war alles klar abgestimmt. Besonders angenehm war, dass wir immer direkt jemanden erreicht haben.",
+      "Vom ersten Termin bis zur finalen Ausführung war alles klar abgestimmt. Besonders angenehm war, dass wir immer direkt jemanden erreicht haben.",
     rating: 5,
     project: "Renovierung",
     projectType: "Eingangsbereich und Fassade",
@@ -337,7 +337,7 @@ export const testimonials: Testimonial[] = [
     displayName: "Patrick L. aus Dormagen",
     location: "Dormagen",
     quote:
-      "Die Terrasse und die Wege sehen jetzt nicht nur besser aus, sondern funktionieren im Alltag endlich richtig. Das war fur uns der grosse Unterschied.",
+      "Die Terrasse und die Wege sehen jetzt nicht nur besser aus, sondern funktionieren im Alltag endlich richtig. Das war für uns der große Unterschied.",
     rating: 5,
     project: "Terrassenbau",
     projectType: "Terrasse und Gartenwege",
@@ -349,7 +349,7 @@ export const testimonials: Testimonial[] = [
     displayName: "Heike B. aus Neuss",
     location: "Neuss",
     quote:
-      "Saubere Arbeit, verlassliche Kommunikation und ein Ergebnis, das genau zu unserem Haus passt. Gerade bei der Abstimmung lief alles angenehm unkompliziert.",
+      "Saubere Arbeit, verlässliche Kommunikation und ein Ergebnis, das genau zu unserem Haus passt. Gerade bei der Abstimmung lief alles angenehm unkompliziert.",
     rating: 5,
     project: "Haussanierung",
     projectType: "Fassade und Details",
@@ -358,8 +358,8 @@ export const testimonials: Testimonial[] = [
   },
   {
     name: "Familie T.",
-    displayName: "Familie T. aus Juchen",
-    location: "Juchen",
+    displayName: "Familie T. aus Jüchen",
+    location: "Jüchen",
     quote:
       "Wir hatten vorher viele Einzelfragen zu Garten, Wegen und Zugang. Am Ende war alles stimmig gelost und wir mussten nicht mehrere Firmen koordinieren.",
     rating: 5,
@@ -375,30 +375,30 @@ export const serviceAreas = [
   "Neuss",
   "Dormagen",
   "Rommerskirchen",
-  "Juchen",
-  "Monchengladbach",
-  "Koln-Nord",
-  "Dusseldorf-Sud",
+  "Jüchen",
+  "Mönchengladbach",
+  "Köln-Nord",
+  "Düsseldorf-Süd",
 ];
 
 export const faqItems = [
   {
-    question: "Welche Projekte ubernimmt Haus&Garten Profi?",
+    question: "Welche Projekte übernimmt Haus&Garten Profi?",
     answer:
-      "Wir ubernehmen Haus- und Gartensanierung, Innenausbau, Fassadenarbeiten, Pflaster- und Terrassenbau sowie kleinere bis mittlere Gewerbesanierungen im Raum Grevenbroich und Umgebung.",
+      "Wir übernehmen Haus- und Gartensanierung, Innenausbau, Fassadenarbeiten, Pflaster- und Terrassenbau sowie kleinere bis mittlere Gewerbesanierungen im Raum Grevenbroich und Umgebung.",
   },
   {
-    question: "Wie schnell erhalten wir eine Ruckmeldung auf eine Anfrage?",
+    question: "Wie schnell erhalten wir eine Rückmeldung auf eine Anfrage?",
     answer:
-      "In der Regel melden wir uns innerhalb von 24 Stunden zuruck, um Ihr Projekt kurz einzuordnen und einen Beratungstermin oder ein erstes Telefonat abzustimmen.",
+      "In der Regel melden wir uns innerhalb von 24 Stunden zurück, um Ihr Projekt kurz einzuordnen und einen Beratungstermin oder ein erstes Telefonat abzustimmen.",
   },
   {
     question: "Arbeiten Sie auch in Nachbarorten von Grevenbroich?",
     answer:
-      "Ja. Neben Grevenbroich betreuen wir unter anderem Projekte in Neuss, Dormagen, Rommerskirchen, Juchen, Monchengladbach sowie im nordlichen Kolner und sudlichen Dusseldorfer Raum.",
+      "Ja. Neben Grevenbroich betreuen wir unter anderem Projekte in Neuss, Dormagen, Rommerskirchen, Jüchen, Mönchengladbach sowie im nördlichen Kölner und südlichen Düsseldorfer Raum.",
   },
   {
-    question: "Konnen mehrere Leistungen kombiniert werden?",
+    question: "Können mehrere Leistungen kombiniert werden?",
     answer:
       "Ja. Viele Projekte verbinden Haus, Garten und Innenausbau. Genau da liegt unser Vorteil: Sie bekommen eine abgestimmte Umsetzung aus einer Hand statt viele Einzelabsprachen.",
   },

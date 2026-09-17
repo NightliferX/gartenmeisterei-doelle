@@ -15,7 +15,7 @@ describe("site shell", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /moderne sanierung und gepflegte aussenbereiche/i,
+        name: /moderne sanierung und gepflegte außenbereiche/i,
       }),
     ).toBeInTheDocument();
     expect(
@@ -23,7 +23,7 @@ describe("site shell", () => {
         name: /kostenlose beratung anfragen/i,
       }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/fur grevenbroich und die region/i)).toBeInTheDocument();
+    expect(screen.getByText(/für grevenbroich und die region/i)).toBeInTheDocument();
     expect(
       screen.getByRole("heading", {
         name: /stimmen aus grevenbroich und umgebung/i,
@@ -61,6 +61,6 @@ describe("site shell", () => {
         name: /impressum/i,
       }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/angaben gemass/i)).toBeInTheDocument();
+    expect(screen.getByText(/angaben gemäß/i)).toBeInTheDocument();
   });
 });

@@ -25,10 +25,10 @@ const Hero = () => {
             Moderne Sanierung und
             <br />
             <span className="text-primary brightness-150">
-              gepflegte Aussenbereiche
+              gepflegte Außenbereiche
             </span>
             <br />
-            fur Grevenbroich und Umgebung.
+            für Grevenbroich und Umgebung.
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-primary-foreground/80 md:text-xl">
             {siteConfig.brandName} begleitet Projekte von der ersten Besichtigung

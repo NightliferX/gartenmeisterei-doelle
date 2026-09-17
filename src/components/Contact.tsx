@@ -61,7 +61,7 @@ const Contact = () => {
       payload.append("phone", formState.phone);
       payload.append("service", formState.service || "Nicht angegeben");
       payload.append("message", formState.message);
-      payload.append("_subject", `Neue Anfrage uber die Website von ${siteConfig.brandName}`);
+      payload.append("_subject", `Neue Anfrage über die Website von ${siteConfig.brandName}`);
       payload.append("_template", "table");
       payload.append("_captcha", "false");
       payload.append("_honey", formState.website);
@@ -81,7 +81,7 @@ const Contact = () => {
       toast({
         title: "Anfrage gesendet",
         description:
-          "Vielen Dank. Wir melden uns in der Regel innerhalb von 24 Stunden zuruck.",
+          "Vielen Dank. Wir melden uns in der Regel innerhalb von 24 Stunden zurück.",
       });
       setFormState({
         name: "",
@@ -97,7 +97,7 @@ const Contact = () => {
       toast({
         title: "Senden fehlgeschlagen",
         description:
-          "Die Anfrage konnte gerade nicht ubermittelt werden. Bitte rufen Sie uns an oder schreiben Sie per WhatsApp.",
+          "Die Anfrage konnte gerade nicht übermittelt werden. Bitte rufen Sie uns an oder schreiben Sie per WhatsApp.",
         variant: "destructive",
       });
       console.error(error);
@@ -117,7 +117,7 @@ const Contact = () => {
             Kostenlose Beratung anfragen
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Beschreiben Sie uns Ihr Projekt. Wir melden uns personlich mit einer
+            Beschreiben Sie uns Ihr Projekt. Wir melden uns persönlich mit einer
             ersten Einschatzung und den nachsten Schritten.
           </p>
         </div>

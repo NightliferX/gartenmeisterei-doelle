@@ -28,20 +28,20 @@ const proofItems = [
   {
     icon: Clock3,
     value: "24h",
-    label: "Ruckmeldung im Regelfall",
-    text: "Anfragen werden schnell eingeordnet, damit Sie zeitnah planen konnen.",
+    label: "Rückmeldung im Regelfall",
+    text: "Anfragen werden schnell eingeordnet, damit Sie zeitnah planen können.",
   },
   {
     icon: MapPin,
     value: "Lokal",
-    label: "fur Grevenbroich und Umgebung",
-    text: "Kurze Wege fur Vor-Ort-Termine, Besichtigungen und saubere Projektabstimmung.",
+    label: "für Grevenbroich und Umgebung",
+    text: "Kurze Wege für Vor-Ort-Termine, Besichtigungen und saubere Projektabstimmung.",
   },
   {
     icon: ShieldCheck,
     value: "Aus einer Hand",
-    label: "fur Haus und Garten",
-    text: "Sanierung, Innenausbau und Aussenbereich greifen sauber ineinander.",
+    label: "für Haus und Garten",
+    text: "Sanierung, Innenausbau und Außenbereich greifen sauber ineinander.",
   },
 ];
 

@@ -12,11 +12,11 @@ const ServiceAreas = () => {
               Einsatzgebiete
             </p>
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              Fur Grevenbroich und die Region rund um Haus & Garten
+              Für Grevenbroich und die Region rund um Haus & Garten
             </h2>
             <p className="mt-5 max-w-2xl text-muted-foreground leading-relaxed">
               Wir betreuen Projekte in Grevenbroich und im nahen Umland. Das ist
-              ideal fur kurze Abstimmung, Vor-Ort-Termine und eine verlassliche
+              ideal für kurze Abstimmung, Vor-Ort-Termine und eine verlässliche
               Bauabwicklung ohne lange Wege.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -42,10 +42,10 @@ const ServiceAreas = () => {
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
               Ob Sanierung, Pflasterarbeiten oder Gartenprojekt: Wir beraten bei
               Ihnen vor Ort, stimmen den Aufwand transparent ab und planen
-              Leistungen passend zu Haus, Grundstuck und Budget.
+              Leistungen passend zu Haus, Grundstück und Budget.
             </p>
             <ul className="mt-6 space-y-3 text-sm text-foreground/80">
-              <li>Vor-Ort-Besichtigung fur Haus- und Gartenprojekte</li>
+              <li>Vor-Ort-Besichtigung für Haus- und Gartenprojekte</li>
               <li>Kurze Reaktionswege im Rhein-Kreis Neuss und Umgebung</li>
               <li>Abgestimmte Leistungen aus einer Hand statt Stuckwerk</li>
             </ul>

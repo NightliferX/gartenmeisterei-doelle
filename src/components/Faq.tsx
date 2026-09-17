@@ -19,8 +19,8 @@ const Faq = () => {
               Haufige Fragen vor dem Projektstart
             </h2>
             <p className="mt-4 text-muted-foreground">
-              Diese Antworten helfen bei der ersten Einordnung. Fur Details
-              beraten wir Sie gern personlich.
+              Diese Antworten helfen bei der ersten Einordnung. Für Details
+              beraten wir Sie gern persönlich.
             </p>
           </div>
 

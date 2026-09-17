@@ -106,7 +106,7 @@ const BeforeAfterSlider = ({
           className,
         )}
       >
-        Bildmaterial fur dieses Projekt wird derzeit vorbereitet.
+        Bildmaterial für dieses Projekt wird derzeit vorbereitet.
       </div>
     );
   }
@@ -138,7 +138,7 @@ const BeforeAfterSlider = ({
           <DialogContent className="w-[min(94vw,1400px)] max-w-none border-none bg-transparent p-0 shadow-none">
             <DialogTitle className="sr-only">{title}</DialogTitle>
             <DialogDescription className="sr-only">
-              Referenzbild in grosser Ansicht.
+              Referenzbild in großer Ansicht.
             </DialogDescription>
             <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-black/50 shadow-2xl">
               <img
@@ -168,7 +168,7 @@ const BeforeAfterSlider = ({
           onPointerLeave={handlePointerUp}
           onKeyDown={handleKeyDown}
           role="slider"
-          aria-label={`Vorher-Nachher-Vergleich fur ${title}`}
+          aria-label={`Vorher-Nachher-Vergleich für ${title}`}
           aria-valuemin={5}
           aria-valuemax={95}
           aria-valuenow={Math.round(position)}
@@ -232,7 +232,7 @@ const BeforeAfterSlider = ({
             {title} · {activeLabel}
           </DialogTitle>
           <DialogDescription className="sr-only">
-            Grossansicht des {activeLabel.toLowerCase()}-Bildes.
+            Großansicht des {activeLabel.toLowerCase()}-Bildes.
           </DialogDescription>
           {activeImage ? (
             <div className="overflow-hidden rounded-[1.75rem] border border-white/10 bg-black/50 shadow-2xl">

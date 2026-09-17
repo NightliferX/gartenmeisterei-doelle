@@ -14,8 +14,8 @@ const values = [
   },
   {
     icon: Users,
-    title: "Personlich betreut",
-    text: "Direkter Kontakt mit dem Inhaber und einem Team, das auch wahrend der Umsetzung ansprechbar bleibt.",
+    title: "Persönlich betreut",
+    text: "Direkter Kontakt mit dem Inhaber und einem Team, das auch während der Umsetzung ansprechbar bleibt.",
   },
 ];
 
@@ -44,16 +44,16 @@ const About = () => {
             </h2>
             <p className="mt-5 text-muted-foreground leading-relaxed">
               Als Inhaber von {siteConfig.brandName} begleite ich Projekte
-              personlich von der ersten Besichtigung bis zur finalen Abnahme.
+              persönlich von der ersten Besichtigung bis zur finalen Abnahme.
               Gemeinsam mit meinem Team realisieren wir Sanierungs- und
               Gestaltungsarbeiten in Grevenbroich und im Umland mit einem klaren
-              Anspruch: verlassliche Kommunikation, saubere Arbeit und ein
+              Anspruch: verlässliche Kommunikation, saubere Arbeit und ein
               Ergebnis, das zum Haus und zur Nutzung passt.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
               Besonders wichtig ist uns, dass Sanierung, Garten und Innenausbau
               nicht wie einzelne Inseln geplant werden. Wir betrachten das
-              Gesamtbild, damit Aussenwirkung, Funktion und Wohngefuhl
+              Gesamtbild, damit Außenwirkung, Funktion und Wohngefühl
               zusammenpassen.
             </p>
 
@@ -85,7 +85,7 @@ const About = () => {
                   Fokus
                 </p>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Haus, Garten, Innenausbau und Aussenanlagen
+                  Haus, Garten, Innenausbau und Außenanlagen
                 </p>
               </div>
               <div>
