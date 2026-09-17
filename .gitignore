@@ -26,3 +26,6 @@ pictures/
 *.njsproj
 *.sln
 *.sw?
+
+# TypeScript Build-Info
+*.tsbuildinfo
