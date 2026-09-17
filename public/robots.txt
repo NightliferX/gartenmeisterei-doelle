@@ -13,4 +13,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://www.hausgartenprofi.eu/sitemap.xml
+Sitemap: https://www.gartenmeisterei-doelle.de/sitemap.xml

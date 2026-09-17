@@ -79,10 +79,11 @@ const Impressum = () => {
                   Hinweis
                 </h2>
                 <p className="mt-3">
-                  Dieses Impressum wurde für die aktuelle Website-Struktur
-                  angelegt. Vor dem finalen Livegang sollten Unternehmensdaten,
-                  Rechtsform und gegebenenfalls steuerliche Angaben nochmals mit
-                  den offiziellen Firmendaten abgeglichen werden.
+                  Adresse, Telefonnummer und E-Mail-Adresse sind derzeit
+                  Musterdaten für die Abstimmungsphase. Vor dem Livegang müssen
+                  hier die echten Unternehmensdaten, die Rechtsform und
+                  gegebenenfalls steuerliche Angaben (z. B. USt-IdNr.)
+                  eingetragen werden.
                 </p>
               </section>
             </div>

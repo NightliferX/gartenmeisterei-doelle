@@ -4,18 +4,18 @@ import { siteConfig } from "@/lib/siteContent";
 const values = [
   {
     icon: Shield,
-    title: "Sorgfalt im Detail",
-    text: "Material, Untergrund und Verarbeitung werden so abgestimmt, dass das Ergebnis langfristig funktioniert.",
+    title: "Meisterhaftes Handwerk",
+    text: "Schnitt, Pflege und Pflanzenauswahl nach Fachwissen aus der Meisterausbildung — zur richtigen Zeit und mit dem richtigen Maß.",
   },
   {
     icon: Heart,
     title: "Saubere Kommunikation",
-    text: "Sie erhalten klare Aussagen zu Aufwand, Ablauf und den nachsten Schritten statt unklarer Baustellenkommunikation.",
+    text: "Sie erhalten klare Aussagen zu Aufwand, Terminen und den nächsten Schritten — und einen Garten, der aufgeräumt zurückbleibt.",
   },
   {
     icon: Users,
     title: "Persönlich betreut",
-    text: "Direkter Kontakt mit dem Inhaber und einem Team, das auch während der Umsetzung ansprechbar bleibt.",
+    text: "Direkter Kontakt zum Gärtnermeister, der Ihren Garten kennt und über die Jahre begleitet.",
   },
 ];
 
@@ -27,8 +27,8 @@ const About = () => {
           {/* Image */}
           <div className="scroll-fade-in rounded-2xl overflow-hidden aspect-[4/3]">
             <img
-              src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80"
-              alt="Team Haus&Garten Profi"
+              src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=800&q=80"
+              alt={`Gärtnermeister ${siteConfig.ownerName} bei der Arbeit im Garten`}
               className="w-full h-full object-cover"
               loading="lazy"
             />
@@ -40,21 +40,19 @@ const About = () => {
               Über Uns
             </p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Robert Jovanovic & sein Team
+              Benedikt Dölle — Gärtnermeister aus Düsseldorf
             </h2>
             <p className="mt-5 text-muted-foreground leading-relaxed">
-              Als Inhaber von {siteConfig.brandName} begleite ich Projekte
-              persönlich von der ersten Besichtigung bis zur finalen Abnahme.
-              Gemeinsam mit meinem Team realisieren wir Sanierungs- und
-              Gestaltungsarbeiten in Grevenbroich und im Umland mit einem klaren
-              Anspruch: verlässliche Kommunikation, saubere Arbeit und ein
-              Ergebnis, das zum Haus und zur Nutzung passt.
+              Als Gärtnermeister betreue ich Gärten in Düsseldorf und Umgebung
+              persönlich — von der ersten Besichtigung bis zum letzten
+              Handgriff. Mein Anspruch: verlässliche Kommunikation, saubere
+              Arbeit und ein Garten, der zu seinen Besitzern passt.
             </p>
             <p className="mt-4 text-muted-foreground leading-relaxed">
-              Besonders wichtig ist uns, dass Sanierung, Garten und Innenausbau
-              nicht wie einzelne Inseln geplant werden. Wir betrachten das
-              Gesamtbild, damit Außenwirkung, Funktion und Wohngefühl
-              zusammenpassen.
+              Ein Garten braucht über das Jahr die richtige Pflege zur richtigen
+              Zeit. Deshalb denke ich in Jahreszeiten statt in Einzelterminen:
+              vom Frühjahrsschnitt über die Sommerpflege bis zum Laub- und
+              Winterservice — alles aus einer Hand.
             </p>
 
             <div className="mt-8 space-y-5">
@@ -77,7 +75,7 @@ const About = () => {
                   Region
                 </p>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Grevenbroich, Neuss, Dormagen und Umgebung
+                  Düsseldorf, Meerbusch, Neuss, Ratingen und Umgebung
                 </p>
               </div>
               <div>
@@ -85,7 +83,7 @@ const About = () => {
                   Fokus
                 </p>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Haus, Garten, Innenausbau und Außenanlagen
+                  Gartenpflege, Schnitt und Saisonservice
                 </p>
               </div>
               <div>
@@ -93,7 +91,7 @@ const About = () => {
                   Anspruch
                 </p>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  Strukturierte Baustellen mit klarer Abstimmung
+                  Meisterqualität mit klarer Abstimmung
                 </p>
               </div>
             </div>

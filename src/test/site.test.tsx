@@ -15,7 +15,7 @@ describe("site shell", () => {
 
     expect(
       screen.getByRole("heading", {
-        name: /moderne sanierung und gepflegte außenbereiche/i,
+        name: /ihr gärtnermeister für gepflegte gärten/i,
       }),
     ).toBeInTheDocument();
     expect(
@@ -23,13 +23,12 @@ describe("site shell", () => {
         name: /kostenlose beratung anfragen/i,
       }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/für grevenbroich und die region/i)).toBeInTheDocument();
+    expect(screen.getByText(/für düsseldorf und die region/i)).toBeInTheDocument();
     expect(
       screen.getByRole("heading", {
-        name: /stimmen aus grevenbroich und umgebung/i,
+        name: /häufige fragen zur gartenpflege/i,
       }),
     ).toBeInTheDocument();
-    expect(screen.getByText(/eigenes projekt anfragen/i)).toBeInTheDocument();
   });
 
   it("links footer legal pages to real routes", () => {

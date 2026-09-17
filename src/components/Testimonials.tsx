@@ -32,11 +32,11 @@ const Testimonials = () => {
             Kundenstimmen
           </p>
           <h2 className="mx-auto max-w-4xl text-3xl font-bold tracking-tight md:text-4xl">
-            Stimmen aus Grevenbroich und Umgebung
+            Stimmen aus Düsseldorf und Umgebung
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-muted-foreground">
-            Mehrere Stimmen aus der Region zeigen am besten, wie unsere Arbeit
-            bei Kunden in Grevenbroich und Umgebung ankommt.
+            Stimmen aus der Region zeigen am besten, wie unsere Arbeit bei
+            Kunden in Düsseldorf und Umgebung ankommt.
           </p>
         </div>
 

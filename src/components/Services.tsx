@@ -1,20 +1,21 @@
 import {
-  Building2,
-  Home,
-  PaintBucket,
+  CalendarClock,
+  Leaf,
+  Scissors,
+  Sprout,
+  Trash2,
   TreePine,
 } from "lucide-react";
 import { services } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
 
 const iconMap = {
-  haussanierung: Home,
-  gartengestaltung: TreePine,
-  innenausbau: PaintBucket,
-  gewerbesanierung: Building2,
-  pflasterarbeiten: Home,
-  terrassenbau: TreePine,
-  zaunbau: Building2,
+  gartenpflege: Leaf,
+  heckenschnitt: Scissors,
+  baumschnitt: TreePine,
+  rasenpflege: Sprout,
+  herbst: Trash2,
+  saison: CalendarClock,
 };
 
 const Services = () => {
@@ -29,7 +30,8 @@ const Services = () => {
             Unsere Leistungen
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Von der Gartenmauer bis zur Komplettsanierung – wir sind Ihr zuverlässiger Partner für alle Projekte rund um Haus und Garten.
+            Vom Heckenschnitt bis zum Winterservice — wir halten Ihren Garten
+            das ganze Jahr über gepflegt, zuverlässig und aus einer Hand.
           </p>
         </div>
 

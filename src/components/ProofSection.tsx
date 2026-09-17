@@ -23,8 +23,8 @@ const proofItems = [
   {
     icon: UserRound,
     value: "1",
-    label: "personlicher Ansprechpartner",
-    text: "Direkte Abstimmung mit dem Inhaber statt Weitergabe an wechselnde Kontakte.",
+    label: "persönlicher Ansprechpartner",
+    text: "Direkte Abstimmung mit dem Gärtnermeister statt Weitergabe an wechselnde Kontakte.",
   },
   {
     icon: Clock3,
@@ -35,14 +35,14 @@ const proofItems = [
   {
     icon: MapPin,
     value: "Lokal",
-    label: "für Grevenbroich und Umgebung",
-    text: "Kurze Wege für Vor-Ort-Termine, Besichtigungen und saubere Projektabstimmung.",
+    label: "für Düsseldorf und Umgebung",
+    text: "Kurze Wege für Vor-Ort-Termine, Besichtigungen und feste Pflegetermine.",
   },
   {
     icon: ShieldCheck,
-    value: "Aus einer Hand",
-    label: "für Haus und Garten",
-    text: "Sanierung, Innenausbau und Außenbereich greifen sauber ineinander.",
+    value: "Meister",
+    label: "Gärtnermeister-Betrieb",
+    text: "Schnitt, Pflege und Beratung nach Meisterstandard — zur richtigen Zeit im Gartenjahr.",
   },
 ];
 
@@ -62,12 +62,12 @@ const ProofSection = () => {
             Warum Kunden anfragen
           </p>
           <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            Klarer Ablauf, lokale Nahe und sichtbare Ergebnisse
+            Klarer Ablauf, lokale Nähe und sichtbare Ergebnisse
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-muted-foreground">
-            Genau diese Punkte machen bei Sanierungs- und Gartenprojekten den
-            Unterschied: schnelle Abstimmung, verbindliche Kommunikation und ein
-            Ansprechpartner, der das Projekt wirklich begleitet.
+            Genau diese Punkte machen bei der Gartenpflege den Unterschied:
+            schnelle Abstimmung, verbindliche Termine und ein Gärtnermeister,
+            der Ihren Garten wirklich kennt.
           </p>
         </div>
 
@@ -102,7 +102,9 @@ const ProofSection = () => {
           <div className="scroll-fade-in rounded-[2rem] border border-border/80 bg-secondary/60 p-7 shadow-sm lg:max-w-[31rem] lg:justify-self-end">
             <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-                Kundenstimme aus der Region
+                {featuredTestimonials.length > 0
+                  ? "Kundenstimme aus der Region"
+                  : "Ihr Garten in Meisterhand"}
               </p>
               {hasMultipleTestimonials ? (
                 <div className="flex items-center gap-2 self-start sm:self-auto">
@@ -129,6 +131,21 @@ const ProofSection = () => {
                 </div>
               ) : null}
             </div>
+            {featuredTestimonials.length === 0 ? (
+              <div className="mt-5">
+                <p className="text-xl font-semibold leading-relaxed text-foreground">
+                  Als Gärtnermeister übernehme ich Ihren Garten persönlich —
+                  vom ersten Rückschnitt bis zur dauerhaften Pflege über das
+                  ganze Gartenjahr.
+                </p>
+                <div className="mt-6">
+                  <p className="font-semibold">{siteConfig.ownerName}</p>
+                  <p className="text-sm text-muted-foreground">
+                    Gärtnermeister · Düsseldorf
+                  </p>
+                </div>
+              </div>
+            ) : null}
             <Carousel
               opts={{ align: "start", loop: hasMultipleTestimonials }}
               setApi={setApi}

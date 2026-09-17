@@ -14,7 +14,7 @@ const Hero = () => {
         className="absolute inset-0 bg-cover bg-center"
         style={{
           backgroundImage:
-            "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1920&q=80')",
+            "url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1920&q=80')",
         }}
       />
       <div className="absolute inset-0 bg-foreground/60" />
@@ -23,18 +23,18 @@ const Hero = () => {
       <div className="relative z-10 container px-4 pt-24">
         <div className="mx-auto max-w-5xl text-center">
           <h1 className="mx-auto max-w-4xl text-4xl font-extrabold leading-tight tracking-tight text-primary-foreground sm:text-5xl md:text-6xl lg:text-7xl">
-            Moderne Sanierung und
+            Ihr Gärtnermeister für
             <br />
-            <span className="text-primary brightness-150">
-              gepflegte Außenbereiche
+            <span className="text-green-300 drop-shadow-[0_2px_10px_rgba(0,0,0,0.45)]">
+              gepflegte Gärten
             </span>
             <br />
-            für Grevenbroich und Umgebung.
+            in Düsseldorf und Umgebung.
           </h1>
           <p className="mx-auto mt-6 max-w-3xl text-lg text-primary-foreground/80 md:text-xl">
-            {siteConfig.brandName} begleitet Projekte von der ersten Besichtigung
-            bis zur sauberen Umsetzung: Haussanierung, Gartenbau, Innenausbau,
-            Terrassen, Pflaster und mehr.
+            Die {siteConfig.brandName} hält Ihren Garten das ganze Jahr in Form:
+            Hecken- und Baumschnitt, Rasen- und Beetpflege, Laubentsorgung und
+            Winterservice — zuverlässig und mit Meisterhand.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">

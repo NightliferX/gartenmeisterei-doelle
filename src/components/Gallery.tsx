@@ -5,7 +5,7 @@ import { projects } from "@/lib/siteContent";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { withBase } from "@/lib/utils";
 
-const categories = ["Alle", "Haus", "Garten", "Innen"];
+const categories = ["Alle", "Schnitt", "Pflege", "Saison"];
 
 const Gallery = () => {
   const [active, setActive] = useState("Alle");
@@ -23,11 +23,12 @@ const Gallery = () => {
             Unsere Arbeit
           </p>
           <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-            Referenzprojekte
+            So arbeiten wir
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Vorher-/Nachher-Vergleiche zeigen am besten, wie stark eine saubere
-            Umsetzung auf Haus, Garten und Innenraume wirkt.
+            Beispielprojekte zeigen, was gute Gartenpflege ausmacht — die
+            Vorher-/Nachher-Bilder aus echten Kundengärten folgen mit den
+            ersten Projekten.
           </p>
         </div>
 

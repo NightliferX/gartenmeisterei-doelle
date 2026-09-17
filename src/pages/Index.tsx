@@ -25,21 +25,25 @@ const Index = () => {
       name: siteConfig.brandName,
       url: siteConfig.domain,
       description:
-        "Haus- und Gartensanierung in Grevenbroich und Umgebung mit Fokus auf Sanierung, Gartenbau und Innenausbau.",
+        "Gartenpflege vom Gärtnermeister in Düsseldorf und Umgebung: Heckenschnitt, Baumschnitt, Rasenpflege, Laubentsorgung und Winterservice.",
     },
     {
       "@context": "https://schema.org",
-      "@type": "GeneralContractor",
+      "@type": "Landscaper",
       "@id": `${siteConfig.domain}/#business`,
       name: siteConfig.brandName,
       image: siteConfig.ogImage,
       url: siteConfig.domain,
       email: siteConfig.email,
       telephone: siteConfig.phoneRaw,
-      founder: siteConfig.ownerName,
+      founder: {
+        "@type": "Person",
+        name: siteConfig.ownerName,
+        jobTitle: "Gärtnermeister",
+      },
       priceRange: "EUR",
       description:
-        "Professionelle Haus- und Gartensanierung in Grevenbroich und Umgebung mit Leistungen von Fassadensanierung bis Terrassenbau.",
+        "Gartenpflege vom Meisterbetrieb in Düsseldorf: Hecken- und Baumschnitt, Rasen- und Beetpflege, Laubentsorgung, Frühjahrs- und Winterservice.",
       areaServed: serviceAreas.map((area) => ({
         "@type": "City",
         name: area,
@@ -92,8 +96,8 @@ const Index = () => {
   return (
     <>
       <Seo
-        title="Haus&Garten Profi | Sanierung, Gartenbau & Innenausbau in Grevenbroich"
-        description="Professionelle Haus- und Gartensanierung in Grevenbroich und Umgebung. Haussanierung, Gartengestaltung, Innenausbau, Pflasterarbeiten und kostenlose Beratung."
+        title="Gartenpflege Düsseldorf | Gartenmeisterei Dölle – Ihr Gärtnermeister"
+        description="Gartenpflege vom Gärtnermeister in Düsseldorf & Umgebung: Heckenschnitt, Baumschnitt, Rasenpflege, Laubentsorgung und Winterservice. Kostenlose Erstberatung, Antwort meist in 24 h."
         path="/"
         jsonLd={jsonLd}
       />

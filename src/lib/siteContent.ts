@@ -1,17 +1,20 @@
+// HINWEIS: Adresse, Telefonnummer, E-Mail und Domain sind MUSTERDATEN
+// für die Pitch-Phase. Vor dem Livegang durch echte Daten ersetzen.
 export const siteConfig = {
-  brandName: "Haus&Garten Profi",
-  ownerName: "Robert Jovanovic",
-  legalRepresentative: "Robert Jovanovic",
-  domain: "https://www.hausgartenprofi.eu",
-  email: "info@hausgartenprofi.eu",
-  phoneDisplay: "0 21 81 / 123 45 67",
-  phoneHref: "tel:+4921811234567",
-  phoneRaw: "+49 2181 1234567",
+  brandName: "Gartenmeisterei Dölle",
+  ownerName: "Benedikt Dölle",
+  ownerTitle: "Gärtnermeister",
+  legalRepresentative: "Benedikt Dölle",
+  domain: "https://www.gartenmeisterei-doelle.de",
+  email: "info@gartenmeisterei-doelle.de",
+  phoneDisplay: "0211 / 123 45 67",
+  phoneHref: "tel:+492111234567",
+  phoneRaw: "+49 211 1234567",
   whatsappHref:
-    "https://wa.me/4921811234567?text=Hallo%20Haus%26Garten%20Profi,%20ich%20m%C3%B6chte%20eine%20Beratung%20f%C3%BCr%20mein%20Projekt%20anfragen.",
-  streetAddress: "Am Hammerwerk 38",
-  postalCode: "41515",
-  city: "Grevenbroich",
+    "https://wa.me/492111234567?text=Hallo%20Gartenmeisterei%20D%C3%B6lle,%20ich%20m%C3%B6chte%20eine%20Beratung%20f%C3%BCr%20meinen%20Garten%20anfragen.",
+  streetAddress: "Musterstraße 12",
+  postalCode: "40210",
+  city: "Düsseldorf",
   region: "Nordrhein-Westfalen",
   country: "DE",
   openingHoursDisplay: "Mo-Fr: 8:00 - 18:00 Uhr",
@@ -23,10 +26,10 @@ export const siteConfig = {
     { dayOfWeek: "Friday", opens: "08:00", closes: "18:00" },
   ],
   responsePromise: "Antwort meist innerhalb von 24 Stunden",
-  consultationPromise: "Kostenlose Vor-Ort-Beratung",
-  serviceAreaLabel: "Grevenbroich, Neuss, Dormagen, Jüchen, Rommerskirchen, Köln & Umgebung",
+  consultationPromise: "Kostenlose Erstberatung in Ihrem Garten",
+  serviceAreaLabel: "Düsseldorf, Meerbusch, Neuss, Ratingen, Hilden & Umgebung",
   ogImage:
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80",
+    "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1600&q=80",
 };
 
 export type Testimonial = {
@@ -44,7 +47,7 @@ export type Testimonial = {
 
 export type ProjectReference = {
   title: string;
-  category: "Haus" | "Garten" | "Innen";
+  category: "Schnitt" | "Pflege" | "Saison";
   location: string;
   serviceTags: string[];
   summary: string;
@@ -60,347 +63,222 @@ export type ProjectReference = {
 export const navLinks = [
   { label: "Start", href: "/#start" },
   { label: "Leistungen", href: "/#leistungen" },
-  { label: "Referenzen", href: "/#projekte" },
+  { label: "Projekte", href: "/#projekte" },
   { label: "Über Uns", href: "/#ueber-uns" },
   { label: "Einsatzgebiete", href: "/#einsatzgebiete" },
   { label: "Kontakt", href: "/#kontakt" },
 ];
 
 export const trustItems = [
-  "Grevenbroich & Rhein-Kreis Neuss",
+  "Meisterbetrieb: Gärtnermeister Benedikt Dölle",
+  "Vor Ort in Düsseldorf & Umgebung",
   "Antwort meist innerhalb von 24 Stunden",
-  "Kostenlose Erstberatung vor Ort",
-  "Saubere Ausführung aus einer Hand",
+  "Kostenlose Erstberatung in Ihrem Garten",
 ];
 
 export const valueProps = [
   {
-    title: "Haus & Sanierung",
-    text: "Fassade, Renovierung, Innenausbau und Modernisierung mit klarer Projektbegleitung.",
+    title: "Dauerhafte Gartenpflege",
+    text: "Regelmäßige Pflege nach Plan: Rasen, Hecken und Beete — auf Wunsch als fester Pflegevertrag mit einem Ansprechpartner.",
   },
   {
-    title: "Garten & Außenbereich",
-    text: "Terrassen, Pflaster, Zäune, Bepflanzung und funktionale Außenanlagen für jedes Grundstück.",
+    title: "Schnitt vom Profi",
+    text: "Hecken, Sträucher und Bäume werden fachgerecht und zur richtigen Jahreszeit geschnitten — inklusive Abtransport.",
   },
   {
-    title: "Direkter Draht",
-    text: "Kein Callcenter: Sie sprechen direkt mit dem Inhaber und erhalten schnelle Rückmeldung.",
+    title: "Meister-Qualität",
+    text: "Beratung und Ausführung direkt vom Gärtnermeister — mit klaren Absprachen und einem sauberen Ergebnis.",
   },
 ];
 
 export const services = [
   {
-    id: "haussanierung",
-    title: "Haussanierung",
+    id: "gartenpflege",
+    title: "Gartenpflege",
     description:
-      "Von der Teilmodernisierung bis zur Komplettsanierung: Wir koordinieren Arbeiten sauber, termintreu und mit Blick aufs Gesamtbild.",
-    highlights: ["Fassade & Außenhaut", "Dach- und Kellerbereiche", "Risssanierung & Anstrich"],
+      "Regelmäßige Pflege hält Ihren Garten dauerhaft in Form: Wir übernehmen Rasen, Beete, Sträucher und saisonale Arbeiten — zuverlässig nach Plan, auf Wunsch als Pflegevertrag.",
+    highlights: ["Rasen-, Beet- & Strauchpflege", "Feste Pflegetermine nach Plan", "Pflegeverträge für Privat & Gewerbe"],
     image:
-      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1605117882932-f9e32b03fea9?auto=format&fit=crop&w=900&q=80",
   },
   {
-    id: "gartengestaltung",
-    title: "Gartengestaltung",
+    id: "heckenschnitt",
+    title: "Heckenschnitt & Formschnitt",
     description:
-      "Wir gestalten Gärten und Höfe so, dass sie alltagstauglich, pflegeleicht und optisch hochwertig wirken.",
-    highlights: ["Planung & Bepflanzung", "Mauern, Beete, Rasen", "Regen- und Wegekonzepte"],
-    image: "/services/gartengestaltung.png",
-  },
-  {
-    id: "innenausbau",
-    title: "Innenausbau",
-    description:
-      "Wohnräume, Flure, Bäder und Nutzbereiche modernisieren wir in einer klaren Linie und mit sauberer Ausführung.",
-    highlights: ["Trockenbau & Malerarbeiten", "Boden- und Oberflächen", "Bad- und Wohnraumumbau"],
+      "Fachgerechter Schnitt zur richtigen Zeit: Wir schneiden Hecken und Sträucher so, dass sie gesund, dicht und in Form bleiben — unter Beachtung der Schnittzeiten zum Vogelschutz.",
+    highlights: ["Form- & Rückschnitt", "Dichte, gesunde Hecken", "Abtransport des Schnittguts"],
     image:
-      "https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=900&q=80",
   },
   {
-    id: "pflasterarbeiten",
-    title: "Pflasterarbeiten",
+    id: "baumschnitt",
+    title: "Baumschnitt & Baumpflege",
     description:
-      "Einfahrten, Wege und Höfe bauen wir robust, sauber eingefasst und passend zum Stil Ihres Hauses.",
-    highlights: ["Einfahrten & Höfe", "Wege & Eingangsbereiche", "Entwässerung mitgedacht"],
+      "Vom Obstbaumschnitt bis zum Pflegeschnitt großer Bäume: Wir schneiden fachgerecht, erhalten gesunde Kronen und entfernen Totholz — inklusive Entsorgung.",
+    highlights: ["Obstbaum- & Kronenschnitt", "Totholz-Entfernung", "Schnitt zur richtigen Jahreszeit"],
     image:
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=900&q=80",
   },
   {
-    id: "terrassenbau",
-    title: "Terrassenbau",
+    id: "rasenpflege",
+    title: "Rasenpflege",
     description:
-      "Terrassen entstehen bei uns als echter Wohnraum im Freien, abgestimmt auf Nutzung, Sonne und Materialwirkung.",
-    highlights: ["Stein- oder Plattenbeläge", "Gefälle & Unterbau", "Anschluss an Garten und Haus"],
-    image: "/services/terrassenbau.png",
-  },
-  {
-    id: "zaunbau",
-    title: "Zaunbau & Sichtschutz",
-    description:
-      "Funktion, Sicherheit und ein sauberer Abschluss des Grundstücks stehen beim Zaun- und Sichtschutzbau im Mittelpunkt.",
-    highlights: ["Holz, Metall oder Verbund", "Tore & Zugänge", "Sichtschutz passend zur Umgebung"],
+      "Dichter, gesunder Rasen braucht regelmäßige Pflege: Wir mähen, vertikutieren, düngen und säen nach — damit die Rasenfläche das ganze Jahr gut aussieht.",
+    highlights: ["Mähen & Kanten stechen", "Vertikutieren & Düngen", "Nachsaat kahler Stellen"],
     image:
-      "https://images.unsplash.com/photo-1513694203232-719a280e022f?auto=format&fit=crop&w=900&q=80",
+      "https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    id: "herbst",
+    title: "Laubentsorgung & Herbstputz",
+    description:
+      "Wenn das Laub fällt, übernehmen wir: Wege, Rasen und Beete werden gründlich vom Laub befreit — inklusive fachgerechter Entsorgung, auf Wunsch mehrmals pro Saison.",
+    highlights: ["Laub entfernen & entsorgen", "Wege & Rinnen frei halten", "Termine über die ganze Saison"],
+    image:
+      "https://images.unsplash.com/photo-1611843467160-25afb8df1074?auto=format&fit=crop&w=900&q=80",
+  },
+  {
+    id: "saison",
+    title: "Frühjahrs- & Winterservice",
+    description:
+      "Wir machen Ihren Garten fit für die Saison: im Frühjahr mit Schnitt, Bodenpflege und Startdüngung — im Herbst machen wir Pflanzen, Beete und Rasen winterfest.",
+    highlights: ["Frühjahrsschnitt & Startpflege", "Garten winterfest machen", "Schutz für empfindliche Pflanzen"],
+    image:
+      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=80",
   },
 ];
 
+// Beispielprojekte für die Pitch-Phase — nach den ersten echten Projekten
+// durch eigene Vorher-/Nachher-Bilder ersetzen.
 export const projects: ProjectReference[] = [
   {
-    title: "Fassadensanierung mit neuem Farbkonzept",
-    category: "Haus",
-    location: "Grevenbroich",
-    serviceTags: ["Fassade", "Ausbesserung", "Anstrich"],
-    summary: "Fassadensanierung für ein Wohnhaus mit sichtbar aufgewerteter Außenwirkung.",
-    challenge: "Uneinheitliche Oberflächen und ein insgesamt gealterter Eindruck im Eingangsbereich.",
-    solution: "Ausbesserung, saubere Vorbereitung und ein neues, abgestimmtes Farbkonzept.",
-    result: "Frischer Gesamteindruck und verbesserter Wetterschutz",
-    beforeImage:
-      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=80",
+    title: "Hecken in Form gebracht",
+    category: "Schnitt",
+    location: "Düsseldorf-Oberkassel",
+    serviceTags: ["Heckenschnitt", "Formschnitt", "Entsorgung"],
+    summary: "Formschnitt für eine gewachsene Heckenanlage rund um Haus und Gartenweg.",
+    challenge: "Die Hecken waren aus der Form gewachsen und nahmen Wegen und Beeten das Licht.",
+    solution: "Fachgerechter Form- und Rückschnitt mit sauberer Kante und Abtransport des Schnittguts.",
+    result: "Dichte, gleichmäßige Hecken, die den Garten wieder rahmen",
     afterImage:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=900&q=80",
-    beforeAlt: "Wohnhaus vor der Fassadensanierung in Grevenbroich",
-    afterAlt: "Modernisierte Hausfassade nach der Sanierung in Grevenbroich",
+      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=900&q=80",
+    afterAlt: "In Form geschnittene Hecken entlang eines Gartenwegs",
   },
   {
-    title: "Terrasse mit Pflaster und klaren Gartenachsen",
-    category: "Garten",
-    location: "Jüchen",
-    serviceTags: ["Terrasse", "Pflaster", "Gartenwege"],
-    summary: "Neuordnung eines Außenbereichs mit ruhiger Linienführung und hochwertiger Nutzung.",
-    challenge: "Der Garten wirkte unstrukturiert und bot wenig alltagstaugliche Aufenthaltsfläche.",
-    solution: "Terrassenfläche, Randsteine und Wege wurden neu definiert und sauber verbunden.",
-    result: "Mehr Nutzfläche und ruhiger, hochwertiger Außenbereich",
+    title: "Verwilderten Garten zurückgeschnitten",
+    category: "Pflege",
+    location: "Düsseldorf-Gerresheim",
+    serviceTags: ["Rückschnitt", "Grundpflege", "Entsorgung"],
+    summary: "Ein länger sich selbst überlassener Garten wurde wieder nutzbar gemacht.",
+    challenge: "Beete, Sträucher und Rasen waren so zugewachsen, dass der Garten kaum noch nutzbar war.",
+    solution: "Kompletter Rückschnitt, Grundpflege der Beete und Neuaufbau der Rasenkanten.",
+    result: "Ein aufgeräumter Garten als Basis für die regelmäßige Pflege",
     beforeImage:
       "https://images.unsplash.com/photo-1416339306562-f3d12fefd36f?auto=format&fit=crop&w=900&q=80",
     afterImage:
-      "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?auto=format&fit=crop&w=900&q=80",
-    beforeAlt: "Gartenbereich vor der Neugestaltung in Jüchen",
-    afterAlt: "Neu angelegte Terrasse mit Pflaster und Gartenachsen in Jüchen",
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?auto=format&fit=crop&w=900&q=80",
+    beforeAlt: "Zugewachsener Garten vor dem Rückschnitt in Düsseldorf",
+    afterAlt: "Aufgeräumter Garten mit klaren Kanten nach der Grundpflege",
   },
   {
-    title: "Badmodernisierung mit neuer Raumaufteilung",
-    category: "Innen",
-    location: "Neuss",
-    serviceTags: ["Bad", "Trockenbau", "Oberflächen"],
-    summary: "Badumbau mit hellerem Raumgefühl und klarerer Aufteilung für den Alltag.",
-    challenge: "Beengte Situation und veraltete Flächen im Badbereich.",
-    solution: "Neue Oberflächen, verbesserte Raumaufteilung und modernisierte Details.",
-    result: "Zeitgemäßes Bad mit hellerem Raumgefühl",
-    beforeImage:
-      "https://images.unsplash.com/photo-1620626011761-996317b8d101?auto=format&fit=crop&w=900&q=80",
+    title: "Obstbäume fachgerecht geschnitten",
+    category: "Schnitt",
+    location: "Düsseldorf-Kaiserswerth",
+    serviceTags: ["Obstbaumschnitt", "Kronenpflege", "Totholz"],
+    summary: "Winterschnitt für ältere Obstbäume mit Blick auf Gesundheit und Ertrag.",
+    challenge: "Die Kronen waren dicht und ungepflegt, die Bäume trugen kaum noch Früchte.",
+    solution: "Fachgerechter Erhaltungs- und Verjüngungsschnitt mit Entfernung des Totholzes.",
+    result: "Lichte, gesunde Kronen und wieder deutlich mehr Ertrag",
     afterImage:
-      "https://images.unsplash.com/photo-1631679706909-1844bbd07221?auto=format&fit=crop&w=900&q=80",
-    beforeAlt: "Badezimmer vor der Modernisierung in Neuss",
-    afterAlt: "Modernisiertes Badezimmer nach dem Umbau in Neuss",
+      "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=900&q=80",
+    afterAlt: "Gesunde, lichte Baumkrone nach dem fachgerechten Schnitt",
   },
   {
-    title: "Innenausbau für ein Einfamilienhaus",
-    category: "Innen",
-    location: "Dormagen",
-    serviceTags: ["Innenausbau", "Malerarbeiten", "Boden"],
-    summary: "Wohnbereich modernisiert mit einheitlicher Gestaltung vom Eingang bis zum Aufenthaltsraum.",
-    challenge: "Unruhiger Bestand mit wenig gestalterischem Zusammenhang zwischen den Zimmern.",
-    solution: "Neue Farben, abgestimmte Bodenwirkung und sauberer Feinschliff in den Übergängen.",
-    result: "Einheitlicher Look vom Eingangsbereich bis zum Wohnraum",
-    beforeImage: "/references/vorher-innenausbau-einfamilienhaus.webp",
-    afterImage: "/references/nachher-innenausbau-einfamilienhaus.png",
-    beforeAlt: "Rohbauzustand vor dem Innenausbau im Einfamilienhaus",
-    afterAlt: "Fertig ausgebauter Wohnbereich nach dem Innenausbau im Einfamilienhaus",
-  },
-  {
-    title: "Hof- und Einfahrtsbereich neu gepflastert",
-    category: "Garten",
-    location: "Rommerskirchen",
-    serviceTags: ["Pflaster", "Einfahrt", "Entwässerung"],
-    summary: "Neu strukturierter Hof- und Zufahrtsbereich mit pflegeleichter Nutzung.",
-    challenge: "Unebene Flächen und wenig klare Wegeführung im Einfahrtsbereich.",
-    solution: "Neuer Unterbau, Pflasterung und mitgedachte Entwässerung für langlebige Nutzung.",
-    result: "Pflegeleichte Zufahrt mit sauberer Linienführung",
-    beforeImage: "/references/vorher-hof-einfahrtsbereich-gepflastert.png",
-    afterImage: "/references/nachher-hof-einfahrtsbereich-gepflastert.jpg",
-    beforeAlt: "Hof- und Einfahrtsbereich vor den Pflasterarbeiten",
-    afterAlt: "Neu gepflasterter Hof- und Einfahrtsbereich nach der Umsetzung",
-  },
-  {
-    title: "Gewerbefläche modernisiert und aufgefrischt",
-    category: "Haus",
-    location: "Köln",
-    serviceTags: ["Gewerbesanierung", "Renovierung", "Oberflächen"],
-    summary: "Repräsentative Gewerbefläche mit ruhigerer Optik und sauber koordinierten Arbeiten.",
-    challenge: "Veraltete Wirkung und hoher Abstimmungsbedarf während der laufenden Nutzung.",
-    solution: "Renovierung der Flächen mit klarer Koordination und einheitlichem Auftritt.",
-    result: "Repräsentativer Auftritt für Kunden und Mitarbeitende",
+    title: "Rasenfläche regeneriert",
+    category: "Pflege",
+    location: "Meerbusch",
+    serviceTags: ["Vertikutieren", "Düngen", "Nachsaat"],
+    summary: "Regeneration einer vermoosten Rasenfläche zur dichten Grünfläche.",
+    challenge: "Der Rasen war vermoost, lückig und erholte sich trotz Mähens nicht mehr.",
+    solution: "Vertikutieren, gezielte Düngung und Nachsaat der kahlen Stellen.",
+    result: "Dichte, belastbare Rasenfläche über die ganze Saison",
     afterImage:
-      "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=900&q=80",
-    afterAlt: "Modernisierte Gewerbefläche nach der Renovierung in Köln",
+      "https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=900&q=80",
+    afterAlt: "Dichte, gepflegte Rasenfläche nach der Regeneration",
+  },
+  {
+    title: "Garten winterfest gemacht",
+    category: "Saison",
+    location: "Ratingen",
+    serviceTags: ["Winterfest", "Laub", "Pflanzenschutz"],
+    summary: "Kompletter Herbstservice: Laub, Rückschnitt und Winterschutz in einem Termin.",
+    challenge: "Vor dem Winter standen Laub, letzter Schnitt und der Schutz empfindlicher Pflanzen an.",
+    solution: "Laubentsorgung, Herbstschnitt und Winterschutz für Kübel- und Beetpflanzen.",
+    result: "Ein winterfester Garten, der im Frühjahr gesund austreibt",
+    afterImage:
+      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80",
+    afterAlt: "Herbstlicher Garten nach dem Winterfest-Service",
+  },
+  {
+    title: "Privatgarten im Pflegevertrag",
+    category: "Pflege",
+    location: "Düsseldorf-Benrath",
+    serviceTags: ["Pflegevertrag", "Rasenpflege", "Beetpflege"],
+    summary: "Ganzjährige Betreuung eines Privatgartens mit festen Pflegeterminen.",
+    challenge: "Den Eigentümern fehlte die Zeit, den großen Garten dauerhaft selbst zu pflegen.",
+    solution: "Fester Pflegeplan mit Rasen-, Hecken- und Beetpflege über die ganze Saison.",
+    result: "Ein dauerhaft gepflegter Garten ohne eigenen Aufwand",
+    afterImage:
+      "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=900&q=80",
+    afterAlt: "Regelmäßige Beetpflege im Privatgarten durch die Gärtnerin",
   },
 ];
 
-export const testimonials: Testimonial[] = [
-  {
-    name: "Oliver Hartmann",
-    displayName: "Oliver H. aus Grevenbroich",
-    location: "Grevenbroich",
-    quote:
-      "Die Abstimmung lief direkt, die Baustelle war sauber organisiert und das Ergebnis hat unsere Erwartungen deutlich übertroffen.",
-    rating: 5,
-    project: "Haussanierung",
-    projectType: "Fassade und Außenbereich",
-    year: "2025",
-    isVerified: true,
-  },
-  {
-    name: "Familie Schneider",
-    displayName: "Familie S. aus Neuss",
-    location: "Neuss",
-    quote:
-      "Von der Gartenplanung bis zur letzten Kante der Terrasse war alles strukturiert, freundlich und wirklich professionell umgesetzt.",
-    rating: 5,
-    project: "Gartengestaltung",
-    projectType: "Terrasse und Gartenwege",
-    year: "2025",
-    isVerified: true,
-  },
-  {
-    name: "Thomas M.",
-    displayName: "Thomas M. aus Dormagen",
-    location: "Dormagen",
-    quote:
-      "Klare Kommunikation, gute Ideen im Innenausbau und eine Ausführung, die ordentlich und termintreu war. Genau so wünscht man sich das.",
-    rating: 5,
-    project: "Innenausbau",
-    projectType: "Wohnbereich und Feinschliff",
-    year: "2024",
-    isVerified: true,
-  },
-  {
-    name: "Murat M.",
-    displayName: "Murat M. aus Rommerskirchen",
-    location: "Rommerskirchen",
-    quote:
-      "Der Hof war vorher kaum noch ordentlich nutzbar. Nach der Neuverlegung wirkt alles strukturierter und deutlich hochwertiger.",
-    rating: 5,
-    project: "Pflasterarbeiten",
-    projectType: "Hof und Einfahrt",
-    year: "2025",
-    isVerified: false,
-  },
-  {
-    name: "Sabine K.",
-    displayName: "Sabine K. aus Jüchen",
-    location: "Jüchen",
-    quote:
-      "Wir wollten endlich einen Außenbereich, der gepflegt aussieht und sich gut nutzen lässt. Genau das wurde sauber umgesetzt.",
-    rating: 5,
-    project: "Terrassenbau",
-    projectType: "Terrasse und Gartenstruktur",
-    year: "2024",
-    isVerified: false,
-  },
-  {
-    name: "Claudia R.",
-    displayName: "Claudia R. aus Grevenbroich",
-    location: "Grevenbroich",
-    quote:
-      "Wir wollten einen verlässlichen Ansprechpartner für Haus und Außenbereich. Die Abstimmung war schnell und das Ergebnis wirkt jetzt deutlich hochwertiger.",
-    rating: 5,
-    project: "Sanierung und Außenbereich",
-    projectType: "Eingang und Fassade",
-    year: "2025",
-    isVerified: false,
-  },
-  {
-    name: "Daniel P.",
-    displayName: "Daniel P. aus Mönchengladbach",
-    location: "Mönchengladbach",
-    quote:
-      "Besonders gut fanden wir, dass sauber gearbeitet und alles nachvollziehbar erklärt wurde. So stellt man sich eine Zusammenarbeit vor.",
-    rating: 5,
-    project: "Innenausbau",
-    projectType: "Wohnbereich und Oberflächen",
-    year: "2024",
-    isVerified: false,
-  },
-  {
-    name: "Andrea W.",
-    displayName: "Andrea W. aus Grevenbroich",
-    location: "Grevenbroich",
-    quote:
-      "Vom ersten Termin bis zur finalen Ausführung war alles klar abgestimmt. Besonders angenehm war, dass wir immer direkt jemanden erreicht haben.",
-    rating: 5,
-    project: "Renovierung",
-    projectType: "Eingangsbereich und Fassade",
-    year: "2025",
-    isVerified: false,
-  },
-  {
-    name: "Patrick L.",
-    displayName: "Patrick L. aus Dormagen",
-    location: "Dormagen",
-    quote:
-      "Die Terrasse und die Wege sehen jetzt nicht nur besser aus, sondern funktionieren im Alltag endlich richtig. Das war für uns der große Unterschied.",
-    rating: 5,
-    project: "Terrassenbau",
-    projectType: "Terrasse und Gartenwege",
-    year: "2025",
-    isVerified: false,
-  },
-  {
-    name: "Heike B.",
-    displayName: "Heike B. aus Neuss",
-    location: "Neuss",
-    quote:
-      "Saubere Arbeit, verlässliche Kommunikation und ein Ergebnis, das genau zu unserem Haus passt. Gerade bei der Abstimmung lief alles angenehm unkompliziert.",
-    rating: 5,
-    project: "Haussanierung",
-    projectType: "Fassade und Details",
-    year: "2024",
-    isVerified: false,
-  },
-  {
-    name: "Familie T.",
-    displayName: "Familie T. aus Jüchen",
-    location: "Jüchen",
-    quote:
-      "Wir hatten vorher viele Einzelfragen zu Garten, Wegen und Zugang. Am Ende war alles stimmig gelost und wir mussten nicht mehrere Firmen koordinieren.",
-    rating: 5,
-    project: "Gartengestaltung",
-    projectType: "Wege, Beete und Zugang",
-    year: "2025",
-    isVerified: false,
-  },
-];
+// Noch keine echten Kundenstimmen — der Bewertungs-Bereich bleibt ausgeblendet,
+// bis erste Google-Rezensionen für den Betrieb vorliegen.
+export const testimonials: Testimonial[] = [];
 
 export const serviceAreas = [
-  "Grevenbroich",
+  "Düsseldorf",
+  "Meerbusch",
   "Neuss",
-  "Dormagen",
-  "Rommerskirchen",
-  "Jüchen",
-  "Mönchengladbach",
-  "Köln-Nord",
-  "Düsseldorf-Süd",
+  "Ratingen",
+  "Erkrath",
+  "Hilden",
+  "Langenfeld",
+  "Kaarst",
 ];
 
 export const faqItems = [
   {
-    question: "Welche Projekte übernimmt Haus&Garten Profi?",
+    question: "Welche Leistungen übernimmt die Gartenmeisterei Dölle?",
     answer:
-      "Wir übernehmen Haus- und Gartensanierung, Innenausbau, Fassadenarbeiten, Pflaster- und Terrassenbau sowie kleinere bis mittlere Gewerbesanierungen im Raum Grevenbroich und Umgebung.",
+      "Wir übernehmen alles rund um die Gartenpflege: Hecken- und Baumschnitt, Rasenpflege, Beetpflege, Laubentsorgung, Frühjahrsschnitt und das Winterfest-Machen des Gartens — in Düsseldorf und der näheren Umgebung.",
   },
   {
-    question: "Wie schnell erhalten wir eine Rückmeldung auf eine Anfrage?",
+    question: "Bieten Sie regelmäßige Gartenpflege im Pflegevertrag an?",
     answer:
-      "In der Regel melden wir uns innerhalb von 24 Stunden zurück, um Ihr Projekt kurz einzuordnen und einen Beratungstermin oder ein erstes Telefonat abzustimmen.",
+      "Ja. Viele Kunden lassen ihren Garten dauerhaft von uns betreuen: mit festen Pflegeterminen über die Saison, klar vereinbartem Umfang und einem Ansprechpartner. So bleibt der Garten das ganze Jahr in Form.",
   },
   {
-    question: "Arbeiten Sie auch in Nachbarorten von Grevenbroich?",
+    question: "Nehmen Sie Schnittgut und Laub direkt mit?",
     answer:
-      "Ja. Neben Grevenbroich betreuen wir unter anderem Projekte in Neuss, Dormagen, Rommerskirchen, Jüchen, Mönchengladbach sowie im nördlichen Kölner und südlichen Düsseldorfer Raum.",
+      "Ja. Die fachgerechte Entsorgung von Schnittgut und Laub gehört bei uns dazu — Ihr Garten bleibt nach jedem Termin sauber und aufgeräumt zurück.",
   },
   {
-    question: "Können mehrere Leistungen kombiniert werden?",
+    question: "In welchen Stadtteilen von Düsseldorf sind Sie im Einsatz?",
     answer:
-      "Ja. Viele Projekte verbinden Haus, Garten und Innenausbau. Genau da liegt unser Vorteil: Sie bekommen eine abgestimmte Umsetzung aus einer Hand statt viele Einzelabsprachen.",
+      "In allen Stadtteilen — von Oberkassel über Kaiserswerth und Derendorf bis Benrath und Gerresheim. Dazu betreuen wir das nahe Umland, unter anderem Meerbusch, Neuss, Ratingen, Erkrath, Hilden, Langenfeld und Kaarst.",
+  },
+  {
+    question: "Was kostet die Erstberatung?",
+    answer:
+      "Die Erstberatung bei Ihnen im Garten ist kostenlos und unverbindlich. Wir schauen uns die Situation vor Ort an, besprechen Ihre Wünsche und Sie erhalten im Anschluss ein klares Angebot.",
+  },
+  {
+    question: "Wie schnell bekomme ich eine Rückmeldung auf meine Anfrage?",
+    answer:
+      "In der Regel melden wir uns innerhalb von 24 Stunden zurück, um Ihr Anliegen kurz einzuordnen und einen Termin für die Besichtigung oder ein erstes Telefonat abzustimmen.",
   },
 ];
 

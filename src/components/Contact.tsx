@@ -117,8 +117,8 @@ const Contact = () => {
             Kostenlose Beratung anfragen
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Beschreiben Sie uns Ihr Projekt. Wir melden uns persönlich mit einer
-            ersten Einschatzung und den nachsten Schritten.
+            Beschreiben Sie uns Ihren Garten. Wir melden uns persönlich mit
+            einer ersten Einschätzung und den nächsten Schritten.
           </p>
         </div>
 
@@ -187,7 +187,7 @@ const Contact = () => {
                 <label className="text-sm font-medium mb-1.5 block">Nachricht *</label>
                 <Textarea
                   name="message"
-                  placeholder="Beschreiben Sie Ihr Projekt..."
+                  placeholder="Beschreiben Sie Ihren Garten und Ihr Anliegen..."
                   rows={5}
                   required
                   value={formState.message}
@@ -270,8 +270,8 @@ const Contact = () => {
             {/* Map */}
             <div className="rounded-xl overflow-hidden border h-56 mt-6">
               <iframe
-                title="Standort Haus&Garten Profi"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d40419.4!2d6.58!3d51.09!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bf4542b2a2f5e3%3A0x42760fc4a2a7f30!2sGrevenbroich!5e0!3m2!1sde!2sde!4v1"
+                title={`Standort ${siteConfig.brandName}`}
+                src="https://www.google.com/maps?q=D%C3%BCsseldorf&z=11&output=embed"
                 width="100%"
                 height="100%"
                 style={{ border: 0 }}

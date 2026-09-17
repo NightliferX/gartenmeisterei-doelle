@@ -13,12 +13,12 @@ const ServiceAreas = () => {
               Einsatzgebiete
             </p>
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              Für Grevenbroich und die Region rund um Haus & Garten
+              Für Düsseldorf und die Region — von Oberkassel bis Benrath
             </h2>
             <p className="mt-5 max-w-2xl text-muted-foreground leading-relaxed">
-              Wir betreuen Projekte in Grevenbroich und im nahen Umland. Das ist
-              ideal für kurze Abstimmung, Vor-Ort-Termine und eine verlässliche
-              Bauabwicklung ohne lange Wege.
+              Wir pflegen Gärten in allen Düsseldorfer Stadtteilen und im nahen
+              Umland. Das ist ideal für kurze Abstimmung, Vor-Ort-Termine und
+              feste Pflegetermine ohne lange Anfahrt.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               {serviceAreas.map((area) => (
@@ -41,14 +41,14 @@ const ServiceAreas = () => {
               Kurze Wege. Klare Absprachen. Saubere Umsetzung.
             </h3>
             <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
-              Ob Sanierung, Pflasterarbeiten oder Gartenprojekt: Wir beraten bei
-              Ihnen vor Ort, stimmen den Aufwand transparent ab und planen
-              Leistungen passend zu Haus, Grundstück und Budget.
+              Ob Heckenschnitt, Baumpflege oder dauerhafte Gartenbetreuung: Wir
+              beraten bei Ihnen im Garten, stimmen den Aufwand transparent ab
+              und planen die Pflege passend zu Garten, Jahreszeit und Budget.
             </p>
             <ul className="mt-6 space-y-3 text-sm text-foreground/80">
-              <li>Vor-Ort-Besichtigung für Haus- und Gartenprojekte</li>
-              <li>Kurze Reaktionswege im Rhein-Kreis Neuss und Umgebung</li>
-              <li>Abgestimmte Leistungen aus einer Hand statt Stuckwerk</li>
+              <li>Kostenlose Besichtigung direkt in Ihrem Garten</li>
+              <li>Kurze Reaktionswege in Düsseldorf und Umgebung</li>
+              <li>Pflege, Schnitt und Entsorgung aus einer Hand</li>
             </ul>
             <Button asChild className="mt-7 w-full sm:w-auto">
               <a href={withBase("/#kontakt")}>
