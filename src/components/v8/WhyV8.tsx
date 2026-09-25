@@ -46,7 +46,7 @@ const WhyV8 = () => (
         {/* Feature-Kachel: Foto fuellt die ganze Kachel, Text overlay unten */}
         <article className="scroll-fade-in group relative flex overflow-hidden rounded-[1.75rem] bg-primary text-primary-foreground shadow-xl shadow-primary/25 min-h-[420px] lg:col-span-1 lg:row-span-2">
           <img
-            src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg")}
+            src={withBase("/team/benedikt-doelle-gaertnermeister-vorgarten-portrait-duesseldorf.png")}
             alt={`${siteConfig.ownerName}, Gärtnermeister`}
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             loading="lazy"

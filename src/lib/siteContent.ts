@@ -98,7 +98,7 @@ export const services = [
     description:
       "Regelmäßige Pflege hält Ihren Garten dauerhaft in Form: Wir übernehmen Rasen, Beete, Sträucher und saisonale Arbeiten — zuverlässig nach Plan, auf Wunsch als Pflegevertrag.",
     highlights: ["Rasen-, Beet- & Strauchpflege", "Feste Pflegetermine nach Plan", "Pflegeverträge für Privat & Gewerbe"],
-    image: "/services/gartenpflege/gartenpflege-beetpflege-gaertnermeister-lavendel-hortensien-duesseldorf.jpg",
+    image: "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg",
   },
   {
     id: "heckenschnitt",
@@ -106,7 +106,7 @@ export const services = [
     description:
       "Fachgerechter Schnitt zur richtigen Zeit: Wir schneiden Hecken und Sträucher so, dass sie gesund, dicht und in Form bleiben — unter Beachtung der Schnittzeiten zum Vogelschutz.",
     highlights: ["Form- & Rückschnitt", "Dichte, gesunde Hecken", "Abtransport des Schnittguts"],
-    image: "/services/heckenschnitt/heckenschnitt-buchsbaum-formschnitt-gaertnermeister-duesseldorf.png",
+    image: "/services/heckenschnitt/heckenschnitt-buchsbaum-stihl-formschnitt-detail-duesseldorf.jpg",
   },
   {
     id: "baumschnitt",
@@ -122,7 +122,7 @@ export const services = [
     description:
       "Dichter, gesunder Rasen braucht regelmäßige Pflege: Wir mähen, vertikutieren, düngen und säen nach — damit die Rasenfläche das ganze Jahr gut aussieht.",
     highlights: ["Mähen & Kanten stechen", "Vertikutieren & Düngen", "Nachsaat kahler Stellen"],
-    image: "/services/rasenpflege/rasenpflege-sabo-rasenmaeher-reihenhaus-vorgarten-duesseldorf.jpg",
+    image: "/services/rasenpflege/rasenpflege-sabo-rasenmaeher-person-nahaufnahme-duesseldorf.png",
   },
   {
     id: "herbst",
@@ -138,7 +138,7 @@ export const services = [
     description:
       "Wir machen Ihren Garten fit für die Saison: im Frühjahr mit Schnitt, Bodenpflege und Startdüngung — im Herbst machen wir Pflanzen, Beete und Rasen winterfest.",
     highlights: ["Frühjahrsschnitt & Startpflege", "Garten winterfest machen", "Schutz für empfindliche Pflanzen"],
-    image: "/services/fruehjahr/fruehjahrsschnitt-rosenschnitt-gaertnermeister-vorgarten-duesseldorf.jpg",
+    image: "/services/fruehjahr/fruehjahrsschnitt-rosen-felco-handschere-narzissen-duesseldorf.png",
   },
 ];
 
