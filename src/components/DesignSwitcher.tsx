@@ -1,22 +1,23 @@
 // Umschalter zwischen den Design-Varianten (Pitch-Phase).
-// Funktioniert über die veröffentlichten Pfade: <base>/, <base>/v2/, <base>/v3/, <base>/v4/, <base>/v5/, <base>/v6/.
+// Funktioniert über die veröffentlichten Pfade: <base>/, <base>/v2/, <base>/v4/, <base>/v5/, <base>/v6/.
 // Vor dem finalen Go-Live einfach aus App.tsx entfernen.
 const CURRENT = (import.meta.env.VITE_THEME as string) || "v1";
 
 const VERSIONS = [
   { id: "v1", label: "1" },
   { id: "v2", label: "2" },
-  { id: "v3", label: "3" },
   { id: "v4", label: "4" },
   { id: "v5", label: "5" },
   { id: "v6", label: "6" },
+  { id: "v7", label: "7" },
+  { id: "v8", label: "8" },
 ];
 
-// Basis ohne Varianten-Suffix, z. B. "/gartenmeisterei-doelle/v3/" → "/gartenmeisterei-doelle/"
-const rootBase = (import.meta.env.BASE_URL ?? "/").replace(/v[2-6]\/$/, "");
+// Basis ohne Varianten-Suffix, z. B. "/gartenmeisterei-doelle/v4/" → "/gartenmeisterei-doelle/"
+const rootBase = (import.meta.env.BASE_URL ?? "/").replace(/v[2-8]\/$/, "");
 
-// Im Dev-Modus laufen die Varianten auf eigenen Ports (npm run dev / dev:v2 … dev:v6).
-const DEV_PORTS: Record<string, string> = { v1: "8080", v2: "8085", v3: "8086", v4: "8087", v5: "8088", v6: "8089" };
+// Im Dev-Modus laufen die Varianten auf eigenen Ports (npm run dev / dev:v2 … dev:v8).
+const DEV_PORTS: Record<string, string> = { v1: "8080", v2: "8085", v4: "8087", v5: "8088", v6: "8189", v7: "8090", v8: "8091" };
 
 const hrefFor = (id: string) => {
   if (import.meta.env.DEV) {

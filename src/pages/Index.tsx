@@ -13,12 +13,18 @@ import Faq from "@/components/Faq";
 import Seo from "@/components/Seo";
 import ValuePropsSection from "@/components/ValuePropsSection";
 import ProofSection from "@/components/ProofSection";
+import GartenjahrSection from "@/components/GartenjahrSection";
+import MeisterFotoSection from "@/components/MeisterFotoSection";
 import LandingV5 from "@/components/v5/LandingV5";
 import LandingV6 from "@/components/v6/LandingV6";
+import LandingV7 from "@/components/v7/LandingV7";
+import LandingV8 from "@/components/v8/LandingV8";
 import { faqItems, projects, serviceAreas, services, siteConfig } from "@/lib/siteContent";
 
 const isV5 = import.meta.env.VITE_THEME === "v5";
 const isV6 = import.meta.env.VITE_THEME === "v6";
+const isV7 = import.meta.env.VITE_THEME === "v7";
+const isV8 = import.meta.env.VITE_THEME === "v8";
 
 const Index = () => {
   useScrollAnimation();
@@ -109,15 +115,21 @@ const Index = () => {
       <div className="min-h-screen">
         <Header />
         <main>
-          {isV6 ? (
+          {isV8 ? (
+            <LandingV8 />
+          ) : isV7 ? (
+            <LandingV7 />
+          ) : isV6 ? (
             <LandingV6 />
           ) : isV5 ? (
             <LandingV5 />
           ) : (
             <>
               <Hero />
+              <GartenjahrSection />
               <ValuePropsSection />
               <ProofSection />
+              <MeisterFotoSection />
               <Services />
               <Gallery />
               <About />
@@ -125,8 +137,8 @@ const Index = () => {
               <ServiceAreas />
             </>
           )}
-          <Faq />
-          <Contact />
+          {isV8 ? null : <Faq />}
+          {isV8 ? null : <Contact />}
         </main>
         <Footer />
         <MobileStickyCta />

@@ -98,8 +98,7 @@ export const services = [
     description:
       "Regelmäßige Pflege hält Ihren Garten dauerhaft in Form: Wir übernehmen Rasen, Beete, Sträucher und saisonale Arbeiten — zuverlässig nach Plan, auf Wunsch als Pflegevertrag.",
     highlights: ["Rasen-, Beet- & Strauchpflege", "Feste Pflegetermine nach Plan", "Pflegeverträge für Privat & Gewerbe"],
-    image:
-      "https://images.unsplash.com/photo-1605117882932-f9e32b03fea9?auto=format&fit=crop&w=900&q=80",
+    image: "/services/gartenpflege/hero-v2.jpg",
   },
   {
     id: "heckenschnitt",
@@ -107,8 +106,7 @@ export const services = [
     description:
       "Fachgerechter Schnitt zur richtigen Zeit: Wir schneiden Hecken und Sträucher so, dass sie gesund, dicht und in Form bleiben — unter Beachtung der Schnittzeiten zum Vogelschutz.",
     highlights: ["Form- & Rückschnitt", "Dichte, gesunde Hecken", "Abtransport des Schnittguts"],
-    image:
-      "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=900&q=80",
+    image: "/services/heckenschnitt/hero-buchsbaum.png",
   },
   {
     id: "baumschnitt",
@@ -116,8 +114,7 @@ export const services = [
     description:
       "Vom Obstbaumschnitt bis zum Pflegeschnitt großer Bäume: Wir schneiden fachgerecht, erhalten gesunde Kronen und entfernen Totholz — inklusive Entsorgung.",
     highlights: ["Obstbaum- & Kronenschnitt", "Totholz-Entfernung", "Schnitt zur richtigen Jahreszeit"],
-    image:
-      "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=900&q=80",
+    image: "/services/baumschnitt/hero.png",
   },
   {
     id: "rasenpflege",
@@ -125,8 +122,7 @@ export const services = [
     description:
       "Dichter, gesunder Rasen braucht regelmäßige Pflege: Wir mähen, vertikutieren, düngen und säen nach — damit die Rasenfläche das ganze Jahr gut aussieht.",
     highlights: ["Mähen & Kanten stechen", "Vertikutieren & Düngen", "Nachsaat kahler Stellen"],
-    image:
-      "https://images.unsplash.com/photo-1558904541-efa843a96f01?auto=format&fit=crop&w=900&q=80",
+    image: "/services/rasenpflege/hero.jpg",
   },
   {
     id: "herbst",
@@ -134,8 +130,7 @@ export const services = [
     description:
       "Wenn das Laub fällt, übernehmen wir: Wege, Rasen und Beete werden gründlich vom Laub befreit — inklusive fachgerechter Entsorgung, auf Wunsch mehrmals pro Saison.",
     highlights: ["Laub entfernen & entsorgen", "Wege & Rinnen frei halten", "Termine über die ganze Saison"],
-    image:
-      "https://images.unsplash.com/photo-1611843467160-25afb8df1074?auto=format&fit=crop&w=900&q=80",
+    image: "/services/herbst/laubentsorgung-detail.png",
   },
   {
     id: "saison",
@@ -143,8 +138,7 @@ export const services = [
     description:
       "Wir machen Ihren Garten fit für die Saison: im Frühjahr mit Schnitt, Bodenpflege und Startdüngung — im Herbst machen wir Pflanzen, Beete und Rasen winterfest.",
     highlights: ["Frühjahrsschnitt & Startpflege", "Garten winterfest machen", "Schutz für empfindliche Pflanzen"],
-    image:
-      "https://images.unsplash.com/photo-1416879595882-3373a0480b5b?auto=format&fit=crop&w=900&q=80",
+    image: "/services/fruehjahr/hero.jpg",
   },
 ];
 
@@ -194,18 +188,18 @@ export const projects: ProjectReference[] = [
     afterAlt: "Fachgerecht geschnittener Apfelbaum mit lichter Krone",
   },
   {
-    title: "Rasenfläche regeneriert",
+    title: "Rollrasen neu verlegt",
     category: "Pflege",
     location: "Meerbusch",
-    serviceTags: ["Vertikutieren", "Düngen", "Nachsaat"],
-    summary: "Regeneration einer vermoosten Rasenfläche zur dichten Grünfläche.",
-    challenge: "Der Rasen war vermoost, lückig und erholte sich trotz Mähens nicht mehr.",
-    solution: "Vertikutieren, gezielte Düngung und Nachsaat der kahlen Stellen.",
-    result: "Dichte, belastbare Rasenfläche über die ganze Saison",
+    serviceTags: ["Bodenvorbereitung", "Rollrasen", "Startpflege"],
+    summary: "Rollrasen auf einer alten, vermoosten Fläche neu verlegt — ab dem ersten Tag begehbar.",
+    challenge: "Die alte Rasenfläche war vermoost, lückig und ließ sich mit Nachsaat nicht mehr retten.",
+    solution: "Alte Grasnarbe abgefräst, Boden feinplaniert und gedüngt, hochwertigen Rollrasen versetzt verlegt und gewalzt — inklusive Bewässerungsplan für die ersten Wochen.",
+    result: "Dichte, belastbare Rasenfläche vom ersten Tag an — statt einer Saison Nachsaat.",
     beforeImage: "/references/vorher-rasen.jpg",
     afterImage: "/references/nachher-rasen.jpg",
-    beforeAlt: "Vermooste, lückige Rasenfläche vor der Regeneration",
-    afterAlt: "Dichte, sattgrüne Rasenfläche nach Vertikutieren, Düngung und Nachsaat",
+    beforeAlt: "Vermooste, lückige Rasenfläche vor dem Rollrasen-Verlegen",
+    afterAlt: "Frisch verlegter, sattgrüner Rollrasen mit sichtbaren Bahnen",
   },
   {
     title: "Garten winterfest gemacht",
@@ -288,28 +282,144 @@ export const legalLinks = {
   datenschutz: "/datenschutz",
 };
 
-// Das Gartenjahr — Grundlage der Saison-Leiste in Design-Variante 2.
+// Das Gartenjahr — Grundlage der Saison-Leiste und der Saison-Unterseiten.
 // months: Monatsindizes (0 = Januar), in denen die Saison als „Jetzt gefragt" gilt.
+// slug: URL-Fragment für /gartenpflege-<slug>-duesseldorf.
 export const gartenjahr = [
   {
     season: "Frühjahr",
+    slug: "fruehjahr",
     months: [2, 3, 4],
     work: "Startschnitt, Beete vorbereiten, Rasen in Schwung bringen",
+    heroImage: "/team/hero-buchsbaum.jpg",
+    heroAlt:
+      "Gärtnermeister beim Frühjahrsschnitt am Buchsbaum in einem gepflegten Vorgarten",
+    intro:
+      "Wenn der Boden abtrocknet und die ersten Triebe kommen, entscheidet der Frühjahrsstart über das ganze Gartenjahr. Wir übernehmen den fachgerechten Startschnitt, bringen Rasen und Beete in Schwung und machen Ihren Garten fit für die Saison.",
+    tasks: [
+      {
+        title: "Rückschnitt und Formschnitt",
+        text: "Sträucher, Rosen und Gräser werden zurückgeschnitten, bevor sie neu austreiben. Wir schneiden zum richtigen Zeitpunkt und mit Blick auf die jeweilige Pflanze.",
+      },
+      {
+        title: "Rasen wecken",
+        text: "Vertikutieren, kahle Stellen nachsäen, Startdüngung. So wird der Rasen dicht und drückt Unkraut zurück.",
+      },
+      {
+        title: "Beete vorbereiten",
+        text: "Winterschutz entfernen, Boden lockern, kompostieren und mulchen. Grundlage für gesunde Stauden und kräftige Frühblüher.",
+      },
+      {
+        title: "Obstbaum-Kontrolle",
+        text: "Feinschnitt an Obstbäumen (soweit im Frühjahr noch sinnvoll), Wundverschluss prüfen, Baumscheibe freistellen.",
+      },
+    ],
+    tips: [
+      "Buchsbaum: erst schneiden, wenn keine Nachtfröste mehr drohen (meist ab April).",
+      "Rasen erst mähen, wenn die Halme rund 8 cm hoch stehen — dann bleibt er dicht.",
+      "Beete nicht zu früh freilegen: der Winterschutz schützt auch vor Spätfrost.",
+    ],
   },
   {
     season: "Sommer",
+    slug: "sommer",
     months: [5, 6, 7],
     work: "Hecken in Form halten, Rasen mähen, Beete pflegen",
+    heroImage: "/team/detail-heckenschere.jpg",
+    heroAlt: "Nahaufnahme einer Heckenschere beim sommerlichen Formschnitt",
+    intro:
+      "Der Sommer ist Pflegesaison. Damit Rasen dicht, Hecken in Form und Beete frisch bleiben, kommen wir in festen Intervallen — je nach Wetter, Wachstum und Absprache. So bleibt der Garten das ganze Jahr in Bestform.",
+    tasks: [
+      {
+        title: "Hecken- und Formschnitt",
+        text: "Sommerschnitt an Hecken und Formgehölzen. Der zweite Schnitt in der Saison hält Form und Dichte — unter Beachtung der Vogelschutz-Fristen.",
+      },
+      {
+        title: "Rasenpflege",
+        text: "Regelmäßiges Mähen mit sauberer Schnittkante, bei Trockenheit angepasste Schnitthöhe. Auf Wunsch Düngung und Bewässerungs-Check.",
+      },
+      {
+        title: "Beetpflege",
+        text: "Verblühtes ausputzen, Unkraut jäten, Stauden bei Bedarf teilen, Mulch nachziehen. Kübelpflanzen bekommen frische Erde.",
+      },
+      {
+        title: "Wasser und Hitze",
+        text: "Bewässerungshinweise, Schattenspender, empfindliche Pflanzen absichern. In Hitzephasen kürzere Intervalle statt weniger Wasser.",
+      },
+    ],
+    tips: [
+      "Rasen bei Hitze auf 5–6 cm mähen — schützt die Grasnarbe vor dem Austrocknen.",
+      "Hecken lieber morgens oder abends schneiden, nie in praller Mittagssonne.",
+      "Nach dem Gießen 1 cm Mulch auflegen — hält die Feuchte länger im Beet.",
+    ],
   },
   {
     season: "Herbst",
+    slug: "herbst",
     months: [8, 9, 10],
     work: "Laub entsorgen, letzter Schnitt, Garten winterfest machen",
+    heroImage: "/references/nachher-obstbaum.jpg",
+    heroAlt:
+      "Gärtner beim Obstbaumschnitt in einem herbstlichen Garten mit Fallobst",
+    intro:
+      "Im Herbst geht es um zwei Dinge: den letzten Schnitt vor dem Winter und das saubere Beseitigen von Laub. Wir übernehmen Laubberäumung, Herbst­schnitt und alles, was den Garten winterfest macht.",
+    tasks: [
+      {
+        title: "Laubentsorgung",
+        text: "Rasen, Wege und Rinnen werden gründlich vom Laub befreit — auf Wunsch mehrmals über die Saison. Entsorgung inklusive.",
+      },
+      {
+        title: "Herbstschnitt",
+        text: "Letzter Formschnitt an Hecken, Rückschnitt von Stauden und mehrjährigen Gräsern, wo es sinnvoll ist. Vieles bleibt bewusst bis zum Frühjahr stehen — als Winterschutz und Lebensraum.",
+      },
+      {
+        title: "Obstbaum-Pflegeschnitt",
+        text: "An Kern- und Steinobst der Auslichtungsschnitt nach der Ernte. Totholz raus, Krone locker halten, Fruchtholz gezielt fördern.",
+      },
+      {
+        title: "Winterschutz",
+        text: "Empfindliche Kübelpflanzen einwintern, Rosen anhäufeln, Vlies für frostempfindliche Beete. Wasserhähne und Leitungen frostsicher machen.",
+      },
+    ],
+    tips: [
+      "Laub auf dem Rasen liegen lassen kostet die Grasnarbe Licht — regelmäßig abnehmen.",
+      "Immergrüne (Kirschlorbeer, Buchs) an frostfreien Tagen bei Trockenheit gießen.",
+      "Ein Teil des Laubs kommt in die Beete — natürlicher Winterschutz für Stauden.",
+    ],
   },
   {
     season: "Winter",
+    slug: "winter",
     months: [11, 0, 1],
     work: "Obstbaum- und Gehölzschnitt, Planung fürs neue Gartenjahr",
+    heroImage: "/references/nachher-verwildert.jpg",
+    heroAlt:
+      "Gepflegter Garten im Winter mit klaren Beetkanten und geschnittenen Sträuchern",
+    intro:
+      "Der Winter ist keine Pause — jetzt wird geschnitten, geplant und vorbereitet. Ohne Laub sieht man die Struktur der Bäume, das ist der beste Zeitpunkt für den Formschnitt. Und der Räum- und Streudienst gehört im Rheinland dazu.",
+    tasks: [
+      {
+        title: "Obstbaum- und Gehölzschnitt",
+        text: "Bester Zeitpunkt für Winterschnitt an Obstbäumen, Ziergehölzen und Formhecken (frostfreie Tage). Klare Kronenstruktur, gesunder Neuaustrieb im Frühjahr.",
+      },
+      {
+        title: "Winterservice",
+        text: "Räum- und Streudienst für Gehwege, Einfahrten und Zugänge nach der Räum- und Streupflicht. Feste Einsatzzeiten, Streugut inklusive.",
+      },
+      {
+        title: "Planung fürs neue Jahr",
+        text: "Beetplanung, Neupflanzungen, größere Pflegeprojekte — jetzt in Ruhe besprechen und für die Saison einplanen.",
+      },
+      {
+        title: "Werkzeug und Technik",
+        text: "Scharfe Klingen, gewartete Geräte, saubere Technik. Wir kommen im Frühjahr mit Ausrüstung, die einsatzbereit ist.",
+      },
+    ],
+    tips: [
+      "Obstbaumschnitt an frostfreien Tagen — nicht bei starkem Dauerfrost.",
+      "Immergrüne bei Trockenfrost gießen: sie verdunsten weiter über die Blätter.",
+      "Kübelpflanzen brauchen Winterlicht — nicht komplett im Dunkeln überwintern.",
+    ],
   },
 ];
 

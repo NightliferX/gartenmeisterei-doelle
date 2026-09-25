@@ -15,7 +15,7 @@ VITE_BASE="$BASE" npm run build
 # ACHTUNG: gh-pages wird komplett überschrieben. SKIP_V2 … SKIP_V6=1
 # entfernt die jeweilige Variante also von der Live-Seite — nur nutzen,
 # wenn sie wirklich offline gehen soll.
-for flag in SKIP_V2 SKIP_V3 SKIP_V4 SKIP_V5 SKIP_V6; do
+for flag in SKIP_V2 SKIP_V4 SKIP_V5 SKIP_V6 SKIP_V7 SKIP_V8; do
   if [[ "${!flag:-}" == "1" ]]; then
     echo "!!  $flag=1: diese Variante wird von der Live-Seite ENTFERNT"
   fi
@@ -29,16 +29,6 @@ if [[ "${SKIP_V2:-}" != "1" ]]; then
   cp -R dist-v2/. dist/v2/
   cp dist/v2/index.html dist/v2/404.html
   rm -rf dist-v2
-fi
-
-# Design-Variante 3 zusätzlich unter <base>/v3/ veröffentlichen
-if [[ "${SKIP_V3:-}" != "1" ]]; then
-  echo "==> Build Design-Variante 3 unter ${BASE}v3/"
-  VITE_BASE="${BASE}v3/" VITE_THEME=v3 npx vite build --outDir dist-v3
-  mkdir -p dist/v3
-  cp -R dist-v3/. dist/v3/
-  cp dist/v3/index.html dist/v3/404.html
-  rm -rf dist-v3
 fi
 
 # Design-Variante 4 zusätzlich unter <base>/v4/ veröffentlichen
@@ -69,6 +59,26 @@ if [[ "${SKIP_V6:-}" != "1" ]]; then
   cp -R dist-v6/. dist/v6/
   cp dist/v6/index.html dist/v6/404.html
   rm -rf dist-v6
+fi
+
+# Design-Variante 7 zusätzlich unter <base>/v7/ veröffentlichen
+if [[ "${SKIP_V7:-}" != "1" ]]; then
+  echo "==> Build Design-Variante 7 unter ${BASE}v7/"
+  VITE_BASE="${BASE}v7/" VITE_THEME=v7 npx vite build --outDir dist-v7
+  mkdir -p dist/v7
+  cp -R dist-v7/. dist/v7/
+  cp dist/v7/index.html dist/v7/404.html
+  rm -rf dist-v7
+fi
+
+# Design-Variante 8 zusätzlich unter <base>/v8/ veröffentlichen
+if [[ "${SKIP_V8:-}" != "1" ]]; then
+  echo "==> Build Design-Variante 8 unter ${BASE}v8/"
+  VITE_BASE="${BASE}v8/" VITE_THEME=v8 npx vite build --outDir dist-v8
+  mkdir -p dist/v8
+  cp -R dist-v8/. dist/v8/
+  cp dist/v8/index.html dist/v8/404.html
+  rm -rf dist-v8
 fi
 
 # SPA-Fallback: GitHub Pages liefert 404.html für unbekannte Pfade (z. B. /impressum)

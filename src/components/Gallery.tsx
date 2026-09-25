@@ -77,72 +77,6 @@ const GalleryV2 = () => {
   );
 };
 
-// V3 „Der Unterschied ist Handwerk": Arbeitsprotokoll — große Zeilen mit Trennlinien.
-const GalleryV3 = () => {
-  return (
-    <section id="projekte" className="py-20 md:py-28">
-      <div className="container px-4">
-        <div className="max-w-3xl">
-          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-            Vorher. Nachher.
-          </h2>
-          <p className="mt-4 text-muted-foreground">
-            Sechs Beispiele dafür, was ein Termin ausmacht — dokumentiert wie
-            im Arbeitsprotokoll. Echte Kundengärten folgen mit den ersten
-            Projekten.
-          </p>
-        </div>
-
-        <div className="mt-12 divide-y divide-border border-y border-border">
-          {projects.map((project) => (
-            <div
-              key={project.title}
-              className="grid gap-8 py-12 lg:grid-cols-[1.15fr_1fr] lg:items-center"
-            >
-              <div className="overflow-hidden rounded-[var(--radius)]">
-                <BeforeAfterSlider
-                  title={project.title}
-                  beforeImage={project.beforeImage ? withBase(project.beforeImage) : undefined}
-                  afterImage={project.afterImage ? withBase(project.afterImage) : undefined}
-                  beforeAlt={project.beforeAlt}
-                  afterAlt={project.afterAlt}
-                />
-              </div>
-              <div>
-                <h3 className="text-2xl font-semibold">{project.title}</h3>
-                <p className="mt-1 text-sm text-muted-foreground">{project.location}</p>
-                <dl className="mt-5 space-y-3 text-sm leading-relaxed">
-                  <div>
-                    <dt className="font-semibold text-foreground">Ausgangslage</dt>
-                    <dd className="text-muted-foreground">{project.challenge}</dd>
-                  </div>
-                  <div>
-                    <dt className="font-semibold text-foreground">Umsetzung</dt>
-                    <dd className="text-muted-foreground">{project.solution}</dd>
-                  </div>
-                  <div>
-                    <dt className="font-semibold text-foreground">Ergebnis</dt>
-                    <dd className="text-muted-foreground">{project.result}</dd>
-                  </div>
-                </dl>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-12">
-          <Button asChild size="lg">
-            <a href={withBase("/#kontakt")}>
-              Ihr Projekt unverbindlich besprechen
-              <ArrowRight className="h-4 w-4" />
-            </a>
-          </Button>
-        </div>
-      </div>
-    </section>
-  );
-};
-
 // V4 „Cinematic": filmische Wisch-Galerie mit Scroll-Snap.
 const GalleryV4 = () => {
   return (
@@ -308,7 +242,6 @@ const GalleryDefault = () => {
 
 const Gallery = () => {
   if (theme === "v2") return <GalleryV2 />;
-  if (theme === "v3") return <GalleryV3 />;
   if (theme === "v4") return <GalleryV4 />;
   return <GalleryDefault />;
 };

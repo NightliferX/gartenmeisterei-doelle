@@ -158,84 +158,6 @@
 .theme-v2 body { background-attachment: scroll; }
 
 /* ============================================================
-   Design-Variante 3: „Der Unterschied ist Handwerk"
-   Aktiv, wenn <html class="theme-v3"> (Build mit VITE_THEME=v3).
-   Fast monochrom Loden/Papier, Moos für Aktionen, Messing nur am
-   Vorher/Nachher-Regler. Bricolage Grotesque für Überschriften.
-   ============================================================ */
-.theme-v3 {
-  --background: 60 27% 98%;
-  --foreground: 104 16% 18%;
-  --card: 0 0% 100%;
-  --card-foreground: 104 16% 18%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 104 16% 18%;
-  --primary: 93 28% 34%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 107 20% 91%;
-  --secondary-foreground: 104 16% 18%;
-  --muted: 107 15% 91%;
-  --muted-foreground: 104 8% 40%;
-  --accent: 35 63% 38%;
-  --accent-foreground: 0 0% 100%;
-  --border: 104 12% 86%;
-  --input: 104 12% 86%;
-  --ring: 93 28% 34%;
-  --radius: 0.9rem;
-  --v3-loden: 104 16% 18%;
-  --v3-brass: 35 63% 38%;
-}
-
-.theme-v3 h1,
-.theme-v3 h2,
-.theme-v3 h3 {
-  font-family: "Bricolage Grotesque", "Avenir Next", "Helvetica Neue", sans-serif;
-  letter-spacing: -0.01em;
-}
-.theme-v3 h1 { font-weight: 800; }
-.theme-v3 h2 { font-weight: 700; }
-.theme-v3 h3 { font-weight: 600; }
-
-/* Eyebrow-Labels: ruhig, klein, Moosgrün — keine Versalien, kein Tracking */
-.theme-v3 .uppercase.tracking-widest,
-.theme-v3 [class*="tracking-[0.2em]"],
-.theme-v3 [class*="tracking-[0.18em]"] {
-  text-transform: none;
-  letter-spacing: 0 !important;
-  font-weight: 600;
-  font-size: 0.95rem;
-  color: hsl(var(--primary));
-}
-
-/* Leistungen als Verzeichnis-Zeilen statt Kartengitter */
-.theme-v3 #leistungen .grid {
-  grid-template-columns: 1fr;
-  max-width: 58rem;
-  margin-inline: auto;
-  gap: 1rem;
-}
-@media (min-width: 640px) {
-  .theme-v3 #leistungen .grid > div {
-    display: grid;
-    grid-template-columns: 16rem 1fr;
-    align-items: stretch;
-  }
-  .theme-v3 #leistungen .grid > div > div.h-48 {
-    height: 100%;
-    min-height: 100%;
-  }
-}
-.theme-v3 #leistungen .grid > div:hover {
-  transform: none;
-}
-
-/* Ruhige Fläche statt Verlaufs-Hintergrund */
-.theme-v3 body {
-  background-image: none;
-  background-attachment: scroll;
-}
-
-/* ============================================================
    Design-Variante 4: „Cinematic" (Apple-Ästhetik)
    Aktiv, wenn <html class="theme-v4"> (Build mit VITE_THEME=v4).
    Exaggerated Minimalism: riesige, enge Typografie (Inter Tight),
@@ -566,4 +488,152 @@
 @media (prefers-reduced-motion: reduce) {
   .theme-v6 .v6-scroll-cue { animation: none; }
   .theme-v6 .v6-press:active { transform: none; }
+}
+
+/* ============================================================
+   Design-Variante 7: „Best-of" — Apple-Materialitaet mit Design-1-Farben.
+   Aktiv, wenn <html class="theme-v7"> (Build mit VITE_THEME=v7).
+   ============================================================ */
+.theme-v7 {
+  --background: 60 20% 97%;
+  --foreground: 120 10% 15%;
+  --card: 0 0% 100%;
+  --card-foreground: 120 10% 15%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 120 10% 15%;
+  --primary: 120 56% 24%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 60 15% 93%;
+  --secondary-foreground: 120 10% 15%;
+  --muted: 60 10% 93%;
+  --muted-foreground: 120 5% 45%;
+  --accent: 120 56% 24%;
+  --accent-foreground: 0 0% 100%;
+  --border: 60 10% 88%;
+  --input: 60 10% 88%;
+  --ring: 120 56% 24%;
+  --radius: 1rem;
+}
+
+.theme-v7 body {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", Inter, system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+  background-image: none;
+  background-attachment: scroll;
+  -webkit-font-smoothing: antialiased;
+}
+
+.theme-v7 h1,
+.theme-v7 h2,
+.theme-v7 h3 {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", Inter, system-ui, sans-serif;
+  letter-spacing: -0.018em;
+  font-weight: 600;
+}
+
+.theme-v7 .v7-press {
+  transition: transform 100ms ease-out;
+  -webkit-tap-highlight-color: transparent;
+}
+.theme-v7 .v7-press:active { transform: scale(0.97); }
+
+.theme-v7 .v7-material {
+  background: rgba(255, 255, 255, 0.78);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .theme-v7 .v7-material {
+    background: hsl(var(--background));
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@keyframes v7-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.theme-v7 .v7-marquee { animation: v7-marquee 40s linear infinite; }
+.theme-v7 .v7-marquee[data-paused="true"] { animation-play-state: paused; }
+
+/* ============================================================
+   Design-Variante 8: „Best-of #2" — V4-Cinematic + V6-Grün + Apple-Materialitaet.
+   Aktiv, wenn <html class="theme-v8"> (Build mit VITE_THEME=v8).
+   ============================================================ */
+.theme-v8 {
+  --background: 0 0% 98%;
+  --foreground: 120 10% 7%;
+  --card: 0 0% 100%;
+  --card-foreground: 120 10% 7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 120 10% 7%;
+  --primary: 140 62% 31%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 120 8% 95%;
+  --secondary-foreground: 120 10% 7%;
+  --muted: 120 6% 94%;
+  --muted-foreground: 120 5% 38%;
+  --accent: 140 62% 31%;
+  --accent-foreground: 0 0% 100%;
+  --border: 120 6% 88%;
+  --input: 120 6% 88%;
+  --ring: 140 62% 31%;
+  --radius: 1.1rem;
+}
+
+.theme-v8 body {
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: -0.011em;
+  background-image: none;
+  background-attachment: scroll;
+  -webkit-font-smoothing: antialiased;
+}
+
+.theme-v8 h1,
+.theme-v8 h2,
+.theme-v8 h3 {
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", sans-serif;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+.theme-v8 h1 { font-weight: 800; }
+
+/* Boxen im V8: keine Border, dafuer weiche Schatten (wie V4). */
+.theme-v8 [class*="ring-1"][class*="ring-border"],
+.theme-v8 [class*="ring-black/5"],
+.theme-v8 [class*="ring-black/10"] {
+  --tw-ring-shadow: 0 0 #0000 !important;
+}
+
+.theme-v8 .v8-press { transition: transform 100ms ease-out; -webkit-tap-highlight-color: transparent; }
+.theme-v8 .v8-press:active { transform: scale(0.97); }
+
+.theme-v8 .v8-material {
+  background: rgba(255, 255, 255, 0.78);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+@media (prefers-reduced-transparency: reduce) {
+  .theme-v8 .v8-material { background: hsl(var(--background)); backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+
+@keyframes v8-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.theme-v8 .v8-marquee { animation: v8-marquee 45s linear infinite; }
+.theme-v8 .v8-marquee[data-paused="true"] { animation-play-state: paused; }
+
+/* V4-artige Load-Rise-Animation fuer V8-Hero */
+@keyframes v8-rise {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.theme-v8 .v8-rise { animation: v8-rise 1s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.theme-v8 .v8-rise-2 { animation: v8-rise 1s 0.18s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.theme-v8 .v8-rise-3 { animation: v8-rise 1s 0.36s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .theme-v8 .v8-rise, .theme-v8 .v8-rise-2, .theme-v8 .v8-rise-3 { animation: none; }
 }

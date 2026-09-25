@@ -1,21 +1,60 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { CheckCircle2, Clock, Mail, MapPin, MessageCircle, Phone, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@/components/ui/drawer";
 import { useToast } from "@/hooks/use-toast";
 import { services, siteConfig } from "@/lib/siteContent";
 
-const contactInfo = [
+// Vier Info-Kacheln fuer den oberen Block, alle klick- oder anrufbar.
+const infoTiles = [
   {
-    icon: MapPin,
-    label: "Adresse",
-    value: `${siteConfig.streetAddress}, ${siteConfig.postalCode} ${siteConfig.city}`,
+    icon: Phone,
+    label: "Telefon",
+    value: siteConfig.phoneDisplay,
+    href: siteConfig.phoneHref,
   },
-  { icon: Phone, label: "Telefon", value: siteConfig.phoneDisplay },
-  { icon: Mail, label: "E-Mail", value: siteConfig.email },
-  { icon: Clock, label: "Erreichbar", value: siteConfig.openingHoursDisplay },
+  {
+    icon: MessageCircle,
+    label: "WhatsApp",
+    value: "Chat starten",
+    href: siteConfig.whatsappHref,
+    external: true,
+  },
+  {
+    icon: Mail,
+    label: "E-Mail",
+    value: siteConfig.email,
+    href: `mailto:${siteConfig.email}`,
+  },
+  {
+    icon: Clock,
+    label: "Erreichbar",
+    value: siteConfig.openingHoursDisplay,
+  },
 ];
 
 const contactEndpoint =
@@ -31,22 +70,53 @@ type FormState = {
   website: string;
 };
 
+const emptyForm: FormState = {
+  name: "",
+  email: "",
+  phone: "",
+  service: "",
+  message: "",
+  website: "",
+};
+
+const useIsMobile = () => {
+  const [mobile, setMobile] = useState<boolean>(
+    typeof window !== "undefined"
+      ? window.matchMedia("(max-width: 768px)").matches
+      : false,
+  );
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 768px)");
+    const on = () => setMobile(mq.matches);
+    mq.addEventListener("change", on);
+    return () => mq.removeEventListener("change", on);
+  }, []);
+  return mobile;
+};
+
 const Contact = () => {
   const { toast } = useToast();
   const [sending, setSending] = useState(false);
   const [service, setService] = useState("");
-  const [formState, setFormState] = useState<FormState>({
-    name: "",
-    email: "",
-    phone: "",
-    service: "",
-    message: "",
-    website: "",
-  });
+  const [formState, setFormState] = useState<FormState>(emptyForm);
+  const [open, setOpen] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const isMobile = useIsMobile();
+
+  const reset = () => {
+    setFormState(emptyForm);
+    setService("");
+    setSuccess(false);
+  };
+
+  const close = () => {
+    setOpen(false);
+    // kleine Verzoegerung, damit man nicht das Zuruecksetzen sieht
+    window.setTimeout(reset, 250);
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.currentTarget;
     setSending(true);
 
     if (formState.website) {
@@ -68,36 +138,18 @@ const Contact = () => {
 
       const response = await fetch(contactEndpoint, {
         method: "POST",
-        headers: {
-          Accept: "application/json",
-        },
+        headers: { Accept: "application/json" },
         body: payload,
       });
 
-      if (!response.ok) {
-        throw new Error("Kontaktformular konnte nicht gesendet werden.");
-      }
+      if (!response.ok) throw new Error("Kontaktformular konnte nicht gesendet werden.");
 
-      toast({
-        title: "Anfrage gesendet",
-        description:
-          "Vielen Dank. Wir melden uns in der Regel innerhalb von 24 Stunden zurück.",
-      });
-      setFormState({
-        name: "",
-        email: "",
-        phone: "",
-        service: "",
-        message: "",
-        website: "",
-      });
-      setService("");
-      form.reset();
+      setSuccess(true);
     } catch (error) {
       toast({
         title: "Senden fehlgeschlagen",
         description:
-          "Die Anfrage konnte gerade nicht übermittelt werden. Bitte rufen Sie uns an oder schreiben Sie per WhatsApp.",
+          "Bitte rufen Sie uns direkt an oder schreiben Sie per WhatsApp — wir melden uns umgehend.",
         variant: "destructive",
       });
       console.error(error);
@@ -106,14 +158,199 @@ const Contact = () => {
     }
   };
 
+  const infoBlock = (
+    <div className="scroll-fade-in mx-auto mt-10 max-w-2xl">
+      <div className="grid grid-cols-2 gap-3 sm:gap-4">
+        {infoTiles.map((tile) => {
+          const inner = (
+            <>
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary">
+                <tile.icon className="h-5 w-5" strokeWidth={2} />
+              </div>
+              <div className="min-w-0">
+                <p className="text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                  {tile.label}
+                </p>
+                <p className="mt-0.5 truncate text-[0.95rem] font-medium text-foreground">
+                  {tile.value}
+                </p>
+              </div>
+            </>
+          );
+          const cls =
+            "flex min-h-[76px] items-center gap-3 rounded-2xl border border-border/70 bg-card p-3.5 shadow-sm transition-colors active:scale-[0.98] sm:p-4 sm:hover:border-primary/40 sm:hover:bg-primary/[0.03]";
+          if (tile.href) {
+            return (
+              <a
+                key={tile.label}
+                href={tile.href}
+                target={tile.external ? "_blank" : undefined}
+                rel={tile.external ? "noreferrer" : undefined}
+                className={cls}
+              >
+                {inner}
+              </a>
+            );
+          }
+          return (
+            <div key={tile.label} className={cls}>
+              {inner}
+            </div>
+          );
+        })}
+      </div>
+
+      <div className="mt-5 flex items-start gap-3 rounded-2xl bg-secondary/60 p-4 text-[0.9rem] leading-relaxed text-muted-foreground">
+        <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={2} />
+        <span>
+          {siteConfig.streetAddress}, {siteConfig.postalCode} {siteConfig.city} · Vor Ort in Düsseldorf und Umgebung
+        </span>
+      </div>
+    </div>
+  );
+
+  const formBody = (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <div className="grid gap-4 sm:grid-cols-2">
+        <Field label="Name" required>
+          <Input
+            name="name"
+            placeholder="Ihr Name"
+            required
+            autoComplete="name"
+            className="h-12 text-base"
+            value={formState.name}
+            onChange={(e) => setFormState((p) => ({ ...p, name: e.target.value }))}
+          />
+        </Field>
+        <Field label="E-Mail" required>
+          <Input
+            name="email"
+            type="email"
+            inputMode="email"
+            placeholder="ihre@email.de"
+            required
+            autoComplete="email"
+            className="h-12 text-base"
+            value={formState.email}
+            onChange={(e) => setFormState((p) => ({ ...p, email: e.target.value }))}
+          />
+        </Field>
+      </div>
+      <div className="grid gap-4 sm:grid-cols-2">
+        <Field label="Telefon" hint="optional">
+          <Input
+            name="phone"
+            type="tel"
+            inputMode="tel"
+            placeholder="0211 …"
+            autoComplete="tel"
+            className="h-12 text-base"
+            value={formState.phone}
+            onChange={(e) => setFormState((p) => ({ ...p, phone: e.target.value }))}
+          />
+        </Field>
+        <Field label="Leistung" hint="optional">
+          <Select
+            value={service}
+            onValueChange={(v) => {
+              setService(v);
+              setFormState((p) => ({ ...p, service: v }));
+            }}
+          >
+            <SelectTrigger className="h-12 text-base">
+              <SelectValue placeholder="Bitte wählen" />
+            </SelectTrigger>
+            <SelectContent>
+              {services.map((item) => (
+                <SelectItem key={item.id} value={item.title}>
+                  {item.title}
+                </SelectItem>
+              ))}
+              <SelectItem value="sonstiges">Sonstiges</SelectItem>
+            </SelectContent>
+          </Select>
+        </Field>
+      </div>
+      <Field label="Nachricht" required>
+        <Textarea
+          name="message"
+          placeholder="Beschreiben Sie kurz Ihren Garten und Ihr Anliegen."
+          rows={4}
+          required
+          className="min-h-[112px] text-base"
+          value={formState.message}
+          onChange={(e) => setFormState((p) => ({ ...p, message: e.target.value }))}
+        />
+      </Field>
+
+      <div className="hidden">
+        <label htmlFor="website">Website</label>
+        <Input
+          id="website"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={formState.website}
+          onChange={(e) => setFormState((p) => ({ ...p, website: e.target.value }))}
+        />
+      </div>
+
+      <p className="text-[0.8rem] leading-relaxed text-muted-foreground">
+        Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben zur
+        Bearbeitung Ihrer Anfrage zu. Alternativ direkt per Telefon oder WhatsApp.
+      </p>
+
+      <Button
+        type="submit"
+        size="lg"
+        className="h-12 w-full text-[1rem] font-semibold"
+        disabled={sending}
+      >
+        {sending ? "Wird gesendet…" : "Anfrage senden"}
+      </Button>
+    </form>
+  );
+
+  const successBody = (
+    <div className="flex flex-col items-center gap-4 py-4 text-center">
+      <div className="grid h-14 w-14 place-items-center rounded-full bg-primary/15 text-primary">
+        <CheckCircle2 className="h-7 w-7" strokeWidth={2} />
+      </div>
+      <h3 className="text-[1.25rem] font-semibold text-foreground">
+        Anfrage angekommen.
+      </h3>
+      <p className="max-w-[38ch] text-[0.95rem] leading-relaxed text-muted-foreground">
+        Vielen Dank. Wir melden uns in der Regel innerhalb von 24 Stunden mit
+        einer ersten Einschätzung zurück.
+      </p>
+      <div className="mt-2 flex flex-col gap-2 self-stretch">
+        <a
+          href={siteConfig.phoneHref}
+          className="inline-flex h-12 items-center justify-center gap-2 rounded-full border border-border bg-background text-[0.95rem] font-semibold text-foreground shadow-sm"
+        >
+          <Phone className="h-4 w-4 text-primary" strokeWidth={2} />
+          {siteConfig.phoneDisplay}
+        </a>
+        <button
+          type="button"
+          onClick={close}
+          className="inline-flex h-12 items-center justify-center rounded-full bg-primary text-[0.95rem] font-semibold text-primary-foreground shadow-sm"
+        >
+          Schließen
+        </button>
+      </div>
+    </div>
+  );
+
   return (
-    <section id="kontakt" className="py-20 md:py-28 bg-secondary/50">
+    <section id="kontakt" className="bg-secondary/50 py-20 md:py-28">
       <div className="container px-4">
-        <div className="text-center max-w-2xl mx-auto scroll-fade-in">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
+        <div className="scroll-fade-in mx-auto max-w-2xl text-center">
+          <p className="mb-3 text-sm font-semibold uppercase tracking-widest text-primary">
             Kontakt
           </p>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
             Kostenlose Beratung anfragen
           </h2>
           <p className="mt-4 text-muted-foreground">
@@ -122,169 +359,102 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="mt-14 grid lg:grid-cols-5 gap-10">
-          {/* Form */}
-          <div className="lg:col-span-3 scroll-fade-in">
-            <form onSubmit={handleSubmit} className="bg-card rounded-2xl border p-6 md:p-8 shadow-sm space-y-5">
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label className="text-sm font-medium mb-1.5 block">Name *</label>
-                  <Input
-                    name="name"
-                    placeholder="Ihr Name"
-                    required
-                    value={formState.name}
-                    onChange={(e) => setFormState((prev) => ({ ...prev, name: e.target.value }))}
-                  />
-                </div>
-                <div>
-                  <label className="text-sm font-medium mb-1.5 block">E-Mail *</label>
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder="ihre@email.de"
-                    required
-                    value={formState.email}
-                    onChange={(e) => setFormState((prev) => ({ ...prev, email: e.target.value }))}
-                  />
-                </div>
-              </div>
-              <div className="grid sm:grid-cols-2 gap-5">
-                <div>
-                  <label className="text-sm font-medium mb-1.5 block">Telefon</label>
-                  <Input
-                    name="phone"
-                    type="tel"
-                    placeholder="Ihre Telefonnummer"
-                    value={formState.phone}
-                    onChange={(e) => setFormState((prev) => ({ ...prev, phone: e.target.value }))}
-                  />
-                </div>
-                <div>
-                  <label className="text-sm font-medium mb-1.5 block">Leistung</label>
-                  <Select
-                    value={service}
-                    onValueChange={(value) => {
-                      setService(value);
-                      setFormState((prev) => ({ ...prev, service: value }));
-                    }}
-                  >
-                    <SelectTrigger>
-                      <SelectValue placeholder="Bitte wählen" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      {services.map((item) => (
-                        <SelectItem key={item.id} value={item.title}>
-                          {item.title}
-                        </SelectItem>
-                      ))}
-                      <SelectItem value="sonstiges">Sonstiges</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-              <div>
-                <label className="text-sm font-medium mb-1.5 block">Nachricht *</label>
-                <Textarea
-                  name="message"
-                  placeholder="Beschreiben Sie Ihren Garten und Ihr Anliegen..."
-                  rows={5}
-                  required
-                  value={formState.message}
-                  onChange={(e) => setFormState((prev) => ({ ...prev, message: e.target.value }))}
-                />
-              </div>
-              <div className="hidden">
-                <label htmlFor="website">Website</label>
-                <Input
-                  id="website"
-                  name="website"
-                  tabIndex={-1}
-                  autoComplete="off"
-                  value={formState.website}
-                  onChange={(e) => setFormState((prev) => ({ ...prev, website: e.target.value }))}
-                />
-              </div>
-              <p className="rounded-xl bg-secondary/80 px-4 py-3 text-sm text-muted-foreground">
-                Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Angaben zur
-                Bearbeitung Ihrer Anfrage zu. Alternativ erreichen Sie uns direkt
-                per Telefon oder WhatsApp.
-              </p>
-              <Button type="submit" size="lg" className="w-full" disabled={sending}>
-                {sending ? "Wird gesendet..." : "Anfrage senden"}
-              </Button>
-            </form>
-          </div>
+        {infoBlock}
 
-          {/* Info */}
-          <div className="lg:col-span-2 scroll-fade-in space-y-6">
-            {contactInfo.map((item) => (
-              <div key={item.label} className="flex gap-4">
-                <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
-                  <item.icon className="w-5 h-5 text-primary" />
-                </div>
-                <div>
-                  <p className="text-sm text-muted-foreground">{item.label}</p>
-                  {item.label === "Telefon" ? (
-                    <a className="font-medium hover:text-primary" href={siteConfig.phoneHref}>
-                      {item.value}
-                    </a>
-                  ) : item.label === "E-Mail" ? (
-                    <a
-                      className="font-medium hover:text-primary"
-                      href={`mailto:${siteConfig.email}`}
+        <div className="scroll-fade-in mx-auto mt-6 max-w-2xl">
+          {isMobile ? (
+            <Drawer
+              open={open}
+              onOpenChange={(v) => {
+                setOpen(v);
+                if (!v) window.setTimeout(reset, 250);
+              }}
+            >
+              <DrawerTrigger asChild>
+                <Button size="lg" className="h-12 w-full text-[1rem] font-semibold">
+                  Kostenlose Beratung anfragen
+                </Button>
+              </DrawerTrigger>
+              <DrawerContent className="max-h-[92dvh]">
+                <DrawerHeader className="pb-3 text-left">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <DrawerTitle className="text-[1.15rem]">
+                        Kostenlose Beratung anfragen
+                      </DrawerTitle>
+                      <DrawerDescription className="text-[0.9rem]">
+                        Wir melden uns in der Regel innerhalb von 24 Stunden.
+                      </DrawerDescription>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={close}
+                      aria-label="Formular schließen"
+                      className="grid h-10 w-10 shrink-0 place-items-center rounded-full text-muted-foreground hover:bg-muted"
                     >
-                      {item.value}
-                    </a>
-                  ) : (
-                    <p className="font-medium">{item.value}</p>
-                  )}
+                      <X className="h-5 w-5" />
+                    </button>
+                  </div>
+                </DrawerHeader>
+                <div className="overflow-y-auto px-4 pb-[calc(env(safe-area-inset-bottom,0px)+1.25rem)]">
+                  {success ? successBody : formBody}
                 </div>
-              </div>
-            ))}
-
-            <div className="rounded-2xl border border-border/80 bg-card p-5 shadow-sm">
-              <p className="text-sm font-semibold uppercase tracking-[0.2em] text-primary">
-                Direkt erreichbar
-              </p>
-              <div className="mt-4 grid gap-3 sm:grid-cols-2">
-                <a
-                  href={siteConfig.phoneHref}
-                  className="flex items-center justify-center gap-2 rounded-xl border border-border bg-background px-4 py-3 text-sm font-semibold shadow-sm transition-colors hover:bg-muted"
-                >
-                  <Phone className="h-4 w-4 text-primary" />
-                  Telefon
-                </a>
-                <a
-                  href={siteConfig.whatsappHref}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center justify-center gap-2 rounded-xl bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
-                >
-                  <MessageCircle className="h-4 w-4" />
-                  WhatsApp
-                </a>
-              </div>
-            </div>
-
-            {/* Map */}
-            <div className="rounded-xl overflow-hidden border h-56 mt-6">
-              <iframe
-                title={`Standort ${siteConfig.brandName}`}
-                src="https://www.google.com/maps?q=D%C3%BCsseldorf&z=11&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
-          </div>
+              </DrawerContent>
+            </Drawer>
+          ) : (
+            <Dialog
+              open={open}
+              onOpenChange={(v) => {
+                setOpen(v);
+                if (!v) window.setTimeout(reset, 250);
+              }}
+            >
+              <DialogTrigger asChild>
+                <Button size="lg" className="h-12 w-full text-[1rem] font-semibold">
+                  Kostenlose Beratung anfragen
+                </Button>
+              </DialogTrigger>
+              <DialogContent className="max-h-[90dvh] max-w-2xl overflow-y-auto">
+                <DialogHeader>
+                  <DialogTitle>Kostenlose Beratung anfragen</DialogTitle>
+                  <DialogDescription>
+                    Wir melden uns in der Regel innerhalb von 24 Stunden mit
+                    einer ersten Einschätzung.
+                  </DialogDescription>
+                </DialogHeader>
+                <div className="mt-2">{success ? successBody : formBody}</div>
+              </DialogContent>
+            </Dialog>
+          )}
         </div>
       </div>
     </section>
   );
 };
+
+const Field = ({
+  label,
+  hint,
+  required,
+  children,
+}: {
+  label: string;
+  hint?: string;
+  required?: boolean;
+  children: React.ReactNode;
+}) => (
+  <label className="block">
+    <span className="mb-1.5 flex items-baseline justify-between text-[0.85rem] font-medium text-foreground">
+      <span>
+        {label}
+        {required ? <span className="text-primary"> *</span> : null}
+      </span>
+      {hint ? (
+        <span className="text-[0.75rem] font-normal text-muted-foreground">{hint}</span>
+      ) : null}
+    </span>
+    {children}
+  </label>
+);
 
 export default Contact;

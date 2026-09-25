@@ -4,6 +4,8 @@ import { Button } from "@/components/ui/button";
 import { navLinks, siteConfig } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
 import HeaderV6 from "@/components/v6/HeaderV6";
+import HeaderV7 from "@/components/v7/HeaderV7";
+import HeaderV8 from "@/components/v8/HeaderV8";
 
 const HeaderDefault = () => {
   const [open, setOpen] = useState(false);
@@ -99,7 +101,12 @@ const HeaderDefault = () => {
   );
 };
 
-// Variante 6 bekommt die Apple-Produktnavigation — auf Start- und Unterseiten.
-const Header = import.meta.env.VITE_THEME === "v6" ? HeaderV6 : HeaderDefault;
+// V6 Apple-Nav, V7 Best-of (Design-1-Grün), V8 Best-of #2 (V6-Grün + Cinematic).
+const theme = import.meta.env.VITE_THEME;
+const Header =
+  theme === "v8" ? HeaderV8 :
+  theme === "v7" ? HeaderV7 :
+  theme === "v6" ? HeaderV6 :
+  HeaderDefault;
 
 export default Header;

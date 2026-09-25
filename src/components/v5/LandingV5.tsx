@@ -4,6 +4,7 @@ import ServiceIndex from "./ServiceIndex";
 import WorkCompare from "./WorkCompare";
 import MeisterSection from "./MeisterSection";
 import AreaMarquee from "./AreaMarquee";
+import MeisterFotoSection from "@/components/MeisterFotoSection";
 
 // Design-Variante 5 („Aus Wildwuchs wird Garten"): eigene Startseiten-Dramaturgie.
 // FAQ und Kontakt kommen weiterhin aus den gemeinsamen Komponenten (Index.tsx).
@@ -12,6 +13,7 @@ const LandingV5 = () => (
     <ScrollExpansionHero />
     <GartenjahrBlock />
     <ServiceIndex />
+    <MeisterFotoSection />
     <WorkCompare />
     <MeisterSection />
     <AreaMarquee />

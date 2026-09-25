@@ -9,8 +9,9 @@ import Impressum from "./pages/Impressum.tsx";
 import Datenschutz from "./pages/Datenschutz.tsx";
 import ServicePage from "./pages/ServicePage.tsx";
 import AreaPage from "./pages/AreaPage.tsx";
-import DesignSwitcher from "./components/DesignSwitcher.tsx";
+import SeasonPage from "./pages/SeasonPage.tsx";
 import { areaPages, servicePages } from "@/lib/subpages";
+import { gartenjahr } from "@/lib/siteContent";
 
 const queryClient = new QueryClient();
 
@@ -19,7 +20,6 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <DesignSwitcher />
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route path="/" element={<Index />} />
@@ -30,6 +30,13 @@ const App = () => (
           ))}
           {areaPages.map((page) => (
             <Route key={page.slug} path={`/${page.slug}`} element={<AreaPage page={page} />} />
+          ))}
+          {gartenjahr.map((season) => (
+            <Route
+              key={season.slug}
+              path={`/gartenpflege-${season.slug}-duesseldorf`}
+              element={<SeasonPage season={season} />}
+            />
           ))}
           <Route path="*" element={<NotFound />} />
         </Routes>

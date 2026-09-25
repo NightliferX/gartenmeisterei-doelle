@@ -5,7 +5,6 @@ import { gartenjahr, monthRange, siteConfig, trustItems } from "@/lib/siteConten
 import { withBase } from "@/lib/utils";
 
 const isV2 = import.meta.env.VITE_THEME === "v2";
-const isV3 = import.meta.env.VITE_THEME === "v3";
 const isV4 = import.meta.env.VITE_THEME === "v4";
 
 // Design-Variante 2: Split-Hero + Gartenjahr-Leiste mit Saison-Hervorhebung
@@ -18,8 +17,8 @@ const HeroV2 = () => {
       {/* Vollflächiger Hero-Header in V2-Sprache: Foto + Tannengrün-Verlauf, Text linksbündig */}
       <div className="relative flex min-h-[88vh] items-center">
         <img
-          src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1920&q=80"
-          alt="Gepflegter Gartenweg mit akkurat geschnittenen Hecken"
+          src={withBase("/team/hero-buchsbaum.jpg")}
+          alt="Gärtnermeister beim Formschnitt eines Buchsbaums im Vorgarten"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-[hsl(var(--v2-pine)/0.45)]" />
@@ -101,137 +100,6 @@ const HeroV2 = () => {
   );
 };
 
-// Design-Variante 3: Der Hero ist eine Arbeitsprobe — ein Vorher/Nachher-Regler.
-const CompareSlider = () => {
-  const [pos, setPos] = useState(16);
-
-  useEffect(() => {
-    // Eine orchestrierte Bewegung beim Laden: der Regler fährt auf die Mitte.
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      setPos(50);
-      return;
-    }
-    const start = performance.now();
-    let raf = 0;
-    const tick = (now: number) => {
-      const t = Math.min((now - start) / 1400, 1);
-      const eased = 1 - Math.pow(1 - t, 3);
-      setPos(16 + eased * 34);
-      if (t < 1) raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
-  return (
-    <div className="relative select-none overflow-hidden rounded-[var(--radius)] border border-border shadow-lg shadow-black/10">
-      <img
-        src={withBase("/references/nachher-hecke.jpg")}
-        alt="Akkurat geschnittene Hecke nach dem Termin"
-        className="block aspect-[3/2] w-full object-cover"
-        draggable={false}
-      />
-      <img
-        src={withBase("/references/vorher-hecke.jpg")}
-        alt="Ausgewachsene Hecke vor dem Termin"
-        className="absolute inset-0 h-full w-full object-cover"
-        style={{ clipPath: `inset(0 ${100 - pos}% 0 0)` }}
-        draggable={false}
-      />
-
-      {/* Griff in Messing — die eine Akzentstelle der Seite */}
-      <div
-        className="pointer-events-none absolute inset-y-0 w-0.5 bg-white/90"
-        style={{ left: `${pos}%` }}
-      >
-        <div className="absolute top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[hsl(var(--v3-brass))] text-white shadow-md">
-            <ArrowRight className="h-4 w-4 rotate-180" />
-            <ArrowRight className="h-4 w-4" />
-          </div>
-        </div>
-      </div>
-
-      <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-[hsl(var(--v3-loden)/0.75)] px-3 py-1 text-sm font-medium text-white">
-        Vorher
-      </span>
-      <span className="pointer-events-none absolute right-4 top-4 rounded-full bg-[hsl(var(--v3-loden)/0.75)] px-3 py-1 text-sm font-medium text-white">
-        Nachher
-      </span>
-
-      <input
-        type="range"
-        min={0}
-        max={100}
-        value={pos}
-        onChange={(e) => setPos(Number(e.target.value))}
-        aria-label="Vorher-Nachher-Vergleich verschieben"
-        className="absolute inset-0 h-full w-full cursor-ew-resize opacity-0"
-      />
-    </div>
-  );
-};
-
-const HeroV3 = () => {
-  return (
-    <section id="start" className="pb-8">
-      {/* Vollflächiger Hero-Header; der Vorher/Nachher-Regler ragt von unten hinein */}
-      <div className="relative flex min-h-[78vh] items-center">
-        <img
-          src="https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1920&q=80"
-          alt="Gepflegter Vorgarten mit klaren Kanten und sattem Rasen"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-[hsl(var(--v3-loden)/0.5)]" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[hsl(var(--v3-loden)/0.85)] via-[hsl(var(--v3-loden)/0.35)] to-transparent" />
-
-        <div className="container relative z-10 px-4 pb-44 pt-28">
-          <div className="max-w-2xl">
-            <h1 className="text-4xl leading-[1.05] text-white sm:text-5xl lg:text-6xl">
-              Der Unterschied ist Handwerk.
-            </h1>
-            <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/85">
-              Gartenpflege vom Gärtnermeister in Düsseldorf: Hecken, Bäume,
-              Rasen und alles, was das Gartenjahr verlangt.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button size="lg" asChild className="px-8 py-6 text-base shadow-lg shadow-black/15">
-                <a href={withBase("/#kontakt")}>
-                  Kostenlose Beratung anfragen
-                  <ArrowRight className="h-5 w-5" />
-                </a>
-              </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                asChild
-                className="border-white/40 bg-white/10 px-8 py-6 text-base text-white hover:bg-white/20 hover:text-white"
-              >
-                <a href={siteConfig.whatsappHref} target="_blank" rel="noreferrer">
-                  WhatsApp starten
-                  <MessageCircle className="h-5 w-5" />
-                </a>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="container relative z-20 -mt-32 px-4">
-        <div className="max-w-3xl">
-          <p className="mb-3 inline-block rounded-full bg-white/95 px-4 py-1.5 text-sm font-semibold text-foreground shadow-sm">
-            Ziehen Sie den Regler — so sieht ein Termin bei uns aus.
-          </p>
-        </div>
-        <CompareSlider />
-        <div className="mt-3 flex flex-col gap-2 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <p>Beispiel Heckenschnitt: Form- und Rückschnitt, Abtransport inklusive.</p>
-          <p>{siteConfig.responsePromise}</p>
-        </div>
-      </div>
-    </section>
-  );
-};
 
 // Design-Variante 4: cinematischer Auftritt — Vollbild-Statement,
 // dann eine dunkle Filmsequenz mit dem Handwerk in Großaufnahme.
@@ -242,8 +110,8 @@ const HeroV4 = () => {
     <>
       <section id="start" className="relative flex min-h-screen items-center justify-center overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1920&q=80"
-          alt="Gepflegter Gartenweg zwischen hohen, geschnittenen Hecken"
+          src={withBase("/team/hero-buchsbaum.jpg")}
+          alt="Gärtnermeister beim Formschnitt eines Buchsbaums im Vorgarten"
           className="absolute inset-0 h-full w-full object-cover"
         />
         <div className="absolute inset-0 bg-black/45" />
@@ -336,22 +204,20 @@ const HeroV4 = () => {
 
 const Hero = () => {
   if (isV2) return <HeroV2 />;
-  if (isV3) return <HeroV3 />;
   if (isV4) return <HeroV4 />;
   return (
     <section
       id="start"
-      className="relative flex min-h-screen items-center justify-center overflow-hidden pb-16 md:pb-20"
+      className="relative flex min-h-screen items-center justify-center overflow-hidden pb-40 md:pb-56"
     >
       {/* Background */}
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=1920&q=80')",
+          backgroundImage: `url('${withBase("/team/hero-buchsbaum.jpg")}')`,
         }}
       />
-      <div className="absolute inset-0 bg-foreground/70" />
+      <div className="absolute inset-0 bg-foreground/55" />
 
       {/* Content */}
       <div className="relative z-10 container px-4 pt-24">
