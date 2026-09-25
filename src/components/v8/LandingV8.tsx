@@ -2,6 +2,7 @@ import HeroV8 from "./HeroV8";
 import ServicesV8 from "./ServicesV8";
 import WerkstattV8 from "./WerkstattV8";
 import WhyV8 from "./WhyV8";
+import WhyV8Neu from "./WhyV8Neu";
 import AreaBlockV8 from "./AreaBlockV8";
 import FaqV8 from "./FaqV8";
 import BeratungCtaV8 from "./BeratungCtaV8";
@@ -16,6 +17,7 @@ const LandingV8 = () => (
     <ServicesV8 />
     <WerkstattV8 />
     <WhyV8 />
+    <WhyV8Neu />
     <MeisterPortrait />
     <AreaBlockV8 />
     <FaqV8 />
