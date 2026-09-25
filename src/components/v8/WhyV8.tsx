@@ -27,7 +27,9 @@ const reasons = [
   },
 ];
 
-const WhyV8 = () => (
+type WhyV8Props = { meisterImageSrc?: string; meisterImageAlt?: string };
+const DEFAULT_MEISTER_IMG = "/team/benedikt-doelle-gaertnermeister-vorgarten-portrait-duesseldorf.png";
+const WhyV8 = ({ meisterImageSrc, meisterImageAlt }: WhyV8Props = {}) => (
   <section aria-labelledby="darum-v8" className="bg-secondary/50 py-20 md:py-28">
     <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
       <div className="scroll-fade-in mx-auto max-w-[42rem] text-center">
@@ -70,8 +72,8 @@ const WhyV8 = () => (
             Auf Desktop per Grid-Placement zurück in Spalte 1, beide Reihen. */}
         <article className="scroll-fade-in group relative flex overflow-hidden rounded-[1.75rem] bg-primary text-primary-foreground shadow-xl shadow-primary/25 min-h-[420px] lg:col-start-1 lg:row-start-1 lg:col-span-1 lg:row-span-2">
           <img
-            src={withBase("/team/benedikt-doelle-gaertnermeister-vorgarten-portrait-duesseldorf.png")}
-            alt={`${siteConfig.ownerName}, Gärtnermeister`}
+            src={withBase(meisterImageSrc ?? DEFAULT_MEISTER_IMG)}
+            alt={meisterImageAlt ?? `${siteConfig.ownerName}, Gärtnermeister`}
             className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
             loading="lazy"
             decoding="async"

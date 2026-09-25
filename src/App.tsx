@@ -10,6 +10,7 @@ import Datenschutz from "./pages/Datenschutz.tsx";
 import ServicePage from "./pages/ServicePage.tsx";
 import AreaPage from "./pages/AreaPage.tsx";
 import SeasonPage from "./pages/SeasonPage.tsx";
+import BeispielPage from "./pages/BeispielPage.tsx";
 import { areaPages, servicePages } from "@/lib/subpages";
 import { gartenjahr } from "@/lib/siteContent";
 
@@ -23,6 +24,8 @@ const App = () => (
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/beispiel-1" element={<BeispielPage variant="1" />} />
+          <Route path="/beispiel-2" element={<BeispielPage variant="2" />} />
           <Route path="/impressum" element={<Impressum />} />
           <Route path="/datenschutz" element={<Datenschutz />} />
           {servicePages.map((page) => (

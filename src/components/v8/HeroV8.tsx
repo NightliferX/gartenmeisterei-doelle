@@ -14,7 +14,10 @@ import { withBase } from "@/lib/utils";
 // V4-Cinematic-Hero mit dem Buchsbaum-Bild und V6-Grün.
 // Bild scrollt langsamer als der Vordergrund (Parallax), Text bleibt statisch.
 // Gartenjahr als dunkler Block, der von unten in den Hero ragt.
-const HeroV8 = () => {
+type HeroV8Props = { imageSrc?: string; imageAlt?: string };
+const DEFAULT_HERO_IMG = "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg";
+const DEFAULT_HERO_ALT = "Gärtnermeister beim Formschnitt im Vorgarten";
+const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
   const month = new Date().getMonth();
   const heroRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
@@ -39,8 +42,8 @@ const HeroV8 = () => {
         className="relative isolate flex min-h-[100dvh] items-center justify-center overflow-hidden bg-foreground"
       >
         <motion.img
-          src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg")}
-          alt="Gärtnermeister beim Formschnitt im Vorgarten"
+          src={withBase(imageSrc ?? DEFAULT_HERO_IMG)}
+          alt={imageAlt ?? DEFAULT_HERO_ALT}
           className="absolute inset-0 h-full w-full object-cover"
           loading="eager"
           decoding="async"
