@@ -131,22 +131,27 @@ const WhyV8Neu = () => (
           </dl>
         </article>
 
-        {/* RECHTS UNTEN: 2x2 Reasons-Grid */}
-        <div className="grid gap-4 sm:grid-cols-2 md:gap-5">
+        {/* RECHTS UNTEN: 4 Reasons als kompakte horizontale Zeilen —
+            Icon links, Titel + Text rechts. Dadurch ist die rechte
+            Spalte kürzer und das Meister-Foto links läuft nicht mehr
+            überproportional lang. */}
+        <div className="grid gap-3 sm:grid-cols-2 md:gap-4">
           {reasons.map(({ icon: Icon, title, text }) => (
             <article
               key={title}
-              className="flex flex-col rounded-[1.5rem] bg-background p-5 shadow-[0_2px_18px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_28px_rgba(0,0,0,0.08)] md:p-6"
+              className="flex items-start gap-4 rounded-2xl bg-background p-4 shadow-[0_2px_18px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_28px_rgba(0,0,0,0.08)] md:p-5"
             >
-              <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
                 <Icon aria-hidden className="h-5 w-5" strokeWidth={2} />
               </span>
-              <p className="mt-4 text-[1rem] font-semibold leading-tight text-foreground md:text-[1.05rem]">
-                {title}
-              </p>
-              <p className="mt-2 text-[0.9rem] leading-relaxed text-muted-foreground md:text-[0.95rem]">
-                {text}
-              </p>
+              <div className="min-w-0">
+                <p className="text-[0.98rem] font-semibold leading-tight text-foreground">
+                  {title}
+                </p>
+                <p className="mt-1.5 text-[0.88rem] leading-snug text-muted-foreground">
+                  {text}
+                </p>
+              </div>
             </article>
           ))}
         </div>
