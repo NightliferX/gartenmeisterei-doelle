@@ -97,12 +97,13 @@ const WhyV8Neu = () => (
           </div>
         </article>
 
-        {/* RECHTS OBEN: Der Meister-Karte mit Fakten */}
-        <article className="rounded-[2rem] bg-background p-7 shadow-[0_2px_18px_rgba(0,0,0,0.05)] md:p-9">
+        {/* RECHTS OBEN: Der Meister — Text offen ohne Card-Container,
+            darunter die 3 Fact-Rows als eigene kleine weiße Boxen. */}
+        <div className="pt-2 md:pt-4">
           <p className="text-[0.8rem] font-semibold uppercase tracking-[0.18em] text-primary">
             Der Meister
           </p>
-          <h3 className="mt-2 text-[clamp(1.6rem,2.6vw,2rem)] font-semibold leading-[1.05] tracking-[-0.015em] text-foreground">
+          <h3 className="mt-2 text-[clamp(1.75rem,2.8vw,2.25rem)] font-semibold leading-[1.05] tracking-[-0.015em] text-foreground">
             {siteConfig.ownerName}
           </h3>
           <p className="mt-4 max-w-[52ch] text-[0.98rem] leading-relaxed text-muted-foreground md:text-[1rem]">
@@ -111,11 +112,11 @@ const WhyV8Neu = () => (
             Wer hier anfragt, spricht mit dem, der später im Garten steht.
           </p>
 
-          <dl className="mt-6 space-y-2.5">
+          <dl className="mt-6 space-y-3">
             {facts.map((f) => (
               <div
                 key={f.label}
-                className="flex items-start gap-3 rounded-2xl bg-secondary/70 p-4"
+                className="flex items-start gap-3 rounded-2xl bg-background p-4 shadow-[0_2px_18px_rgba(0,0,0,0.05)]"
               >
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
                   <f.icon className="h-5 w-5" strokeWidth={2} />
@@ -131,7 +132,7 @@ const WhyV8Neu = () => (
               </div>
             ))}
           </dl>
-        </article>
+        </div>
 
         {/* RECHTS UNTEN: 4 Reasons als kompakte horizontale Zeilen —
             Icon links, Titel + Text rechts. Dadurch ist die rechte
