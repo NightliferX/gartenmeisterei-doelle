@@ -43,8 +43,32 @@ const WhyV8 = () => (
       </div>
 
       <div className="mt-10 grid gap-4 md:mt-12 md:gap-5 lg:grid-cols-3 lg:grid-rows-2">
-        {/* Feature-Kachel: Foto fuellt die ganze Kachel, Text overlay unten */}
-        <article className="scroll-fade-in group relative flex overflow-hidden rounded-[1.75rem] bg-primary text-primary-foreground shadow-xl shadow-primary/25 min-h-[420px] lg:col-span-1 lg:row-span-2">
+        {/* Vier Text-Kacheln zuerst — auf Mobile stehen die Argumente
+            direkt unter der Überschrift, damit die Meister-Kachel nicht
+            wie das Header-Bild wirkt. */}
+        {reasons.map(({ icon: Icon, title, text }, i) => (
+          <article
+            key={title}
+            style={{ transitionDelay: `${i * 80}ms` }}
+            className="scroll-fade-in group flex flex-col rounded-[1.5rem] bg-background p-5 shadow-[0_2px_18px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_28px_rgba(0,0,0,0.08)] md:p-6"
+          >
+            <div className="flex items-center gap-3">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary">
+                <Icon aria-hidden className="h-5 w-5" strokeWidth={2} />
+              </span>
+              <p className="text-[1rem] font-semibold leading-tight text-foreground md:text-[1.05rem]">
+                {title}
+              </p>
+            </div>
+            <p className="mt-3 text-[0.9rem] leading-relaxed text-muted-foreground md:text-[0.95rem]">
+              {text}
+            </p>
+          </article>
+        ))}
+
+        {/* Meister-Kachel: Foto fuellt die ganze Kachel, Text overlay unten.
+            Auf Desktop per Grid-Placement zurück in Spalte 1, beide Reihen. */}
+        <article className="scroll-fade-in group relative flex overflow-hidden rounded-[1.75rem] bg-primary text-primary-foreground shadow-xl shadow-primary/25 min-h-[420px] lg:col-start-1 lg:row-start-1 lg:col-span-1 lg:row-span-2">
           <img
             src={withBase("/team/benedikt-doelle-gaertnermeister-vorgarten-portrait-duesseldorf.png")}
             alt={`${siteConfig.ownerName}, Gärtnermeister`}
@@ -67,27 +91,6 @@ const WhyV8 = () => (
             </p>
           </div>
         </article>
-
-        {/* Vier Text-Kacheln (2x2 auf lg) */}
-        {reasons.map(({ icon: Icon, title, text }, i) => (
-          <article
-            key={title}
-            style={{ transitionDelay: `${(i + 1) * 80}ms` }}
-            className="scroll-fade-in group flex flex-col rounded-[1.5rem] bg-background p-5 shadow-[0_2px_18px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_28px_rgba(0,0,0,0.08)] md:p-6"
-          >
-            <div className="flex items-center gap-3">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary">
-                <Icon aria-hidden className="h-5 w-5" strokeWidth={2} />
-              </span>
-              <p className="text-[1rem] font-semibold leading-tight text-foreground md:text-[1.05rem]">
-                {title}
-              </p>
-            </div>
-            <p className="mt-3 text-[0.9rem] leading-relaxed text-muted-foreground md:text-[0.95rem]">
-              {text}
-            </p>
-          </article>
-        ))}
       </div>
     </div>
   </section>
