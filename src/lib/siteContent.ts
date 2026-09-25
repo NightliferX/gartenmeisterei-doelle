@@ -27,7 +27,7 @@ export const siteConfig = {
   ],
   responsePromise: "Antwort meist innerhalb von 24 Stunden",
   consultationPromise: "Kostenlose Erstberatung in Ihrem Garten",
-  serviceAreaLabel: "Düsseldorf, Meerbusch, Neuss, Ratingen, Hilden & Umgebung",
+  serviceAreaLabel: "Düsseldorf, Meerbusch, Neuss, Ratingen, Hilden, Mettmann, Monheim & Umgebung",
   ogImage:
     "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1600&q=80",
 };
@@ -242,6 +242,12 @@ export const serviceAreas = [
   "Hilden",
   "Langenfeld",
   "Kaarst",
+  "Mettmann",
+  "Haan",
+  "Monheim am Rhein",
+  "Dormagen",
+  "Krefeld",
+  "Wülfrath",
 ];
 
 export const faqItems = [
@@ -263,7 +269,7 @@ export const faqItems = [
   {
     question: "In welchen Stadtteilen von Düsseldorf sind Sie im Einsatz?",
     answer:
-      "In allen Stadtteilen — von Oberkassel über Kaiserswerth und Derendorf bis Benrath und Gerresheim. Dazu betreuen wir das nahe Umland, unter anderem Meerbusch, Neuss, Ratingen, Erkrath, Hilden, Langenfeld und Kaarst.",
+      "In allen Stadtteilen — von Oberkassel über Kaiserswerth und Derendorf bis Benrath und Gerresheim. Dazu betreuen wir das nahe Umland, unter anderem Meerbusch, Neuss, Ratingen, Erkrath, Hilden, Langenfeld, Kaarst, Mettmann, Haan, Monheim am Rhein, Dormagen, Krefeld und Wülfrath.",
   },
   {
     question: "Was kostet die Erstberatung?",
