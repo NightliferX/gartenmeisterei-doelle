@@ -1,21 +1,58 @@
-import { ArrowRight, CheckCircle2 } from "lucide-react";
-import Header from "@/components/Header";
+import { useState } from "react";
+import { ArrowRight, CheckCircle2, ChevronDown, Phone } from "lucide-react";
+import HeaderV8 from "@/components/v8/HeaderV8";
 import Footer from "@/components/Footer";
-import MobileStickyCta from "@/components/MobileStickyCta";
 import Seo from "@/components/Seo";
-import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { services, siteConfig } from "@/lib/siteContent";
+import BeforeAfterSlider from "@/components/BeforeAfterSlider";
+import BeratungCtaV8 from "@/components/v8/BeratungCtaV8";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { projects, services, siteConfig } from "@/lib/siteContent";
 import { servicePages, type ServicePage as ServicePageData } from "@/lib/subpages";
 import { withBase } from "@/lib/utils";
 
+// Leistungs-Unterseite im V8-/Apple-Look: Cinematic-Hero, viel Weissraum,
+// weiche Schatten statt Rahmen, dunkles Editorial-Panel für den Ablauf.
+
+// Passendes Referenzprojekt je Leistung (Titel-Teilstring aus siteContent).
+const projectMatchFor: Record<string, string> = {
+  gartenpflege: "Verwilderten Garten",
+  heckenschnitt: "Hecken in Form",
+  baumschnitt: "Obstbäume",
+  rasenpflege: "Rollrasen",
+  herbst: "Garten winterfest",
+  saison: "Garten winterfest",
+};
+
+const ablauf = [
+  {
+    title: "Ihre Anfrage",
+    text: `Kurz beschreiben, worum es geht — per Formular, WhatsApp oder Telefon. ${siteConfig.responsePromise}.`,
+  },
+  {
+    title: "Beratung im Garten",
+    text: "Wir schauen uns die Fläche vor Ort an und sagen ehrlich, was nötig ist und was warten kann. Kostenlos und unverbindlich.",
+  },
+  {
+    title: "Angebot mit klarem Umfang",
+    text: "Sie bekommen schriftlich, was gemacht wird — auf Wunsch als Pflegevertrag mit festem Preis pro Termin.",
+  },
+  {
+    title: "Termin nach Plan",
+    text: "Wir kommen zum vereinbarten Zeitpunkt. Schnittgut und Grünabfall nehmen wir direkt mit.",
+  },
+];
+
 const ServicePage = ({ page }: { page: ServicePageData }) => {
+  useScrollAnimation();
   const service = services.find((s) => s.id === page.serviceId);
+  const heroImage = page.heroImage ?? service?.image;
+  const heroAlt = page.heroAlt ?? service?.title ?? page.h1;
+  const [headline, subline] = page.h1.split(" — ");
+  const match = projectMatchFor[page.serviceId];
+  const project = match
+    ? projects.find((p) => p.title.includes(match) && p.beforeImage && p.afterImage)
+    : undefined;
+  const otherPages = servicePages.filter((p) => p.slug !== page.slug);
 
   const jsonLd = [
     {
@@ -45,6 +82,24 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
         acceptedAnswer: { "@type": "Answer", text: item.answer },
       })),
     },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Start",
+          item: siteConfig.domain,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: service?.title ?? page.h1,
+          item: `${siteConfig.domain}/${page.slug}`,
+        },
+      ],
+    },
   ];
 
   return (
@@ -53,129 +108,333 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
         title={page.metaTitle}
         description={page.metaDescription}
         path={`/${page.slug}`}
-        image={service?.image?.startsWith("http") ? service.image : undefined}
+        image={heroImage?.startsWith("http") ? heroImage : undefined}
         jsonLd={jsonLd}
       />
       <div className="min-h-screen bg-background">
-        <Header />
-        <main className="pb-28">
-          <section className="container px-4 pt-28 md:pt-32">
-            <div className="mx-auto max-w-4xl">
-              <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+        <HeaderV8 />
+        <main>
+          {/* Cinematic Hero */}
+          <section className="relative isolate min-h-[84vh] w-full overflow-hidden bg-foreground">
+            {heroImage ? (
+              <img
+                src={heroImage.startsWith("http") ? heroImage : withBase(heroImage)}
+                alt={heroAlt}
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="eager"
+                decoding="async"
+              />
+            ) : null}
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/25"
+            />
+
+            <div className="relative z-10 mx-auto flex min-h-[84vh] max-w-[1240px] flex-col justify-end px-4 pb-16 pt-40 sm:px-6 md:pb-24">
+              <p className="v8-rise text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-white/85">
                 Leistung · Düsseldorf & Umgebung
               </p>
-              <h1 className="mt-3 text-3xl font-bold tracking-tight md:text-5xl">
-                {page.h1}
+              <h1 className="v8-rise mt-4 max-w-[18ch] text-[clamp(2.6rem,7vw,5.5rem)] font-semibold leading-[0.98] tracking-[-0.02em] text-white">
+                {headline}.
+                {subline ? (
+                  <span className="mt-3 block text-[0.42em] font-medium leading-[1.25] tracking-[-0.01em] text-white/75">
+                    {subline.charAt(0).toUpperCase() + subline.slice(1)}.
+                  </span>
+                ) : null}
               </h1>
-              {page.intro.map((paragraph) => (
-                <p key={paragraph.slice(0, 32)} className="mt-5 text-lg leading-relaxed text-muted-foreground">
-                  {paragraph}
-                </p>
-              ))}
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <Button size="lg" asChild>
-                  <a href={withBase("/#kontakt")}>
-                    Kostenlose Beratung anfragen
-                    <ArrowRight className="h-4 w-4" />
-                  </a>
-                </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <a href={siteConfig.phoneHref}>{siteConfig.phoneDisplay}</a>
-                </Button>
+              <p className="v8-rise-2 mt-6 max-w-[54ch] text-[1.1rem] leading-relaxed text-white/85 md:text-[1.2rem]">
+                {page.intro[0]}
+              </p>
+              <div className="v8-rise-3 mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+                <a
+                  href="#kontakt"
+                  className="v8-press inline-flex h-12 items-center justify-center gap-1.5 rounded-full bg-white px-7 text-[1rem] font-semibold text-foreground shadow-lg shadow-black/25 hover:bg-white/90"
+                >
+                  Kostenlose Beratung anfragen
+                  <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
+                </a>
+                <a
+                  href={siteConfig.phoneHref}
+                  className="v8-press inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 text-[1rem] font-medium text-white backdrop-blur-sm hover:bg-white/20"
+                >
+                  <Phone className="h-4 w-4" strokeWidth={2} />
+                  {siteConfig.phoneDisplay}
+                </a>
               </div>
             </div>
           </section>
 
-          {service ? (
-            <section className="container px-4 pt-14">
-              <div className="mx-auto max-w-4xl overflow-hidden rounded-3xl border border-border/80 shadow-sm">
-                <img
-                  src={withBase(service.image)}
-                  alt={service.title}
-                  className="aspect-[2/1] w-full object-cover"
-                  loading="lazy"
-                />
+          {/* Einstiegstext */}
+          {page.intro.length > 1 ? (
+            <section className="bg-background py-16 md:py-24">
+              <div className="mx-auto max-w-[760px] px-4 sm:px-6">
+                {page.intro.slice(1).map((paragraph) => (
+                  <p
+                    key={paragraph.slice(0, 32)}
+                    className="scroll-fade-in text-[1.15rem] leading-[1.65] text-muted-foreground md:text-[1.3rem] md:leading-[1.6]"
+                  >
+                    {paragraph}
+                  </p>
+                ))}
               </div>
             </section>
           ) : null}
 
-          <section className="container px-4 pt-14">
-            <div className="mx-auto max-w-4xl">
-              <h2 className="text-2xl font-bold tracking-tight md:text-3xl">
-                Das ist enthalten
-              </h2>
-              <div className="mt-6 grid gap-4 sm:grid-cols-2">
+          {/* Detailbilder */}
+          {page.gallery?.length ? (
+            <section className="bg-background pb-4 md:pb-10">
+              <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
+                <div className="grid gap-5 sm:grid-cols-2 md:gap-6">
+                  {page.gallery.map((shot) => (
+                    <figure key={shot.src} className="scroll-fade-in">
+                      <div className="overflow-hidden rounded-[1.75rem] shadow-[0_2px_18px_rgba(0,0,0,0.06)]">
+                        <img
+                          src={withBase(shot.src)}
+                          alt={shot.alt}
+                          loading="lazy"
+                          decoding="async"
+                          className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
+                        />
+                      </div>
+                      <figcaption className="mt-3 px-1 text-[0.95rem] leading-relaxed text-muted-foreground">
+                        {shot.caption}
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              </div>
+            </section>
+          ) : null}
+
+          {/* Das ist enthalten */}
+          <section className="bg-background py-20 md:py-28">
+            <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
+              <div className="scroll-fade-in mx-auto max-w-3xl text-center">
+                <p className="text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-primary">
+                  Leistungsumfang
+                </p>
+                <h2 className="mt-3 text-[clamp(2rem,4.2vw,3rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
+                  Das ist enthalten.
+                </h2>
+              </div>
+
+              <div className="mt-12 grid gap-5 md:mt-16 md:grid-cols-2 md:gap-6">
                 {page.included.map((item) => (
-                  <div
+                  <article
                     key={item.title}
-                    className="rounded-3xl border border-border/80 bg-card p-5 shadow-sm"
+                    className="scroll-fade-in flex flex-col rounded-[1.75rem] bg-card p-8 shadow-[0_2px_18px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] md:p-10"
                   >
-                    <div className="flex items-center gap-2">
-                      <CheckCircle2 className="h-5 w-5 shrink-0 text-primary" />
-                      <h3 className="font-semibold">{item.title}</h3>
-                    </div>
-                    <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary">
+                      <CheckCircle2 className="h-6 w-6" strokeWidth={2} />
+                    </span>
+                    <h3 className="mt-5 text-[1.35rem] font-semibold leading-tight text-foreground md:text-[1.5rem]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-[0.98rem] leading-relaxed text-muted-foreground md:text-[1.02rem]">
                       {item.text}
                     </p>
-                  </div>
+                  </article>
                 ))}
               </div>
             </div>
           </section>
 
-          <section className="container px-4 pt-14">
-            <div className="mx-auto max-w-4xl rounded-3xl border bg-card px-6 py-3 shadow-sm md:px-8">
-              <Accordion type="single" collapsible>
-                {page.faq.map((item) => (
-                  <AccordionItem key={item.question} value={item.question}>
-                    <AccordionTrigger className="text-left text-base font-semibold hover:no-underline">
-                      {item.question}
-                    </AccordionTrigger>
-                    <AccordionContent className="text-sm leading-relaxed text-muted-foreground">
-                      {item.answer}
-                    </AccordionContent>
-                  </AccordionItem>
+          {/* Ablauf — dunkles Editorial-Panel */}
+          <section className="bg-[#0d120d] py-20 md:py-28">
+            <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
+              <div className="scroll-fade-in mx-auto max-w-3xl text-center">
+                <p className="text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-primary">
+                  So läuft es ab
+                </p>
+                <h2 className="mt-3 text-[clamp(1.8rem,3.6vw,2.6rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-white">
+                  Vier Schritte. Keine Überraschungen.
+                </h2>
+              </div>
+
+              <ol className="mt-12 grid gap-4 md:mt-14 md:grid-cols-2 md:gap-5 lg:grid-cols-4">
+                {ablauf.map((step, index) => (
+                  <li
+                    key={step.title}
+                    className="scroll-fade-in rounded-[1.5rem] bg-white/[0.06] p-7"
+                  >
+                    <span className="text-[0.8rem] font-semibold tracking-[0.18em] text-primary">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="mt-3 text-[1.2rem] font-semibold leading-tight text-white">
+                      {step.title}
+                    </h3>
+                    <p className="mt-2 text-[0.95rem] leading-relaxed text-white/75">
+                      {step.text}
+                    </p>
+                  </li>
                 ))}
-              </Accordion>
+              </ol>
             </div>
           </section>
 
-          <section className="container px-4 pt-14">
-            <div className="mx-auto max-w-4xl rounded-[2rem] border border-border/80 bg-secondary/60 p-8 text-center shadow-sm">
-              <h2 className="text-2xl font-bold tracking-tight">
-                {siteConfig.consultationPromise}
-              </h2>
-              <p className="mx-auto mt-3 max-w-2xl text-muted-foreground">
-                Beschreiben Sie uns kurz Ihren Garten — wir melden uns meist
-                innerhalb von 24 Stunden mit einer ersten Einschätzung.
-              </p>
-              <Button size="lg" asChild className="mt-6">
-                <a href={withBase("/#kontakt")}>
-                  Jetzt anfragen
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-              </Button>
-              <p className="mt-6 text-sm text-muted-foreground">
-                Weitere Leistungen:{" "}
-                {servicePages
-                  .filter((p) => p.slug !== page.slug)
-                  .slice(0, 3)
-                  .map((p, index) => (
-                    <span key={p.slug}>
-                      {index > 0 ? " · " : ""}
-                      <a className="text-primary hover:underline" href={withBase(`/${p.slug}`)}>
-                        {services.find((s) => s.id === p.serviceId)?.title}
-                      </a>
-                    </span>
+          {/* Vorher / Nachher */}
+          {project ? (
+            <section className="bg-background py-20 md:py-28">
+              <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
+                <div className="scroll-fade-in mx-auto max-w-3xl text-center">
+                  <p className="text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-primary">
+                    Aus der Praxis
+                  </p>
+                  <h2 className="mt-3 text-[clamp(2rem,4.2vw,3rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
+                    Vorher. Nachher.
+                  </h2>
+                </div>
+
+                <div className="mt-10 grid gap-8 md:mt-14 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:items-center lg:gap-12">
+                  <BeforeAfterSlider
+                    className="border-0 shadow-[0_18px_48px_-24px_rgba(0,0,0,0.45)]"
+                    title={project.title}
+                    beforeImage={project.beforeImage ? withBase(project.beforeImage) : undefined}
+                    afterImage={project.afterImage ? withBase(project.afterImage) : undefined}
+                    beforeAlt={project.beforeAlt}
+                    afterAlt={project.afterAlt}
+                  />
+                  <div className="text-center lg:text-left">
+                    <p className="text-[0.75rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                      {project.location}
+                    </p>
+                    <h3 className="mt-2 text-[clamp(1.4rem,2.8vw,2.2rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
+                      {project.title}
+                    </h3>
+                    <p className="mx-auto mt-4 max-w-[52ch] text-[1rem] leading-relaxed text-muted-foreground lg:mx-0 lg:text-[1.05rem]">
+                      {project.solution}
+                    </p>
+                    <p className="mx-auto mt-3 max-w-[52ch] text-[1rem] font-medium leading-relaxed text-foreground lg:mx-0">
+                      {project.result}.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          ) : null}
+
+          {/* Häufige Fragen */}
+          <section className="bg-secondary/40 py-20 md:py-28">
+            <div className="mx-auto max-w-[1080px] px-4 sm:px-6">
+              <div className="scroll-fade-in text-center">
+                <p className="text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-primary">
+                  Häufige Fragen
+                </p>
+                <h2 className="mt-3 text-[clamp(2rem,4vw,2.8rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
+                  {service?.title ?? "Diese Leistung"} — kurz erklärt.
+                </h2>
+              </div>
+
+              <div className="mt-10 rounded-3xl bg-white p-2 shadow-sm ring-1 ring-border/60 sm:p-4 md:p-6">
+                <ul className="divide-y divide-border/60">
+                  {page.faq.map((item, i) => (
+                    <li key={item.question}>
+                      <FaqRow question={item.question} answer={item.answer} defaultOpen={i === 0} />
+                    </li>
                   ))}
-              </p>
+                </ul>
+              </div>
             </div>
           </section>
+
+          {/* Weitere Leistungen */}
+          <section className="bg-background py-20 md:py-28">
+            <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
+              <div className="scroll-fade-in mx-auto max-w-3xl text-center">
+                <p className="text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-primary">
+                  Alles aus einer Hand
+                </p>
+                <h2 className="mt-3 text-[clamp(2rem,4.2vw,3rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
+                  Weitere Leistungen.
+                </h2>
+              </div>
+
+              <div className="mt-12 grid gap-5 sm:grid-cols-2 md:mt-14 md:gap-6 lg:grid-cols-3">
+                {otherPages.map((other) => {
+                  const otherService = services.find((s) => s.id === other.serviceId);
+                  const image = other.heroImage ?? otherService?.image;
+                  return (
+                    <a
+                      key={other.slug}
+                      href={withBase(`/${other.slug}`)}
+                      className="v8-press group relative block aspect-[4/3] overflow-hidden rounded-[1.75rem] shadow-[0_2px_18px_rgba(0,0,0,0.06)]"
+                    >
+                      {image ? (
+                        <img
+                          src={image.startsWith("http") ? image : withBase(image)}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                        />
+                      ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/70 to-primary" />
+                      )}
+                      <div
+                        aria-hidden
+                        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent"
+                      />
+                      <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
+                        <h3 className="text-2xl font-semibold leading-tight text-white md:text-[1.7rem]">
+                          {otherService?.title ?? other.h1}
+                        </h3>
+                        <span className="mt-3 inline-flex items-center gap-1 text-[0.85rem] font-semibold text-white">
+                          Mehr erfahren
+                          <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
+                        </span>
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
+            </div>
+          </section>
+
+          <BeratungCtaV8 />
         </main>
         <Footer />
-        <MobileStickyCta />
       </div>
     </>
+  );
+};
+
+const FaqRow = ({
+  question,
+  answer,
+  defaultOpen = false,
+}: {
+  question: string;
+  answer: string;
+  defaultOpen?: boolean;
+}) => {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <div className="px-3 sm:px-4">
+      <button
+        type="button"
+        onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="v8-press flex w-full items-center justify-between gap-4 py-5 text-left"
+      >
+        <span className="text-[1.05rem] font-semibold leading-snug tracking-[-0.005em] text-foreground md:text-[1.15rem]">
+          {question}
+        </span>
+        <ChevronDown
+          aria-hidden
+          className={`h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+          strokeWidth={2}
+        />
+      </button>
+      <div
+        className={`grid transition-all duration-300 ease-out ${open ? "grid-rows-[1fr] pb-5" : "grid-rows-[0fr]"}`}
+      >
+        <div className="overflow-hidden">
+          <p className="text-[0.95rem] leading-relaxed text-muted-foreground md:text-[1rem]">
+            {answer}
+          </p>
+        </div>
+      </div>
+    </div>
   );
 };
 

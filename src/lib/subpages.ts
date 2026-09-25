@@ -10,6 +10,11 @@ export type ServicePage = {
   intro: string[];
   included: { title: string; text: string }[];
   faq: { question: string; answer: string }[];
+  // Optional: eigenes Hero-Bild der Unterseite (sonst services[].image)
+  heroImage?: string;
+  heroAlt?: string;
+  // Optional: Detailbilder unter dem Einstiegstext
+  gallery?: { src: string; alt: string; caption: string }[];
 };
 
 export type AreaPage = {
@@ -39,6 +44,30 @@ export const servicePages: ServicePage[] = [
       { title: "Feste Pflegetermine", text: "Wir kommen nach Plan, nicht nach Zuruf. Sie müssen an nichts denken." },
       { title: "Pflegeverträge", text: "Für Privatgärten und Gewerbeobjekte: klar vereinbarter Umfang zum planbaren Preis." },
       { title: "Entsorgung inklusive", text: "Schnittgut, Laub und Grünabfall nehmen wir nach jedem Termin mit." },
+    ],
+    heroImage: "/services/gartenpflege/gartenpflege-beetpflege-gaertnermeister-lavendel-hortensien-duesseldorf.jpg",
+    heroAlt: "Gärtnermeister bei der Beetpflege an Lavendel und Hortensien in einem Düsseldorfer Vorgarten",
+    gallery: [
+      {
+        src: "/services/rasenpflege/rasenpflege-sabo-rasenmaeher-reihenhaus-vorgarten-duesseldorf.jpg",
+        alt: "Rasenmäher beim Mähen einer Vorgartenfläche in Düsseldorf",
+        caption: "Rasen mähen und Kanten stechen — bei jedem Pflegetermin.",
+      },
+      {
+        src: "/services/gartenpflege/beetpflege-lavendel-rueckschnitt-handschere-nahaufnahme-duesseldorf.png",
+        alt: "Rückschnitt von Lavendel mit der Handschere, Nahaufnahme",
+        caption: "Beete werden von Hand gepflegt, nicht pauschal zurückgeschnitten.",
+      },
+      {
+        src: "/services/gartenpflege/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg",
+        alt: "Formschnitt an einem Buchsbaum im Vorgarten",
+        caption: "Sträucher und Formgehölze bleiben das ganze Jahr in Form.",
+      },
+      {
+        src: "/services/gartenpflege/gartenpflege-beetpflege-lavendel-hortensien-vorgarten-duesseldorf.jpg",
+        alt: "Gepflegter Vorgarten mit Lavendel und Hortensien nach der Beetpflege",
+        caption: "Das Ergebnis: ein Vorgarten, der ohne eigenen Aufwand gepflegt bleibt.",
+      },
     ],
     faq: [
       {
