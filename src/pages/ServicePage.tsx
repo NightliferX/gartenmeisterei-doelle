@@ -53,6 +53,8 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
     ? projects.find((p) => p.title.includes(match) && p.beforeImage && p.afterImage)
     : undefined;
   const otherPages = servicePages.filter((p) => p.slug !== page.slug);
+  const photoItems = page.included.filter((item) => item.image);
+  const plainItems = page.included.filter((item) => !item.image);
 
   const jsonLd = [
     {
@@ -192,37 +194,68 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                 </h2>
               </div>
 
-              <div className="mt-12 grid gap-5 md:mt-16 md:grid-cols-2 md:gap-6">
-                {page.included.map((item) => (
-                  <article
-                    key={item.title}
-                    className="scroll-fade-in group flex flex-col overflow-hidden rounded-[1.75rem] bg-card shadow-[0_2px_18px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
-                  >
-                    {item.image ? (
+              {/* Erst die Punkte mit Foto als große Kacheln, darunter die
+                  übrigen als ruhige Icon-Karten — so bleiben die Reihen
+                  gleich hoch, auch wenn es nicht zu jedem Punkt ein Bild gibt. */}
+              {photoItems.length ? (
+                <div
+                  className={`mt-12 grid gap-5 md:mt-16 md:gap-6 ${
+                    photoItems.length > 1 ? "md:grid-cols-2" : ""
+                  }`}
+                >
+                  {photoItems.map((item) => (
+                    <article
+                      key={item.title}
+                      className="scroll-fade-in group flex flex-col overflow-hidden rounded-[1.75rem] bg-card shadow-[0_2px_18px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
+                    >
                       <img
-                        src={withBase(item.image)}
+                        src={withBase(item.image!)}
                         alt={item.imageAlt ?? ""}
                         loading="lazy"
                         decoding="async"
-                        className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                        className={`w-full object-cover transition-transform duration-700 group-hover:scale-[1.02] ${
+                          photoItems.length > 1
+                            ? "aspect-[16/10]"
+                            : "aspect-[16/10] md:aspect-[2.6/1]"
+                        }`}
                       />
-                    ) : null}
-                    <div className="flex flex-col p-8 md:p-10">
-                      {item.image ? null : (
-                        <span className="mb-5 grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary">
-                          <CheckCircle2 className="h-6 w-6" strokeWidth={2} />
-                        </span>
-                      )}
-                      <h3 className="text-[1.35rem] font-semibold leading-tight text-foreground md:text-[1.5rem]">
+                      <div className="flex flex-col p-8 md:p-10">
+                        <h3 className="text-[1.35rem] font-semibold leading-tight text-foreground md:text-[1.5rem]">
+                          {item.title}
+                        </h3>
+                        <p className="mt-3 max-w-[60ch] text-[0.98rem] leading-relaxed text-muted-foreground md:text-[1.02rem]">
+                          {item.text}
+                        </p>
+                      </div>
+                    </article>
+                  ))}
+                </div>
+              ) : null}
+
+              {plainItems.length ? (
+                <div
+                  className={`grid gap-5 md:gap-6 ${photoItems.length ? "mt-5 md:mt-6" : "mt-12 md:mt-16"} ${
+                    plainItems.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2"
+                  }`}
+                >
+                  {plainItems.map((item) => (
+                    <article
+                      key={item.title}
+                      className="scroll-fade-in flex flex-col rounded-[1.75rem] bg-card p-8 shadow-[0_2px_18px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] md:p-10"
+                    >
+                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary">
+                        <CheckCircle2 className="h-6 w-6" strokeWidth={2} />
+                      </span>
+                      <h3 className="mt-5 text-[1.35rem] font-semibold leading-tight text-foreground md:text-[1.5rem]">
                         {item.title}
                       </h3>
                       <p className="mt-3 text-[0.98rem] leading-relaxed text-muted-foreground md:text-[1.02rem]">
                         {item.text}
                       </p>
-                    </div>
-                  </article>
-                ))}
-              </div>
+                    </article>
+                  ))}
+                </div>
+              ) : null}
             </div>
           </section>
 
