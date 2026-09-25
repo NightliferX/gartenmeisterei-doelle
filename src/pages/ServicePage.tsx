@@ -180,32 +180,6 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
             </section>
           ) : null}
 
-          {/* Detailbilder */}
-          {page.gallery?.length ? (
-            <section className="bg-background pb-4 md:pb-10">
-              <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
-                <div className="grid gap-5 sm:grid-cols-2 md:gap-6">
-                  {page.gallery.map((shot) => (
-                    <figure key={shot.src} className="scroll-fade-in">
-                      <div className="overflow-hidden rounded-[1.75rem] shadow-[0_2px_18px_rgba(0,0,0,0.06)]">
-                        <img
-                          src={withBase(shot.src)}
-                          alt={shot.alt}
-                          loading="lazy"
-                          decoding="async"
-                          className="aspect-[4/3] w-full object-cover transition-transform duration-700 hover:scale-[1.03]"
-                        />
-                      </div>
-                      <figcaption className="mt-3 px-1 text-[0.95rem] leading-relaxed text-muted-foreground">
-                        {shot.caption}
-                      </figcaption>
-                    </figure>
-                  ))}
-                </div>
-              </div>
-            </section>
-          ) : null}
-
           {/* Das ist enthalten */}
           <section className="bg-background py-20 md:py-28">
             <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
@@ -222,17 +196,30 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                 {page.included.map((item) => (
                   <article
                     key={item.title}
-                    className="scroll-fade-in flex flex-col rounded-[1.75rem] bg-card p-8 shadow-[0_2px_18px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] md:p-10"
+                    className="scroll-fade-in group flex flex-col overflow-hidden rounded-[1.75rem] bg-card shadow-[0_2px_18px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)]"
                   >
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary">
-                      <CheckCircle2 className="h-6 w-6" strokeWidth={2} />
-                    </span>
-                    <h3 className="mt-5 text-[1.35rem] font-semibold leading-tight text-foreground md:text-[1.5rem]">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 text-[0.98rem] leading-relaxed text-muted-foreground md:text-[1.02rem]">
-                      {item.text}
-                    </p>
+                    {item.image ? (
+                      <img
+                        src={withBase(item.image)}
+                        alt={item.imageAlt ?? ""}
+                        loading="lazy"
+                        decoding="async"
+                        className="aspect-[16/10] w-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+                      />
+                    ) : null}
+                    <div className="flex flex-col p-8 md:p-10">
+                      {item.image ? null : (
+                        <span className="mb-5 grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary">
+                          <CheckCircle2 className="h-6 w-6" strokeWidth={2} />
+                        </span>
+                      )}
+                      <h3 className="text-[1.35rem] font-semibold leading-tight text-foreground md:text-[1.5rem]">
+                        {item.title}
+                      </h3>
+                      <p className="mt-3 text-[0.98rem] leading-relaxed text-muted-foreground md:text-[1.02rem]">
+                        {item.text}
+                      </p>
+                    </div>
                   </article>
                 ))}
               </div>

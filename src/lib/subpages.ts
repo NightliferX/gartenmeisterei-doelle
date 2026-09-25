@@ -8,13 +8,12 @@ export type ServicePage = {
   metaDescription: string;
   h1: string;
   intro: string[];
-  included: { title: string; text: string }[];
+  // Optionales Bild je Punkt: dann wird die Karte zur Foto-Kachel statt Icon-Karte.
+  included: { title: string; text: string; image?: string; imageAlt?: string }[];
   faq: { question: string; answer: string }[];
   // Optional: eigenes Hero-Bild der Unterseite (sonst services[].image)
   heroImage?: string;
   heroAlt?: string;
-  // Optional: Detailbilder unter dem Einstiegstext
-  gallery?: { src: string; alt: string; caption: string }[];
 };
 
 export type AreaPage = {
@@ -40,35 +39,33 @@ export const servicePages: ServicePage[] = [
       "Ob wöchentlicher Rasenschnitt, saisonale Beetpflege oder die komplette Betreuung im Pflegevertrag: Sie bestimmen den Umfang, wir kümmern uns um den Rest. Nach jedem Termin bleibt Ihr Garten aufgeräumt zurück — Schnittgut und Grünabfall nehmen wir direkt mit.",
     ],
     included: [
-      { title: "Rasen-, Beet- und Strauchpflege", text: "Mähen, Kanten stechen, jäten, schneiden — die Grundpflege, die den Unterschied macht." },
-      { title: "Feste Pflegetermine", text: "Wir kommen nach Plan, nicht nach Zuruf. Sie müssen an nichts denken." },
-      { title: "Pflegeverträge", text: "Für Privatgärten und Gewerbeobjekte: klar vereinbarter Umfang zum planbaren Preis." },
-      { title: "Entsorgung inklusive", text: "Schnittgut, Laub und Grünabfall nehmen wir nach jedem Termin mit." },
+      {
+        title: "Rasen-, Beet- und Strauchpflege",
+        text: "Mähen, Kanten stechen, jäten, schneiden — die Grundpflege, die den Unterschied macht.",
+        image: "/services/rasenpflege/rasenpflege-sabo-rasenmaeher-reihenhaus-vorgarten-duesseldorf.jpg",
+        imageAlt: "Gärtnermeister mäht den Rasen in einem Reihenhaus-Vorgarten in Düsseldorf",
+      },
+      {
+        title: "Feste Pflegetermine",
+        text: "Wir kommen nach Plan, nicht nach Zuruf. Sie müssen an nichts denken.",
+        image: "/services/gartenpflege/beetpflege-lavendel-rueckschnitt-handschere-nahaufnahme-duesseldorf.png",
+        imageAlt: "Rückschnitt von Lavendel mit der Handschere, Nahaufnahme",
+      },
+      {
+        title: "Pflegeverträge",
+        text: "Für Privatgärten und Gewerbeobjekte: klar vereinbarter Umfang zum planbaren Preis.",
+        image: "/references/nachher-hecke.jpg",
+        imageAlt: "Dauerhaft gepflegter Vorgarten mit sauber geschnittener Hecke und freiem Weg",
+      },
+      {
+        title: "Entsorgung inklusive",
+        text: "Schnittgut, Laub und Grünabfall nehmen wir nach jedem Termin mit.",
+        image: "/services/herbst/laubentsorgung-stihl-laubblaeser-herbstlaub-nahaufnahme-duesseldorf.png",
+        imageAlt: "Laubbläser räumt Herbstlaub von der Rasenfläche, Nahaufnahme",
+      },
     ],
     heroImage: "/services/gartenpflege/gartenpflege-beetpflege-gaertnermeister-lavendel-hortensien-duesseldorf.jpg",
     heroAlt: "Gärtnermeister bei der Beetpflege an Lavendel und Hortensien in einem Düsseldorfer Vorgarten",
-    gallery: [
-      {
-        src: "/services/rasenpflege/rasenpflege-sabo-rasenmaeher-reihenhaus-vorgarten-duesseldorf.jpg",
-        alt: "Rasenmäher beim Mähen einer Vorgartenfläche in Düsseldorf",
-        caption: "Rasen mähen und Kanten stechen — bei jedem Pflegetermin.",
-      },
-      {
-        src: "/services/gartenpflege/beetpflege-lavendel-rueckschnitt-handschere-nahaufnahme-duesseldorf.png",
-        alt: "Rückschnitt von Lavendel mit der Handschere, Nahaufnahme",
-        caption: "Beete werden von Hand gepflegt, nicht pauschal zurückgeschnitten.",
-      },
-      {
-        src: "/services/gartenpflege/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg",
-        alt: "Formschnitt an einem Buchsbaum im Vorgarten",
-        caption: "Sträucher und Formgehölze bleiben das ganze Jahr in Form.",
-      },
-      {
-        src: "/services/gartenpflege/gartenpflege-beetpflege-lavendel-hortensien-vorgarten-duesseldorf.jpg",
-        alt: "Gepflegter Vorgarten mit Lavendel und Hortensien nach der Beetpflege",
-        caption: "Das Ergebnis: ein Vorgarten, der ohne eigenen Aufwand gepflegt bleibt.",
-      },
-    ],
     faq: [
       {
         question: "Was kostet regelmäßige Gartenpflege in Düsseldorf?",
