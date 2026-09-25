@@ -105,8 +105,18 @@ export const servicePages: ServicePage[] = [
         image: "/services/heckenschnitt/heckenschnitt-hecke-stihl-motorsaege-detail-duesseldorf.png",
         imageAlt: "Rückschnitt einer hoch gewachsenen Hecke mit der Motorheckenschere",
       },
-      { title: "Schnitt zur richtigen Zeit", text: "Terminplanung unter Beachtung von Vogelschutz und Pflanzengesundheit." },
-      { title: "Abtransport inklusive", text: "Das Schnittgut nehmen wir mit — Ihr Garten bleibt sauber zurück." },
+      {
+        title: "Schnitt zur richtigen Zeit",
+        text: "Terminplanung unter Beachtung von Vogelschutz und Pflanzengesundheit.",
+        image: "/services/heckenschnitt/heckenrueckschnitt-spaetwinter-kahle-hecke-duesseldorf.jpg",
+        imageAlt: "Kräftiger Heckenrückschnitt im Spätwinter an einer kahlen Hecke",
+      },
+      {
+        title: "Abtransport inklusive",
+        text: "Das Schnittgut nehmen wir mit — Ihr Garten bleibt sauber zurück.",
+        image: "/services/heckenschnitt/schnittgut-abtransport-plane-anhaenger-duesseldorf.jpg",
+        imageAlt: "Heckenschnittgut wird auf einer Plane zum Anhänger getragen",
+      },
     ],
     faq: [
       {
@@ -139,9 +149,24 @@ export const servicePages: ServicePage[] = [
         image: "/services/baumschnitt/baumschnitt-obstbaum-bypass-astschere-nahaufnahme-duesseldorf.png",
         imageAlt: "Astschere setzt einen sauberen Schnitt an einem Obstbaumast",
       },
-      { title: "Kronen- und Pflegeschnitt", text: "Lichten, einkürzen, aufasten — fachgerecht statt radikal gekappt." },
-      { title: "Totholz-Entfernung", text: "Für Sicherheit über Wegen, Terrassen und Spielbereichen." },
-      { title: "Beratung zur Nachpflanzung", text: "Wenn ein Baum nicht zu halten ist, beraten wir zum passenden Ersatz." },
+      {
+        title: "Kronen- und Pflegeschnitt",
+        text: "Lichten, einkürzen, aufasten — fachgerecht statt radikal gekappt.",
+        image: "/services/baumschnitt/kronenschnitt-hochentaster-baumpflege-duesseldorf.jpg",
+        imageAlt: "Gärtnermeister schneidet mit dem Hochentaster einen Ast in der Baumkrone",
+      },
+      {
+        title: "Totholz-Entfernung",
+        text: "Für Sicherheit über Wegen, Terrassen und Spielbereichen.",
+        image: "/services/baumschnitt/totholz-handsaege-schnittflaeche-baumpflege-duesseldorf.jpg",
+        imageAlt: "Abgestorbener Ast wird mit der Handsäge abgesetzt, frische Schnittfläche",
+      },
+      {
+        title: "Beratung zur Nachpflanzung",
+        text: "Wenn ein Baum nicht zu halten ist, beraten wir zum passenden Ersatz.",
+        image: "/services/baumschnitt/nachpflanzung-jungbaum-wurzelballen-duesseldorf.jpg",
+        imageAlt: "Junger Baum mit Wurzelballen wird ins Pflanzloch gestellt",
+      },
     ],
     faq: [
       {
@@ -176,9 +201,24 @@ export const servicePages: ServicePage[] = [
         image: "/services/rasenpflege/kantenschnitt-stihl-freischneider-motorsense-rasenpflege-duesseldorf.png",
         imageAlt: "Freischneider zieht eine saubere Rasenkante entlang der Beeteinfassung",
       },
-      { title: "Vertikutieren", text: "Entfernt Moos und Rasenfilz, damit Luft und Wasser wieder an die Wurzeln kommen." },
-      { title: "Düngen nach Saison", text: "Frühjahrs-, Sommer- und Herbstdüngung, abgestimmt auf Ihren Boden." },
-      { title: "Nachsaat & Regeneration", text: "Kahle Stellen schließen wir gezielt mit passendem Saatgut." },
+      {
+        title: "Vertikutieren",
+        text: "Entfernt Moos und Rasenfilz, damit Luft und Wasser wieder an die Wurzeln kommen.",
+        image: "/services/rasenpflege/vertikutieren-moosfilz-rasenpflege-duesseldorf.jpg",
+        imageAlt: "Vertikutierer im Rasen, herausgekämmter Moosfilz liegt in Streifen",
+      },
+      {
+        title: "Düngen nach Saison",
+        text: "Frühjahrs-, Sommer- und Herbstdüngung, abgestimmt auf Ihren Boden.",
+        image: "/services/rasenpflege/duengen-streuwagen-rasenduenger-rasenpflege-duesseldorf.jpg",
+        imageAlt: "Streuwagen bringt Rasendünger auf einer gepflegten Rasenfläche aus",
+      },
+      {
+        title: "Nachsaat & Regeneration",
+        text: "Kahle Stellen schließen wir gezielt mit passendem Saatgut.",
+        image: "/services/rasenpflege/nachsaat-rasensamen-kahle-stelle-rasenpflege-duesseldorf.jpg",
+        imageAlt: "Rasensamen werden von Hand auf eine kahle Stelle im Rasen gestreut",
+      },
     ],
     faq: [
       {
@@ -204,9 +244,21 @@ export const servicePages: ServicePage[] = [
       "Liegengebliebenes Laub ist mehr als ein Schönheitsproblem: Auf dem Rasen erstickt es das Gras, auf Wegen wird es rutschig, in Rinnen und Abläufen sorgt es für Staunässe. Im Herbst zählt deshalb Regelmäßigkeit.",
       "Wir befreien Rasen, Beete, Wege und Einfahrten gründlich vom Laub und entsorgen es fachgerecht — als einmaliger Herbstputz oder mit mehreren festen Terminen über die Laubsaison.",
     ],
+    heroImage: "/services/laubentsorgung/laubsaecke-anhaenger-entsorgung-duesseldorf.jpg",
+    heroAlt: "Gefüllte Laubsäcke werden nach dem Herbstputz in den Anhänger geladen",
     included: [
-      { title: "Laub entfernen", text: "Von Rasen, Beeten, Wegen, Terrassen und Einfahrten — gründlich und zügig." },
-      { title: "Rinnen & Abläufe", text: "Wir halten Wasserabläufe frei, bevor Staunässe Schäden anrichtet." },
+      {
+        title: "Laub entfernen",
+        text: "Von Rasen, Beeten, Wegen, Terrassen und Einfahrten — gründlich und zügig.",
+        image: "/services/herbst/laubentsorgung-stihl-laubblaeser-herbstlaub-nahaufnahme-duesseldorf.png",
+        imageAlt: "Laubbläser räumt Herbstlaub von der Rasenfläche",
+      },
+      {
+        title: "Rinnen & Abläufe",
+        text: "Wir halten Wasserabläufe frei, bevor Staunässe Schäden anrichtet.",
+        image: "/services/laubentsorgung/entwaesserungsrinne-laub-freiraeumen-duesseldorf.jpg",
+        imageAlt: "Nasses Herbstlaub wird von Hand aus einer Entwässerungsrinne geholt",
+      },
       { title: "Fachgerechte Entsorgung", text: "Das Laub nehmen wir mit — keine vollen Biotonnen, keine Fahrten zum Wertstoffhof." },
       { title: "Saison-Termine", text: "Auf Wunsch mehrere Termine von Oktober bis Dezember, damit es dauerhaft gepflegt bleibt." },
     ],
@@ -235,9 +287,24 @@ export const servicePages: ServicePage[] = [
       "Wir übernehmen beides: den kompletten Herbstabschluss mit letztem Schnitt, Laub und Winterschutz, und im Frühjahr den Startschnitt mit Bodenpflege und Startdüngung. Alles in je einem festen Termin.",
     ],
     included: [
-      { title: "Herbstschnitt", text: "Stauden, Sträucher und Rosen — was jetzt geschnitten gehört, kommt in Form." },
-      { title: "Winterschutz", text: "Kübelpflanzen, empfindliche Gehölze und Beete werden fachgerecht geschützt." },
-      { title: "Frühjahrsschnitt & Startpflege", text: "Rückschnitt, Beete vorbereiten, Startdüngung — der Garten kommt in Schwung." },
+      {
+        title: "Herbstschnitt",
+        text: "Stauden, Sträucher und Rosen — was jetzt geschnitten gehört, kommt in Form.",
+        image: "/services/winterservice/herbstschnitt-stauden-rueckschnitt-felco-duesseldorf.jpg",
+        imageAlt: "Rückschnitt verblühter Stauden mit der Handschere im Herbstbeet",
+      },
+      {
+        title: "Winterschutz",
+        text: "Kübelpflanzen, empfindliche Gehölze und Beete werden fachgerecht geschützt.",
+        image: "/services/winterservice/winterschutz-kuebelpflanze-jute-winterservice-duesseldorf.jpg",
+        imageAlt: "Kübelpflanze wird mit Jutematte eingepackt und mit Schnur gebunden",
+      },
+      {
+        title: "Frühjahrsschnitt & Startpflege",
+        text: "Rückschnitt, Beete vorbereiten, Startdüngung — der Garten kommt in Schwung.",
+        image: "/services/fruehjahr/fruehjahrsschnitt-rosenschnitt-gaertnermeister-vorgarten-duesseldorf.jpg",
+        imageAlt: "Frühjahrsschnitt an Rosen im Vorgarten",
+      },
       { title: "Ein Termin, alles erledigt", text: "Sie buchen den Saisonservice, wir bringen Material und nehmen Grünabfall mit." },
     ],
     faq: [

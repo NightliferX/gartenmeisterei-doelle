@@ -55,6 +55,10 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
   const otherPages = servicePages.filter((p) => p.slug !== page.slug);
   const photoItems = page.included.filter((item) => item.image);
   const plainItems = page.included.filter((item) => !item.image);
+  // Ein einzelner Punkt laeuft ueber die volle Breite, drei stehen zu dritt
+  // nebeneinander — sonst zwei Spalten.
+  const colsFor = (count: number) =>
+    count === 1 ? "" : count === 3 ? "md:grid-cols-3" : "md:grid-cols-2";
 
   const jsonLd = [
     {
@@ -199,9 +203,7 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                   gleich hoch, auch wenn es nicht zu jedem Punkt ein Bild gibt. */}
               {photoItems.length ? (
                 <div
-                  className={`mt-12 grid gap-5 md:mt-16 md:gap-6 ${
-                    photoItems.length > 1 ? "md:grid-cols-2" : ""
-                  }`}
+                  className={`mt-12 grid gap-5 md:mt-16 md:gap-6 ${colsFor(photoItems.length)}`}
                 >
                   {photoItems.map((item) => (
                     <article
@@ -234,9 +236,7 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
 
               {plainItems.length ? (
                 <div
-                  className={`grid gap-5 md:gap-6 ${photoItems.length ? "mt-5 md:mt-6" : "mt-12 md:mt-16"} ${
-                    plainItems.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2"
-                  }`}
+                  className={`grid gap-5 md:gap-6 ${photoItems.length ? "mt-5 md:mt-6" : "mt-12 md:mt-16"} ${colsFor(plainItems.length)}`}
                 >
                   {plainItems.map((item) => (
                     <article
