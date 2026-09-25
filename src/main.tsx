@@ -10,4 +10,40 @@ if (theme === "v2" || theme === "v4" || theme === "v5" || theme === "v6" || them
   document.documentElement.classList.add(`theme-${theme}`);
 }
 
-createRoot(document.getElementById("root")!).render(<App />);
+// Deep-Links auf GitHub Pages: Für unbekannte Pfade liefert Pages IMMER die
+// 404.html im Wurzelverzeichnis aus — auch für /v8/gartenpflege-duesseldorf.
+// Dort läuft dann der V1-Build mit falschem basename und zeigt die 404-Seite.
+// Deshalb: erkannte Varianten-Pfade auf den Varianten-Index umleiten und die
+// eigentliche Route als ?p= mitgeben, die der Varianten-Build zurückschreibt.
+const fixDeepLink = () => {
+  const base = import.meta.env.BASE_URL;
+  const { pathname, search, hash } = window.location;
+
+  if (pathname.startsWith(base)) {
+    const variant = pathname.slice(base.length).match(/^(v\d+)\/(.+)$/);
+    if (variant) {
+      const rest = search ? `&${search.slice(1)}` : "";
+      window.location.replace(
+        `${base}${variant[1]}/?p=${encodeURIComponent(`/${variant[2]}`)}${rest}${hash}`,
+      );
+      return false;
+    }
+  }
+
+  const params = new URLSearchParams(search);
+  const route = params.get("p");
+  if (route) {
+    params.delete("p");
+    const rest = params.toString();
+    window.history.replaceState(
+      null,
+      "",
+      `${base.replace(/\/$/, "")}${route}${rest ? `?${rest}` : ""}${hash}`,
+    );
+  }
+  return true;
+};
+
+if (fixDeepLink()) {
+  createRoot(document.getElementById("root")!).render(<App />);
+}

@@ -339,4 +339,121 @@ export const areaPages: AreaPage[] = [
       "Wir übernehmen die komplette Gartenpflege: Rasen, Hecken, Beete, Bäume und den Saisonservice im Herbst und Frühjahr. Zuverlässig, sauber und mit einem festen Ansprechpartner.",
     ],
   },
+  {
+    slug: "gartenpflege-erkrath",
+    name: "Erkrath",
+    kind: "Umland",
+    metaTitle: "Gartenpflege Erkrath | Gartenmeisterei Dölle – Gärtner im Kreis Mettmann",
+    metaDescription:
+      "Gartenpflege in Erkrath, Alt-Erkrath und Hochdahl: Heckenschnitt, Rasenpflege und Saisonservice vom Gärtnermeister — kurze Anfahrt aus Düsseldorf.",
+    h1: "Gartenpflege in Erkrath",
+    intro: [
+      "Zwischen Düsseldorf und dem Neandertal liegt Erkrath mit seinen Ortsteilen Alt-Erkrath, Hochdahl und Unterfeldhaus — viele Reihenhausgärten, gewachsene Hecken und Vorgärten, die den Charme des Bergischen Landes aufnehmen.",
+      "Wir sind aus Düsseldorf in einer Viertelstunde bei Ihnen und übernehmen die komplette Pflege: Rasenmähen nach Plan, Heckenschnitt zur passenden Zeit, Beete richten und den saisonalen Herbstputz — Schnittgut nehmen wir immer mit.",
+    ],
+  },
+  {
+    slug: "gartenpflege-langenfeld",
+    name: "Langenfeld",
+    kind: "Umland",
+    metaTitle: "Gartenpflege Langenfeld | Gartenmeisterei Dölle – Gärtnermeister für Langenfeld",
+    metaDescription:
+      "Gartenpflege in Langenfeld (Rheinland): Rasenpflege, Formschnitt, Baumpflege und Laubentsorgung vom Gärtnermeister-Betrieb — feste Pflegetermine.",
+    h1: "Gartenpflege in Langenfeld",
+    intro: [
+      "Langenfeld liegt zwischen Düsseldorf und Leverkusen an der A3 — schnell erreichbar für regelmäßige Pflegeeinsätze in Immigrath, Richrath, Reusrath und Wiescheid.",
+      "Wir kommen zum Rasenmähen, zum Heckenschnitt, für den Frühjahrsstart oder den kompletten Pflegevertrag. Ein Ansprechpartner, klare Termine, saubere Ergebnisse.",
+    ],
+  },
+  {
+    slug: "gartenpflege-kaarst",
+    name: "Kaarst",
+    kind: "Umland",
+    metaTitle: "Gartenpflege Kaarst | Gartenmeisterei Dölle – Gärtner für Kaarst & Rhein-Kreis Neuss",
+    metaDescription:
+      "Gartenpflege in Kaarst, Büttgen und Vorst: Heckenschnitt, Rasen, Beete und Saisonservice vom Gärtnermeister — kurze Wege aus Düsseldorf ins Kaarster Feld.",
+    h1: "Gartenpflege in Kaarst",
+    intro: [
+      "Zwischen Düsseldorf-Büderich und Neuss liegt Kaarst mit seinen Ortsteilen Kaarst-Mitte, Büttgen, Vorst und Holzbüttgen — klassischer Speckgürtel mit Einfamilienhausgärten, die regelmäßige Pflege verdienen.",
+      "Wir betreuen Kaarster Gärten mit festen Terminen: vom wöchentlichen Rasenschnitt über den Formschnitt der Buchsbaumhecken bis zum Herbstlaub-Service. Kurze Wege bedeuten faire Anfahrtskosten.",
+    ],
+  },
+  {
+    slug: "gartenpflege-mettmann",
+    name: "Mettmann",
+    kind: "Umland",
+    metaTitle: "Gartenpflege Mettmann | Gartenmeisterei Dölle – Gärtnermeister im Kreis Mettmann",
+    metaDescription:
+      "Gartenpflege in Mettmann: Heckenschnitt, Rasenpflege, Baumpflege und Laubentsorgung vom Gärtnermeister-Betrieb — regelmäßige Termine, Anfahrt aus Düsseldorf.",
+    h1: "Gartenpflege in Mettmann",
+    intro: [
+      "Mettmann als Kreisstadt am Übergang ins Bergische — mit vielen gewachsenen Gärten, altem Baumbestand und Hecken, die einen erfahrenen Schnittdienst brauchen.",
+      "Wir kommen aus Düsseldorf regelmäßig nach Mettmann: für die klassische Rasen- und Heckenpflege ebenso wie für den fachgerechten Obstbaum- und Kronenschnitt. Auf Wunsch als kompletter Pflegevertrag.",
+    ],
+  },
+  {
+    slug: "gartenpflege-haan",
+    name: "Haan",
+    kind: "Umland",
+    metaTitle: "Gartenpflege Haan | Gartenmeisterei Dölle – Gärtner für Haan & Gruiten",
+    metaDescription:
+      "Gartenpflege in Haan (Rheinland) und Gruiten: Rasenpflege, Heckenschnitt und Saisonservice vom Gärtnermeister-Betrieb aus Düsseldorf.",
+    h1: "Gartenpflege in Haan",
+    intro: [
+      "Haan und der Ortsteil Gruiten sind bekannt als ruhige Gartenstadt zwischen Erkrath und Solingen — viele Einfamilienhäuser, gepflegte Vorgärten und Hecken, die in Form gehalten werden wollen.",
+      "Aus Düsseldorf sind wir schnell bei Ihnen. Wir übernehmen die regelmäßige Pflege ebenso wie einzelne Einsätze: Rasenmähen, Heckenschnitt, Beetpflege, Baumpflege und die komplette Herbstarbeit inklusive Laubentsorgung.",
+    ],
+  },
+  {
+    slug: "gartenpflege-monheim",
+    name: "Monheim am Rhein",
+    kind: "Umland",
+    metaTitle: "Gartenpflege Monheim am Rhein | Gartenmeisterei Dölle – Gärtner für Monheim",
+    metaDescription:
+      "Gartenpflege in Monheim am Rhein und Baumberg: Rasen, Hecken, Beete und Saisonservice vom Gärtnermeister-Betrieb — feste Pflegetermine, Anfahrt aus Düsseldorf.",
+    h1: "Gartenpflege in Monheim am Rhein",
+    intro: [
+      "Monheim am Rhein mit Baumberg und der Innenstadt hat sich in den letzten Jahren stark entwickelt — viele neue Reihenhaussiedlungen, aber auch klassische Rhein-Vorgärten brauchen kontinuierliche Pflege.",
+      "Wir sind aus Düsseldorf in kurzer Zeit vor Ort und übernehmen die gesamte Gartenpflege: Rasenschnitt, Heckenschnitt, Beete richten, Baumpflege und den saisonalen Herbstservice — auf Wunsch als Pflegevertrag mit festen Terminen.",
+    ],
+  },
+  {
+    slug: "gartenpflege-dormagen",
+    name: "Dormagen",
+    kind: "Umland",
+    metaTitle: "Gartenpflege Dormagen | Gartenmeisterei Dölle – Gärtnermeister für Dormagen",
+    metaDescription:
+      "Gartenpflege in Dormagen, Zons und Stürzelberg: Heckenschnitt, Rasenpflege und Saisonservice vom Gärtnermeister-Betrieb — kurze Anfahrt aus Düsseldorf.",
+    h1: "Gartenpflege in Dormagen",
+    intro: [
+      "Dormagen im Rhein-Kreis Neuss — mit dem historischen Stadtteil Zons, Stürzelberg und Delhoven — hat viele Gärten, die vom Rheinklima profitieren und deshalb regelmäßig Schnitt und Pflege brauchen.",
+      "Wir übernehmen die komplette Betreuung: von der klassischen Rasenpflege über Heckenschnitt zur richtigen Jahreszeit bis zum Baumschnitt und Herbst-Laubservice. Feste Termine, ein Ansprechpartner, saubere Ausführung.",
+    ],
+  },
+  {
+    slug: "gartenpflege-krefeld",
+    name: "Krefeld",
+    kind: "Umland",
+    metaTitle: "Gartenpflege Krefeld | Gartenmeisterei Dölle – Gärtnermeister aus Düsseldorf für Krefeld",
+    metaDescription:
+      "Gartenpflege in Krefeld: Heckenschnitt, Rasenpflege, Baumpflege und Saisonservice vom Gärtnermeister-Betrieb — für private Gärten in Krefeld und Umgebung.",
+    h1: "Gartenpflege in Krefeld",
+    intro: [
+      "Krefeld mit seinen gewachsenen Villenvierteln in Bockum, Verberg und Uerdingen — aber auch die klassischen Reihenhausgärten in Fischeln und Oppum — profitieren von regelmäßiger, fachgerechter Pflege.",
+      "Wir kommen aus Düsseldorf gezielt für die vereinbarten Pflegetermine: Rasen, Hecken, Beete, Bäume und der komplette Herbstservice inklusive Laubentsorgung. Auf Wunsch im Pflegevertrag mit festen Intervallen.",
+    ],
+  },
+  {
+    slug: "gartenpflege-wuelfrath",
+    name: "Wülfrath",
+    kind: "Umland",
+    metaTitle: "Gartenpflege Wülfrath | Gartenmeisterei Dölle – Gärtner für Wülfrath im Kreis Mettmann",
+    metaDescription:
+      "Gartenpflege in Wülfrath: Heckenschnitt, Rasenpflege und Saisonservice vom Gärtnermeister-Betrieb — Anfahrt aus Düsseldorf, feste Pflegetermine.",
+    h1: "Gartenpflege in Wülfrath",
+    intro: [
+      "Wülfrath liegt am östlichen Rand des Kreises Mettmann, umgeben von Wald und mit vielen Hanggärten, die eine erfahrene Hand brauchen — für saubere Formschnitte und gesunde Bäume.",
+      "Wir kommen aus Düsseldorf für regelmäßige Pflegeeinsätze: Rasen, Hecken, Beete, Baumpflege und den kompletten Herbstschnitt. Ein Ansprechpartner, feste Termine, klare Absprachen.",
+    ],
+  },
 ];
