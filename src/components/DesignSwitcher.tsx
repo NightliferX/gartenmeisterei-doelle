@@ -12,13 +12,14 @@ const VERSIONS = [
   { id: "v7", label: "7" },
   { id: "v8", label: "8" },
   { id: "v9", label: "9" },
+  { id: "v10", label: "10" },
 ];
 
 // Basis ohne Varianten-Suffix, z. B. "/gartenmeisterei-doelle/v4/" → "/gartenmeisterei-doelle/"
 const rootBase = (import.meta.env.BASE_URL ?? "/").replace(/v[2-8]\/$/, "");
 
 // Im Dev-Modus laufen die Varianten auf eigenen Ports (npm run dev / dev:v2 … dev:v8).
-const DEV_PORTS: Record<string, string> = { v1: "8080", v2: "8085", v4: "8087", v5: "8088", v6: "8189", v7: "8090", v8: "8091", v9: "8092" };
+const DEV_PORTS: Record<string, string> = { v1: "8080", v2: "8085", v4: "8087", v5: "8088", v6: "8189", v7: "8090", v8: "8091", v9: "8092", v10: "8093" };
 
 const hrefFor = (id: string) => {
   if (import.meta.env.DEV) {
