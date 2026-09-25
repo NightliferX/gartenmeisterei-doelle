@@ -56,7 +56,7 @@ const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
         />
         <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black/70 to-transparent" />
 
-        <div className="relative z-10 mx-auto max-w-[1240px] px-4 pb-56 pt-32 text-center sm:px-6 md:pb-64">
+        <div className="relative z-10 mx-auto max-w-[1240px] px-4 pb-40 pt-32 text-center sm:px-6 md:pb-44">
           <h1 className="v8-rise mx-auto max-w-5xl text-[clamp(2.9rem,8vw,6.5rem)] font-semibold leading-[0.98] tracking-[-0.02em] text-white">
             Ihr Garten.
             <br />
@@ -84,8 +84,9 @@ const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
         </div>
       </section>
 
-      {/* Gartenjahr-Block ragt von unten in den Hero. Mobil kompakt. */}
-      <section id="gartenjahr" className="relative z-20 -mt-40 pb-4 md:-mt-48">
+      {/* Gartenjahr-Block ragt von unten in den Hero — nur leicht,
+          damit möglichst viel vom Hero-Foto sichtbar bleibt. */}
+      <section id="gartenjahr" className="relative z-20 -mt-16 pb-4 md:-mt-20">
         <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
           <div className="rounded-[1.5rem] bg-[#0d120d] p-3 text-white shadow-2xl shadow-black/30 sm:p-5">
             <div className="flex flex-col gap-1 px-3 pb-3 pt-1 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6 sm:pb-4">
