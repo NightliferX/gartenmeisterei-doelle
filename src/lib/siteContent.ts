@@ -98,7 +98,7 @@ export const services = [
     description:
       "Regelmäßige Pflege hält Ihren Garten dauerhaft in Form: Wir übernehmen Rasen, Beete, Sträucher und saisonale Arbeiten — zuverlässig nach Plan, auf Wunsch als Pflegevertrag.",
     highlights: ["Rasen-, Beet- & Strauchpflege", "Feste Pflegetermine nach Plan", "Pflegeverträge für Privat & Gewerbe"],
-    image: "/services/gartenpflege/hero-v2.jpg",
+    image: "/services/gartenpflege/gartenpflege-beetpflege-gaertnermeister-lavendel-hortensien-duesseldorf.jpg",
   },
   {
     id: "heckenschnitt",
@@ -106,7 +106,7 @@ export const services = [
     description:
       "Fachgerechter Schnitt zur richtigen Zeit: Wir schneiden Hecken und Sträucher so, dass sie gesund, dicht und in Form bleiben — unter Beachtung der Schnittzeiten zum Vogelschutz.",
     highlights: ["Form- & Rückschnitt", "Dichte, gesunde Hecken", "Abtransport des Schnittguts"],
-    image: "/services/heckenschnitt/hero-buchsbaum.png",
+    image: "/services/heckenschnitt/heckenschnitt-buchsbaum-formschnitt-gaertnermeister-duesseldorf.png",
   },
   {
     id: "baumschnitt",
@@ -114,7 +114,7 @@ export const services = [
     description:
       "Vom Obstbaumschnitt bis zum Pflegeschnitt großer Bäume: Wir schneiden fachgerecht, erhalten gesunde Kronen und entfernen Totholz — inklusive Entsorgung.",
     highlights: ["Obstbaum- & Kronenschnitt", "Totholz-Entfernung", "Schnitt zur richtigen Jahreszeit"],
-    image: "/services/baumschnitt/hero.png",
+    image: "/services/baumschnitt/baumschnitt-obstbaumschnitt-apfelbaum-gaertnermeister-duesseldorf.png",
   },
   {
     id: "rasenpflege",
@@ -122,7 +122,7 @@ export const services = [
     description:
       "Dichter, gesunder Rasen braucht regelmäßige Pflege: Wir mähen, vertikutieren, düngen und säen nach — damit die Rasenfläche das ganze Jahr gut aussieht.",
     highlights: ["Mähen & Kanten stechen", "Vertikutieren & Düngen", "Nachsaat kahler Stellen"],
-    image: "/services/rasenpflege/hero.jpg",
+    image: "/services/rasenpflege/rasenpflege-sabo-rasenmaeher-reihenhaus-vorgarten-duesseldorf.jpg",
   },
   {
     id: "herbst",
@@ -130,7 +130,7 @@ export const services = [
     description:
       "Wenn das Laub fällt, übernehmen wir: Wege, Rasen und Beete werden gründlich vom Laub befreit — inklusive fachgerechter Entsorgung, auf Wunsch mehrmals pro Saison.",
     highlights: ["Laub entfernen & entsorgen", "Wege & Rinnen frei halten", "Termine über die ganze Saison"],
-    image: "/services/herbst/laubentsorgung-detail.png",
+    image: "/services/herbst/laubentsorgung-stihl-laubblaeser-herbstlaub-nahaufnahme-duesseldorf.png",
   },
   {
     id: "saison",
@@ -138,7 +138,7 @@ export const services = [
     description:
       "Wir machen Ihren Garten fit für die Saison: im Frühjahr mit Schnitt, Bodenpflege und Startdüngung — im Herbst machen wir Pflanzen, Beete und Rasen winterfest.",
     highlights: ["Frühjahrsschnitt & Startpflege", "Garten winterfest machen", "Schutz für empfindliche Pflanzen"],
-    image: "/services/fruehjahr/hero.jpg",
+    image: "/services/fruehjahr/fruehjahrsschnitt-rosenschnitt-gaertnermeister-vorgarten-duesseldorf.jpg",
   },
 ];
 
@@ -291,7 +291,7 @@ export const gartenjahr = [
     slug: "fruehjahr",
     months: [2, 3, 4],
     work: "Startschnitt, Beete vorbereiten, Rasen in Schwung bringen",
-    heroImage: "/team/hero-buchsbaum.jpg",
+    heroImage: "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg",
     heroAlt:
       "Gärtnermeister beim Frühjahrsschnitt am Buchsbaum in einem gepflegten Vorgarten",
     intro:
@@ -325,7 +325,7 @@ export const gartenjahr = [
     slug: "sommer",
     months: [5, 6, 7],
     work: "Hecken in Form halten, Rasen mähen, Beete pflegen",
-    heroImage: "/team/detail-heckenschere.jpg",
+    heroImage: "/team/heckenschnitt-stihl-motorsaege-nahaufnahme-duesseldorf.jpg",
     heroAlt: "Nahaufnahme einer Heckenschere beim sommerlichen Formschnitt",
     intro:
       "Der Sommer ist Pflegesaison. Damit Rasen dicht, Hecken in Form und Beete frisch bleiben, kommen wir in festen Intervallen — je nach Wetter, Wachstum und Absprache. So bleibt der Garten das ganze Jahr in Bestform.",

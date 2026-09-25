@@ -7,7 +7,7 @@ const MeisterFotoSection = () => (
     <div className="container px-4">
       <div className="relative overflow-hidden rounded-3xl shadow-xl">
         <img
-          src={withBase("/team/detail-heckenschere.jpg")}
+          src={withBase("/team/heckenschnitt-stihl-motorsaege-nahaufnahme-duesseldorf.jpg")}
           alt="Nahaufnahme der Heckenschere beim Formschnitt eines Buchsbaums, Gartenmeisterei Dölle"
           className="block h-[42vh] w-full min-h-[280px] object-cover md:h-[52vh]"
           loading="lazy"

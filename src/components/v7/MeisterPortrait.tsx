@@ -15,7 +15,7 @@ const MeisterPortrait = () => (
       <div className="grid gap-12 md:grid-cols-[1.05fr_1fr] md:items-center">
         <div className="relative overflow-hidden rounded-[1.5rem] bg-muted shadow-xl">
           <img
-            src={withBase("/team/hero-buchsbaum.jpg")}
+            src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg")}
             alt={`${siteConfig.ownerName}, Gärtnermeister der ${siteConfig.brandName}`}
             className="block aspect-[4/5] w-full object-cover md:aspect-[3/4]"
             loading="lazy"

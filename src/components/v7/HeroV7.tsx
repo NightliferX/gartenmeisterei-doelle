@@ -11,7 +11,7 @@ import { ChevronRight } from "lucide-react";
 import { siteConfig } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
 
-const IMG = "/team/hero-buchsbaum.jpg";
+const IMG = "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg";
 const IMG_ALT = "Gärtnermeister beim Formschnitt eines Buchsbaums im gepflegten Vorgarten";
 
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;

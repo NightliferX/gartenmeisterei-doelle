@@ -13,8 +13,8 @@ type ServiceCard = {
 // Bento-Anordnung: Gartenpflege gross, Heckenschnitt und Baumschnitt mittig,
 // Rasen breit, Herbst und Winter kompakt.
 const layout: ServiceCard[] = [
-  { id: "gartenpflege", title: "Gartenpflege", image: "/team/hero-buchsbaum.jpg", span: "md:col-span-2 md:row-span-2", height: "h-[420px] md:h-full" },
-  { id: "heckenschnitt", title: "Heckenschnitt & Formschnitt", image: "/team/detail-heckenschere.jpg", span: "md:col-span-2", height: "h-[280px]" },
+  { id: "gartenpflege", title: "Gartenpflege", image: "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg", span: "md:col-span-2 md:row-span-2", height: "h-[420px] md:h-full" },
+  { id: "heckenschnitt", title: "Heckenschnitt & Formschnitt", image: "/team/heckenschnitt-stihl-motorsaege-nahaufnahme-duesseldorf.jpg", span: "md:col-span-2", height: "h-[280px]" },
   { id: "baumschnitt", title: "Baumschnitt & Baumpflege", span: "md:col-span-1 md:row-span-2", height: "h-[280px] md:h-full" },
   { id: "rasenpflege", title: "Rasenpflege", span: "md:col-span-1", height: "h-[280px]" },
   { id: "herbst", title: "Laubentsorgung & Herbstputz", span: "md:col-span-1", height: "h-[220px]" },

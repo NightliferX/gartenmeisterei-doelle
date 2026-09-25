@@ -39,7 +39,7 @@ const HeroV8 = () => {
         className="relative isolate flex min-h-[100dvh] items-center justify-center overflow-hidden bg-foreground"
       >
         <motion.img
-          src={withBase("/team/hero-buchsbaum.jpg")}
+          src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg")}
           alt="Gärtnermeister beim Formschnitt im Vorgarten"
           className="absolute inset-0 h-full w-full object-cover"
           loading="eager"

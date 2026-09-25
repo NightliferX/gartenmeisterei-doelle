@@ -13,7 +13,7 @@ import { withBase } from "@/lib/utils";
 
 // Apple-Produktseiten-Prinzip: das Produkt (der gepflegte Garten) ist ab
 // Frame 1 vollflaechig da. Text liegt darauf, statt darueber zu stehen.
-const IMG = "/team/hero-buchsbaum.jpg";
+const IMG = "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg";
 const IMG_ALT =
   "Gaertnermeister beim Formschnitt eines Buchsbaums im gepflegten Vorgarten";
 
