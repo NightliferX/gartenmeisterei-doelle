@@ -17,7 +17,8 @@
     "dev:v6": "VITE_THEME=v6 vite --port 8089",
     "dev:v6:autoport": "VITE_THEME=v6 vite --port 8189 --strictPort",
     "dev:v7": "VITE_THEME=v7 vite --port 8090",
-    "dev:v8": "VITE_THEME=v8 vite --port 8091"
+    "dev:v8": "VITE_THEME=v8 vite --port 8091",
+    "dev:v9": "VITE_THEME=v9 vite --port 8092"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",

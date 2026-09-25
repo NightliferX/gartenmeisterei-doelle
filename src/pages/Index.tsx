@@ -19,12 +19,14 @@ import LandingV5 from "@/components/v5/LandingV5";
 import LandingV6 from "@/components/v6/LandingV6";
 import LandingV7 from "@/components/v7/LandingV7";
 import LandingV8 from "@/components/v8/LandingV8";
+import LandingV9 from "@/components/v9/LandingV9";
 import { faqItems, projects, serviceAreas, services, siteConfig } from "@/lib/siteContent";
 
 const isV5 = import.meta.env.VITE_THEME === "v5";
 const isV6 = import.meta.env.VITE_THEME === "v6";
 const isV7 = import.meta.env.VITE_THEME === "v7";
 const isV8 = import.meta.env.VITE_THEME === "v8";
+const isV9 = import.meta.env.VITE_THEME === "v9";
 
 const Index = () => {
   useScrollAnimation();
@@ -113,9 +115,11 @@ const Index = () => {
         jsonLd={jsonLd}
       />
       <div className="min-h-screen">
-        <Header />
+        {isV9 ? null : <Header />}
         <main>
-          {isV8 ? (
+          {isV9 ? (
+            <LandingV9 />
+          ) : isV8 ? (
             <LandingV8 />
           ) : isV7 ? (
             <LandingV7 />
@@ -137,11 +141,11 @@ const Index = () => {
               <ServiceAreas />
             </>
           )}
-          {isV8 ? null : <Faq />}
-          {isV8 ? null : <Contact />}
+          {isV8 || isV9 ? null : <Faq />}
+          {isV8 || isV9 ? null : <Contact />}
         </main>
-        <Footer />
-        <MobileStickyCta />
+        {isV9 ? null : <Footer />}
+        {isV9 ? null : <MobileStickyCta />}
       </div>
     </>
   );
