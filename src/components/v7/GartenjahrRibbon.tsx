@@ -19,7 +19,7 @@ const GartenjahrRibbon = () => {
               return (
                 <a
                   key={entry.season}
-                  href={withBase(`/gartenpflege-${entry.slug}-duesseldorf`)}
+                  href={withBase(`/gartenpflege-${entry.slug}`)}
                   className={`group relative flex flex-col border-primary-foreground/10 p-6 transition-colors max-lg:border-b lg:border-r lg:last:border-r-0 hover:bg-primary-foreground/10 ${
                     active ? "bg-primary-foreground/10" : ""
                   }`}

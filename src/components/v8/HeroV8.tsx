@@ -102,7 +102,7 @@ const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
                 return (
                   <a
                     key={entry.season}
-                    href={withBase(`/gartenpflege-${entry.slug}-duesseldorf`)}
+                    href={withBase(`/gartenpflege-${entry.slug}`)}
                     className={`group relative flex min-h-[9.5rem] flex-col rounded-[1rem] p-3 transition-colors sm:min-h-[11rem] sm:p-4 lg:min-h-[12rem] lg:p-5 ${
                       active
                         ? "bg-white text-foreground"

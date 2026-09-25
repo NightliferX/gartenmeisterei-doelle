@@ -7,6 +7,7 @@ import FaqV8 from "@/components/v8/FaqV8";
 import BeratungCtaV8 from "@/components/v8/BeratungCtaV8";
 import HeaderV8 from "@/components/v8/HeaderV8";
 import Footer from "@/components/Footer";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 // Preview-Varianten zum Vergleich: eine Version zeigt Benedikt zweimal
 // (Hero + WhyV8-Portrait), die andere nur im Hero. In beiden Fällen ist
@@ -14,8 +15,10 @@ import Footer from "@/components/Footer";
 // dreimal ein Benedikt-Bild rendert.
 type BeispielProps = { variant: "1" | "2" };
 
-const BeispielPage = ({ variant }: BeispielProps) => (
-  <>
+const BeispielPage = ({ variant }: BeispielProps) => {
+  useScrollAnimation();
+  return (
+    <>
     <HeaderV8 />
     {variant === "1" ? (
       <>
@@ -43,6 +46,7 @@ const BeispielPage = ({ variant }: BeispielProps) => (
     )}
     <Footer />
   </>
-);
+  );
+};
 
 export default BeispielPage;

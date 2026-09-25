@@ -37,6 +37,14 @@ const App = () => (
           {gartenjahr.map((season) => (
             <Route
               key={season.slug}
+              path={`/gartenpflege-${season.slug}`}
+              element={<SeasonPage season={season} />}
+            />
+          ))}
+          {/* Alte SEO-Slugs weiter aktiv, damit indexierte Links nicht 404 werden. */}
+          {gartenjahr.map((season) => (
+            <Route
+              key={`legacy-${season.slug}`}
               path={`/gartenpflege-${season.slug}-duesseldorf`}
               element={<SeasonPage season={season} />}
             />
