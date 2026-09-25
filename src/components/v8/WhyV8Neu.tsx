@@ -67,12 +67,14 @@ const WhyV8Neu = () => (
       {/* Grid: links Meister-Foto (Row-Span), rechts oben Meister-Karte,
           rechts unten 4 Reasons */}
       <div className="mt-12 grid gap-5 md:mt-16 md:grid-cols-2 md:gap-6 lg:gap-8">
-        {/* LINKS: große Meister-Foto-Kachel */}
-        <article className="relative flex min-h-[520px] overflow-hidden rounded-[2rem] bg-primary text-primary-foreground shadow-xl shadow-primary/25 md:row-span-2 md:min-h-[720px]">
+        {/* LINKS: große Meister-Foto-Kachel — auf Mobile Portrait-Aspect
+            damit das Gesicht sichtbar ist, auf Desktop row-span-2 mit
+            fixer Mindesthöhe. */}
+        <article className="relative flex aspect-[4/5] overflow-hidden rounded-[2rem] bg-primary text-primary-foreground shadow-xl shadow-primary/25 md:aspect-auto md:row-span-2 md:min-h-[720px]">
           <img
             src={withBase("/team/benedikt-doelle-gaertnermeister-vorgarten-portrait-duesseldorf.png")}
             alt={`${siteConfig.ownerName}, Gärtnermeister`}
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover object-top md:object-center"
             loading="lazy"
             decoding="async"
           />
