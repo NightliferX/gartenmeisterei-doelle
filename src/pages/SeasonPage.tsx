@@ -1,8 +1,9 @@
 import { ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
-import Header from "@/components/Header";
+import HeaderV8 from "@/components/v8/HeaderV8";
 import Footer from "@/components/Footer";
-import MobileStickyCta from "@/components/MobileStickyCta";
 import Seo from "@/components/Seo";
+import BeratungCtaV8 from "@/components/v8/BeratungCtaV8";
+import AreaBlockV8 from "@/components/v8/AreaBlockV8";
 import { Button } from "@/components/ui/button";
 import { gartenjahr, monthRange, siteConfig } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
@@ -41,7 +42,7 @@ const SeasonPage = ({ season }: { season: Season }) => {
     <>
       <Seo title={metaTitle} description={metaDescription} path={path} jsonLd={jsonLd} />
       <div className="min-h-screen bg-background">
-        <Header />
+        <HeaderV8 />
         <main className="pb-28">
           <section className="relative isolate min-h-[62vh] w-full overflow-hidden bg-foreground">
             <img
@@ -158,9 +159,11 @@ const SeasonPage = ({ season }: { season: Season }) => {
               </ul>
             </nav>
           </section>
+
+          <AreaBlockV8 />
+          <BeratungCtaV8 />
         </main>
         <Footer />
-        <MobileStickyCta />
       </div>
     </>
   );
