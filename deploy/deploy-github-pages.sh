@@ -15,7 +15,7 @@ VITE_BASE="$BASE" VITE_THEME=v8 npm run build
 # ACHTUNG: gh-pages wird komplett überschrieben. SKIP_V2 … SKIP_V6=1
 # entfernt die jeweilige Variante also von der Live-Seite — nur nutzen,
 # wenn sie wirklich offline gehen soll.
-for flag in SKIP_V2 SKIP_V4 SKIP_V5 SKIP_V6 SKIP_V7 SKIP_V8 SKIP_V9 SKIP_V10; do
+for flag in SKIP_V2 SKIP_V4 SKIP_V5 SKIP_V6 SKIP_V7 SKIP_V8 SKIP_V9 SKIP_V10 SKIP_V11; do
   if [[ "${!flag:-}" == "1" ]]; then
     echo "!!  $flag=1: diese Variante wird von der Live-Seite ENTFERNT"
   fi
@@ -99,6 +99,16 @@ if [[ "${SKIP_V10:-}" != "1" ]]; then
   cp -R dist-v10/. dist/v10/
   cp dist/v10/index.html dist/v10/404.html
   rm -rf dist-v10
+fi
+
+# Design-Variante 11 (V8 + alle Audit-Fixes) zusätzlich unter <base>/v11/ veröffentlichen
+if [[ "${SKIP_V11:-}" != "1" ]]; then
+  echo "==> Build Design-Variante 11 unter ${BASE}v11/"
+  VITE_BASE="${BASE}v11/" VITE_THEME=v11 npx vite build --outDir dist-v11
+  mkdir -p dist/v11
+  cp -R dist-v11/. dist/v11/
+  cp dist/v11/index.html dist/v11/404.html
+  rm -rf dist-v11
 fi
 
 # SPA-Fallback: GitHub Pages liefert 404.html für unbekannte Pfade (z. B. /impressum)

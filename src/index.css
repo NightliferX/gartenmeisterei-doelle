@@ -594,24 +594,14 @@
   -webkit-font-smoothing: antialiased;
 }
 
-.theme-v8 h1,
-.theme-v8 h2,
 .theme-v8 h3 {
   font-family: "Inter Tight", "Inter", "Helvetica Neue", sans-serif;
   letter-spacing: -0.035em;
   font-weight: 700;
 }
-.theme-v8 h1 { font-weight: 800; }
-
-/* Boxen im V8: keine Border, dafuer weiche Schatten (wie V4). */
-.theme-v8 [class*="ring-1"][class*="ring-border"],
-.theme-v8 [class*="ring-black/5"],
 .theme-v8 [class*="ring-black/10"] {
   --tw-ring-shadow: 0 0 #0000 !important;
 }
-
-.theme-v8 .v8-press { transition: transform 100ms ease-out; -webkit-tap-highlight-color: transparent; }
-.theme-v8 .v8-press:active { transform: scale(0.97); }
 
 .theme-v8 .v8-material {
   background: rgba(255, 255, 255, 0.78);
@@ -630,13 +620,6 @@
 }
 
 @keyframes v8-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.theme-v8 .v8-marquee { animation: v8-marquee 45s linear infinite; }
-.theme-v8 .v8-marquee[data-paused="true"] { animation-play-state: paused; }
-
-/* Perf: Sections mit .cv-auto werden erst gerendert, wenn sie nah am
-   Viewport sind — Browser überspringt Layout/Paint für Off-Screen-Bereiche.
-   Wichtig: NICHT auf Sections mit position:sticky-Kindern anwenden
-   (bricht dort die Klebe-Berechnung). */
 .theme-v8 .cv-auto {
   content-visibility: auto;
   contain-intrinsic-size: 1px 900px;
@@ -647,9 +630,63 @@
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.theme-v8 .v8-rise { animation: v8-rise 1s cubic-bezier(0.22, 1, 0.36, 1) both; }
-.theme-v8 .v8-rise-2 { animation: v8-rise 1s 0.18s cubic-bezier(0.22, 1, 0.36, 1) both; }
-.theme-v8 .v8-rise-3 { animation: v8-rise 1s 0.36s cubic-bezier(0.22, 1, 0.36, 1) both; }
 @media (prefers-reduced-motion: reduce) {
   .theme-v8 .v8-rise, .theme-v8 .v8-rise-2, .theme-v8 .v8-rise-3 { animation: none; }
+  .theme-v11 .v8-rise, .theme-v11 .v8-rise-2, .theme-v11 .v8-rise-3 { animation: none; }
 }
+
+.theme-v11 {
+  --background: 0 0% 98%;
+  --foreground: 120 10% 7%;
+  --card: 0 0% 100%;
+  --card-foreground: 120 10% 7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 120 10% 7%;
+  --primary: 140 62% 31%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 120 8% 95%;
+  --secondary-foreground: 120 10% 7%;
+  --muted: 120 6% 94%;
+  --muted-foreground: 120 5% 38%;
+  --accent: 140 62% 31%;
+  --accent-foreground: 0 0% 100%;
+  --border: 120 6% 88%;
+  --input: 120 6% 88%;
+  --ring: 140 62% 31%;
+  --radius: 1.1rem;
+}
+.theme-v11 body {
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", sans-serif;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: -0.011em;
+  background-image: none;
+  background-attachment: scroll;
+  -webkit-font-smoothing: antialiased;
+}
+.theme-v11 h3 {
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", sans-serif;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+.theme-v11 [class*="ring-black/10"] {
+  --tw-ring-shadow: 0 0 #0000 !important;
+}
+.theme-v11 .v8-material {
+  background: rgba(255, 255, 255, 0.78);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(20px);
+}
+.theme-v11 .v8-material-solid {
+  background: #ffffff;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+@media (prefers-reduced-transparency: reduce) {
+  .theme-v11 .v8-material { background: hsl(var(--background)); backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+.theme-v11 .cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
