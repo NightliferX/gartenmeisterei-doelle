@@ -79,7 +79,7 @@ const StimmenV8 = () => {
           {testimonials.map((t, i) => (
             <li
               key={t.name + i}
-              className="relative flex w-[85%] shrink-0 snap-start flex-col rounded-[1.75rem] bg-card p-7 shadow-[0_2px_18px_rgba(0,0,0,0.05)] md:w-[calc((100%-3rem)/3)] md:p-8"
+              className="relative flex w-[85%] shrink-0 snap-start flex-col rounded-[1.75rem] bg-card p-7 shadow-[0_2px_18px_rgba(0,0,0,0.05)] md:w-[calc((100%-4.5rem)/3.35)] md:p-8"
             >
               <Quote
                 className="h-6 w-6 text-primary/40"
