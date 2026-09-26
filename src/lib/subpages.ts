@@ -234,6 +234,55 @@ export const servicePages: ServicePage[] = [
     ],
   },
   {
+    slug: "rollrasen-duesseldorf",
+    serviceId: "rollrasen",
+    metaTitle: "Rollrasen legen Düsseldorf | Gartenmeisterei Dölle – Meisterbetrieb",
+    metaDescription:
+      "Rollrasen in Düsseldorf vom Gärtnermeister: Bodenvorbereitung, fugenlose Verlegung und Anwuchspflege. Sofort fertiger Rasen statt monatelang warten. Kostenlose Erstberatung.",
+    h1: "Rollrasen legen in Düsseldorf — an einem Tag zum fertigen Rasen",
+    intro: [
+      "Wenn schnell ein fertiger Rasen her muss — nach einer Baumaßnahme, bei stark vermoosten Flächen oder vor einem geplanten Termin — ist Rollrasen die zuverlässigste Lösung. In wenigen Stunden verlegt, in zwei bis drei Wochen belastbar.",
+      "Wir übernehmen alles: Wir prüfen den Untergrund, bereiten das Planum sauber vor, verlegen den Rollrasen fugenlos und begleiten die Anwuchspflege in den ersten Wochen — damit die Fläche dicht und dauerhaft schön bleibt.",
+    ],
+    heroImage: "/services/rasenpflege/rasenpflege-sabo-rasenmaeher-reihenhaus-vorgarten-duesseldorf.jpg",
+    heroAlt: "Frisch verlegter, dichter Rollrasen in einem gepflegten Vorgarten in Düsseldorf",
+    included: [
+      {
+        title: "Untergrund & Planum",
+        text: "Alter Rasen entfernen, Boden lockern, Feinplanum ziehen — die Grundlage für gleichmäßigen Anwuchs.",
+      },
+      {
+        title: "Rollrasen fugenlos verlegen",
+        text: "Frische Rollen von zertifizierten Züchtern, versetzt verlegt und angewalzt — keine sichtbaren Fugen.",
+      },
+      {
+        title: "Anwuchspflege",
+        text: "Bewässerungshinweise, erster Schnitt zur richtigen Zeit, Düngung — wir bleiben in den ersten Wochen ansprechbar.",
+      },
+      {
+        title: "Kleine Flächen bis große Gärten",
+        text: "Vom Vorgartenstreifen bis zum kompletten Hausgarten — wir kalkulieren fair und arbeiten sauber.",
+      },
+    ],
+    faq: [
+      {
+        question: "Wie schnell kann Rollrasen betreten werden?",
+        answer:
+          "Vorsichtig nach zwei bis drei Wochen — dann sind die Wurzeln fest im Boden. In der ersten Woche nur zum Wässern betreten, danach kurz und trocken.",
+      },
+      {
+        question: "Wann ist die beste Zeit für Rollrasen?",
+        answer:
+          "Verlegt werden kann von März bis November — solange der Boden frostfrei ist. Ideal sind Frühjahr und Frühherbst, weil dann Feuchtigkeit und Temperatur den Anwuchs unterstützen.",
+      },
+      {
+        question: "Wie lange dauert das Verlegen?",
+        answer:
+          "Eine typische Vorgartenfläche (bis 80 m²) legen wir an einem Tag — von altem Rasen bis fertig verlegt. Größere Flächen dauern entsprechend länger, meist bleibt es aber bei ein bis zwei Arbeitstagen.",
+      },
+    ],
+  },
+  {
     slug: "laubentsorgung-duesseldorf",
     serviceId: "herbst",
     metaTitle: "Laubentsorgung Düsseldorf | Gartenmeisterei Dölle – Herbstputz vom Profi",

@@ -13,6 +13,7 @@ const slugFor = (id: string) =>
     rasenpflege: "rasenpflege-duesseldorf",
     herbst: "laubentsorgung-duesseldorf",
     saison: "winterservice-duesseldorf",
+    rollrasen: "rollrasen-duesseldorf",
   }[id] ?? id);
 
 const srcFor = (image: string | undefined) => {

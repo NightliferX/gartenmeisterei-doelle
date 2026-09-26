@@ -13,6 +13,7 @@ const serviceSlugFor = (id: string) =>
     rasenpflege: "rasenpflege-duesseldorf",
     herbst: "laubentsorgung-duesseldorf",
     saison: "winterservice-duesseldorf",
+    rollrasen: "rollrasen-duesseldorf",
   }[id] ?? id);
 
 // Mega-Menü-Struktur: die drei Nav-Punkte mit Unterseiten bekommen
@@ -110,12 +111,12 @@ const HeaderV8 = () => {
   return (
     <>
       <header
+        onMouseLeave={scheduleClose}
         className={`fixed inset-x-0 z-50 px-3 transition-[top] duration-300 sm:px-6 ${
           scrolled ? "top-2" : "top-4"
         }`}
       >
         <div
-          onMouseLeave={scheduleClose}
           className="v8-material relative mx-auto flex h-16 max-w-[1240px] items-center rounded-full px-3 shadow-[0_6px_28px_-8px_rgba(0,0,0,0.2)] sm:px-5"
         >
           {/* Logo */}
@@ -203,82 +204,116 @@ const HeaderV8 = () => {
               <Menu className="h-5 w-5" strokeWidth={2} />
             </button>
           </div>
+        </div>
 
-          {/* Mega-Menü-Panel — Desktop only */}
-          <AnimatePresence>
-            {activeMenu ? (
-              <motion.div
-                key={activeMenu}
-                initial={{ opacity: 0, y: 4 }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.18, ease: EASE_OUT },
-                }}
-                exit={{
-                  opacity: 0,
-                  y: 4,
-                  transition: { duration: 0.14, ease: EASE_OUT },
-                }}
-                onMouseEnter={cancelClose}
-                onMouseLeave={scheduleClose}
-                className="absolute left-1/2 top-full z-50 mt-2 hidden w-[min(720px,calc(100vw-3rem))] -translate-x-1/2 lg:block"
-              >
-                <div className="v8-material rounded-[1.5rem] p-6 shadow-[0_20px_48px_-16px_rgba(0,0,0,0.25)]">
+        {/* Apple-Style-Mega-Menü — sibling der Header-Pill, mittig zum
+            Viewport auf max-w-[1240px]. Full-width Panel mit ruhigem Grid,
+            großem Whitespace und Preview-Spalte rechts. */}
+        <AnimatePresence>
+          {activeMenu ? (
+            <motion.div
+              key={activeMenu}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.22, ease: EASE_OUT },
+              }}
+              exit={{
+                opacity: 0,
+                y: 6,
+                transition: { duration: 0.16, ease: EASE_OUT },
+              }}
+              onMouseEnter={cancelClose}
+              onMouseLeave={scheduleClose}
+              className="pointer-events-none absolute inset-x-0 top-full z-40 mt-3 hidden lg:block"
+            >
+              <div className="pointer-events-auto mx-auto max-w-[1240px] px-3 sm:px-6">
+                <div className="v8-material rounded-[1.75rem] p-8 shadow-[0_24px_64px_-20px_rgba(0,0,0,0.28)]">
                   {megaMenus.map((menu) => {
                     if (menu.key !== activeMenu) return null;
                     return (
-                      <div key={menu.key}>
-                        <div className="mb-4 flex items-baseline justify-between">
-                          <p className="text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                      <div
+                        key={menu.key}
+                        className="grid gap-10 md:grid-cols-[1.6fr_1fr]"
+                      >
+                        {/* Item-Grid — linke, breite Spalte */}
+                        <div>
+                          <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                             {menu.label}
                           </p>
+                          <ul
+                            className={`mt-5 grid gap-1 ${
+                              menu.twoColumns
+                                ? "sm:grid-cols-2 sm:gap-x-6"
+                                : "sm:grid-cols-2 sm:gap-x-8"
+                            }`}
+                          >
+                            {menu.items.map((item) => (
+                              <li key={item.href}>
+                                <a
+                                  href={withBase(item.href)}
+                                  className="group -mx-3 flex items-start justify-between gap-4 rounded-xl px-3 py-2.5 transition-colors hover:bg-primary/[0.06]"
+                                >
+                                  <div className="min-w-0">
+                                    <p className="text-[1rem] font-semibold leading-tight text-foreground group-hover:text-primary">
+                                      {item.label}
+                                    </p>
+                                    {item.description ? (
+                                      <p className="mt-1 truncate text-[0.85rem] leading-snug text-muted-foreground">
+                                        {item.description}
+                                      </p>
+                                    ) : null}
+                                  </div>
+                                  <ChevronRight
+                                    className="mt-1 h-4 w-4 shrink-0 text-muted-foreground/60 transition-all group-hover:translate-x-0.5 group-hover:text-primary"
+                                    strokeWidth={2.25}
+                                  />
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        {/* Preview / Übersicht — rechte, schmale Spalte */}
+                        <div className="hidden flex-col justify-between rounded-2xl bg-primary/[0.06] p-6 md:flex">
+                          <div>
+                            <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-primary">
+                              Übersicht
+                            </p>
+                            <p className="mt-3 text-[1.05rem] font-semibold leading-tight tracking-[-0.005em] text-foreground">
+                              {menu.key === "leistungen" &&
+                                "Alle Leistungen im Überblick."}
+                              {menu.key === "gartenjahr" &&
+                                "Was in welcher Saison ansteht."}
+                              {menu.key === "einsatzgebiete" &&
+                                "Wo wir für Sie arbeiten."}
+                            </p>
+                            <p className="mt-2 text-[0.88rem] leading-relaxed text-muted-foreground">
+                              {menu.key === "leistungen" &&
+                                "Vom regelmäßigen Rasenschnitt bis zum kompletten Pflegevertrag — alles aus einer Hand."}
+                              {menu.key === "gartenjahr" &&
+                                "Der richtige Schnitt zur richtigen Zeit. Wir kennen den Takt."}
+                              {menu.key === "einsatzgebiete" &&
+                                "Düsseldorf und das nahe Umland — kurze Wege, feste Pflegetermine."}
+                            </p>
+                          </div>
                           <a
                             href={withBase(menu.href)}
-                            className="text-[0.85rem] font-semibold text-primary hover:underline"
+                            className="mt-6 inline-flex items-center gap-1.5 text-[0.9rem] font-semibold text-primary hover:underline"
                           >
-                            Übersicht →
+                            Zur Übersicht
+                            <ChevronRight className="h-4 w-4" strokeWidth={2.25} />
                           </a>
                         </div>
-                        <ul
-                          className={
-                            menu.twoColumns
-                              ? "grid gap-1 sm:grid-cols-2"
-                              : "grid gap-1"
-                          }
-                        >
-                          {menu.items.map((item) => (
-                            <li key={item.href}>
-                              <a
-                                href={withBase(item.href)}
-                                className="group flex items-start justify-between gap-3 rounded-xl p-3 transition-colors hover:bg-primary/[0.06]"
-                              >
-                                <div className="min-w-0">
-                                  <p className="text-[0.98rem] font-semibold text-foreground group-hover:text-primary">
-                                    {item.label}
-                                  </p>
-                                  {item.description ? (
-                                    <p className="mt-0.5 truncate text-[0.82rem] text-muted-foreground">
-                                      {item.description}
-                                    </p>
-                                  ) : null}
-                                </div>
-                                <ChevronRight
-                                  className="mt-1 h-4 w-4 shrink-0 text-muted-foreground transition-transform group-hover:translate-x-0.5 group-hover:text-primary"
-                                  strokeWidth={2.25}
-                                />
-                              </a>
-                            </li>
-                          ))}
-                        </ul>
                       </div>
                     );
                   })}
                 </div>
-              </motion.div>
-            ) : null}
-          </AnimatePresence>
-        </div>
+              </div>
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
       </header>
 
       <AnimatePresence>

@@ -140,6 +140,14 @@ export const services = [
     highlights: ["Frühjahrsschnitt & Startpflege", "Garten winterfest machen", "Schutz für empfindliche Pflanzen"],
     image: "/services/fruehjahr/fruehjahrsschnitt-rosen-felco-handschere-narzissen-duesseldorf.png",
   },
+  {
+    id: "rollrasen",
+    title: "Rollrasen legen",
+    description:
+      "Sofort fertiger, dichter Rasen statt monatelang auf Nachsaat warten: Wir bereiten den Boden vor, verlegen den Rollrasen fugenlos und begleiten die Anwuchspflege der ersten Wochen.",
+    highlights: ["Bodenvorbereitung & Planum", "Rollrasen fugenlos verlegen", "Anwuchspflege in den ersten Wochen"],
+    image: "/services/rasenpflege/rasenpflege-sabo-rasenmaeher-reihenhaus-vorgarten-duesseldorf.jpg",
+  },
 ];
 
 // Beispielprojekte für die Pitch-Phase — nach den ersten echten Projekten
