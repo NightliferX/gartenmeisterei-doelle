@@ -118,7 +118,9 @@ const HeaderV8 = () => {
         }`}
       >
         <div
-          className="v8-material relative mx-auto flex h-16 max-w-[1240px] items-center rounded-full px-3 shadow-[0_6px_28px_-8px_rgba(0,0,0,0.2)] sm:px-5"
+          className={`v8-material relative mx-auto flex h-16 max-w-[1240px] items-center rounded-full px-3 shadow-[0_6px_28px_-8px_rgba(0,0,0,0.2)] transition-colors duration-200 sm:px-5 ${
+            activeMenu ? "v8-material-solid" : ""
+          }`}
         >
           {/* Logo */}
           <a href={withBase("/")} className="flex items-center pl-1">

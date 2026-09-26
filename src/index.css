@@ -618,6 +618,13 @@
   -webkit-backdrop-filter: saturate(180%) blur(20px);
   backdrop-filter: saturate(180%) blur(20px);
 }
+/* Solide, opake Variante — wenn ein Mega-Menü offen ist. Passt zu
+   Barmer-Look mit dunklem Backdrop dahinter. */
+.theme-v8 .v8-material-solid {
+  background: #ffffff;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
 @media (prefers-reduced-transparency: reduce) {
   .theme-v8 .v8-material { background: hsl(var(--background)); backdrop-filter: none; -webkit-backdrop-filter: none; }
 }
