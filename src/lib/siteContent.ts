@@ -408,9 +408,9 @@ export const gartenjahr = [
     slug: "herbst",
     months: [8, 9, 10],
     work: "Laub entsorgen, letzter Schnitt, Garten winterfest machen",
-    heroImage: "/references/nachher-obstbaum.webp",
+    heroImage: "/services/herbst/laubentsorgung-stihl-laubblaeser-herbstlaub-nahaufnahme-duesseldorf.webp",
     heroAlt:
-      "Gärtner beim Obstbaumschnitt in einem herbstlichen Garten mit Fallobst",
+      "Laubbläser wirbelt buntes Herbstlaub vom Gehweg — Laubentsorgung im Herbst",
     intro:
       "Im Herbst geht es um zwei Dinge: den letzten Schnitt vor dem Winter und das saubere Beseitigen von Laub. Wir übernehmen Laubberäumung, Herbst­schnitt und alles, was den Garten winterfest macht.",
     tasks: [
