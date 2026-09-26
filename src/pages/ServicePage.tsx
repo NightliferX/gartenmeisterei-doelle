@@ -51,6 +51,7 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
   const heroImage = page.heroImage ?? service?.image;
   const heroAlt = page.heroAlt ?? service?.title ?? page.h1;
   const [headline, subline] = page.h1.split(" — ");
+  const [aktiveReferenz, setAktiveReferenz] = useState(0);
   const referenzen = (projectMatchFor[page.serviceId] ?? [])
     .map((match) =>
       projects.find((p) => p.title.includes(match) && p.beforeImage && p.afterImage),
@@ -299,7 +300,7 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
             </div>
           </section>
 
-          {/* Vorher / Nachher — eine oder mehrere Referenzen untereinander */}
+          {/* Vorher / Nachher — bei mehreren Beispielen mit Umschalter oben */}
           {referenzen.length ? (
             <section className="bg-background py-20 md:py-28">
               <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
@@ -308,30 +309,52 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                     Aus der Praxis
                   </p>
                   <h2 className="mt-3 text-[clamp(2rem,4.2vw,3rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
-                    {referenzen.length > 1 ? "Zwei Beispiele." : "Vorher. Nachher."}
+                    Vorher. Nachher.
                   </h2>
                 </div>
 
-                <div className="mt-10 flex flex-col gap-16 md:mt-14 md:gap-20">
-                  {referenzen.map((referenz) => (
+                {referenzen.length > 1 ? (
+                  <div className="mt-8 flex justify-center">
                     <div
-                      key={referenz.title}
-                      className="grid gap-8 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:items-center lg:gap-12"
+                      role="tablist"
+                      aria-label="Beispiel wählen"
+                      className="inline-flex rounded-full bg-secondary p-1"
                     >
-                      <div>
-                        <BeforeAfterSlider
-                          className="border-0 shadow-[0_18px_48px_-24px_rgba(0,0,0,0.45)]"
-                          title={referenz.title}
-                          beforeImage={
-                            referenz.beforeImage ? withBase(referenz.beforeImage) : undefined
-                          }
-                          afterImage={
-                            referenz.afterImage ? withBase(referenz.afterImage) : undefined
-                          }
-                          beforeAlt={referenz.beforeAlt}
-                          afterAlt={referenz.afterAlt}
-                        />
-                      </div>
+                      {referenzen.map((referenz, index) => (
+                        <button
+                          key={referenz.title}
+                          role="tab"
+                          type="button"
+                          aria-selected={index === aktiveReferenz}
+                          onClick={() => setAktiveReferenz(index)}
+                          className={`v8-press rounded-full px-4 py-2 text-[0.85rem] font-semibold transition-colors sm:px-5 sm:text-[0.9rem] ${
+                            index === aktiveReferenz
+                              ? "bg-white text-foreground shadow-sm"
+                              : "text-muted-foreground hover:text-foreground"
+                          }`}
+                        >
+                          {referenz.location}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                ) : null}
+
+                {(() => {
+                  const referenz = referenzen[Math.min(aktiveReferenz, referenzen.length - 1)];
+                  return (
+                    <div className="mt-10 grid gap-8 md:mt-12 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:items-center lg:gap-12">
+                      <BeforeAfterSlider
+                        key={referenz.title}
+                        className="border-0 shadow-[0_18px_48px_-24px_rgba(0,0,0,0.45)]"
+                        title={referenz.title}
+                        beforeImage={
+                          referenz.beforeImage ? withBase(referenz.beforeImage) : undefined
+                        }
+                        afterImage={referenz.afterImage ? withBase(referenz.afterImage) : undefined}
+                        beforeAlt={referenz.beforeAlt}
+                        afterAlt={referenz.afterAlt}
+                      />
                       <div className="text-center lg:text-left">
                         <p className="text-[0.75rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
                           {referenz.location}
@@ -339,20 +362,16 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                         <h3 className="mt-2 text-[clamp(1.4rem,2.8vw,2.2rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
                           {referenz.title}
                         </h3>
-                        {/* Bei mehreren Beispielen nur der Ergebnissatz — sonst
-                            wird die Seite zur Textwand. */}
-                        {referenzen.length === 1 ? (
-                          <p className="mx-auto mt-4 max-w-[52ch] text-[1rem] leading-relaxed text-muted-foreground lg:mx-0 lg:text-[1.05rem]">
-                            {referenz.solution}
-                          </p>
-                        ) : null}
-                        <p className="mx-auto mt-3 max-w-[52ch] text-[1rem] leading-relaxed text-muted-foreground lg:mx-0 lg:text-[1.05rem]">
+                        <p className="mx-auto mt-4 max-w-[52ch] text-[1rem] leading-relaxed text-muted-foreground lg:mx-0 lg:text-[1.05rem]">
+                          {referenz.solution}
+                        </p>
+                        <p className="mx-auto mt-3 max-w-[52ch] text-[1rem] font-medium leading-relaxed text-foreground lg:mx-0">
                           {referenz.result}.
                         </p>
                       </div>
                     </div>
-                  ))}
-                </div>
+                  );
+                })()}
               </div>
             </section>
           ) : null}
