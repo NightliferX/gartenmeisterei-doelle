@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -33,6 +33,14 @@ const contactEndpoint =
 
 const emptyForm = { name: "", email: "", phone: "", service: "", message: "", website: "" };
 
+// Andere Bereiche der Seite (z. B. die Hero-Buttons der Orts- und
+// Leistungsseiten) oeffnen das Anfrageformular ueber dieses Ereignis,
+// statt zum Kontaktabschnitt zu springen.
+export const BERATUNG_OEFFNEN = "beratung:oeffnen";
+export const oeffneBeratung = () => {
+  window.dispatchEvent(new CustomEvent(BERATUNG_OEFFNEN));
+};
+
 const useIsMobile = () => {
   const [m, setM] = useState<boolean>(
     typeof window !== "undefined" ? window.matchMedia("(max-width: 768px)").matches : false,
@@ -50,6 +58,12 @@ const BeratungCtaV8 = () => {
   const [service, setService] = useState("");
   const [formState, setFormState] = useState(emptyForm);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    const oeffnen = () => setOpen(true);
+    window.addEventListener(BERATUNG_OEFFNEN, oeffnen);
+    return () => window.removeEventListener(BERATUNG_OEFFNEN, oeffnen);
+  }, []);
   const isMobile = useIsMobile();
 
   const reset = () => {

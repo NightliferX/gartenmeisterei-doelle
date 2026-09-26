@@ -1,8 +1,8 @@
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin, Phone } from "lucide-react";
 import HeaderV8 from "@/components/v8/HeaderV8";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
-import BeratungCtaV8 from "@/components/v8/BeratungCtaV8";
+import BeratungCtaV8, { oeffneBeratung } from "@/components/v8/BeratungCtaV8";
 import { services, siteConfig } from "@/lib/siteContent";
 import { areaPages, servicePages, type AreaPage as AreaPageData } from "@/lib/subpages";
 import { withBase } from "@/lib/utils";
@@ -78,18 +78,21 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
                 </p>
               ) : null}
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href={withBase("/#kontakt")}
-                  className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-[0.98rem] font-semibold text-primary-foreground shadow-sm transition-transform hover:scale-[1.02]"
+                <button
+                  type="button"
+                  onClick={oeffneBeratung}
+                  className="v8-press inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-[0.98rem] font-semibold text-primary-foreground shadow-sm transition-transform hover:scale-[1.02]"
                 >
                   Kostenlose Beratung anfragen
                   <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-                </a>
+                </button>
                 <a
                   href={siteConfig.phoneHref}
-                  className="inline-flex h-12 items-center justify-center rounded-full border border-white/40 bg-white/10 px-6 text-[0.98rem] font-semibold text-white backdrop-blur transition-colors hover:bg-white/15"
+                  aria-label={`Anrufen: ${siteConfig.phoneDisplay}`}
+                  className="v8-press inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/40 bg-white/10 px-6 text-[0.98rem] font-semibold text-white backdrop-blur transition-colors hover:bg-white/15"
                 >
-                  {siteConfig.phoneDisplay}
+                  <Phone className="h-4 w-4" strokeWidth={2.25} />
+                  Anrufen
                 </a>
               </div>
             </div>
