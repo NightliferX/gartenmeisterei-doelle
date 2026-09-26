@@ -172,7 +172,7 @@ export const projects: ProjectReference[] = [
     result: "Dichte, gleichmäßige Hecken, die den Garten wieder rahmen",
     beforeImage: "/references/vorher-hecke-handy.jpg",
     afterImage: "/references/nachher-hecke-handy.jpg",
-    beforeAlt: "Überwachsene Kirschlorbeer-Hecke, die über die Vorgartenmauer auf den Gehweg ragt",
+    beforeAlt: "Stark überwachsene Kirschlorbeer-Hecke, die bis an die Fenster reicht und auf den Gehweg ragt",
     afterAlt: "Dieselbe Vorgartenhecke nach dem Formschnitt: gerade Oberkante, bündig über der Mauer",
   },
   {
