@@ -414,9 +414,9 @@ export const gartenjahr = [
     slug: "winter",
     months: [11, 0, 1],
     work: "Obstbaum- und Gehölzschnitt, Planung fürs neue Gartenjahr",
-    heroImage: "/references/nachher-verwildert.jpg",
+    heroImage: "/services/winter/winterschnitt-hecke-gaertnermeister-doelle-duesseldorf.png",
     heroAlt:
-      "Gepflegter Garten im Winter mit klaren Beetkanten und geschnittenen Sträuchern",
+      "Winterschnitt an einer kahlen Hecke in Düsseldorf — Gärtnermeister Benedikt Dölle bei der Winterarbeit",
     intro:
       "Der Winter ist keine Pause — jetzt wird geschnitten, geplant und vorbereitet. Ohne Laub sieht man die Struktur der Bäume, das ist der beste Zeitpunkt für den Formschnitt. Und der Räum- und Streudienst gehört im Rheinland dazu.",
     tasks: [

@@ -31,7 +31,7 @@ const contactEndpoint =
   import.meta.env.VITE_CONTACT_FORM_ENDPOINT ||
   `https://formsubmit.co/ajax/${siteConfig.email}`;
 
-const emptyForm = { name: "", email: "", phone: "", service: "", message: "", website: "" };
+const emptyForm = { name: "", email: "", phone: "", plz: "", service: "", message: "", website: "" };
 
 const useIsMobile = () => {
   const [m, setM] = useState<boolean>(
@@ -69,6 +69,7 @@ const BeratungCtaV8 = () => {
       payload.append("name", formState.name);
       payload.append("email", formState.email);
       payload.append("phone", formState.phone);
+      payload.append("plz", formState.plz);
       payload.append("service", formState.service || "Nicht angegeben");
       payload.append("message", formState.message);
       payload.append("_subject", `Neue Anfrage über die Website von ${siteConfig.brandName}`);
@@ -83,7 +84,7 @@ const BeratungCtaV8 = () => {
       if (!res.ok) throw new Error();
       toast({
         title: "Anfrage gesendet",
-        description: "Vielen Dank. Wir melden uns in der Regel innerhalb von 24 Stunden.",
+        description: "Vielen Dank. Benedikt Dölle meldet sich in kürzester Zeit persönlich bei Ihnen.",
       });
       reset();
       setOpen(false);
@@ -133,7 +134,7 @@ const BeratungCtaV8 = () => {
           />
         </label>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-[1fr_120px]">
         <label className="block">
           <span className="mb-1.5 flex items-baseline justify-between text-[0.85rem] font-medium text-foreground">
             Telefon <span className="text-[0.75rem] font-normal text-muted-foreground">optional</span>
@@ -149,6 +150,27 @@ const BeratungCtaV8 = () => {
             onChange={(e) => setFormState((p) => ({ ...p, phone: e.target.value }))}
           />
         </label>
+        <label className="block">
+          <span className="mb-1.5 flex items-baseline justify-between text-[0.85rem] font-medium text-foreground">
+            PLZ <span className="text-[0.75rem] font-normal text-muted-foreground">optional</span>
+          </span>
+          <Input
+            name="plz"
+            type="text"
+            inputMode="numeric"
+            placeholder="40470"
+            autoComplete="postal-code"
+            maxLength={5}
+            pattern="[0-9]{5}"
+            className="h-12 text-base"
+            value={formState.plz}
+            onChange={(e) =>
+              setFormState((p) => ({ ...p, plz: e.target.value.replace(/[^0-9]/g, "").slice(0, 5) }))
+            }
+          />
+        </label>
+      </div>
+      <div className="grid gap-4">
         <label className="block">
           <span className="mb-1.5 flex items-baseline justify-between text-[0.85rem] font-medium text-foreground">
             Leistung <span className="text-[0.75rem] font-normal text-muted-foreground">optional</span>
@@ -200,6 +222,14 @@ const BeratungCtaV8 = () => {
       <Button type="submit" size="lg" className="h-12 w-full rounded-full text-[1rem] font-semibold" disabled={sending}>
         {sending ? "Wird gesendet…" : "Anfrage senden"}
       </Button>
+      <p className="text-[0.78rem] leading-relaxed text-muted-foreground">
+        Mit dem Absenden akzeptieren Sie unsere{" "}
+        <a href="/datenschutz" className="underline decoration-muted-foreground/40 underline-offset-2 hover:text-foreground">
+          Datenschutzerklärung
+        </a>
+        . Ihre Angaben werden ausschließlich zur Beantwortung Ihrer Anfrage
+        genutzt und nicht an Dritte weitergegeben.
+      </p>
     </form>
   );
 
@@ -217,8 +247,8 @@ const BeratungCtaV8 = () => {
               </h2>
               <p className="mt-4 max-w-[46ch] text-[1rem] leading-relaxed text-primary-foreground/85">
                 Wir schauen uns Ihren Garten vor Ort an, hören zu und schlagen
-                einen passenden Pflegeplan vor. Unverbindlich —{" "}
-                {siteConfig.responsePromise.toLowerCase()}.
+                einen passenden Pflegeplan vor. Unverbindlich — Benedikt Dölle
+                meldet sich in kürzester Zeit persönlich bei Ihnen.
               </p>
 
               <ul className="mt-6 grid gap-2 text-[0.95rem] text-primary-foreground/90 sm:grid-cols-2">
@@ -249,10 +279,10 @@ const BeratungCtaV8 = () => {
               <Button
                 size="lg"
                 onClick={() => setOpen(true)}
-                className="h-12 w-full gap-2 rounded-full bg-white text-[1rem] font-semibold text-primary shadow-sm hover:bg-white/95"
+                className="h-12 w-full gap-2 rounded-full bg-[#C6FF3E] text-[1rem] font-semibold text-[#0a1f0d] shadow-[0_6px_22px_rgba(198,255,62,0.35)] transition-all hover:bg-[#B9F42E] hover:shadow-[0_8px_28px_rgba(198,255,62,0.45)]"
               >
                 Beratung anfragen
-                <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
+                <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
               </Button>
               <div className="grid gap-2 sm:grid-cols-2">
                 <a
@@ -273,8 +303,9 @@ const BeratungCtaV8 = () => {
                 </a>
               </div>
               <p className="mt-1 text-[0.8rem] leading-relaxed text-primary-foreground/75">
-                Am schnellsten per WhatsApp oder Telefon. Alternativ das Formular —
-                wir melden uns innerhalb von 24 Stunden.
+                Am schnellsten per WhatsApp oder Telefon. Alternativ das
+                Formular — Benedikt Dölle meldet sich in kürzester Zeit
+                persönlich bei Ihnen.
               </p>
             </div>
           </div>
@@ -287,7 +318,7 @@ const BeratungCtaV8 = () => {
             <DrawerHeader className="text-left">
               <DrawerTitle>Kostenlose Beratung anfragen</DrawerTitle>
               <DrawerDescription>
-                Wir melden uns in der Regel innerhalb von 24 Stunden.
+                Benedikt Dölle meldet sich in kürzester Zeit persönlich bei Ihnen.
               </DrawerDescription>
             </DrawerHeader>
             <div className="overflow-y-auto px-4 pb-[calc(env(safe-area-inset-bottom,0px)+1.25rem)]">
@@ -301,7 +332,7 @@ const BeratungCtaV8 = () => {
             <DialogHeader>
               <DialogTitle>Kostenlose Beratung anfragen</DialogTitle>
               <DialogDescription>
-                Wir melden uns in der Regel innerhalb von 24 Stunden.
+                Benedikt Dölle meldet sich in kürzester Zeit persönlich bei Ihnen.
               </DialogDescription>
             </DialogHeader>
             <div className="mt-2">{form}</div>

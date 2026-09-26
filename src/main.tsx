@@ -1,5 +1,16 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.tsx";
+
+// Selbst-gehostete Fonts (DSGVO-konform, kein Google-CDN mehr)
+// Inter für Fließtext, Inter Tight für Display-Überschriften.
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/inter-tight/600.css";
+import "@fontsource/inter-tight/700.css";
+import "@fontsource/inter-tight/800.css";
+
 import "./index.css";
 
 // Design-Varianten werden per Build-Flag aktiviert:

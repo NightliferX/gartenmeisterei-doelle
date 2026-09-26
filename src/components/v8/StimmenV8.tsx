@@ -1,8 +1,9 @@
-import { Quote, Star } from "lucide-react";
+import { useRef } from "react";
+import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
-// Kundenstimmen-Section (V8): fünf realistische Zitate aus dem
-// Einsatzgebiet. Für den Launch als Beispiele — später durch echte
-// Google/Facebook-Bewertungen ersetzen (Namen + Ort mit Einwilligung).
+// Kundenstimmen-Section (V8): fünf realistische Zitate als
+// horizontaler Snap-Slider — Mobil scrollt per Wisch, Desktop
+// zusätzlich mit runden Pfeil-Buttons unten rechts.
 const testimonials = [
   {
     quote:
@@ -41,102 +42,87 @@ const testimonials = [
   },
 ];
 
-const StimmenV8 = () => (
-  <section
-    aria-labelledby="stimmen-headline"
-    className="bg-background py-20 md:py-28"
-  >
-    <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
-      <div className="mx-auto max-w-[42rem] text-center">
-        <p className="text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-primary">
-          Stimmen aus dem Garten
-        </p>
-        <h2
-          id="stimmen-headline"
-          className="mt-3 text-[clamp(2rem,4.6vw,3.4rem)] font-semibold leading-[1.02] tracking-[-0.025em] text-foreground"
+const StimmenV8 = () => {
+  const scrollerRef = useRef<HTMLUListElement>(null);
+
+  const scrollBy = (dir: 1 | -1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const first = el.querySelector<HTMLElement>("li");
+    const step = first ? first.offsetWidth + 24 : el.clientWidth * 0.8;
+    el.scrollBy({ left: dir * step, behavior: "smooth" });
+  };
+
+  return (
+    <section
+      aria-labelledby="stimmen-headline"
+      className="bg-background py-20 md:py-28"
+    >
+      <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
+        <div className="mx-auto max-w-[42rem] text-center">
+          <p className="text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-primary">
+            Stimmen aus dem Garten
+          </p>
+          <h2
+            id="stimmen-headline"
+            className="mt-3 text-[clamp(2rem,4.6vw,3.4rem)] font-semibold leading-[1.02] tracking-[-0.025em] text-foreground"
+          >
+            Das sagen unsere Kundinnen und Kunden.
+          </h2>
+        </div>
+
+        <ul
+          ref={scrollerRef}
+          className="-mx-4 mt-12 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-4 md:mt-16 md:gap-6 md:scroll-px-6 md:pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          aria-label="Kundenstimmen (horizontal scrollen)"
         >
-          Das sagen unsere Kundinnen und Kunden.
-        </h2>
-        <div
-          className="mt-5 inline-flex items-center gap-2 text-[0.9rem] text-muted-foreground"
-          aria-label="Bewertungen im Schnitt: 5 von 5 Sternen"
-        >
-          <span className="flex items-center gap-0.5" aria-hidden>
-            {[0, 1, 2, 3, 4].map((i) => (
-              <Star
-                key={i}
-                className="h-4 w-4 fill-primary text-primary"
-                strokeWidth={0}
+          {testimonials.map((t, i) => (
+            <li
+              key={t.name + i}
+              className="relative flex w-[85%] shrink-0 snap-start flex-col rounded-[1.75rem] bg-card p-7 shadow-[0_2px_18px_rgba(0,0,0,0.05)] md:w-[calc((100%-3rem)/3)] md:p-8"
+            >
+              <Quote
+                className="h-6 w-6 text-primary/40"
+                strokeWidth={2}
+                aria-hidden
               />
-            ))}
-          </span>
-          <span>
-            <span className="font-semibold text-foreground">5,0</span> — auf
-            Basis echter Kundengespräche
-          </span>
+              <blockquote className="mt-4 flex-1 text-[1rem] leading-relaxed text-foreground md:text-[1.02rem]">
+                „{t.quote}"
+              </blockquote>
+              <div className="mt-6 border-t border-border/60 pt-4">
+                <p className="text-[0.95rem] font-semibold text-foreground">
+                  {t.name}
+                </p>
+                <p className="mt-0.5 text-[0.85rem] text-muted-foreground">
+                  {t.location} · {t.service}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ul>
+
+        {/* Slider-Pfeile (nur Desktop) */}
+        <div className="mt-6 hidden justify-end gap-3 md:flex">
+          <button
+            type="button"
+            onClick={() => scrollBy(-1)}
+            aria-label="Vorherige Stimme"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-sm transition-all hover:border-primary/40 hover:text-primary hover:shadow-md"
+          >
+            <ChevronLeft className="h-5 w-5" strokeWidth={2.25} />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollBy(1)}
+            aria-label="Nächste Stimme"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-full border border-border bg-card text-foreground shadow-sm transition-all hover:border-primary/40 hover:text-primary hover:shadow-md"
+          >
+            <ChevronRight className="h-5 w-5" strokeWidth={2.25} />
+          </button>
         </div>
       </div>
-
-      {/* Mobil: horizontaler Snap-Slider — eine Reihe */}
-      <ul
-        className="-mx-4 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-4 md:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-        aria-label="Kundenstimmen (horizontal scrollen)"
-      >
-        {testimonials.map((t, i) => (
-          <li
-            key={t.name + i}
-            className="relative flex w-[85%] shrink-0 snap-start flex-col rounded-[1.75rem] bg-card p-7 shadow-[0_2px_18px_rgba(0,0,0,0.05)]"
-          >
-            <Quote
-              className="h-6 w-6 text-primary/40"
-              strokeWidth={2}
-              aria-hidden
-            />
-            <blockquote className="mt-4 flex-1 text-[1rem] leading-relaxed text-foreground">
-              „{t.quote}"
-            </blockquote>
-            <div className="mt-6 border-t border-border/60 pt-4">
-              <p className="text-[0.95rem] font-semibold text-foreground">
-                {t.name}
-              </p>
-              <p className="mt-0.5 text-[0.85rem] text-muted-foreground">
-                {t.location} · {t.service}
-              </p>
-            </div>
-          </li>
-        ))}
-      </ul>
-
-      {/* Desktop: klassisches Grid */}
-      <ul className="mt-16 hidden gap-6 md:grid md:grid-cols-2 lg:grid-cols-3">
-        {testimonials.map((t, i) => (
-          <li
-            key={t.name + i}
-            className={`relative flex flex-col rounded-[1.75rem] bg-card p-7 shadow-[0_2px_18px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_8px_32px_rgba(0,0,0,0.08)] md:p-8 ${
-              i === 4 ? "lg:col-start-2" : ""
-            }`}
-          >
-            <Quote
-              className="h-6 w-6 text-primary/40"
-              strokeWidth={2}
-              aria-hidden
-            />
-            <blockquote className="mt-4 flex-1 text-[1rem] leading-relaxed text-foreground md:text-[1.02rem]">
-              „{t.quote}"
-            </blockquote>
-            <div className="mt-6 border-t border-border/60 pt-4">
-              <p className="text-[0.95rem] font-semibold text-foreground">
-                {t.name}
-              </p>
-              <p className="mt-0.5 text-[0.85rem] text-muted-foreground">
-                {t.location} · {t.service}
-              </p>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default StimmenV8;

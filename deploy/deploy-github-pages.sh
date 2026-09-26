@@ -9,8 +9,8 @@ cd "$(dirname "$0")/.."
 REPO_URL="$(git remote get-url origin)"
 BASE="${VITE_BASE:-/gartenmeisterei-doelle/}"
 
-echo "==> Build mit Basispfad: $BASE"
-VITE_BASE="$BASE" npm run build
+echo "==> Build (Root = V8) mit Basispfad: $BASE"
+VITE_BASE="$BASE" VITE_THEME=v8 npm run build
 
 # ACHTUNG: gh-pages wird komplett überschrieben. SKIP_V2 … SKIP_V6=1
 # entfernt die jeweilige Variante also von der Live-Seite — nur nutzen,
