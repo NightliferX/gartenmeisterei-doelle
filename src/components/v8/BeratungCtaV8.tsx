@@ -114,10 +114,10 @@ const BeratungCtaV8 = () => {
   };
 
   const form = (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-      <div className="grid gap-4 sm:grid-cols-2">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <div className="grid gap-5 sm:grid-cols-2">
         <label className="block">
-          <span className="mb-1.5 block text-[0.85rem] font-medium text-foreground">
+          <span className="mb-2 block text-[0.95rem] font-medium text-foreground">
             Name<span className="text-primary"> *</span>
           </span>
           <Input
@@ -125,13 +125,13 @@ const BeratungCtaV8 = () => {
             placeholder="Ihr Name"
             required
             autoComplete="name"
-            className="h-12 text-base"
+            className="h-14 text-[1.05rem]"
             value={formState.name}
             onChange={(e) => setFormState((p) => ({ ...p, name: e.target.value }))}
           />
         </label>
         <label className="block">
-          <span className="mb-1.5 block text-[0.85rem] font-medium text-foreground">
+          <span className="mb-2 block text-[0.95rem] font-medium text-foreground">
             E-Mail<span className="text-primary"> *</span>
           </span>
           <Input
@@ -141,16 +141,16 @@ const BeratungCtaV8 = () => {
             placeholder="ihre@email.de"
             required
             autoComplete="email"
-            className="h-12 text-base"
+            className="h-14 text-[1.05rem]"
             value={formState.email}
             onChange={(e) => setFormState((p) => ({ ...p, email: e.target.value }))}
           />
         </label>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-2">
         <label className="block">
-          <span className="mb-1.5 flex items-baseline justify-between text-[0.85rem] font-medium text-foreground">
-            Telefon <span className="text-[0.75rem] font-normal text-muted-foreground">optional</span>
+          <span className="mb-2 flex items-baseline justify-between text-[0.95rem] font-medium text-foreground">
+            Telefon <span className="text-[0.78rem] font-normal text-muted-foreground">optional</span>
           </span>
           <Input
             name="phone"
@@ -158,14 +158,14 @@ const BeratungCtaV8 = () => {
             inputMode="tel"
             placeholder="0211 …"
             autoComplete="tel"
-            className="h-12 text-base"
+            className="h-14 text-[1.05rem]"
             value={formState.phone}
             onChange={(e) => setFormState((p) => ({ ...p, phone: e.target.value }))}
           />
         </label>
         <label className="block">
-          <span className="mb-1.5 flex items-baseline justify-between text-[0.85rem] font-medium text-foreground">
-            Leistung <span className="text-[0.75rem] font-normal text-muted-foreground">optional</span>
+          <span className="mb-2 flex items-baseline justify-between text-[0.95rem] font-medium text-foreground">
+            Leistung <span className="text-[0.78rem] font-normal text-muted-foreground">optional</span>
           </span>
           <Select
             value={service}
@@ -174,7 +174,7 @@ const BeratungCtaV8 = () => {
               setFormState((p) => ({ ...p, service: v }));
             }}
           >
-            <SelectTrigger className="h-12 text-base">
+            <SelectTrigger className="h-14 text-[1.05rem]">
               <SelectValue placeholder="Bitte wählen" />
             </SelectTrigger>
             <SelectContent>
@@ -189,26 +189,26 @@ const BeratungCtaV8 = () => {
         </label>
       </div>
       <label className="block">
-        <span className="mb-1.5 block text-[0.85rem] font-medium text-foreground">
+        <span className="mb-2 block text-[0.95rem] font-medium text-foreground">
           Nachricht<span className="text-primary"> *</span>
         </span>
         <Textarea
           name="message"
           placeholder="Beschreiben Sie kurz Ihren Garten und Ihr Anliegen."
-          rows={4}
+          rows={5}
           required
-          className="min-h-[112px] resize-none overflow-hidden text-base transition-[height] duration-150"
+          className="min-h-[144px] resize-none overflow-hidden text-[1.05rem] leading-relaxed transition-[height] duration-150"
           value={formState.message}
           onChange={(e) => {
             const el = e.target as HTMLTextAreaElement;
             el.style.height = "auto";
-            el.style.height = `${Math.min(el.scrollHeight, 360)}px`;
+            el.style.height = `${Math.min(el.scrollHeight, 400)}px`;
             setFormState((p) => ({ ...p, message: el.value }));
           }}
           onFocus={(e) => {
             const el = e.target as HTMLTextAreaElement;
             el.style.height = "auto";
-            el.style.height = `${Math.min(Math.max(el.scrollHeight, 200), 360)}px`;
+            el.style.height = `${Math.min(Math.max(el.scrollHeight, 220), 400)}px`;
           }}
         />
       </label>
