@@ -56,7 +56,7 @@ const StimmenV8 = () => {
   return (
     <section
       aria-labelledby="stimmen-headline"
-      className="bg-background py-20 md:py-28"
+      className="cv-auto bg-background py-20 md:py-28"
     >
       <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
         <div className="mx-auto max-w-[42rem] text-center">

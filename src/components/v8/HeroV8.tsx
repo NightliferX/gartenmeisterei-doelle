@@ -44,15 +44,24 @@ const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
         <motion.img
           src={withBase(imageSrc ?? DEFAULT_HERO_IMG)}
           alt={imageAlt ?? DEFAULT_HERO_ALT}
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-cover [transform:translateZ(0)]"
           loading="eager"
           decoding="async"
-          style={reduceMotion ? undefined : { y: imageY, scale: imageScale }}
+          fetchPriority="high"
+          style={
+            reduceMotion
+              ? undefined
+              : { y: imageY, scale: imageScale, willChange: "transform" }
+          }
         />
         <motion.div
           aria-hidden
-          className="absolute inset-0 bg-black"
-          style={reduceMotion ? { opacity: 0.45 } : { opacity: overlayOpacity }}
+          className="absolute inset-0 bg-black [transform:translateZ(0)]"
+          style={
+            reduceMotion
+              ? { opacity: 0.45 }
+              : { opacity: overlayOpacity, willChange: "opacity" }
+          }
         />
         <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-64 bg-gradient-to-t from-black/70 to-transparent" />
 

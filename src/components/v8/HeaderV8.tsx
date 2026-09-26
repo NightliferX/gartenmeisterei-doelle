@@ -148,9 +148,11 @@ const HeaderV8 = () => {
     <>
       <header
         onMouseLeave={scheduleClose}
-        className={`fixed inset-x-0 z-50 px-3 transition-[top] duration-300 sm:px-6 ${
-          scrolled ? "top-2" : "top-4"
-        }`}
+        style={{
+          willChange: "transform",
+          transform: scrolled ? "translateY(-0.5rem)" : "translateY(0)",
+        }}
+        className="fixed inset-x-0 top-4 z-50 px-3 transition-transform duration-300 sm:px-6"
       >
         <div
           className={`v8-material relative mx-auto flex h-16 max-w-[1240px] items-center rounded-full px-3 shadow-[0_6px_28px_-8px_rgba(0,0,0,0.2)] transition-colors duration-200 sm:px-5 ${

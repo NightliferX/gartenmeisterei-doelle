@@ -36,7 +36,7 @@ const AreaBlockV8 = () => {
   const areaMap = new Map(areaPages.map((a) => [a.name.replace("Düsseldorf-", ""), a.slug]));
 
   return (
-    <section id="einsatzgebiete" className="bg-secondary/40 py-20 md:py-28">
+    <section id="einsatzgebiete" className="cv-auto bg-secondary/40 py-20 md:py-28">
       <div className="mx-auto max-w-[1240px] px-4 text-center sm:px-6">
         <p className="text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-primary">
           Einsatzgebiete

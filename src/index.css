@@ -633,6 +633,15 @@
 .theme-v8 .v8-marquee { animation: v8-marquee 45s linear infinite; }
 .theme-v8 .v8-marquee[data-paused="true"] { animation-play-state: paused; }
 
+/* Perf: Sections mit .cv-auto werden erst gerendert, wenn sie nah am
+   Viewport sind — Browser überspringt Layout/Paint für Off-Screen-Bereiche.
+   Wichtig: NICHT auf Sections mit position:sticky-Kindern anwenden
+   (bricht dort die Klebe-Berechnung). */
+.theme-v8 .cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
+}
+
 /* V4-artige Load-Rise-Animation fuer V8-Hero */
 @keyframes v8-rise {
   from { opacity: 0; transform: translateY(24px); }

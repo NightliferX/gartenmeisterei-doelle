@@ -5,7 +5,7 @@ import { faqItems } from "@/lib/siteContent";
 // Alle Fragen in einer weissen Editorial-Card, ohne Themen-Filter — nur
 // Accordion. Apple-Support-Anmutung.
 const FaqV8 = () => (
-  <section id="faq" className="bg-secondary/40 py-20 md:py-28">
+  <section id="faq" className="cv-auto bg-secondary/40 py-20 md:py-28">
     <div className="mx-auto max-w-[1080px] px-4 sm:px-6">
       <div className="text-center">
         <p className="text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-primary">
