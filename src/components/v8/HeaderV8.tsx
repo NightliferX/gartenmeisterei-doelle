@@ -347,6 +347,30 @@ const HeaderV8 = () => {
         </AnimatePresence>
       </header>
 
+      {/* Barmer-Style-Backdrop: der Rest der Seite wird gedimmt, sobald
+          ein Mega-Menü offen ist. Klick darauf schließt das Menü. */}
+      <AnimatePresence>
+        {activeMenu ? (
+          <motion.button
+            key="v8-nav-backdrop"
+            type="button"
+            aria-label="Menü schließen"
+            onClick={() => setActiveMenu(null)}
+            onMouseEnter={scheduleClose}
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 1,
+              transition: { duration: 0.22, ease: EASE_OUT },
+            }}
+            exit={{
+              opacity: 0,
+              transition: { duration: 0.18, ease: EASE_OUT },
+            }}
+            className="fixed inset-0 z-30 hidden h-full w-full cursor-default bg-black/40 backdrop-blur-[3px] lg:block"
+          />
+        ) : null}
+      </AnimatePresence>
+
       <AnimatePresence>
         {mobileOpen ? (
           <SideMenu
