@@ -9,7 +9,7 @@ const tabs = [
   { key: "vorgarten", label: "Vorgarten", match: "Vorgartenhecke", slug: "heckenschnitt" },
   { key: "garten", label: "Garten", match: "Verwilderten Garten", slug: "gartenpflege" },
   { key: "obstbaum", label: "Obstbaum", match: "Obstbäume", slug: "baumschnitt" },
-  { key: "rasen", label: "Rasen", match: "Rollrasen", slug: "rasenpflege" },
+  { key: "rasen", label: "Rasen", match: "Vermoosten Rasen", slug: "rasenpflege" },
 ] as const;
 
 const WerkstattV8 = () => {

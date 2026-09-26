@@ -20,7 +20,7 @@ const projectMatchFor: Record<string, string[]> = {
   gartenpflege: ["Verwilderten Garten"],
   heckenschnitt: ["Hecke am Hausweg", "Vorgartenhecke"],
   baumschnitt: ["Obstbäume"],
-  rasenpflege: ["Rollrasen"],
+  rasenpflege: ["Vermoosten Rasen", "Rollrasen"],
   rollrasen: ["Rollrasen"],
   herbst: ["Garten winterfest"],
   saison: ["Garten winterfest"],
