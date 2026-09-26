@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
+import { AnimatePresence, LayoutGroup, motion } from "motion/react";
 import { ChevronDown, ChevronRight, Menu, MessageCircle, Phone, X } from "lucide-react";
 import { gartenjahr, monthRange, services, siteConfig } from "@/lib/siteContent";
 import { areaPages } from "@/lib/subpages";
@@ -65,6 +65,7 @@ const HeaderV8 = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [hoveredNav, setHoveredNav] = useState<string | null>(null);
   const closeTimer = useRef<number | null>(null);
   const openerRef = useRef<HTMLButtonElement>(null);
   const firstLinkRef = useRef<HTMLAnchorElement>(null);
@@ -128,55 +129,85 @@ const HeaderV8 = () => {
             />
           </a>
 
-          {/* Desktop-Nav mit Mega-Menü-Dropdowns */}
-          <nav
-            aria-label="Hauptnavigation"
-            className="mx-auto hidden items-center gap-1 lg:flex"
-          >
-            {megaMenus.map((menu) => {
-              const isActive = activeMenu === menu.key;
-              return (
-                <div
-                  key={menu.key}
-                  onMouseEnter={() => {
-                    cancelClose();
-                    setActiveMenu(menu.key);
-                  }}
-                >
+          {/* Desktop-Nav mit Mega-Menü-Dropdowns + fließender Hover-Pille */}
+          <LayoutGroup id="v8-nav-hover">
+            <nav
+              aria-label="Hauptnavigation"
+              onMouseLeave={() => setHoveredNav(null)}
+              className="mx-auto hidden items-center gap-1 lg:flex"
+            >
+              {megaMenus.map((menu) => {
+                const isHovered = hoveredNav === menu.key;
+                const isActive = activeMenu === menu.key;
+                return (
                   <button
+                    key={menu.key}
                     type="button"
                     aria-expanded={isActive}
                     aria-haspopup="true"
-                    onFocus={() => setActiveMenu(menu.key)}
-                    className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[1rem] font-medium transition-colors ${
-                      isActive
-                        ? "bg-primary text-primary-foreground"
-                        : "text-foreground hover:bg-black/[0.04]"
+                    onMouseEnter={() => {
+                      cancelClose();
+                      setActiveMenu(menu.key);
+                      setHoveredNav(menu.key);
+                    }}
+                    onFocus={() => {
+                      setActiveMenu(menu.key);
+                      setHoveredNav(menu.key);
+                    }}
+                    onBlur={() => setHoveredNav(null)}
+                    className={`relative inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[1rem] font-medium transition-colors duration-200 ${
+                      isHovered ? "text-primary-foreground" : "text-foreground"
                     }`}
                   >
-                    {menu.label}
+                    {isHovered ? (
+                      <motion.span
+                        layoutId="v8-nav-pill"
+                        transition={{ type: "spring", stiffness: 380, damping: 34, mass: 0.6 }}
+                        className="absolute inset-0 -z-10 rounded-full bg-primary"
+                      />
+                    ) : null}
+                    <span className="relative z-10">{menu.label}</span>
                     <ChevronDown
-                      className={`h-4 w-4 transition-transform ${
+                      className={`relative z-10 h-4 w-4 transition-transform ${
                         isActive ? "rotate-180" : ""
                       }`}
                       strokeWidth={2.25}
                     />
                   </button>
-                </div>
-              );
-            })}
-            {singleLinks.map((link) => (
-              <a
-                key={link.href}
-                href={withBase(link.href)}
-                onMouseEnter={() => setActiveMenu(null)}
-                onFocus={() => setActiveMenu(null)}
-                className="rounded-full px-4 py-2.5 text-[1rem] font-medium text-foreground transition-colors hover:bg-black/[0.04]"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
+                );
+              })}
+              {singleLinks.map((link) => {
+                const isHovered = hoveredNav === link.href;
+                return (
+                  <a
+                    key={link.href}
+                    href={withBase(link.href)}
+                    onMouseEnter={() => {
+                      setActiveMenu(null);
+                      setHoveredNav(link.href);
+                    }}
+                    onFocus={() => {
+                      setActiveMenu(null);
+                      setHoveredNav(link.href);
+                    }}
+                    onBlur={() => setHoveredNav(null)}
+                    className={`relative rounded-full px-4 py-2.5 text-[1rem] font-medium transition-colors duration-200 ${
+                      isHovered ? "text-primary-foreground" : "text-foreground"
+                    }`}
+                  >
+                    {isHovered ? (
+                      <motion.span
+                        layoutId="v8-nav-pill"
+                        transition={{ type: "spring", stiffness: 380, damping: 34, mass: 0.6 }}
+                        className="absolute inset-0 -z-10 rounded-full bg-primary"
+                      />
+                    ) : null}
+                    <span className="relative z-10">{link.label}</span>
+                  </a>
+                );
+              })}
+            </nav>
+          </LayoutGroup>
 
           {/* CTA rechts (Desktop) + Hamburger (Mobile) */}
           <div className="ml-auto flex items-center gap-2">
