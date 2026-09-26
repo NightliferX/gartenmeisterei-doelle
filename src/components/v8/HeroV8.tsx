@@ -10,6 +10,7 @@ import {
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { gartenjahr, siteConfig } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
+import { oeffneBeratung } from "@/components/v8/BeratungCtaV8";
 
 // V4-Cinematic-Hero mit dem Buchsbaum-Bild und V6-Grün.
 // Bild scrollt langsamer als der Vordergrund (Parallax), Text bleibt statisch.
@@ -75,13 +76,35 @@ const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
             Gartenpflege von Gärtnermeister {siteConfig.ownerName}, für Düsseldorf
             und Umgebung, durch alle Jahreszeiten.
           </p>
-          <div className="v8-rise-3 mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <a
-              href={withBase("/#kontakt")}
-              className="v8-press inline-flex h-12 items-center rounded-full bg-white px-8 text-[1rem] font-semibold text-foreground shadow-lg shadow-black/25 hover:bg-white/90"
+          <div className="v8-rise-3 mt-9 flex flex-col items-center justify-center gap-5 sm:flex-row">
+            {/* Primär-CTA: Meister-Foto + Beratungs-Aufforderung als eine
+                Einheit. Schafft direkt Nähe („da ist ein Mensch") und
+                führt zum Kontaktformular in einem Klick. */}
+            <button
+              type="button"
+              onClick={oeffneBeratung}
+              className="v8-press group inline-flex items-center gap-3 rounded-full bg-white py-1.5 pl-1.5 pr-5 text-left shadow-lg shadow-black/25 transition-colors hover:bg-white/95"
             >
-              Beratung anfragen
-            </a>
+              <img
+                src={withBase("/team/benedikt-doelle-gaertnermeister-nahaufnahme-portrait-duesseldorf.png")}
+                alt={`${siteConfig.ownerName}, Gärtnermeister`}
+                loading="eager"
+                decoding="async"
+                className="h-11 w-11 shrink-0 rounded-full object-cover ring-1 ring-black/10"
+              />
+              <span className="leading-tight">
+                <span className="block text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                  Ihr Ansprechpartner
+                </span>
+                <span className="mt-0.5 flex items-center gap-1.5 text-[0.98rem] font-semibold text-foreground">
+                  Beratung mit {siteConfig.ownerName.split(" ")[0]}
+                  <ArrowRight
+                    className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
+                    strokeWidth={2.25}
+                  />
+                </span>
+              </span>
+            </button>
             <a
               href={withBase("/#leistungen")}
               className="inline-flex items-center gap-1 text-[1rem] font-medium text-white/90 underline-offset-4 hover:underline"
@@ -90,29 +113,6 @@ const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
               <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
             </a>
           </div>
-
-          {/* Trust-Badge: Ihr Ansprechpartner mit Meister-Foto neben CTA.
-              Kompakt, unter den Buttons, zentriert. */}
-          <a
-            href={withBase("/#warum-wir")}
-            className="v8-rise-3 mx-auto mt-8 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 py-1.5 pl-1.5 pr-4 backdrop-blur-sm transition-colors hover:bg-white/15"
-          >
-            <img
-              src={withBase("/team/benedikt-doelle-gaertnermeister-nahaufnahme-portrait-duesseldorf.png")}
-              alt={`${siteConfig.ownerName}, Gärtnermeister`}
-              loading="eager"
-              decoding="async"
-              className="h-9 w-9 shrink-0 rounded-full object-cover ring-1 ring-white/30"
-            />
-            <span className="text-left leading-tight">
-              <span className="block text-[0.7rem] font-medium uppercase tracking-[0.14em] text-white/70">
-                Ihr Ansprechpartner
-              </span>
-              <span className="block text-[0.9rem] font-semibold text-white">
-                {siteConfig.ownerName}
-              </span>
-            </span>
-          </a>
         </div>
       </section>
 
