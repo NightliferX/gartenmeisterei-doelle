@@ -10,11 +10,13 @@ import {
 import { siteConfig } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
 
-// NEUE Warum-Section-Variante nach User-Skizze:
+// Warum-die-Gartenmeisterei-Section (V8):
 // - Zentrierte Header „Warum wir / Darum die Gartenmeisterei."
 // - Links: große Meister-Foto-Kachel mit Chip + Überschrift + Fließtext
-// - Rechts oben: „Der Meister"-Karte mit Name, Fließtext und 3 Fact-Rows
-// - Rechts unten: 2x2 Grid mit 4 Reason-Cards
+// - Rechts oben: „Der Meister"-Vorstellung mit Name, Fließtext und 3
+//   Fact-Rows (Gärtnermeister · Standort · Fokus)
+// - Rechts unten: 4 Reason-Cards (Kostenlose Erstberatung, Alles wird
+//   mitgenommen, Ein Ansprechpartner, Schnelle Antwort)
 
 const facts = [
   { icon: Award, label: "Gärtnermeister", value: "Fachrichtung Garten- und Landschaftsbau" },
@@ -45,9 +47,10 @@ const reasons = [
   },
 ];
 
-const WhyV8Neu = () => (
+const WarumV8 = () => (
   <section
-    aria-labelledby="darum-v8-neu"
+    id="warum-wir"
+    aria-labelledby="warum-wir-headline"
     className="bg-secondary/50 py-20 md:py-28"
   >
     <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
@@ -57,7 +60,7 @@ const WhyV8Neu = () => (
           Warum wir
         </p>
         <h2
-          id="darum-v8-neu"
+          id="warum-wir-headline"
           className="mt-3 text-[clamp(2rem,4.6vw,3.4rem)] font-semibold leading-[1.02] tracking-[-0.025em] text-foreground"
         >
           Darum die Gartenmeisterei.
@@ -163,4 +166,4 @@ const WhyV8Neu = () => (
   </section>
 );
 
-export default WhyV8Neu;
+export default WarumV8;
