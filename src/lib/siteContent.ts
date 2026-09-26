@@ -29,7 +29,7 @@ export const siteConfig = {
   consultationPromise: "Kostenlose Erstberatung in Ihrem Garten",
   serviceAreaLabel: "Düsseldorf, Meerbusch, Neuss, Ratingen, Hilden, Mettmann, Monheim & Umgebung",
   ogImage:
-    "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?auto=format&fit=crop&w=1600&q=80",
+    "https://nightliferx.github.io/gartenmeisterei-doelle/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg",
 };
 
 export type Testimonial = {
@@ -170,10 +170,10 @@ export const projects: ProjectReference[] = [
     challenge: "Die Hecken waren aus der Form gewachsen und nahmen Wegen und Beeten das Licht.",
     solution: "Fachgerechter Form- und Rückschnitt mit sauberer Kante und Abtransport des Schnittguts.",
     result: "Dichte, gleichmäßige Hecken, die den Garten wieder rahmen",
-    beforeImage: "/references/vorher-hecke.jpg",
-    afterImage: "/references/nachher-hecke.jpg",
-    beforeAlt: "Ausgewachsene, unförmige Hecke vor dem Formschnitt",
-    afterAlt: "Akkurat in Form geschnittene Hecke nach dem Heckenschnitt",
+    beforeImage: "/references/vorher-hecke-handy.jpg",
+    afterImage: "/references/nachher-hecke-handy.jpg",
+    beforeAlt: "Aus der Form gewachsene Hecke mit wilden Trieben vor dem Schnitt",
+    afterAlt: "Dieselbe Hecke nach dem Formschnitt: gerade Oberkante, saubere Flanke",
   },
   {
     title: "Verwilderten Garten zurückgeschnitten",

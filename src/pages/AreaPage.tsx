@@ -51,14 +51,6 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
       <div className="min-h-screen bg-background">
         <HeaderV8 />
         <main>
-          <BreadcrumbsV8
-            items={[
-              { label: "Start", href: "/" },
-              { label: "Einsatzgebiete", href: "/#einsatzgebiete" },
-              { label: shortName },
-            ]}
-          />
-
           {/* Cinematic Hero — V8/Apple */}
           <section className="relative isolate min-h-[62vh] w-full overflow-hidden bg-foreground">
             <img
@@ -103,6 +95,14 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
               </div>
             </div>
           </section>
+
+          <BreadcrumbsV8
+            items={[
+              { label: "Start", href: "/" },
+              { label: "Einsatzgebiete", href: "/#einsatzgebiete" },
+              { label: shortName },
+            ]}
+          />
 
           {/* Weiterer Intro-Text (Absatz 2+), wenn vorhanden */}
           {page.intro.length > 1 ? (

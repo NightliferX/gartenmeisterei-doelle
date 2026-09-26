@@ -122,13 +122,6 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
       <div className="min-h-screen bg-background">
         <HeaderV8 />
         <main>
-          <BreadcrumbsV8
-            items={[
-              { label: "Start", href: "/" },
-              { label: "Leistungen", href: "/#leistungen" },
-              { label: service?.title ?? page.h1 },
-            ]}
-          />
           {/* Cinematic Hero */}
           <section className="relative isolate min-h-[84vh] w-full overflow-hidden bg-foreground">
             {heroImage ? (
@@ -178,6 +171,14 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
               </div>
             </div>
           </section>
+
+          <BreadcrumbsV8
+            items={[
+              { label: "Start", href: "/" },
+              { label: "Leistungen", href: "/#leistungen" },
+              { label: service?.title ?? page.h1 },
+            ]}
+          />
 
           {/* Einstiegstext */}
           {page.intro.length > 1 ? (
