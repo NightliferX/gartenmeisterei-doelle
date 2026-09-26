@@ -200,8 +200,8 @@ export const projects: ProjectReference[] = [
     result: "Ein aufgeräumter Garten als Basis für die regelmäßige Pflege",
     beforeImage: "/references/vorher-verwildert.jpg",
     afterImage: "/references/nachher-verwildert.jpg",
-    beforeAlt: "Zugewachsener Garten vor dem Rückschnitt",
-    afterAlt: "Aufgeräumter Garten mit gemähtem Rasen und freiem Weg nach der Grundpflege",
+    beforeAlt: "Verwilderter Reihenhausgarten mit hohem Gras, Unkraut im Weg und ungeschnittenen Sträuchern",
+    afterAlt: "Derselbe Garten nach der Grundpflege: gemähter Rasen, freier Plattenweg, saubere Beetkanten",
   },
   {
     title: "Obstbäume fachgerecht geschnitten",
