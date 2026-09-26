@@ -262,7 +262,7 @@ const HeaderV8 = () => {
               className="pointer-events-none absolute inset-x-0 top-full z-40 mt-3 hidden lg:block"
             >
               <div className="pointer-events-auto mx-auto max-w-[1240px] px-3 sm:px-6">
-                <div className="v8-material rounded-[1.75rem] p-8 shadow-[0_24px_64px_-20px_rgba(0,0,0,0.28)]">
+                <div className="v8-material v8-material-solid rounded-[1.75rem] p-8 shadow-[0_24px_64px_-20px_rgba(0,0,0,0.28)]">
                   {megaMenus.map((menu) => {
                     if (menu.key !== activeMenu) return null;
                     return (
