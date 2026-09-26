@@ -157,7 +157,7 @@ const HeaderV8 = () => {
                       setHoveredNav(menu.key);
                     }}
                     onBlur={() => setHoveredNav(null)}
-                    className={`relative inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[1rem] font-medium transition-colors duration-200 ${
+                    className={`relative isolate inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[1rem] font-medium transition-colors duration-200 ${
                       isHovered ? "text-primary-foreground" : "text-foreground"
                     }`}
                   >
@@ -168,9 +168,9 @@ const HeaderV8 = () => {
                         className="absolute inset-0 -z-10 rounded-full bg-primary"
                       />
                     ) : null}
-                    <span className="relative z-10">{menu.label}</span>
+                    <span className="relative">{menu.label}</span>
                     <ChevronDown
-                      className={`relative z-10 h-4 w-4 transition-transform ${
+                      className={`relative h-4 w-4 transition-transform ${
                         isActive ? "rotate-180" : ""
                       }`}
                       strokeWidth={2.25}
@@ -193,7 +193,7 @@ const HeaderV8 = () => {
                       setHoveredNav(link.href);
                     }}
                     onBlur={() => setHoveredNav(null)}
-                    className={`relative rounded-full px-4 py-2.5 text-[1rem] font-medium transition-colors duration-200 ${
+                    className={`relative isolate rounded-full px-4 py-2.5 text-[1rem] font-medium transition-colors duration-200 ${
                       isHovered ? "text-primary-foreground" : "text-foreground"
                     }`}
                   >
@@ -204,7 +204,7 @@ const HeaderV8 = () => {
                         className="absolute inset-0 -z-10 rounded-full bg-primary"
                       />
                     ) : null}
-                    <span className="relative z-10">{link.label}</span>
+                    <span className="relative">{link.label}</span>
                   </a>
                 );
               })}
