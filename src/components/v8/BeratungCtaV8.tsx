@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ArrowRight, Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
+import { ArrowRight, CheckCircle2, Clock, Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -52,12 +52,19 @@ const useIsMobile = () => {
   return m;
 };
 
+// Einfache Email-Validierung: passt auf "text@text.text" mit einem Punkt
+// in der Domain. Kein RFC-perfekt, aber fängt 99 % der Tippfehler ab.
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+
 const BeratungCtaV8 = () => {
   const { toast } = useToast();
   const [sending, setSending] = useState(false);
   const [service, setService] = useState("");
   const [formState, setFormState] = useState(emptyForm);
   const [open, setOpen] = useState(false);
+  // Inline-Validation: pro Feld nur zeigen, wenn Feld schon berührt wurde.
+  const [touched, setTouched] = useState<{ email?: boolean; phone?: boolean }>({});
+  const [submitted, setSubmitted] = useState(false);
 
   useEffect(() => {
     const oeffnen = () => setOpen(true);
@@ -69,10 +76,23 @@ const BeratungCtaV8 = () => {
   const reset = () => {
     setFormState(emptyForm);
     setService("");
+    setTouched({});
+    setSubmitted(false);
   };
+
+  // Live-Validation
+  const emailError =
+    touched.email && formState.email && !EMAIL_RE.test(formState.email)
+      ? "Bitte prüfen Sie das E-Mail-Format (z. B. name@beispiel.de)."
+      : "";
+  const phoneError =
+    touched.phone && formState.phone && !/^[\d+\s()/-]{4,}$/.test(formState.phone)
+      ? "Bitte nur Ziffern, Leerzeichen und + ( ) / – eingeben."
+      : "";
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (emailError || phoneError) return;
     setSending(true);
     if (formState.website) {
       setSending(false);
@@ -95,12 +115,8 @@ const BeratungCtaV8 = () => {
         body: payload,
       });
       if (!res.ok) throw new Error();
-      toast({
-        title: "Anfrage gesendet",
-        description: "Vielen Dank. Benedikt Dölle meldet sich in kürzester Zeit persönlich bei Ihnen.",
-      });
-      reset();
-      setOpen(false);
+      // Success-Screen statt Toast + auto-close
+      setSubmitted(true);
     } catch (err) {
       toast({
         title: "Senden fehlgeschlagen",
@@ -112,6 +128,53 @@ const BeratungCtaV8 = () => {
       setSending(false);
     }
   };
+
+  // Erfolgs-Screen: erscheint IM Dialog statt es zu schließen. Zeigt
+  // Häkchen + Zeitplan „Was jetzt passiert" — beruhigt vor allem
+  // ältere Nutzer, die sich fragen ob es geklappt hat.
+  const successView = (
+    <div className="flex flex-col items-center gap-5 py-4 text-center">
+      <span className="grid h-16 w-16 place-items-center rounded-full bg-primary/10 text-primary">
+        <CheckCircle2 className="h-9 w-9" strokeWidth={2} aria-hidden />
+      </span>
+      <div>
+        <h3 className="text-[1.35rem] font-semibold leading-tight text-foreground">
+          Danke, Ihre Anfrage ist eingegangen.
+        </h3>
+        <p className="mt-2 text-[0.98rem] leading-relaxed text-muted-foreground">
+          Benedikt Dölle meldet sich in kürzester Zeit persönlich bei Ihnen.
+        </p>
+      </div>
+      <ol className="mt-2 w-full max-w-[26rem] space-y-3 text-left">
+        {[
+          { title: "In Kürze", body: "Kurze Rückmeldung per E-Mail oder Telefon zur Terminfindung." },
+          { title: "Vor-Ort-Termin", body: "Benedikt schaut sich Ihren Garten in Ruhe an, hört zu, berät." },
+          { title: "Angebot", body: "Schriftliches Angebot mit klaren Positionen. Ohne Verpflichtung." },
+        ].map((step, i) => (
+          <li key={step.title} className="flex gap-3">
+            <span className="grid h-7 w-7 shrink-0 place-items-center rounded-full bg-secondary text-[0.85rem] font-semibold text-foreground">
+              {i + 1}
+            </span>
+            <div>
+              <p className="text-[0.95rem] font-semibold text-foreground">{step.title}</p>
+              <p className="text-[0.9rem] leading-snug text-muted-foreground">{step.body}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+      <Button
+        type="button"
+        variant="outline"
+        onClick={() => {
+          reset();
+          setOpen(false);
+        }}
+        className="mt-2 h-11 rounded-full px-6 text-[0.95rem] font-semibold"
+      >
+        Schließen
+      </Button>
+    </div>
+  );
 
   const form = (
     <form onSubmit={handleSubmit} className="flex flex-col gap-5">
@@ -141,10 +204,18 @@ const BeratungCtaV8 = () => {
             placeholder="ihre@email.de"
             required
             autoComplete="email"
-            className="h-14 text-[1.05rem]"
+            aria-invalid={!!emailError}
+            aria-describedby={emailError ? "email-err" : undefined}
+            className={`h-14 text-[1.05rem] ${emailError ? "border-destructive focus-visible:ring-destructive" : ""}`}
             value={formState.email}
             onChange={(e) => setFormState((p) => ({ ...p, email: e.target.value }))}
+            onBlur={() => setTouched((t) => ({ ...t, email: true }))}
           />
+          {emailError ? (
+            <p id="email-err" role="alert" className="mt-1.5 text-[0.82rem] text-destructive">
+              {emailError}
+            </p>
+          ) : null}
         </label>
       </div>
       <div className="grid gap-5 sm:grid-cols-2">
@@ -158,10 +229,22 @@ const BeratungCtaV8 = () => {
             inputMode="tel"
             placeholder="0211 …"
             autoComplete="tel"
-            className="h-14 text-[1.05rem]"
+            aria-invalid={!!phoneError}
+            aria-describedby={phoneError ? "phone-err" : undefined}
+            className={`h-14 text-[1.05rem] ${phoneError ? "border-destructive focus-visible:ring-destructive" : ""}`}
             value={formState.phone}
-            onChange={(e) => setFormState((p) => ({ ...p, phone: e.target.value }))}
+            onChange={(e) => {
+              // Live-Filter: nur Ziffern, Leerzeichen und + ( ) / - erlauben
+              const filtered = e.target.value.replace(/[^\d+\s()/-]/g, "");
+              setFormState((p) => ({ ...p, phone: filtered }));
+            }}
+            onBlur={() => setTouched((t) => ({ ...t, phone: true }))}
           />
+          {phoneError ? (
+            <p id="phone-err" role="alert" className="mt-1.5 text-[0.82rem] text-destructive">
+              {phoneError}
+            </p>
+          ) : null}
         </label>
         <label className="block">
           <span className="mb-2 flex items-baseline justify-between text-[0.95rem] font-medium text-foreground">
@@ -318,13 +401,15 @@ const BeratungCtaV8 = () => {
         <Drawer open={open} onOpenChange={(v) => { setOpen(v); if (!v) reset(); }}>
           <DrawerContent className="max-h-[92dvh]">
             <DrawerHeader className="text-left">
-              <DrawerTitle>Kostenlose Beratung anfragen</DrawerTitle>
+              <DrawerTitle>{submitted ? "Anfrage eingegangen" : "Kostenlose Beratung anfragen"}</DrawerTitle>
               <DrawerDescription>
-                Benedikt Dölle meldet sich in kürzester Zeit persönlich bei Ihnen.
+                {submitted
+                  ? "Vielen Dank für Ihre Anfrage."
+                  : "Benedikt Dölle meldet sich in kürzester Zeit persönlich bei Ihnen."}
               </DrawerDescription>
             </DrawerHeader>
             <div className="overflow-y-auto px-4 pb-[calc(env(safe-area-inset-bottom,0px)+1.25rem)]">
-              {form}
+              {submitted ? successView : form}
             </div>
           </DrawerContent>
         </Drawer>
@@ -332,12 +417,14 @@ const BeratungCtaV8 = () => {
         <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (!v) reset(); }}>
           <DialogContent className="max-h-[90dvh] max-w-[640px] overflow-y-auto">
             <DialogHeader>
-              <DialogTitle>Kostenlose Beratung anfragen</DialogTitle>
+              <DialogTitle>{submitted ? "Anfrage eingegangen" : "Kostenlose Beratung anfragen"}</DialogTitle>
               <DialogDescription>
-                Benedikt Dölle meldet sich in kürzester Zeit persönlich bei Ihnen.
+                {submitted
+                  ? "Vielen Dank für Ihre Anfrage."
+                  : "Benedikt Dölle meldet sich in kürzester Zeit persönlich bei Ihnen."}
               </DialogDescription>
             </DialogHeader>
-            <div className="mt-2">{form}</div>
+            <div className="mt-2">{submitted ? successView : form}</div>
           </DialogContent>
         </Dialog>
       )}
