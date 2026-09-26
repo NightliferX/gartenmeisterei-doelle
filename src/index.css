@@ -86,8 +86,7 @@
     overflow-x: hidden;
   }
   body {
-    overflow-x: hidden;
-    max-width: 100vw;
+    overflow-x: clip;
   }
   body {
     background-image:

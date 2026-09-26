@@ -32,11 +32,11 @@ const WerkstattV8 = () => {
           </h2>
         </div>
 
-        <div className="mt-8 flex justify-center">
+        <div className="-mx-4 mt-8 flex overflow-x-auto px-4 sm:mx-0 sm:justify-center sm:overflow-visible sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <div
             role="tablist"
             aria-label="Kategorie"
-            className="inline-flex rounded-full bg-white/[0.08] p-1"
+            className="inline-flex shrink-0 rounded-full bg-white/[0.08] p-1"
           >
             {tabs.map((t) => (
               <button
@@ -45,10 +45,10 @@ const WerkstattV8 = () => {
                 type="button"
                 aria-selected={t.key === active}
                 onClick={() => setActive(t.key)}
-                className={`v8-press rounded-full px-4 py-2 text-[0.85rem] font-semibold transition-colors sm:px-5 sm:text-[0.9rem] ${
+                className={`v8-press whitespace-nowrap rounded-full px-3.5 py-2 text-[0.85rem] font-semibold transition-colors sm:px-5 sm:text-[0.9rem] ${
                   t.key === active
                     ? "bg-white text-foreground shadow-sm"
-                    : "text-white/75 hover:text-white"
+                    : "text-white/85 hover:text-white"
                 }`}
               >
                 {t.label}

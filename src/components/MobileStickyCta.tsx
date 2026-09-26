@@ -31,7 +31,7 @@ const MobileStickyCta = () => {
         opacity: visible ? 1 : 0,
       }}
       transition={{ type: "spring", stiffness: 360, damping: 36, mass: 0.7 }}
-      className="fixed inset-x-0 bottom-0 z-40 bg-primary/[0.08] px-4 pb-[calc(0.9rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur-md lg:hidden"
+      className="fixed inset-x-0 bottom-0 z-40 bg-primary/[0.08] px-5 pb-[calc(1.25rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur-md lg:hidden"
     >
       <nav aria-label="Direktkontakt" className="mx-auto flex max-w-md gap-3">
         <a
