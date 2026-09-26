@@ -119,7 +119,7 @@ const HeaderV8 = () => {
       >
         <div
           className={`v8-material relative mx-auto flex h-16 max-w-[1240px] items-center rounded-full px-3 shadow-[0_6px_28px_-8px_rgba(0,0,0,0.2)] transition-colors duration-200 sm:px-5 ${
-            activeMenu ? "v8-material-solid" : ""
+            hoveredNav || activeMenu ? "v8-material-solid" : ""
           }`}
         >
           {/* Logo */}
@@ -349,16 +349,23 @@ const HeaderV8 = () => {
         </AnimatePresence>
       </header>
 
-      {/* Barmer-Style-Backdrop: der Rest der Seite wird gedimmt, sobald
-          ein Mega-Menü offen ist. Klick darauf schließt das Menü. */}
+      {/* Barmer-Style-Backdrop: wenn irgendein Nav-Item gehovert wird
+          oder ein Mega-Menü offen ist, wird der Rest der Seite gedimmt.
+          Klick darauf schließt Menü + Hover-State. */}
       <AnimatePresence>
-        {activeMenu ? (
+        {hoveredNav || activeMenu ? (
           <motion.button
             key="v8-nav-backdrop"
             type="button"
             aria-label="Menü schließen"
-            onClick={() => setActiveMenu(null)}
-            onMouseEnter={scheduleClose}
+            onClick={() => {
+              setActiveMenu(null);
+              setHoveredNav(null);
+            }}
+            onMouseEnter={() => {
+              scheduleClose();
+              setHoveredNav(null);
+            }}
             initial={{ opacity: 0 }}
             animate={{
               opacity: 1,
