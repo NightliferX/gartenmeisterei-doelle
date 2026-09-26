@@ -205,13 +205,13 @@ export const servicePages: ServicePage[] = [
         title: "Vertikutieren",
         text: "Entfernt Moos und Rasenfilz, damit Luft und Wasser wieder an die Wurzeln kommen.",
         image: "/services/rasenpflege/vertikutieren-moosfilz-rasenpflege-duesseldorf.jpg",
-        imageAlt: "Messerwalze eines Vertikutierers in der Grasnarbe, herausgekämmter Moosfilz daneben",
+        imageAlt: "Vertikutierer zieht eine Bahn durch den Rasen — links die fertige Fläche, rechts der ausgekämmte Moosfilz",
       },
       {
         title: "Düngen nach Saison",
         text: "Frühjahrs-, Sommer- und Herbstdüngung, abgestimmt auf Ihren Boden.",
         image: "/services/rasenpflege/duengen-streuwagen-rasenduenger-rasenpflege-duesseldorf.jpg",
-        imageAlt: "Streuteller eines Streuwagens, Düngerkörner fallen auf den Rasen",
+        imageAlt: "Streuwagen verteilt Rasendünger im breiten Fächer über die Rasenfläche",
       },
       {
         title: "Nachsaat & Regeneration",
