@@ -80,14 +80,10 @@
        wird deaktiviert, Pinch-Zoom bleibt erhalten). Spürbar schnellere
        Reaktion auf allen Buttons und Links auf iPhone. */
     touch-action: manipulation;
-    /* Safety-Net gegen horizontales Scrollen auf Mobil: falls irgendwo
-       ein Element leicht über den Viewport ragt (Marquee, weite Bilder,
-       breite Grid-Items) klippt der Browser jetzt automatisch. */
-    overflow-x: hidden;
   }
-  body {
-    overflow-x: clip;
-  }
+  /* WICHTIG: html/body haben KEIN overflow-x-hidden — das würde
+     position: sticky im Services-Sticky-Stack brechen. Overflow-Schutz
+     kommt pro Sektion, nicht global. */
   body {
     background-image:
       radial-gradient(circle at top, hsl(var(--primary) / 0.06), transparent 24%),

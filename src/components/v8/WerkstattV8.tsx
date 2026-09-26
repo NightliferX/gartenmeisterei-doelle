@@ -20,7 +20,7 @@ const WerkstattV8 = () => {
     projects.find((p) => p.beforeImage && p.afterImage);
 
   return (
-    <section id="projekte" className="bg-[#0d120d] py-20 md:py-28">
+    <section id="projekte" className="overflow-x-hidden bg-[#0d120d] py-20 md:py-28">
       <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
         {/* Header + Tabs immer zentriert, Split-Layout darunter */}
         <div className="scroll-fade-in mx-auto max-w-3xl text-center">
