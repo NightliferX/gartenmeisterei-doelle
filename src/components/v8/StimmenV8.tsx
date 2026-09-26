@@ -77,7 +77,38 @@ const StimmenV8 = () => (
         </div>
       </div>
 
-      <ul className="mt-12 grid gap-5 md:mt-16 md:grid-cols-2 md:gap-6 lg:grid-cols-3">
+      {/* Mobil: horizontaler Snap-Slider — eine Reihe */}
+      <ul
+        className="-mx-4 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto scroll-px-4 px-4 pb-4 md:hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        aria-label="Kundenstimmen (horizontal scrollen)"
+      >
+        {testimonials.map((t, i) => (
+          <li
+            key={t.name + i}
+            className="relative flex w-[85%] shrink-0 snap-start flex-col rounded-[1.75rem] bg-card p-7 shadow-[0_2px_18px_rgba(0,0,0,0.05)]"
+          >
+            <Quote
+              className="h-6 w-6 text-primary/40"
+              strokeWidth={2}
+              aria-hidden
+            />
+            <blockquote className="mt-4 flex-1 text-[1rem] leading-relaxed text-foreground">
+              „{t.quote}"
+            </blockquote>
+            <div className="mt-6 border-t border-border/60 pt-4">
+              <p className="text-[0.95rem] font-semibold text-foreground">
+                {t.name}
+              </p>
+              <p className="mt-0.5 text-[0.85rem] text-muted-foreground">
+                {t.location} · {t.service}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ul>
+
+      {/* Desktop: klassisches Grid */}
+      <ul className="mt-16 hidden gap-6 md:grid md:grid-cols-2 lg:grid-cols-3">
         {testimonials.map((t, i) => (
           <li
             key={t.name + i}
