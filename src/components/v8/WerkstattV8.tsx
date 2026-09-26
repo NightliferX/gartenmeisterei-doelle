@@ -20,7 +20,7 @@ const WerkstattV8 = () => {
     projects.find((p) => p.beforeImage && p.afterImage);
 
   return (
-    <section id="projekte" className="overflow-x-hidden bg-[#0d120d] py-20 md:py-28">
+    <section id="projekte" className="relative overflow-hidden bg-[#0d120d] py-20 md:py-28">
       <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
         {/* Header + Tabs immer zentriert, Split-Layout darunter */}
         <div className="scroll-fade-in mx-auto max-w-3xl text-center">
@@ -32,29 +32,30 @@ const WerkstattV8 = () => {
           </h2>
         </div>
 
-        <div className="-mx-4 mt-8 flex overflow-x-auto px-4 sm:mx-0 sm:justify-center sm:overflow-visible sm:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          <div
-            role="tablist"
-            aria-label="Kategorie"
-            className="inline-flex shrink-0 rounded-full bg-white/[0.08] p-1"
-          >
-            {tabs.map((t) => (
-              <button
-                key={t.key}
-                role="tab"
-                type="button"
-                aria-selected={t.key === active}
-                onClick={() => setActive(t.key)}
-                className={`v8-press whitespace-nowrap rounded-full px-3.5 py-2 text-[0.85rem] font-semibold transition-colors sm:px-5 sm:text-[0.9rem] ${
-                  t.key === active
-                    ? "bg-white text-foreground shadow-sm"
-                    : "text-white/85 hover:text-white"
-                }`}
-              >
-                {t.label}
-              </button>
-            ))}
-          </div>
+        {/* Mobile: waagerechter Snap-Scroll mit Bleed-Padding, damit
+            der letzte Tab nie ausgeschnitten wirkt. Ab sm: zentriert
+            als Pill wie gehabt. */}
+        <div
+          role="tablist"
+          aria-label="Kategorie"
+          className="mt-8 flex snap-x snap-mandatory gap-1 overflow-x-auto -mx-4 px-4 py-1 sm:mx-auto sm:w-fit sm:snap-none sm:justify-center sm:gap-0 sm:overflow-visible sm:rounded-full sm:bg-white/[0.08] sm:p-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+          {tabs.map((t) => (
+            <button
+              key={t.key}
+              role="tab"
+              type="button"
+              aria-selected={t.key === active}
+              onClick={() => setActive(t.key)}
+              className={`v8-press shrink-0 snap-start whitespace-nowrap rounded-full px-4 py-2 text-[0.85rem] font-semibold transition-colors sm:px-5 sm:text-[0.9rem] ${
+                t.key === active
+                  ? "bg-white text-foreground shadow-sm"
+                  : "bg-white/[0.08] text-white/85 hover:text-white sm:bg-transparent"
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
         </div>
 
         {project ? (
