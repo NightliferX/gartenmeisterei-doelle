@@ -90,6 +90,29 @@ const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
               <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
             </a>
           </div>
+
+          {/* Trust-Badge: Ihr Ansprechpartner mit Meister-Foto neben CTA.
+              Kompakt, unter den Buttons, zentriert. */}
+          <a
+            href={withBase("/#warum-wir")}
+            className="v8-rise-3 mx-auto mt-8 inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 py-1.5 pl-1.5 pr-4 backdrop-blur-sm transition-colors hover:bg-white/15"
+          >
+            <img
+              src={withBase("/team/benedikt-doelle-gaertnermeister-nahaufnahme-portrait-duesseldorf.png")}
+              alt={`${siteConfig.ownerName}, Gärtnermeister`}
+              loading="eager"
+              decoding="async"
+              className="h-9 w-9 shrink-0 rounded-full object-cover ring-1 ring-white/30"
+            />
+            <span className="text-left leading-tight">
+              <span className="block text-[0.7rem] font-medium uppercase tracking-[0.14em] text-white/70">
+                Ihr Ansprechpartner
+              </span>
+              <span className="block text-[0.9rem] font-semibold text-white">
+                {siteConfig.ownerName}
+              </span>
+            </span>
+          </a>
         </div>
       </section>
 
