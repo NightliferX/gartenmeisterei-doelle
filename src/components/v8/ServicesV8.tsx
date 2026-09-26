@@ -32,6 +32,8 @@ const Card = ({ service }: { service: (typeof services)[number] }) => {
       {src ? (
         <img
           src={src}
+          width={1500}
+          height={1000}
           alt={`${service.title} vom Gärtnermeister in Düsseldorf`}
           loading="lazy"
           decoding="async"

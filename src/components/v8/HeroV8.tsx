@@ -45,6 +45,8 @@ const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
         <motion.img
           src={withBase(imageSrc ?? DEFAULT_HERO_IMG)}
           alt={imageAlt ?? DEFAULT_HERO_ALT}
+          width={1536}
+          height={1024}
           className="absolute inset-0 h-full w-full object-cover [transform:translateZ(0)]"
           loading="eager"
           decoding="async"
@@ -88,6 +90,8 @@ const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
               <img
                 src={withBase("/team/benedikt-doelle-gaertnermeister-nahaufnahme-portrait-duesseldorf.webp")}
                 alt={`${siteConfig.ownerName}, Gärtnermeister`}
+                width={44}
+                height={44}
                 loading="eager"
                 decoding="async"
                 className="h-11 w-11 shrink-0 rounded-full object-cover ring-1 ring-white/30"

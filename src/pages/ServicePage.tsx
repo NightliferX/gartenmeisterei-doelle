@@ -132,6 +132,8 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
             {heroImage ? (
               <img
                 src={heroImage.startsWith("http") ? heroImage : withBase(heroImage)}
+                width={1500}
+                height={1000}
                 alt={heroAlt}
                 className="absolute inset-0 h-full w-full object-cover"
                 style={page.heroImageMirror ? { transform: "scaleX(-1)" } : undefined}
@@ -222,6 +224,8 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                     >
                       <img
                         src={withBase(item.image!)}
+                        width={1500}
+                        height={1000}
                         alt={item.imageAlt ?? ""}
                         loading="lazy"
                         decoding="async"
@@ -428,6 +432,8 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                       {image ? (
                         <img
                           src={image.startsWith("http") ? image : withBase(image)}
+                          width={1500}
+                          height={1000}
                           alt={`${otherTitle} in Düsseldorf`}
                           loading="lazy"
                           decoding="async"

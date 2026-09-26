@@ -57,6 +57,8 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
             <img
               src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp")}
               alt={`Gepflegter Vorgarten in ${shortName}`}
+              width={1536}
+              height={1024}
               className="absolute inset-0 h-full w-full object-cover"
               loading="eager"
               decoding="async"
@@ -141,6 +143,8 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
                         {src ? (
                           <img
                             src={src}
+                            width={1500}
+                            height={1000}
                             alt={`${service.title} in ${shortName}`}
                             loading="lazy"
                             decoding="async"

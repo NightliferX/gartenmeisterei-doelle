@@ -11,6 +11,8 @@ const Footer = () => {
             <a href={withBase("/")} className="mb-5 inline-flex">
               <img
                 src={withBase("/logo-weiss.svg")}
+                width={985}
+                height={510}
                 alt={`${siteConfig.brandName} Logo`}
                 className="h-14 w-auto"
               />

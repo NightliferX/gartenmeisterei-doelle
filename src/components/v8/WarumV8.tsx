@@ -74,6 +74,8 @@ const WarumV8 = () => (
           <img
             src={withBase("/team/benedikt-doelle-gaertnermeister-vorgarten-portrait-duesseldorf.webp")}
             alt={`${siteConfig.ownerName}, Gärtnermeister`}
+            width={1536}
+            height={1024}
             className="absolute inset-0 h-full w-full object-cover object-top md:object-center"
             loading="lazy"
             decoding="async"

@@ -48,6 +48,8 @@ const SeasonPage = ({ season }: { season: Season }) => {
           <section className="relative isolate min-h-[80vh] w-full overflow-hidden bg-foreground">
             <img
               src={withBase(season.heroImage)}
+              width={1500}
+              height={1000}
               alt={season.heroAlt}
               className="absolute inset-0 h-full w-full object-cover"
               loading="eager"
@@ -155,6 +157,8 @@ const SeasonPage = ({ season }: { season: Season }) => {
                     >
                       <img
                         src={withBase(s.heroImage)}
+                        width={1500}
+                        height={1000}
                         alt={`Gartenpflege im ${s.season}`}
                         loading="lazy"
                         decoding="async"

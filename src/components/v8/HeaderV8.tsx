@@ -164,6 +164,8 @@ const HeaderV8 = () => {
           <a href={withBase("/")} className="flex items-center pl-1">
             <img
               src={withBase("/logo.svg")}
+              width={985}
+              height={510}
               alt={siteConfig.brandName}
               className="h-11 w-auto md:h-12"
             />
