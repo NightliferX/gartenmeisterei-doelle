@@ -28,7 +28,7 @@ const reasons = [
 ];
 
 type WhyV11Props = { meisterImageSrc?: string; meisterImageAlt?: string };
-const DEFAULT_MEISTER_IMG = "/team/benedikt-doelle-gaertnermeister-vorgarten-portrait-duesseldorf.png";
+const DEFAULT_MEISTER_IMG = "/team/benedikt-doelle-gaertnermeister-vorgarten-portrait-duesseldorf.webp";
 const WhyV11 = ({ meisterImageSrc, meisterImageAlt }: WhyV11Props = {}) => (
   <section aria-labelledby="darum-v8" className="bg-secondary/50 py-20 md:py-28">
     <div className="mx-auto max-w-[1240px] px-4 sm:px-6">

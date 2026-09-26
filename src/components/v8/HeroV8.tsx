@@ -16,7 +16,7 @@ import { oeffneBeratung } from "@/components/v8/BeratungCtaV8";
 // Bild scrollt langsamer als der Vordergrund (Parallax), Text bleibt statisch.
 // Gartenjahr als dunkler Block, der von unten in den Hero ragt.
 type HeroV8Props = { imageSrc?: string; imageAlt?: string };
-const DEFAULT_HERO_IMG = "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg";
+const DEFAULT_HERO_IMG = "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp";
 const DEFAULT_HERO_ALT = "Gärtnermeister beim Formschnitt im Vorgarten";
 const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
   const month = new Date().getMonth();
@@ -86,7 +86,7 @@ const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
               className="v8-press group inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/10 py-1.5 pl-1.5 pr-5 text-left backdrop-blur-sm transition-colors hover:bg-white/20"
             >
               <img
-                src={withBase("/team/benedikt-doelle-gaertnermeister-nahaufnahme-portrait-duesseldorf.png")}
+                src={withBase("/team/benedikt-doelle-gaertnermeister-nahaufnahme-portrait-duesseldorf.webp")}
                 alt={`${siteConfig.ownerName}, Gärtnermeister`}
                 loading="eager"
                 decoding="async"

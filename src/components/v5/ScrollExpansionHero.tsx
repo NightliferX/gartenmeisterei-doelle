@@ -11,8 +11,8 @@ import { withBase } from "@/lib/utils";
 
 // Dieselbe Szene zweimal: der verwilderte Garten liegt dahinter, der gepflegte
 // öffnet sich beim Scrollen darüber — die Arbeit des Gärtners als Bewegung.
-const WILD = "/references/vorher-verwildert.jpg";
-const TENDED = "/references/nachher-verwildert.jpg";
+const WILD = "/references/vorher-verwildert.webp";
+const TENDED = "/references/nachher-verwildert.webp";
 const TENDED_ALT =
   "Gepflegter Reihenhausgarten mit gemähtem Rasen, geschnittenen Sträuchern und freigelegtem Plattenweg";
 

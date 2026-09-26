@@ -29,7 +29,7 @@ export const siteConfig = {
   consultationPromise: "Kostenlose Erstberatung in Ihrem Garten",
   serviceAreaLabel: "Düsseldorf, Meerbusch, Neuss, Ratingen, Hilden, Mettmann, Monheim & Umgebung",
   ogImage:
-    "https://nightliferx.github.io/gartenmeisterei-doelle/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg",
+    "https://nightliferx.github.io/gartenmeisterei-doelle/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp",
 };
 
 export type Testimonial = {
@@ -98,7 +98,7 @@ export const services = [
     description:
       "Regelmäßige Pflege hält Ihren Garten dauerhaft in Form: Wir übernehmen Rasen, Beete, Sträucher und saisonale Arbeiten, zuverlässig nach Plan, auf Wunsch als Pflegevertrag.",
     highlights: ["Rasen-, Beet- & Strauchpflege", "Feste Pflegetermine nach Plan", "Pflegeverträge für Privat & Gewerbe"],
-    image: "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg",
+    image: "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp",
   },
   {
     id: "heckenschnitt",
@@ -106,7 +106,7 @@ export const services = [
     description:
       "Fachgerechter Schnitt zur richtigen Zeit: Wir schneiden Hecken und Sträucher so, dass sie gesund, dicht und in Form bleiben, unter Beachtung der Schnittzeiten zum Vogelschutz.",
     highlights: ["Form- & Rückschnitt", "Dichte, gesunde Hecken", "Abtransport des Schnittguts"],
-    image: "/services/heckenschnitt/heckenschnitt-buchsbaum-stihl-formschnitt-detail-duesseldorf.jpg",
+    image: "/services/heckenschnitt/heckenschnitt-buchsbaum-stihl-formschnitt-detail-duesseldorf.webp",
   },
   {
     id: "baumschnitt",
@@ -114,7 +114,7 @@ export const services = [
     description:
       "Vom Obstbaumschnitt bis zum Pflegeschnitt großer Bäume: Wir schneiden fachgerecht, erhalten gesunde Kronen und entfernen Totholz, inklusive Entsorgung.",
     highlights: ["Obstbaum- & Kronenschnitt", "Totholz-Entfernung", "Schnitt zur richtigen Jahreszeit"],
-    image: "/services/baumschnitt/baumschnitt-obstbaumschnitt-apfelbaum-gaertnermeister-duesseldorf.png",
+    image: "/services/baumschnitt/baumschnitt-obstbaumschnitt-apfelbaum-gaertnermeister-duesseldorf.webp",
   },
   {
     id: "rasenpflege",
@@ -122,7 +122,7 @@ export const services = [
     description:
       "Dichter, gesunder Rasen braucht regelmäßige Pflege: Wir mähen, vertikutieren, düngen und säen nach, damit die Rasenfläche das ganze Jahr gut aussieht.",
     highlights: ["Mähen & Kanten stechen", "Vertikutieren & Düngen", "Nachsaat kahler Stellen"],
-    image: "/services/rasenpflege/rasenpflege-sabo-rasenmaeher-person-nahaufnahme-duesseldorf.png",
+    image: "/services/rasenpflege/rasenpflege-sabo-rasenmaeher-person-nahaufnahme-duesseldorf.webp",
   },
   {
     id: "herbst",
@@ -130,7 +130,7 @@ export const services = [
     description:
       "Wenn das Laub fällt, übernehmen wir: Wege, Rasen und Beete werden gründlich vom Laub befreit, inklusive fachgerechter Entsorgung, auf Wunsch mehrmals pro Saison.",
     highlights: ["Laub entfernen & entsorgen", "Wege & Rinnen frei halten", "Termine über die ganze Saison"],
-    image: "/services/herbst/laubentsorgung-stihl-laubblaeser-herbstlaub-nahaufnahme-duesseldorf.png",
+    image: "/services/herbst/laubentsorgung-stihl-laubblaeser-herbstlaub-nahaufnahme-duesseldorf.webp",
   },
   {
     id: "saison",
@@ -138,7 +138,7 @@ export const services = [
     description:
       "Wir machen Ihren Garten fit für die Saison: im Frühjahr mit Schnitt, Bodenpflege und Startdüngung, im Herbst machen wir Pflanzen, Beete und Rasen winterfest.",
     highlights: ["Frühjahrsschnitt & Startpflege", "Garten winterfest machen", "Schutz für empfindliche Pflanzen"],
-    image: "/services/fruehjahr/fruehjahrsschnitt-rosen-felco-handschere-narzissen-duesseldorf.png",
+    image: "/services/fruehjahr/fruehjahrsschnitt-rosen-felco-handschere-narzissen-duesseldorf.webp",
   },
   {
     id: "rollrasen",
@@ -146,7 +146,7 @@ export const services = [
     description:
       "Sofort fertiger, dichter Rasen statt monatelang auf Nachsaat warten: Wir bereiten den Boden vor, verlegen den Rollrasen fugenlos und begleiten die Anwuchspflege der ersten Wochen.",
     highlights: ["Bodenvorbereitung & Planum", "Rollrasen fugenlos verlegen", "Anwuchspflege in den ersten Wochen"],
-    image: "/services/rollrasen/rollrasen-verlegen-bahnen-duesseldorf.jpg",
+    image: "/services/rollrasen/rollrasen-verlegen-bahnen-duesseldorf.webp",
   },
   {
     id: "terrasse",
@@ -154,7 +154,7 @@ export const services = [
     description:
       "Wenn Moos, Algen und Schmutz sich zwischen den Steinen festgesetzt haben: Mit dem Kärcher K5 reinigen wir Terrassen, Einfahrten und Gartenwege fachgerecht, inklusive Sichtprüfung und Fugensand-Nachpflege.",
     highlights: ["Kärcher-Hochdruckreinigung", "Terrassen, Wege & Einfahrten", "Fugensand nach Bedarf ergänzen"],
-    image: "/services/gartenpflege/terrassenreinigung-kaercher-k5-hochdruckreiniger-duesseldorf.jpg",
+    image: "/services/gartenpflege/terrassenreinigung-kaercher-k5-hochdruckreiniger-duesseldorf.webp",
   },
 ];
 
@@ -170,8 +170,8 @@ export const projects: ProjectReference[] = [
     challenge: "Die Hecken waren aus der Form gewachsen und nahmen Wegen und Beeten das Licht.",
     solution: "Fachgerechter Form- und Rückschnitt mit sauberer Kante und Abtransport des Schnittguts.",
     result: "Dichte, gleichmäßige Hecken, die den Garten wieder rahmen",
-    beforeImage: "/references/vorher-heckenschnitt-hausweg-neuss.jpg",
-    afterImage: "/references/nachher-heckenschnitt-hausweg-neuss.jpg",
+    beforeImage: "/references/vorher-heckenschnitt-hausweg-neuss.webp",
+    afterImage: "/references/nachher-heckenschnitt-hausweg-neuss.webp",
     beforeAlt: "Überwachsene Hecke, die den Plattenweg zum Hauseingang zuwächst",
     afterAlt: "Dieselbe Hecke nach dem Formschnitt: gerade Oberkante und der Weg wieder frei",
   },
@@ -184,8 +184,8 @@ export const projects: ProjectReference[] = [
     challenge: "Die Hecke war so breit geworden, dass sie über die Mauer auf den Gehweg ragte und die Fenster verschattete.",
     solution: "Kräftiger Rückschnitt auf Mauerhöhe plus Aufbau einer geraden Oberkante und senkrechter Flanke.",
     result: "Ein freier Gehweg und wieder Licht an der Hausfront",
-    beforeImage: "/references/vorher-heckenschnitt-vorgarten-meerbusch.jpg",
-    afterImage: "/references/nachher-heckenschnitt-vorgarten-meerbusch.jpg",
+    beforeImage: "/references/vorher-heckenschnitt-vorgarten-meerbusch.webp",
+    afterImage: "/references/nachher-heckenschnitt-vorgarten-meerbusch.webp",
     beforeAlt: "Breit gewachsene Vorgartenhecke, die über die Mauer auf den Gehweg ragt",
     afterAlt: "Dieselbe Hecke nach dem Rückschnitt: gerade Oberkante, Gehweg wieder frei",
   },
@@ -198,8 +198,8 @@ export const projects: ProjectReference[] = [
     challenge: "Beete, Sträucher und Rasen waren so zugewachsen, dass der Garten kaum noch nutzbar war.",
     solution: "Kompletter Rückschnitt, Grundpflege der Beete und Neuaufbau der Rasenkanten.",
     result: "Ein aufgeräumter Garten als Basis für die regelmäßige Pflege",
-    beforeImage: "/references/vorher-verwildert.jpg",
-    afterImage: "/references/nachher-verwildert.jpg",
+    beforeImage: "/references/vorher-verwildert.webp",
+    afterImage: "/references/nachher-verwildert.webp",
     beforeAlt: "Verwilderter Reihenhausgarten mit hohem Gras, Unkraut im Weg und ungeschnittenen Sträuchern",
     afterAlt: "Derselbe Garten nach der Grundpflege: gemähter Rasen, freier Plattenweg, saubere Beetkanten",
   },
@@ -212,8 +212,8 @@ export const projects: ProjectReference[] = [
     challenge: "Die Kronen waren dicht und ungepflegt, die Bäume trugen kaum noch Früchte.",
     solution: "Fachgerechter Erhaltungs- und Verjüngungsschnitt mit Entfernung des Totholzes.",
     result: "Lichte, gesunde Kronen und wieder deutlich mehr Ertrag",
-    beforeImage: "/references/vorher-obstbaum.jpg",
-    afterImage: "/references/nachher-obstbaum.jpg",
+    beforeImage: "/references/vorher-obstbaum.webp",
+    afterImage: "/references/nachher-obstbaum.webp",
     beforeAlt: "Ungeschnittener Apfelbaum mit dichter, verwachsener Krone",
     afterAlt: "Fachgerecht geschnittener Apfelbaum mit lichter, gleichmäßig aufgebauter Krone über dem Rasen",
   },
@@ -226,8 +226,8 @@ export const projects: ProjectReference[] = [
     challenge: "Moos und Rasenfilz hatten die Fläche überzogen, dazwischen kahle Stellen und breitblättriges Unkraut.",
     solution: "Vertikutieren, Moos und Filz abtragen, Nachsaat in die offenen Stellen und eine auf den Boden abgestimmte Düngung.",
     result: "Eine geschlossene, gleichmäßig grüne Fläche, ohne neu anzulegen",
-    beforeImage: "/references/vorher-rasenpflege-regeneriert.jpg",
-    afterImage: "/references/nachher-rasenpflege-regeneriert.jpg",
+    beforeImage: "/references/vorher-rasenpflege-regeneriert.webp",
+    afterImage: "/references/nachher-rasenpflege-regeneriert.webp",
     beforeAlt: "Vermooste, lückige Rasenfläche mit kahlen Stellen und Unkrautrosetten",
     afterAlt: "Dieselbe Fläche nach Vertikutieren und Nachsaat: dichte, gleichmäßig grüne Grasnarbe",
   },
@@ -240,8 +240,8 @@ export const projects: ProjectReference[] = [
     challenge: "Die alte Rasenfläche war vermoost, lückig und ließ sich mit Nachsaat nicht mehr retten.",
     solution: "Alte Grasnarbe abgefräst, Boden feinplaniert und gedüngt, hochwertigen Rollrasen versetzt verlegt und gewalzt, inklusive Bewässerungsplan für die ersten Wochen.",
     result: "Dichte, belastbare Rasenfläche vom ersten Tag an, statt einer Saison Nachsaat.",
-    beforeImage: "/references/vorher-rasen.jpg",
-    afterImage: "/references/nachher-rasen.jpg",
+    beforeImage: "/references/vorher-rasen.webp",
+    afterImage: "/references/nachher-rasen.webp",
     beforeAlt: "Vermooste, lückige Rasenfläche vor dem Rollrasen-Verlegen",
     afterAlt: "Frisch verlegter, sattgrüner Rollrasen mit sichtbaren Bahnen",
   },
@@ -341,7 +341,7 @@ export const gartenjahr = [
     slug: "fruehjahr",
     months: [2, 3, 4],
     work: "Startschnitt, Beete vorbereiten, Rasen in Schwung bringen",
-    heroImage: "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg",
+    heroImage: "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp",
     heroAlt:
       "Gärtnermeister beim Frühjahrsschnitt am Buchsbaum in einem gepflegten Vorgarten",
     intro:
@@ -375,7 +375,7 @@ export const gartenjahr = [
     slug: "sommer",
     months: [5, 6, 7],
     work: "Hecken in Form halten, Rasen mähen, Beete pflegen",
-    heroImage: "/team/heckenschnitt-stihl-motorsaege-nahaufnahme-duesseldorf.jpg",
+    heroImage: "/team/heckenschnitt-stihl-motorsaege-nahaufnahme-duesseldorf.webp",
     heroAlt: "Nahaufnahme einer Heckenschere beim sommerlichen Formschnitt",
     intro:
       "Der Sommer ist Pflegesaison. Damit Rasen dicht, Hecken in Form und Beete frisch bleiben, kommen wir in festen Intervallen, je nach Wetter, Wachstum und Absprache. So bleibt der Garten das ganze Jahr in Bestform.",
@@ -408,7 +408,7 @@ export const gartenjahr = [
     slug: "herbst",
     months: [8, 9, 10],
     work: "Laub entsorgen, letzter Schnitt, Garten winterfest machen",
-    heroImage: "/references/nachher-obstbaum.jpg",
+    heroImage: "/references/nachher-obstbaum.webp",
     heroAlt:
       "Gärtner beim Obstbaumschnitt in einem herbstlichen Garten mit Fallobst",
     intro:
@@ -442,7 +442,7 @@ export const gartenjahr = [
     slug: "winter",
     months: [11, 0, 1],
     work: "Obstbaum- und Gehölzschnitt, Planung fürs neue Gartenjahr",
-    heroImage: "/services/winter/winterschnitt-hecke-gaertnermeister-doelle-duesseldorf.png",
+    heroImage: "/services/winter/winterschnitt-hecke-gaertnermeister-doelle-duesseldorf.webp",
     heroAlt:
       "Winterschnitt an einer kahlen Hecke in Düsseldorf, Gärtnermeister Benedikt Dölle bei der Winterarbeit",
     intro:

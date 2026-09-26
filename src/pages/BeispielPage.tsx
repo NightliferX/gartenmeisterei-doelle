@@ -38,7 +38,7 @@ const BeispielPage = ({ variant }: BeispielProps) => {
         <ServicesV8 />
         <WerkstattV8 />
         <WhyV8
-          meisterImageSrc="/services/baumschnitt/baumschnitt-obstbaum-bypass-astschere-nahaufnahme-duesseldorf.png"
+          meisterImageSrc="/services/baumschnitt/baumschnitt-obstbaum-bypass-astschere-nahaufnahme-duesseldorf.webp"
           meisterImageAlt="Bypass-Astschere beim Obstbaumschnitt, Handwerk von Gärtnermeister Dölle"
         />
         <AreaBlockV8 />

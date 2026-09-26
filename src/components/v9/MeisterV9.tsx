@@ -16,7 +16,7 @@ const MeisterV9 = () => (
     <div className="mx-auto grid max-w-[1240px] gap-10 px-4 sm:px-6 md:grid-cols-[1.15fr_1fr] md:items-center md:gap-14">
       <div className="relative overflow-hidden rounded-[24px] bg-[#EDEDED] shadow-[0_16px_48px_-24px_rgba(0,0,0,0.25)]">
         <img
-          src={withBase("/team/benedikt-doelle-gaertnermeister-vorgarten-portrait-duesseldorf.png")}
+          src={withBase("/team/benedikt-doelle-gaertnermeister-vorgarten-portrait-duesseldorf.webp")}
           alt={`${siteConfig.ownerName}, Gärtnermeister`}
           className="block aspect-[4/5] w-full object-cover md:aspect-[3/4]"
           loading="lazy"

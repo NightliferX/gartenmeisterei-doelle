@@ -4,6 +4,7 @@ import { ChevronDown, ChevronRight, Menu, MessageCircle, Phone, X } from "lucide
 import { gartenjahr, monthRange, services, siteConfig } from "@/lib/siteContent";
 import { areaPages } from "@/lib/subpages";
 import { withBase } from "@/lib/utils";
+import { oeffneBeratung } from "@/components/v8/BeratungCtaV8";
 
 const serviceSlugFor = (id: string) =>
   ({
@@ -263,18 +264,20 @@ const HeaderV8 = () => {
 
           {/* CTA rechts (Desktop) + Hamburger (Mobile) */}
           <div className="ml-auto flex items-center gap-2">
-            <a
-              href={withBase("/#kontakt")}
+            <button
+              type="button"
+              onClick={oeffneBeratung}
               className="v8-press hidden h-11 items-center rounded-full bg-primary px-5 text-[0.95rem] font-semibold text-primary-foreground shadow-sm hover:bg-primary/90 lg:inline-flex"
             >
-              Kostenlose Beratung
-            </a>
-            <a
-              href={withBase("/#kontakt")}
+              Beratung anfragen
+            </button>
+            <button
+              type="button"
+              onClick={oeffneBeratung}
               className="v8-press inline-flex h-10 items-center rounded-full bg-primary px-4 text-[0.85rem] font-semibold text-primary-foreground lg:hidden"
             >
               Beratung
-            </a>
+            </button>
             <button
               ref={openerRef}
               type="button"
@@ -594,13 +597,16 @@ const SideMenu = ({
               <MessageCircle className="h-4 w-4" strokeWidth={2} />
               WhatsApp
             </a>
-            <a
-              href={withBase("/#kontakt")}
-              onClick={handleAnchorClick(withBase("/#kontakt"), onClose)}
+            <button
+              type="button"
+              onClick={() => {
+                onClose();
+                oeffneBeratung();
+              }}
               className="v8-press inline-flex h-12 items-center justify-center rounded-full bg-primary px-6 text-[1rem] font-medium text-primary-foreground"
             >
-              Kostenlose Beratung anfragen
-            </a>
+              Beratung anfragen
+            </button>
           </div>
         </nav>
       </motion.aside>

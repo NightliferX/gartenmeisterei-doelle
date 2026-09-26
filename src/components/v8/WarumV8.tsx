@@ -72,7 +72,7 @@ const WarumV8 = () => (
             fixer Mindesthöhe. */}
         <article className="relative flex aspect-[4/5] overflow-hidden rounded-[2rem] bg-primary text-primary-foreground shadow-xl shadow-primary/25 md:aspect-auto md:row-span-2 md:min-h-[720px]">
           <img
-            src={withBase("/team/benedikt-doelle-gaertnermeister-vorgarten-portrait-duesseldorf.png")}
+            src={withBase("/team/benedikt-doelle-gaertnermeister-vorgarten-portrait-duesseldorf.webp")}
             alt={`${siteConfig.ownerName}, Gärtnermeister`}
             className="absolute inset-0 h-full w-full object-cover object-top md:object-center"
             loading="lazy"

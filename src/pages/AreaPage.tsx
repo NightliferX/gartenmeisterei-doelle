@@ -55,7 +55,7 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
           {/* Cinematic Hero, V8/Apple */}
           <section className="relative isolate min-h-[62vh] w-full overflow-hidden bg-foreground">
             <img
-              src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg")}
+              src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp")}
               alt={`Gepflegter Vorgarten in ${shortName}`}
               className="absolute inset-0 h-full w-full object-cover"
               loading="eager"

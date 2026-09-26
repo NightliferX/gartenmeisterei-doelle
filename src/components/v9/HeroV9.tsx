@@ -8,7 +8,7 @@ const HeroV9 = () => (
   <section id="start" className="relative isolate overflow-hidden bg-white px-4 pt-6 sm:px-6">
     <div className="relative mx-auto max-w-[1240px] overflow-hidden rounded-[24px]">
       <img
-        src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg")}
+        src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp")}
         alt="Gärtnermeister beim Formschnitt in einem Düsseldorfer Vorgarten"
         className="block h-[64vh] min-h-[520px] w-full object-cover md:h-[72vh]"
         loading="eager"

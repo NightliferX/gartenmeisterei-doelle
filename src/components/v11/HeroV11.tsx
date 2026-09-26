@@ -15,7 +15,7 @@ import { withBase } from "@/lib/utils";
 // Bild scrollt langsamer als der Vordergrund (Parallax), Text bleibt statisch.
 // Gartenjahr als dunkler Block, der von unten in den Hero ragt.
 type HeroV11Props = { imageSrc?: string; imageAlt?: string };
-const DEFAULT_HERO_IMG = "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg";
+const DEFAULT_HERO_IMG = "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp";
 const DEFAULT_HERO_ALT = "Gärtnermeister beim Formschnitt im Vorgarten";
 const HeroV11 = ({ imageSrc, imageAlt }: HeroV11Props = {}) => {
   const month = new Date().getMonth();

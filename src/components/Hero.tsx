@@ -17,7 +17,7 @@ const HeroV2 = () => {
       {/* Vollflächiger Hero-Header in V2-Sprache: Foto + Tannengrün-Verlauf, Text linksbündig */}
       <div className="relative flex min-h-[88vh] items-center">
         <img
-          src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg")}
+          src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp")}
           alt="Gärtnermeister beim Formschnitt eines Buchsbaums im Vorgarten"
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -110,7 +110,7 @@ const HeroV4 = () => {
     <>
       <section id="start" className="relative flex min-h-screen items-center justify-center overflow-hidden">
         <img
-          src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg")}
+          src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp")}
           alt="Gärtnermeister beim Formschnitt eines Buchsbaums im Vorgarten"
           className="absolute inset-0 h-full w-full object-cover"
         />
@@ -214,7 +214,7 @@ const Hero = () => {
       <div
         className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url('${withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg")}')`,
+          backgroundImage: `url('${withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp")}')`,
         }}
       />
       <div className="absolute inset-0 bg-foreground/55" />

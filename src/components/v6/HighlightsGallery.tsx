@@ -10,19 +10,19 @@ const highlights = [
   {
     title: "Hecken in Form.",
     sub: "Zur richtigen Zeit geschnitten.",
-    image: "/references/nachher-hecke.jpg",
+    image: "/references/nachher-hecke.webp",
     alt: "Akkurat geschnittene Ligusterhecke am Gartenweg",
   },
   {
     title: "Obstbäume, die wieder tragen.",
     sub: "Lichte Kronen, kein Totholz.",
-    image: "/references/nachher-obstbaum.jpg",
+    image: "/references/nachher-obstbaum.webp",
     alt: "Fachgerecht geschnittener Apfelbaum mit lichter Krone",
   },
   {
     title: "Rasen ohne Moos.",
     sub: "Dicht, sattgrün, belastbar.",
-    image: "/references/nachher-rasen.jpg",
+    image: "/references/nachher-rasen.webp",
     alt: "Dichte, frisch gemähte Rasenfläche",
   },
   {

@@ -37,7 +37,7 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Unternehmen</h4>
             <ul className="space-y-2 text-sm text-primary-foreground/60">
-              <li><a href={withBase("/#ueber-uns")} className="hover:text-primary-foreground transition-colors">Über Uns</a></li>
+              <li><a href={withBase("/#warum-wir")} className="hover:text-primary-foreground transition-colors">Über Uns</a></li>
               <li><a href={withBase("/#projekte")} className="hover:text-primary-foreground transition-colors">Projekte</a></li>
               <li><a href={withBase("/#einsatzgebiete")} className="hover:text-primary-foreground transition-colors">Einsatzgebiete</a></li>
               <li><a href={withBase("/#kontakt")} className="hover:text-primary-foreground transition-colors">Kontakt</a></li>
