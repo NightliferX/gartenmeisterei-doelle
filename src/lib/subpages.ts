@@ -205,7 +205,7 @@ export const servicePages: ServicePage[] = [
         title: "Vertikutieren",
         text: "Entfernt Moos und Rasenfilz, damit Luft und Wasser wieder an die Wurzeln kommen.",
         image: "/services/rasenpflege/vertikutieren-moosfilz-rasenpflege-duesseldorf.jpg",
-        imageAlt: "Vertikutierer zieht eine Bahn durch den Rasen — links die fertige Fläche, rechts der ausgekämmte Moosfilz",
+        imageAlt: "Vertikutierer mit Fangkorb auf der Rasenfläche, ausgekämmter Moosfilz liegt daneben",
       },
       {
         title: "Düngen nach Saison",
