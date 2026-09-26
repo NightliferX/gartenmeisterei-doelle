@@ -7,7 +7,7 @@ import {
   useScroll,
   useTransform,
 } from "motion/react";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Flower2, Leaf, Snowflake, Sun } from "lucide-react";
 import { gartenjahr, siteConfig } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
 import { oeffneBeratung } from "@/components/v8/BeratungCtaV8";
@@ -16,6 +16,14 @@ import { oeffneBeratung } from "@/components/v8/BeratungCtaV8";
 // Bild scrollt langsamer als der Vordergrund (Parallax), Text bleibt statisch.
 // Gartenjahr als dunkler Block, der von unten in den Hero ragt.
 type HeroV8Props = { imageSrc?: string; imageAlt?: string };
+// Kleines Symbol je Jahreszeit — einfarbig, damit der ruhige Look bleibt.
+const saisonIcon = {
+  fruehjahr: Flower2,
+  sommer: Sun,
+  herbst: Leaf,
+  winter: Snowflake,
+} as const;
+
 const DEFAULT_HERO_IMG = "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp";
 const DEFAULT_HERO_ALT = "Gärtnermeister beim Formschnitt im Vorgarten";
 const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
@@ -167,10 +175,22 @@ const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
                       ) : null}
                     </div>
                     <h3
-                      className={`mt-1 text-[clamp(1.1rem,4.5vw,1.9rem)] font-semibold leading-none ${
+                      className={`mt-1 flex items-center gap-1.5 text-[clamp(1.1rem,4.5vw,1.9rem)] font-semibold leading-none ${
                         active ? "text-foreground" : "text-white"
                       }`}
                     >
+                      {(() => {
+                        const Icon = saisonIcon[entry.slug as keyof typeof saisonIcon];
+                        return Icon ? (
+                          <Icon
+                            aria-hidden
+                            className={`h-[0.72em] w-[0.72em] shrink-0 ${
+                              active ? "text-primary" : "text-white/60"
+                            }`}
+                            strokeWidth={2}
+                          />
+                        ) : null;
+                      })()}
                       {entry.season}
                     </h3>
                     <p
