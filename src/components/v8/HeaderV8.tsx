@@ -62,6 +62,40 @@ const singleLinks = [
 
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
+// Mobile-Menü-Bug: onClick={onClose} entfernt das overflow:hidden vom Body,
+// aber die Browser-Anker-Navigation feuert VOR dem useEffect-Cleanup — also
+// versucht der Browser zu scrollen, während der Body noch gelockt ist. Erst
+// der nächste Klick auf denselben Link scrollt dann tatsächlich.
+// Lösung: bei internen Anker-Links (/#…) auf der Startseite die Navigation
+// selbst übernehmen: Menü schließen, ein Tick warten, dann sanft scrollen.
+const handleAnchorClick = (
+  href: string,
+  onClose?: () => void,
+): React.MouseEventHandler<HTMLAnchorElement> => (e) => {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+  const cleanHref = href.startsWith(base) ? href.slice(base.length) : href;
+  const match = cleanHref.match(/^\/?#(.+)$/);
+  if (!match) {
+    onClose?.();
+    return;
+  }
+  const currentPath = window.location.pathname.replace(base, "") || "/";
+  if (currentPath !== "/" && currentPath !== "") {
+    onClose?.();
+    return;
+  }
+  e.preventDefault();
+  const targetId = match[1];
+  onClose?.();
+  window.setTimeout(() => {
+    const el = document.getElementById(targetId);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      window.history.replaceState(null, "", `${base || ""}/#${targetId}`);
+    }
+  }, 260);
+};
+
 const HeaderV8 = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -484,7 +518,7 @@ const SideMenu = ({
                         <li>
                           <a
                             href={withBase(menu.href)}
-                            onClick={onClose}
+                            onClick={handleAnchorClick(withBase(menu.href), onClose)}
                             className="block py-2.5 text-[0.92rem] font-semibold text-primary"
                           >
                             → Übersicht
@@ -494,7 +528,7 @@ const SideMenu = ({
                           <li key={item.href}>
                             <a
                               href={withBase(item.href)}
-                              onClick={onClose}
+                              onClick={handleAnchorClick(withBase(item.href), onClose)}
                               className="flex items-center justify-between py-2.5 text-[1rem] font-medium text-foreground"
                             >
                               {item.label}
@@ -515,7 +549,7 @@ const SideMenu = ({
               <li key={link.href}>
                 <a
                   href={withBase(link.href)}
-                  onClick={onClose}
+                  onClick={handleAnchorClick(withBase(link.href), onClose)}
                   className="flex items-center justify-between py-4 text-[1.3rem] font-semibold tracking-[-0.005em] text-foreground"
                 >
                   {link.label}
@@ -547,7 +581,7 @@ const SideMenu = ({
             </a>
             <a
               href={withBase("/#kontakt")}
-              onClick={onClose}
+              onClick={handleAnchorClick(withBase("/#kontakt"), onClose)}
               className="v8-press inline-flex h-12 items-center justify-center rounded-full bg-primary px-6 text-[1rem] font-medium text-primary-foreground"
             >
               Kostenlose Beratung anfragen
