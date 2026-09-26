@@ -43,14 +43,6 @@ const SeasonPage = ({ season }: { season: Season }) => {
       <div className="min-h-screen bg-background">
         <HeaderV8 />
         <main>
-          <BreadcrumbsV8
-            items={[
-              { label: "Start", href: "/" },
-              { label: "Gartenjahr", href: "/#gartenjahr" },
-              { label: season.season },
-            ]}
-          />
-
           {/* Cinematic Hero — V8/Apple-Stil */}
           <section className="relative isolate min-h-[80vh] w-full overflow-hidden bg-foreground">
             <img
@@ -79,6 +71,14 @@ const SeasonPage = ({ season }: { season: Season }) => {
               </p>
             </div>
           </section>
+
+          <BreadcrumbsV8
+            items={[
+              { label: "Start", href: "/" },
+              { label: "Gartenjahr", href: "/#gartenjahr" },
+              { label: season.season },
+            ]}
+          />
 
           {/* Aufgaben — Apple-Cards mit soften Schatten, viel Whitespace */}
           <section className="bg-background py-20 md:py-28">

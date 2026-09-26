@@ -31,7 +31,7 @@ const contactEndpoint =
   import.meta.env.VITE_CONTACT_FORM_ENDPOINT ||
   `https://formsubmit.co/ajax/${siteConfig.email}`;
 
-const emptyForm = { name: "", email: "", phone: "", plz: "", service: "", message: "", website: "" };
+const emptyForm = { name: "", email: "", phone: "", service: "", message: "", website: "" };
 
 const useIsMobile = () => {
   const [m, setM] = useState<boolean>(
@@ -69,7 +69,6 @@ const BeratungCtaV8 = () => {
       payload.append("name", formState.name);
       payload.append("email", formState.email);
       payload.append("phone", formState.phone);
-      payload.append("plz", formState.plz);
       payload.append("service", formState.service || "Nicht angegeben");
       payload.append("message", formState.message);
       payload.append("_subject", `Neue Anfrage über die Website von ${siteConfig.brandName}`);
@@ -134,7 +133,7 @@ const BeratungCtaV8 = () => {
           />
         </label>
       </div>
-      <div className="grid gap-4 sm:grid-cols-[1fr_120px]">
+      <div className="grid gap-4 sm:grid-cols-2">
         <label className="block">
           <span className="mb-1.5 flex items-baseline justify-between text-[0.85rem] font-medium text-foreground">
             Telefon <span className="text-[0.75rem] font-normal text-muted-foreground">optional</span>
@@ -150,27 +149,6 @@ const BeratungCtaV8 = () => {
             onChange={(e) => setFormState((p) => ({ ...p, phone: e.target.value }))}
           />
         </label>
-        <label className="block">
-          <span className="mb-1.5 flex items-baseline justify-between text-[0.85rem] font-medium text-foreground">
-            PLZ <span className="text-[0.75rem] font-normal text-muted-foreground">optional</span>
-          </span>
-          <Input
-            name="plz"
-            type="text"
-            inputMode="numeric"
-            placeholder="40470"
-            autoComplete="postal-code"
-            maxLength={5}
-            pattern="[0-9]{5}"
-            className="h-12 text-base"
-            value={formState.plz}
-            onChange={(e) =>
-              setFormState((p) => ({ ...p, plz: e.target.value.replace(/[^0-9]/g, "").slice(0, 5) }))
-            }
-          />
-        </label>
-      </div>
-      <div className="grid gap-4">
         <label className="block">
           <span className="mb-1.5 flex items-baseline justify-between text-[0.85rem] font-medium text-foreground">
             Leistung <span className="text-[0.75rem] font-normal text-muted-foreground">optional</span>
@@ -205,9 +183,19 @@ const BeratungCtaV8 = () => {
           placeholder="Beschreiben Sie kurz Ihren Garten und Ihr Anliegen."
           rows={4}
           required
-          className="min-h-[112px] text-base"
+          className="min-h-[112px] resize-none overflow-hidden text-base transition-[height] duration-150"
           value={formState.message}
-          onChange={(e) => setFormState((p) => ({ ...p, message: e.target.value }))}
+          onChange={(e) => {
+            const el = e.target as HTMLTextAreaElement;
+            el.style.height = "auto";
+            el.style.height = `${Math.min(el.scrollHeight, 360)}px`;
+            setFormState((p) => ({ ...p, message: el.value }));
+          }}
+          onFocus={(e) => {
+            const el = e.target as HTMLTextAreaElement;
+            el.style.height = "auto";
+            el.style.height = `${Math.min(Math.max(el.scrollHeight, 200), 360)}px`;
+          }}
         />
       </label>
       <div className="hidden">
