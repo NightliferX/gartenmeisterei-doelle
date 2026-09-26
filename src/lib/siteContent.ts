@@ -215,7 +215,7 @@ export const projects: ProjectReference[] = [
     beforeImage: "/references/vorher-obstbaum.jpg",
     afterImage: "/references/nachher-obstbaum.jpg",
     beforeAlt: "Ungeschnittener Apfelbaum mit dichter, verwachsener Krone",
-    afterAlt: "Fachgerecht geschnittener Apfelbaum mit lichter Krone",
+    afterAlt: "Fachgerecht geschnittener Apfelbaum mit lichter, gleichmäßig aufgebauter Krone über dem Rasen",
   },
   {
     title: "Rollrasen neu verlegt",
