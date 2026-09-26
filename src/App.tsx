@@ -31,6 +31,17 @@ const App = () => (
           {servicePages.map((page) => (
             <Route key={page.slug} path={`/${page.slug}`} element={<ServicePage page={page} />} />
           ))}
+          {/* Alte SEO-Slugs weiter aktiv, damit indexierte Links + externe
+              Backlinks nicht 404 werden. */}
+          {servicePages.flatMap((page) =>
+            (page.legacySlugs ?? []).map((legacy) => (
+              <Route
+                key={`legacy-${legacy}`}
+                path={`/${legacy}`}
+                element={<ServicePage page={page} />}
+              />
+            )),
+          )}
           {areaPages.map((page) => (
             <Route key={page.slug} path={`/${page.slug}`} element={<AreaPage page={page} />} />
           ))}

@@ -4,6 +4,9 @@
 export type ServicePage = {
   slug: string;
   serviceId: string; // verweist auf services[].id in siteContent.ts
+  // Alte SEO-Slugs, die weiter live bleiben (301-artiger Doppel-Route),
+  // damit indexierte Backlinks und Google-Einträge nicht 404 werden.
+  legacySlugs?: string[];
   metaTitle: string;
   metaDescription: string;
   h1: string;
@@ -28,12 +31,13 @@ export type AreaPage = {
 
 export const servicePages: ServicePage[] = [
   {
-    slug: "gartenpflege-duesseldorf",
+    slug: "gartenpflege",
+    legacySlugs: ["gartenpflege-duesseldorf"],
     serviceId: "gartenpflege",
     metaTitle: "Gartenpflege Düsseldorf | Gartenmeisterei Dölle – Meisterbetrieb",
     metaDescription:
       "Regelmäßige Gartenpflege in Düsseldorf vom Gärtnermeister: Rasen, Hecken, Beete und Saisonarbeiten — zuverlässig nach Plan, auf Wunsch als Pflegevertrag. Kostenlose Erstberatung.",
-    h1: "Gartenpflege in Düsseldorf — dauerhaft gepflegt vom Meisterbetrieb",
+    h1: "Gartenpflege vom Meisterbetrieb — für Düsseldorf und Umland",
     intro: [
       "Ein Garten sieht nur dann das ganze Jahr gut aus, wenn die richtige Arbeit zur richtigen Zeit passiert. Genau das übernehmen wir: Als Gärtnermeister-Betrieb pflegen wir Gärten in ganz Düsseldorf und im nahen Umland — regelmäßig, zuverlässig und mit einem festen Ansprechpartner.",
       "Ob wöchentlicher Rasenschnitt, saisonale Beetpflege oder die komplette Betreuung im Pflegevertrag: Sie bestimmen den Umfang, wir kümmern uns um den Rest. Nach jedem Termin bleibt Ihr Garten aufgeräumt zurück — Schnittgut und Grünabfall nehmen wir direkt mit.",
@@ -80,12 +84,13 @@ export const servicePages: ServicePage[] = [
     ],
   },
   {
-    slug: "heckenschnitt-duesseldorf",
+    slug: "heckenschnitt",
+    legacySlugs: ["heckenschnitt-duesseldorf"],
     serviceId: "heckenschnitt",
     metaTitle: "Heckenschnitt Düsseldorf | Gartenmeisterei Dölle – Formschnitt vom Profi",
     metaDescription:
       "Heckenschnitt in Düsseldorf vom Gärtnermeister: Form- und Rückschnitt zur richtigen Zeit, saubere Kanten, Abtransport inklusive. Jetzt kostenlose Beratung anfragen.",
-    h1: "Heckenschnitt in Düsseldorf — saubere Form, gesunde Hecke",
+    h1: "Heckenschnitt & Formschnitt — für Düsseldorf und Umland",
     intro: [
       "Eine gut geschnittene Hecke rahmt den Garten und schützt die Privatsphäre — eine schlecht geschnittene wird von Jahr zu Jahr breiter, kahler und unförmiger. Wir schneiden Hecken fachgerecht: mit geraden Kanten, leicht konischem Aufbau und zum richtigen Zeitpunkt im Jahr.",
       "Wichtig zu wissen: Zwischen 1. März und 30. September sind radikale Rückschnitte zum Schutz brütender Vögel gesetzlich eingeschränkt — schonende Form- und Pflegeschnitte sind erlaubt. Wir beraten Sie, welcher Schnitt wann sinnvoll ist.",
@@ -132,12 +137,13 @@ export const servicePages: ServicePage[] = [
     ],
   },
   {
-    slug: "baumschnitt-duesseldorf",
+    slug: "baumschnitt",
+    legacySlugs: ["baumschnitt-duesseldorf"],
     serviceId: "baumschnitt",
     metaTitle: "Baumschnitt Düsseldorf | Gartenmeisterei Dölle – Obstbaum- & Kronenschnitt",
     metaDescription:
       "Fachgerechter Baumschnitt in Düsseldorf: Obstbaumschnitt, Kronenpflege, Totholz-Entfernung — vom Gärtnermeister, inklusive Entsorgung. Kostenlose Erstberatung.",
-    h1: "Baumschnitt in Düsseldorf — gesunde Bäume, sichere Kronen",
+    h1: "Baumschnitt & Baumpflege — für Düsseldorf und Umland",
     intro: [
       "Bäume verzeihen falsche Schnitte jahrelang nicht. Deshalb schneiden wir nach Fachregeln: die Krone lichten statt kappen, Totholz entfernen, Wunden klein halten — damit der Baum gesund bleibt und sicher steht.",
       "Vom Obstbaum im Reihenhausgarten bis zum alten Einzelbaum: Wir beurteilen den Zustand vor Ort, empfehlen den passenden Schnitt und führen ihn zur richtigen Jahreszeit aus. Das Schnittgut nehmen wir mit.",
@@ -182,12 +188,13 @@ export const servicePages: ServicePage[] = [
     ],
   },
   {
-    slug: "rasenpflege-duesseldorf",
+    slug: "rasenpflege",
+    legacySlugs: ["rasenpflege-duesseldorf"],
     serviceId: "rasenpflege",
     metaTitle: "Rasenpflege Düsseldorf | Gartenmeisterei Dölle – Vertikutieren & Nachsaat",
     metaDescription:
       "Rasenpflege in Düsseldorf vom Gärtnermeister: Mähen, Vertikutieren, Düngen und Nachsaat für einen dichten, gesunden Rasen. Kostenlose Erstberatung vor Ort.",
-    h1: "Rasenpflege in Düsseldorf — dichter Rasen statt Moos und Lücken",
+    h1: "Rasenpflege — für Düsseldorf und Umland",
     intro: [
       "Moos, kahle Stellen, braune Flecken: Die meisten Rasenprobleme entstehen durch verdichteten Boden, falsches Mähen und fehlende Nährstoffe. Mit dem richtigen Pflegeprogramm wird aus einer müden Fläche wieder ein dichter, belastbarer Rasen.",
       "Wir übernehmen die komplette Rasenpflege — vom regelmäßigen Schnitt über Vertikutieren und Düngen bis zur Nachsaat kahler Stellen. Auf Wunsch als festes Rasenprogramm über die ganze Saison.",
@@ -234,12 +241,13 @@ export const servicePages: ServicePage[] = [
     ],
   },
   {
-    slug: "rollrasen-duesseldorf",
+    slug: "rollrasen",
+    legacySlugs: ["rollrasen-duesseldorf"],
     serviceId: "rollrasen",
     metaTitle: "Rollrasen legen Düsseldorf | Gartenmeisterei Dölle – Meisterbetrieb",
     metaDescription:
       "Rollrasen in Düsseldorf vom Gärtnermeister: Bodenvorbereitung, fugenlose Verlegung und Anwuchspflege. Sofort fertiger Rasen statt monatelang warten. Kostenlose Erstberatung.",
-    h1: "Rollrasen legen in Düsseldorf — an einem Tag zum fertigen Rasen",
+    h1: "Rollrasen legen — an einem Tag zum fertigen Rasen",
     intro: [
       "Wenn schnell ein fertiger Rasen her muss — nach einer Baumaßnahme, bei stark vermoosten Flächen oder vor einem geplanten Termin — ist Rollrasen die zuverlässigste Lösung. In wenigen Stunden verlegt, in zwei bis drei Wochen belastbar.",
       "Wir übernehmen alles: Wir prüfen den Untergrund, bereiten das Planum sauber vor, verlegen den Rollrasen fugenlos und begleiten die Anwuchspflege in den ersten Wochen — damit die Fläche dicht und dauerhaft schön bleibt.",
@@ -283,12 +291,13 @@ export const servicePages: ServicePage[] = [
     ],
   },
   {
-    slug: "laubentsorgung-duesseldorf",
+    slug: "laubentsorgung",
+    legacySlugs: ["laubentsorgung-duesseldorf"],
     serviceId: "herbst",
     metaTitle: "Laubentsorgung Düsseldorf | Gartenmeisterei Dölle – Herbstputz vom Profi",
     metaDescription:
       "Laub entfernen und entsorgen in Düsseldorf: Rasen, Wege und Beete gründlich vom Laub befreit — auf Wunsch mehrmals pro Saison. Jetzt Termin sichern.",
-    h1: "Laubentsorgung in Düsseldorf — bevor Rasen und Wege leiden",
+    h1: "Laubentsorgung & Herbstputz — für Düsseldorf und Umland",
     intro: [
       "Liegengebliebenes Laub ist mehr als ein Schönheitsproblem: Auf dem Rasen erstickt es das Gras, auf Wegen wird es rutschig, in Rinnen und Abläufen sorgt es für Staunässe. Im Herbst zählt deshalb Regelmäßigkeit.",
       "Wir befreien Rasen, Beete, Wege und Einfahrten gründlich vom Laub und entsorgen es fachgerecht — als einmaliger Herbstputz oder mit mehreren festen Terminen über die Laubsaison.",
@@ -325,7 +334,8 @@ export const servicePages: ServicePage[] = [
     ],
   },
   {
-    slug: "winterservice-duesseldorf",
+    slug: "winterservice",
+    legacySlugs: ["winterservice-duesseldorf"],
     serviceId: "saison",
     metaTitle: "Garten winterfest machen Düsseldorf | Gartenmeisterei Dölle",
     metaDescription:
@@ -430,11 +440,13 @@ export const areaPages: AreaPage[] = [
     kind: "Umland",
     metaTitle: "Gartenpflege Meerbusch | Gartenmeisterei Dölle – Gärtnermeister aus Düsseldorf",
     metaDescription:
-      "Gartenpflege in Meerbusch — Büderich, Osterath, Lank: große Gärten in Meisterhand. Feste Pflegetermine, kostenlose Erstberatung, kurze Anfahrt aus Düsseldorf.",
+      "Gartenpflege in Meerbusch — Büderich, Osterath, Lank-Latum, Strümp: große Gärten linksrheinisch in Meisterhand. Regelmäßige Pflege, fachgerechter Schnitt, faire Anfahrt aus Düsseldorf.",
     h1: "Gartenpflege in Meerbusch",
     intro: [
-      "Von Büderich bis Lank-Latum: Meerbusch gehört zu den grünsten Wohnlagen der Region — mit entsprechend großen Gärten, Hecken und Rasenflächen.",
-      "Als Meisterbetrieb aus dem benachbarten Düsseldorf betreuen wir Gärten in ganz Meerbusch: regelmäßig im Pflegevertrag oder projektweise vom Heckenschnitt bis zur Rasenregeneration.",
+      "Meerbusch ist die grüne Seite gegenüber vom Rhein — großzügige Grundstücke, gewachsene Baumbestände, Hecken, die im Sommer schnell aus der Form laufen. Von Büderich über Osterath und Strümp bis Lank-Latum betreuen wir hier private Gärten, in denen die Pflege den Unterschied macht.",
+      "Als Gärtnermeister-Betrieb aus dem direkt angrenzenden Düsseldorf sind wir mit kurzer Anfahrt vor Ort — das rechnet sich bei regelmäßigen Terminen und macht auch spontane Einsätze möglich, ohne dass gleich ein voller Halbtag pauschal in Rechnung steht.",
+      "Typisch für Meerbusch: viele Kirschlorbeer- und Buchsbaumhecken, alte Obstbäume und ausgedehnte Rasenflächen. Wir schneiden formsicher, kontrollieren Kronen im Winter und halten den Rasen über die ganze Saison dicht — inklusive Vertikutieren im Frühjahr und Herbstlaubservice.",
+      "Auf Wunsch als kompletter Pflegevertrag mit festen Terminen für das ganze Jahr — Sie bekommen einen Ansprechpartner, klare Absprachen und einen Garten, der nach jedem Einsatz aufgeräumt zurückbleibt.",
     ],
   },
   {
@@ -443,11 +455,12 @@ export const areaPages: AreaPage[] = [
     kind: "Umland",
     metaTitle: "Gartenpflege Neuss | Gartenmeisterei Dölle – Gärtnermeister für Neuss",
     metaDescription:
-      "Gartenpflege in Neuss vom Gärtnermeister: Rasen, Hecken, Bäume und Saisonservice — zuverlässig, mit Entsorgung inklusive. Jetzt Beratung anfragen.",
+      "Gartenpflege in Neuss vom Gärtnermeister: regelmäßige Pflege, Heckenschnitt, Rasen, Baumpflege und Winterservice für Neuss, Grimlinghausen, Weckhoven, Norf. Anfahrt aus Düsseldorf.",
     h1: "Gartenpflege in Neuss",
     intro: [
-      "Direkt über die Rheinbrücke: Neuss liegt für uns auf kurzem Weg. Wir pflegen hier Privatgärten und kleinere Gewerbeflächen — vom Reihenhausgarten bis zum Grundstück mit altem Baumbestand.",
-      "Sie bekommen feste Termine, klare Absprachen und einen Garten, der nach jedem Einsatz aufgeräumt zurückbleibt.",
+      "Neuss liegt für uns über die Rheinbrücke — ideal für regelmäßige Pflegetermine ohne lange Anfahrtsstrecken. Wir betreuen hier Privatgärten in allen Stadtteilen: vom Reihenhausgarten in Weckhoven über die klassische Vorstadt-Situation in Grimlinghausen bis zu Grundstücken mit altem Baumbestand in Erfttal und Rosellen.","Als Meisterbetrieb übernehmen wir die komplette Pflege: regelmäßiges Mähen, Heckenschnitt zur richtigen Zeit, Vertikutieren im Frühjahr, Herbstlaubservice und Baumpflege im Winter. Entsorgung von Schnittgut und Laub gehört bei jedem Termin dazu — Sie müssen nichts nachbestellen.",
+      "In Neuss ist die Bodenqualität oft besser als bei uns in Düsseldorf — dafür sind die Rasenflächen häufig größer. Wir kalkulieren fair nach Fläche und Zeitaufwand, mit einem festen Ansprechpartner statt Callcenter.",
+      "Auf Wunsch als Pflegevertrag für die ganze Saison, mit festen Wochenintervallen oder monatlich. Beratung und Angebot sind kostenlos und unverbindlich.",
     ],
   },
   {
@@ -456,11 +469,13 @@ export const areaPages: AreaPage[] = [
     kind: "Umland",
     metaTitle: "Gartenpflege Ratingen | Gartenmeisterei Dölle – Meisterbetrieb aus Düsseldorf",
     metaDescription:
-      "Gartenpflege in Ratingen: Heckenschnitt, Baumpflege, Rasen und Winterservice vom Gärtnermeister — feste Termine, faire Preise, Entsorgung inklusive.",
+      "Gartenpflege Ratingen: Heckenschnitt, Baumpflege, Rasenpflege und Winterservice vom Gärtnermeister — für Ratingen-Mitte, Hösel, Lintorf, Homberg und Breitscheid. Feste Termine, faire Preise.",
     h1: "Gartenpflege in Ratingen",
     intro: [
-      "Ob Ratingen-Mitte, Hösel oder Lintorf: Die Gärten am Übergang zum Bergischen sind grün, gewachsen — und pflegeintensiv. Wir bringen sie in Form und halten sie dort.",
-      "Von der einmaligen Grundpflege verwilderter Ecken bis zum dauerhaften Pflegevertrag: Sie sagen, was der Garten braucht, wir liefern das Ergebnis.",
+      "Am Übergang zum Bergischen Land liegen die Gärten in Ratingen meist auf gewachsenem Boden mit altem Baumbestand — von Hösel und Homberg mit den klassischen villenartigen Grundstücken bis zu den Reihenhaus-Vierteln in Ratingen-West und Tiefenbroich. Genau hier zahlt sich Erfahrung im Schnitt aus: gesunde Kronen, dichte Hecken, sauber geführte Beetkanten.",
+      "Wir kommen aus Düsseldorf zu festen Terminen — nur 15 Minuten Fahrt, ideal für regelmäßige Pflege ohne lange Anfahrtskosten. Ob wöchentlicher Rasenschnitt, saisonale Beetpflege oder die komplette Betreuung im Pflegevertrag: Sie bestimmen den Umfang, wir kümmern uns um den Rest.",
+      "Typisch Ratingen: viele hohe Buchsbaum-, Kirschlorbeer- und Eiben-Hecken, große Rasenflächen an Hanglagen und alte Obst- sowie Laubbäume. Wir schneiden formsicher und zur richtigen Zeit (Vogelschutz-Fristen inklusive), pflegen Kronen im Winter und übernehmen den Herbstlaubservice komplett — Entsorgung von Schnittgut und Laub ist immer dabei.",
+      "Auf Wunsch als Pflegevertrag mit festen Terminen für die ganze Saison. Die Erstberatung vor Ort ist kostenlos und unverbindlich.",
     ],
   },
   {

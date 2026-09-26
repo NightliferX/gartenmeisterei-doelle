@@ -7,13 +7,13 @@ import { withBase } from "@/lib/utils";
 // Desktop (md+): klassisches 2-Spalten-Grid nebeneinander.
 const slugFor = (id: string) =>
   ({
-    gartenpflege: "gartenpflege-duesseldorf",
-    heckenschnitt: "heckenschnitt-duesseldorf",
-    baumschnitt: "baumschnitt-duesseldorf",
-    rasenpflege: "rasenpflege-duesseldorf",
-    herbst: "laubentsorgung-duesseldorf",
-    saison: "winterservice-duesseldorf",
-    rollrasen: "rollrasen-duesseldorf",
+    gartenpflege: "gartenpflege",
+    heckenschnitt: "heckenschnitt",
+    baumschnitt: "baumschnitt",
+    rasenpflege: "rasenpflege",
+    herbst: "laubentsorgung",
+    saison: "winterservice",
+    rollrasen: "rollrasen",
   }[id] ?? id);
 
 const srcFor = (image: string | undefined) => {

@@ -4,12 +4,12 @@ import { withBase } from "@/lib/utils";
 
 const slugFor = (id: string) =>
   ({
-    gartenpflege: "gartenpflege-duesseldorf",
-    heckenschnitt: "heckenschnitt-duesseldorf",
-    baumschnitt: "baumschnitt-duesseldorf",
-    rasenpflege: "rasenpflege-duesseldorf",
-    herbst: "laubentsorgung-duesseldorf",
-    saison: "winterservice-duesseldorf",
+    gartenpflege: "gartenpflege",
+    heckenschnitt: "heckenschnitt",
+    baumschnitt: "baumschnitt",
+    rasenpflege: "rasenpflege",
+    herbst: "laubentsorgung",
+    saison: "winterservice",
   }[id] ?? id);
 
 const srcFor = (image?: string) =>

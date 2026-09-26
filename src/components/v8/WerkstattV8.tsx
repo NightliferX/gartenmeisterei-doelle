@@ -5,10 +5,10 @@ import { projects } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
 
 const tabs = [
-  { key: "hecke", label: "Hecke", match: "Hecken in Form gebracht", slug: "heckenschnitt-duesseldorf" },
-  { key: "garten", label: "Garten", match: "Verwilderten Garten", slug: "gartenpflege-duesseldorf" },
-  { key: "obstbaum", label: "Obstbaum", match: "Obstbäume", slug: "baumschnitt-duesseldorf" },
-  { key: "rasen", label: "Rasen", match: "Rollrasen", slug: "rasenpflege-duesseldorf" },
+  { key: "hecke", label: "Hecke", match: "Hecken in Form gebracht", slug: "heckenschnitt" },
+  { key: "garten", label: "Garten", match: "Verwilderten Garten", slug: "gartenpflege" },
+  { key: "obstbaum", label: "Obstbaum", match: "Obstbäume", slug: "baumschnitt" },
+  { key: "rasen", label: "Rasen", match: "Rollrasen", slug: "rasenpflege" },
 ] as const;
 
 const WerkstattV8 = () => {

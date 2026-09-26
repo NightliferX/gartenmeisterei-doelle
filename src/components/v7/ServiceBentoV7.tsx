@@ -48,7 +48,7 @@ const ServiceBentoV7 = () => {
             return (
               <a
                 key={card.id}
-                href={withBase(`/${card.id === "gartenpflege" ? "gartenpflege-duesseldorf" : card.id === "heckenschnitt" ? "heckenschnitt-duesseldorf" : card.id === "baumschnitt" ? "baumschnitt-duesseldorf" : card.id === "rasenpflege" ? "rasenpflege-duesseldorf" : card.id === "herbst" ? "laubentsorgung-duesseldorf" : "winterservice-duesseldorf"}`)}
+                href={withBase(`/${card.id === "gartenpflege" ? "gartenpflege" : card.id === "heckenschnitt" ? "heckenschnitt" : card.id === "baumschnitt" ? "baumschnitt" : card.id === "rasenpflege" ? "rasenpflege" : card.id === "herbst" ? "laubentsorgung" : "winterservice"}`)}
                 className={`v7-press group relative isolate overflow-hidden rounded-[1.25rem] bg-secondary/60 shadow-sm ring-1 ring-border/60 transition-all duration-300 hover:shadow-xl hover:ring-primary/25 ${card.span} ${card.height}`}
               >
                 {img ? (
