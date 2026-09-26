@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="sm:col-span-2 lg:col-span-1">
             <a href={withBase("/")} className="mb-5 inline-flex">
               <img
-                src={withBase("/logo-gartenmeisterei-white.svg")}
+                src={withBase("/logo-gaertnermeister-doelle-white.png")}
                 alt={`${siteConfig.brandName} Logo`}
                 className="h-14 w-auto"
               />
