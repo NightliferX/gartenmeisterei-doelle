@@ -4,7 +4,7 @@ import HeaderV8 from "@/components/v8/HeaderV8";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import BeforeAfterSlider from "@/components/BeforeAfterSlider";
-import BeratungCtaV8 from "@/components/v8/BeratungCtaV8";
+import BeratungCtaV8, { oeffneBeratung } from "@/components/v8/BeratungCtaV8";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { projects, services, siteConfig } from "@/lib/siteContent";
 import { servicePages, type ServicePage as ServicePageData } from "@/lib/subpages";
@@ -153,19 +153,21 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                 {page.intro[0]}
               </p>
               <div className="v8-rise-3 mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <a
-                  href="#kontakt"
+                <button
+                  type="button"
+                  onClick={oeffneBeratung}
                   className="v8-press inline-flex h-12 items-center justify-center gap-1.5 rounded-full bg-white px-7 text-[1rem] font-semibold text-foreground shadow-lg shadow-black/25 hover:bg-white/90"
                 >
                   Kostenlose Beratung anfragen
                   <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
-                </a>
+                </button>
                 <a
                   href={siteConfig.phoneHref}
+                  aria-label={`Anrufen: ${siteConfig.phoneDisplay}`}
                   className="v8-press inline-flex h-12 items-center justify-center gap-2 rounded-full border border-white/30 bg-white/10 px-6 text-[1rem] font-medium text-white backdrop-blur-sm hover:bg-white/20"
                 >
                   <Phone className="h-4 w-4" strokeWidth={2} />
-                  {siteConfig.phoneDisplay}
+                  Anrufen
                 </a>
               </div>
             </div>
