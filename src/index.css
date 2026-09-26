@@ -76,6 +76,10 @@
   }
   html {
     scroll-behavior: smooth;
+    /* Verhindert die 300ms-Tap-Verzögerung auf iOS Safari (Doppel-Tap-Zoom
+       wird deaktiviert, Pinch-Zoom bleibt erhalten). Spürbar schnellere
+       Reaktion auf allen Buttons und Links auf iPhone. */
+    touch-action: manipulation;
   }
   body {
     background-image:
