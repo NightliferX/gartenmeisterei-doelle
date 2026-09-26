@@ -128,6 +128,7 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                 src={heroImage.startsWith("http") ? heroImage : withBase(heroImage)}
                 alt={heroAlt}
                 className="absolute inset-0 h-full w-full object-cover"
+                style={page.heroImageMirror ? { transform: "scaleX(-1)" } : undefined}
                 loading="eager"
                 decoding="async"
               />

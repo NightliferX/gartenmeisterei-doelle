@@ -14,6 +14,8 @@ export type ServicePage = {
   // Optional: eigenes Hero-Bild der Unterseite (sonst services[].image)
   heroImage?: string;
   heroAlt?: string;
+  // Optional: Hero-Bild horizontal spiegeln (falls Blickrichtung ins Layout passt).
+  heroImageMirror?: boolean;
 };
 
 export type AreaPage = {
@@ -90,8 +92,9 @@ export const servicePages: ServicePage[] = [
       "Eine gut geschnittene Hecke rahmt den Garten und schützt die Privatsphäre — eine schlecht geschnittene wird von Jahr zu Jahr breiter, kahler und unförmiger. Wir schneiden Hecken fachgerecht: mit geraden Kanten, leicht konischem Aufbau und zum richtigen Zeitpunkt im Jahr.",
       "Wichtig zu wissen: Zwischen 1. März und 30. September sind radikale Rückschnitte zum Schutz brütender Vögel gesetzlich eingeschränkt — schonende Form- und Pflegeschnitte sind erlaubt. Wir beraten Sie, welcher Schnitt wann sinnvoll ist.",
     ],
-    heroImage: "/services/heckenschnitt/heckenschnitt-buchsbaum-formschnitt-gaertnermeister-duesseldorf.jpg",
-    heroAlt: "Gärtnermeister schneidet einen Buchsbaum mit der Handschere in Form",
+    heroImage: "/services/heckenschnitt/heckenschnitt-hecke-stihl-motorsaege-detail-duesseldorf.png",
+    heroAlt: "Nahaufnahme der Stihl-Heckenschere beim Formschnitt einer Hecke",
+    heroImageMirror: true,
     included: [
       {
         title: "Form- und Pflegeschnitt",
