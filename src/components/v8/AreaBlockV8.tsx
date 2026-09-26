@@ -38,10 +38,7 @@ const AreaBlockV8 = () => {
   return (
     <section id="einsatzgebiete" className="cv-auto overflow-x-hidden bg-secondary/40 py-20 md:py-28">
       <div className="mx-auto max-w-[1240px] px-4 text-center sm:px-6">
-        <p className="text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-primary">
-          Einsatzgebiete
-        </p>
-        <h2 className="mx-auto mt-3 max-w-[24ch] text-[clamp(2rem,4.2vw,3rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
+        <h2 className="mx-auto max-w-[24ch] text-[clamp(2rem,4.2vw,3rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
           Für Düsseldorf und die Region, von Oberkassel bis Benrath.
         </h2>
       </div>

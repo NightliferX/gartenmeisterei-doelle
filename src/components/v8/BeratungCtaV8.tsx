@@ -324,16 +324,11 @@ const BeratungCtaV8 = () => {
         <div className="overflow-hidden rounded-[1.75rem] bg-primary text-primary-foreground shadow-xl shadow-primary/25">
           <div className="grid gap-8 p-6 md:grid-cols-[1.15fr_1fr] md:gap-10 md:p-10 lg:p-12">
             <div>
-              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.22em] text-primary-foreground/70">
-                Kontakt · Beratung
-              </p>
-              <h2 id="beratung-v8" className="mt-2 text-[clamp(1.8rem,3.6vw,2.6rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-primary-foreground">
+              <h2 id="beratung-v8" className="text-[clamp(1.8rem,3.6vw,2.6rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-primary-foreground">
                 Kostenlose Erstberatung in Ihrem Garten.
               </h2>
-              <p className="mt-4 max-w-[46ch] text-[1rem] leading-relaxed text-primary-foreground/85">
-                Wir schauen uns Ihren Garten vor Ort an, hören zu und schlagen
-                einen passenden Pflegeplan vor. Unverbindlich, Benedikt Dölle
-                meldet sich in kürzester Zeit persönlich bei Ihnen.
+              <p className="mt-4 max-w-[46ch] text-[1.05rem] leading-relaxed text-primary-foreground/85">
+                Benedikt Dölle meldet sich in kürzester Zeit persönlich bei Ihnen.
               </p>
 
               <ul className="mt-6 grid gap-2 text-[0.95rem] text-primary-foreground/90 sm:grid-cols-2">

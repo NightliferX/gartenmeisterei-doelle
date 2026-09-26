@@ -83,20 +83,20 @@ const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
             <button
               type="button"
               onClick={oeffneBeratung}
-              className="v8-press group inline-flex items-center gap-3 rounded-full bg-white py-1.5 pl-1.5 pr-5 text-left shadow-lg shadow-black/25 transition-colors hover:bg-white/95"
+              className="v8-press group inline-flex items-center gap-3 rounded-full border border-white/25 bg-white/10 py-1.5 pl-1.5 pr-5 text-left backdrop-blur-sm transition-colors hover:bg-white/20"
             >
               <img
                 src={withBase("/team/benedikt-doelle-gaertnermeister-nahaufnahme-portrait-duesseldorf.png")}
                 alt={`${siteConfig.ownerName}, Gärtnermeister`}
                 loading="eager"
                 decoding="async"
-                className="h-11 w-11 shrink-0 rounded-full object-cover ring-1 ring-black/10"
+                className="h-11 w-11 shrink-0 rounded-full object-cover ring-1 ring-white/30"
               />
               <span className="leading-tight">
-                <span className="block text-[0.7rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                <span className="block text-[0.7rem] font-medium uppercase tracking-[0.14em] text-white/75">
                   Ihr Ansprechpartner
                 </span>
-                <span className="mt-0.5 flex items-center gap-1.5 text-[0.98rem] font-semibold text-foreground">
+                <span className="mt-0.5 flex items-center gap-1.5 text-[0.98rem] font-semibold text-white">
                   Beratung mit {siteConfig.ownerName.split(" ")[0]}
                   <ArrowRight
                     className="h-4 w-4 transition-transform group-hover:translate-x-0.5"

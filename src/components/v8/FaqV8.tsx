@@ -8,11 +8,8 @@ const FaqV8 = () => (
   <section id="faq" className="cv-auto bg-secondary/40 py-20 md:py-28">
     <div className="mx-auto max-w-[1080px] px-4 sm:px-6">
       <div className="text-center">
-        <p className="text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-primary">
-          Häufige Fragen
-        </p>
-        <h2 className="mt-3 text-[clamp(2rem,4vw,2.8rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
-          Alles, was Sie vor der Buchung wissen möchten.
+        <h2 className="text-[clamp(2rem,4vw,2.8rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
+          Häufige Fragen.
         </h2>
       </div>
 

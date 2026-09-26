@@ -56,12 +56,9 @@ const WarumV8 = () => (
     <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
       {/* Header, zentriert, große Headline */}
       <div className="mx-auto max-w-[42rem] text-center">
-        <p className="text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-primary">
-          Warum wir
-        </p>
         <h2
           id="warum-wir-headline"
-          className="mt-3 text-[clamp(2rem,4.6vw,3.4rem)] font-semibold leading-[1.02] tracking-[-0.025em] text-foreground"
+          className="text-[clamp(2rem,4.6vw,3.4rem)] font-semibold leading-[1.02] tracking-[-0.025em] text-foreground"
         >
           Darum Gärtnermeister Dölle.
         </h2>
