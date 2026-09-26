@@ -14,14 +14,16 @@ import { withBase } from "@/lib/utils";
 // weiche Schatten statt Rahmen, dunkles Editorial-Panel für den Ablauf.
 
 // Passendes Referenzprojekt je Leistung (Titel-Teilstring aus siteContent).
-const projectMatchFor: Record<string, string> = {
-  gartenpflege: "Verwilderten Garten",
-  heckenschnitt: "Hecken in Form",
-  baumschnitt: "Obstbäume",
-  rasenpflege: "Rollrasen",
-  rollrasen: "Rollrasen",
-  herbst: "Garten winterfest",
-  saison: "Garten winterfest",
+// Zu einer Leistung koennen mehrere Referenzen gehoeren — sie werden dann
+// untereinander gezeigt, jede mit eigenem Namen und Ort.
+const projectMatchFor: Record<string, string[]> = {
+  gartenpflege: ["Verwilderten Garten"],
+  heckenschnitt: ["Hecke am Hausweg", "Vorgartenhecke"],
+  baumschnitt: ["Obstbäume"],
+  rasenpflege: ["Rollrasen"],
+  rollrasen: ["Rollrasen"],
+  herbst: ["Garten winterfest"],
+  saison: ["Garten winterfest"],
 };
 
 const ablauf = [
@@ -49,10 +51,11 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
   const heroImage = page.heroImage ?? service?.image;
   const heroAlt = page.heroAlt ?? service?.title ?? page.h1;
   const [headline, subline] = page.h1.split(" — ");
-  const match = projectMatchFor[page.serviceId];
-  const project = match
-    ? projects.find((p) => p.title.includes(match) && p.beforeImage && p.afterImage)
-    : undefined;
+  const referenzen = (projectMatchFor[page.serviceId] ?? [])
+    .map((match) =>
+      projects.find((p) => p.title.includes(match) && p.beforeImage && p.afterImage),
+    )
+    .filter((p): p is (typeof projects)[number] => Boolean(p));
   const otherPages = servicePages.filter((p) => p.slug !== page.slug);
   const photoItems = page.included.filter((item) => item.image);
   const plainItems = page.included.filter((item) => !item.image);
@@ -296,8 +299,8 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
             </div>
           </section>
 
-          {/* Vorher / Nachher */}
-          {project ? (
+          {/* Vorher / Nachher — eine oder mehrere Referenzen untereinander */}
+          {referenzen.length ? (
             <section className="bg-background py-20 md:py-28">
               <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
                 <div className="scroll-fade-in mx-auto max-w-3xl text-center">
@@ -305,33 +308,50 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                     Aus der Praxis
                   </p>
                   <h2 className="mt-3 text-[clamp(2rem,4.2vw,3rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
-                    Vorher. Nachher.
+                    {referenzen.length > 1 ? "Zwei Beispiele." : "Vorher. Nachher."}
                   </h2>
                 </div>
 
-                <div className="mt-10 grid gap-8 md:mt-14 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:items-center lg:gap-12">
-                  <BeforeAfterSlider
-                    className="border-0 shadow-[0_18px_48px_-24px_rgba(0,0,0,0.45)]"
-                    title={project.title}
-                    beforeImage={project.beforeImage ? withBase(project.beforeImage) : undefined}
-                    afterImage={project.afterImage ? withBase(project.afterImage) : undefined}
-                    beforeAlt={project.beforeAlt}
-                    afterAlt={project.afterAlt}
-                  />
-                  <div className="text-center lg:text-left">
-                    <p className="text-[0.75rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
-                      {project.location}
-                    </p>
-                    <h3 className="mt-2 text-[clamp(1.4rem,2.8vw,2.2rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
-                      {project.title}
-                    </h3>
-                    <p className="mx-auto mt-4 max-w-[52ch] text-[1rem] leading-relaxed text-muted-foreground lg:mx-0 lg:text-[1.05rem]">
-                      {project.solution}
-                    </p>
-                    <p className="mx-auto mt-3 max-w-[52ch] text-[1rem] font-medium leading-relaxed text-foreground lg:mx-0">
-                      {project.result}.
-                    </p>
-                  </div>
+                <div className="mt-10 flex flex-col gap-16 md:mt-14 md:gap-20">
+                  {referenzen.map((referenz, index) => (
+                    <div
+                      key={referenz.title}
+                      className={`grid gap-8 lg:items-center lg:gap-12 ${
+                        index % 2 === 1
+                          ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.55fr)]"
+                          : "lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]"
+                      }`}
+                    >
+                      <div className={index % 2 === 1 ? "lg:order-2" : undefined}>
+                        <BeforeAfterSlider
+                          className="border-0 shadow-[0_18px_48px_-24px_rgba(0,0,0,0.45)]"
+                          title={referenz.title}
+                          beforeImage={
+                            referenz.beforeImage ? withBase(referenz.beforeImage) : undefined
+                          }
+                          afterImage={
+                            referenz.afterImage ? withBase(referenz.afterImage) : undefined
+                          }
+                          beforeAlt={referenz.beforeAlt}
+                          afterAlt={referenz.afterAlt}
+                        />
+                      </div>
+                      <div className={`text-center lg:text-left ${index % 2 === 1 ? "lg:order-1" : ""}`}>
+                        <p className="text-[0.75rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
+                          {referenz.location}
+                        </p>
+                        <h3 className="mt-2 text-[clamp(1.4rem,2.8vw,2.2rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
+                          {referenz.title}
+                        </h3>
+                        <p className="mx-auto mt-4 max-w-[52ch] text-[1rem] leading-relaxed text-muted-foreground lg:mx-0 lg:text-[1.05rem]">
+                          {referenz.solution}
+                        </p>
+                        <p className="mx-auto mt-3 max-w-[52ch] text-[1rem] font-medium leading-relaxed text-foreground lg:mx-0">
+                          {referenz.result}.
+                        </p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
             </section>

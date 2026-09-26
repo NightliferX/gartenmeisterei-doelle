@@ -162,9 +162,9 @@ export const services = [
 // durch eigene Vorher-/Nachher-Bilder ersetzen.
 export const projects: ProjectReference[] = [
   {
-    title: "Hecken in Form gebracht",
+    title: "Hecke am Hausweg geschnitten",
     category: "Schnitt",
-    location: "Düsseldorf-Oberkassel",
+    location: "Neuss",
     serviceTags: ["Heckenschnitt", "Formschnitt", "Entsorgung"],
     summary: "Formschnitt für eine gewachsene Heckenanlage rund um Haus und Gartenweg.",
     challenge: "Die Hecken waren aus der Form gewachsen und nahmen Wegen und Beeten das Licht.",
@@ -174,6 +174,20 @@ export const projects: ProjectReference[] = [
     afterImage: "/references/nachher-hecke-handy.jpg",
     beforeAlt: "Überwachsene Hecke, die den Plattenweg zum Hauseingang zuwächst",
     afterAlt: "Dieselbe Hecke nach dem Formschnitt: gerade Oberkante und der Weg wieder frei",
+  },
+  {
+    title: "Vorgartenhecke neu in Form",
+    category: "Schnitt",
+    location: "Meerbusch",
+    serviceTags: ["Heckenschnitt", "Rückschnitt", "Entsorgung"],
+    summary: "Eine über die Vorgartenmauer gewachsene Hecke wurde wieder auf Maß gebracht.",
+    challenge: "Die Hecke war so breit geworden, dass sie über die Mauer auf den Gehweg ragte und die Fenster verschattete.",
+    solution: "Kräftiger Rückschnitt auf Mauerhöhe plus Aufbau einer geraden Oberkante und senkrechter Flanke.",
+    result: "Ein freier Gehweg und wieder Licht an der Hausfront",
+    beforeImage: "/references/vorher-vorgartenhecke.jpg",
+    afterImage: "/references/nachher-vorgartenhecke.jpg",
+    beforeAlt: "Breit gewachsene Vorgartenhecke, die über die Mauer auf den Gehweg ragt",
+    afterAlt: "Dieselbe Hecke nach dem Rückschnitt: gerade Oberkante, Gehweg wieder frei",
   },
   {
     title: "Verwilderten Garten zurückgeschnitten",
