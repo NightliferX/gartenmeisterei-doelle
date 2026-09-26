@@ -14,6 +14,7 @@ const slugFor = (id: string) =>
     herbst: "laubentsorgung",
     saison: "winterservice",
     rollrasen: "rollrasen",
+    terrasse: "terrasse",
   }[id] ?? id);
 
 const srcFor = (image: string | undefined) => {

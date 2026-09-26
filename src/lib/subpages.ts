@@ -377,6 +377,57 @@ export const servicePages: ServicePage[] = [
       },
     ],
   },
+  {
+    slug: "terrasse",
+    serviceId: "terrasse",
+    metaTitle: "Terrassen- & Wegereinigung | Gartenmeisterei Dölle – Kärcher K5",
+    metaDescription:
+      "Terrassen, Einfahrten und Wege mit dem Kärcher K5 fachgerecht reinigen: Moos, Algen und Schmutz raus, Fugensand nachpflegen. Für Düsseldorf und Umland.",
+    h1: "Terrassen- & Wegereinigung — für Düsseldorf und Umland",
+    intro: [
+      "Steinterrassen, Betonwege und Klinker-Einfahrten sammeln über den Winter Moos, Algen und einen grauen Schmutzfilm — vor allem in schattigen Ecken. Wer im Frühjahr wieder auf der eigenen Terrasse sitzen will, sollte damit nicht zu lange warten.",
+      "Wir reinigen mit dem Kärcher K5 gründlich und trotzdem materialschonend: Naturstein, Betonwerkstein, Klinker, Waschbeton — je nach Belag mit passender Düse und Druckstufe. Fugensand wird bei Bedarf nachgefüllt, damit die Steine stabil sitzen.",
+    ],
+    heroImage: "/services/gartenpflege/terrassenreinigung-kaercher-k5-hochdruckreiniger-duesseldorf.jpg",
+    heroAlt: "Terrassenreinigung mit dem Kärcher K5 — Moos und Schmutzfilm werden von Steinplatten entfernt",
+    included: [
+      {
+        title: "Kärcher-Hochdruckreinigung",
+        text: "Wir arbeiten mit dem Kärcher K5 (mit passendem Terrassenreiniger-Aufsatz für gleichmäßiges Ergebnis ohne Streifen).",
+        image: "/services/gartenpflege/terrassenreinigung-kaercher-k5-hochdruckreiniger-duesseldorf.jpg",
+        imageAlt: "Person mit Kärcher K5 reinigt eine Steinterrasse in einem Düsseldorfer Vorgarten",
+      },
+      {
+        title: "Terrassen, Wege & Einfahrten",
+        text: "Naturstein, Betonwerkstein, Klinker, Waschbeton — wir wählen Düse und Druck passend zum Belag, damit die Oberfläche nicht leidet.",
+      },
+      {
+        title: "Fugensand ergänzen",
+        text: "Nach der Reinigung sind Fugen oft ausgespült. Wir ergänzen Fugensand und bürsten ihn ein — für stabilen Halt und weniger Unkraut.",
+      },
+      {
+        title: "Randflächen & Regenrinnen",
+        text: "Auf Wunsch auch die Randflächen an der Hauswand, Terrassenkanten und Regenrinnen an den Terrassenabläufen.",
+      },
+    ],
+    faq: [
+      {
+        question: "Wie oft sollte die Terrasse gereinigt werden?",
+        answer:
+          "Meist einmal im Jahr im Frühjahr reicht — je nach Lage (Schatten, Bäume in der Nähe) und Belag kann auch ein Zwischentermin im Spätsommer sinnvoll sein.",
+      },
+      {
+        question: "Nimmt der Hochdruckreiniger die Fugen mit raus?",
+        answer:
+          "Nur wenn zu viel Druck auf schmalen Fugen verwendet wird. Wir nutzen den Terrassenreiniger-Aufsatz und passende Druckstufe pro Belag — Fugensand ergänzen wir am Ende, falls doch etwas ausgespült wurde.",
+      },
+      {
+        question: "Kann man Naturstein und Terrakotta genauso reinigen?",
+        answer:
+          "Ja, aber mit geringerem Druck und ohne aggressive Reiniger. Bei sehr empfindlichen Belägen sprechen wir das vorher mit Ihnen ab und testen an einer kleinen Stelle.",
+      },
+    ],
+  },
 ];
 
 export const areaPages: AreaPage[] = [

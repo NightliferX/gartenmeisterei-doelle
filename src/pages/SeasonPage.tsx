@@ -3,6 +3,7 @@ import HeaderV8 from "@/components/v8/HeaderV8";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import BeratungCtaV8 from "@/components/v8/BeratungCtaV8";
+import BreadcrumbsV8 from "@/components/v8/BreadcrumbsV8";
 import { gartenjahr, monthRange, siteConfig } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
 
@@ -42,6 +43,14 @@ const SeasonPage = ({ season }: { season: Season }) => {
       <div className="min-h-screen bg-background">
         <HeaderV8 />
         <main>
+          <BreadcrumbsV8
+            items={[
+              { label: "Start", href: "/" },
+              { label: "Gartenjahr", href: "/#gartenjahr" },
+              { label: season.season },
+            ]}
+          />
+
           {/* Cinematic Hero — V8/Apple-Stil */}
           <section className="relative isolate min-h-[80vh] w-full overflow-hidden bg-foreground">
             <img

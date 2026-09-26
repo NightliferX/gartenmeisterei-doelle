@@ -3,6 +3,7 @@ import HeaderV8 from "@/components/v8/HeaderV8";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import BeratungCtaV8 from "@/components/v8/BeratungCtaV8";
+import BreadcrumbsV8 from "@/components/v8/BreadcrumbsV8";
 import { services, siteConfig } from "@/lib/siteContent";
 import { areaPages, servicePages, type AreaPage as AreaPageData } from "@/lib/subpages";
 import { withBase } from "@/lib/utils";
@@ -16,6 +17,7 @@ const serviceSlugFor = (id: string) =>
     herbst: "laubentsorgung",
     saison: "winterservice",
     rollrasen: "rollrasen",
+    terrasse: "terrasse",
   }[id] ?? id);
 
 const srcFor = (image?: string) =>
@@ -49,6 +51,14 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
       <div className="min-h-screen bg-background">
         <HeaderV8 />
         <main>
+          <BreadcrumbsV8
+            items={[
+              { label: "Start", href: "/" },
+              { label: "Einsatzgebiete", href: "/#einsatzgebiete" },
+              { label: shortName },
+            ]}
+          />
+
           {/* Cinematic Hero — V8/Apple */}
           <section className="relative isolate min-h-[62vh] w-full overflow-hidden bg-foreground">
             <img

@@ -14,6 +14,7 @@ const serviceSlugFor = (id: string) =>
     herbst: "laubentsorgung",
     saison: "winterservice",
     rollrasen: "rollrasen",
+    terrasse: "terrasse",
   }[id] ?? id);
 
 // Mega-Menü-Struktur: die drei Nav-Punkte mit Unterseiten bekommen

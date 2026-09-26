@@ -148,6 +148,14 @@ export const services = [
     highlights: ["Bodenvorbereitung & Planum", "Rollrasen fugenlos verlegen", "Anwuchspflege in den ersten Wochen"],
     image: "/services/rollrasen/rollrasen-verlegen-bahnen-duesseldorf.jpg",
   },
+  {
+    id: "terrasse",
+    title: "Terrassen- & Wegereinigung",
+    description:
+      "Wenn Moos, Algen und Schmutz sich zwischen den Steinen festgesetzt haben: Mit dem Kärcher K5 reinigen wir Terrassen, Einfahrten und Gartenwege fachgerecht — inklusive Sichtprüfung und Fugensand-Nachpflege.",
+    highlights: ["Kärcher-Hochdruckreinigung", "Terrassen, Wege & Einfahrten", "Fugensand nach Bedarf ergänzen"],
+    image: "/services/gartenpflege/terrassenreinigung-kaercher-k5-hochdruckreiniger-duesseldorf.jpg",
+  },
 ];
 
 // Beispielprojekte für die Pitch-Phase — nach den ersten echten Projekten
