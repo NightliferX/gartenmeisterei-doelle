@@ -1,0 +1,16 @@
+GÄRTNERMEISTER DÖLLE – LOGOPAKET
+
+Basis: integrierte Wortmarke – Blatt-D ersetzt das D in Dölle, einfarbig.
+Grün: RGB 47 / 96 / 48, HEX #2F6030. Weiß: #FFFFFF. Schwarz: #000000.
+
+SVG und EPS enthalten echte Vektorpfade einschließlich Schrift, keine eingebetteten Pixelbilder und keine benötigten Schriftdateien. Die Konturen wurden aus dem ausgewählten Pixelentwurf vektorisiert. SCHRIFT: Der Entwurf wurde bildgeneriert. Es ist keine konkrete Original-Schriftdatei bekannt; die Buchstaben liegen als Vektorpfade vor, nicht als editierbarer Text. Eine exakte Fontzuordnung wäre daher nicht verlässlich.
+Logo = vollständige Wort-Bild-Marke. Signet = Blatt-D allein.
+Weiße Dateien sind ohne Hintergrund und für dunkle Flächen vorgesehen. PNGs sind transparent, jeweils 2400 Pixel breit.
+Favicon: weißes Signet auf Grün; SVG, ICO (16/32/48), PNG 16/32/48/192/512 und Apple Touch Icon 180.
+
+Web-Einbindung (Pfade ggf. anpassen):
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+Druck: EPS ist vektorbasiert in RGB. CMYK-/Sonderfarbumsetzung je nach Druckverfahren mit der Druckerei abstimmen. Bei sehr kleinen Stickereien oder Folienschnitten die feine Blattader vorab prüfen.
