@@ -194,6 +194,19 @@ const HeaderV8 = () => {
                       setHoveredNav(menu.key);
                     }}
                     onBlur={() => setHoveredNav(null)}
+                    onClick={() => {
+                      // Touch/Tablet-Fix: iPad im Landscape zeigt die
+                      // Desktop-Nav, hat aber keinen Hover. Klick togglet
+                      // das Menü, damit es überhaupt aufgeht.
+                      cancelClose();
+                      if (isActive) {
+                        setActiveMenu(null);
+                        setHoveredNav(null);
+                      } else {
+                        setActiveMenu(menu.key);
+                        setHoveredNav(menu.key);
+                      }
+                    }}
                     className={`relative isolate inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 text-[1rem] font-medium transition-colors duration-200 ${
                       isHovered ? "text-primary-foreground" : "text-foreground"
                     }`}
