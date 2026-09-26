@@ -18,7 +18,7 @@ const BreadcrumbsV8 = ({ items }: { items: BreadcrumbItem[] }) => {
       position: idx + 1,
       name: item.label,
       ...(item.href
-        ? { item: `https://www.gartenmeisterei-doelle.de${item.href}` }
+        ? { item: `https://www.gaertnermeister-doelle.de${item.href}` }
         : {}),
     })),
   };

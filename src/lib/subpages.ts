@@ -30,7 +30,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: "gartenpflege",
     serviceId: "gartenpflege",
-    metaTitle: "Gartenpflege Düsseldorf | Gartenmeisterei Dölle – Meisterbetrieb",
+    metaTitle: "Gartenpflege Düsseldorf | Gärtnermeister Dölle – Meisterbetrieb",
     metaDescription:
       "Regelmäßige Gartenpflege in Düsseldorf vom Gärtnermeister: Rasen, Hecken, Beete und Saisonarbeiten — zuverlässig nach Plan, auf Wunsch als Pflegevertrag. Kostenlose Erstberatung.",
     h1: "Gartenpflege vom Meisterbetrieb — für Düsseldorf und Umland",
@@ -82,7 +82,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: "heckenschnitt",
     serviceId: "heckenschnitt",
-    metaTitle: "Heckenschnitt Düsseldorf | Gartenmeisterei Dölle – Formschnitt vom Profi",
+    metaTitle: "Heckenschnitt Düsseldorf | Gärtnermeister Dölle – Formschnitt vom Profi",
     metaDescription:
       "Heckenschnitt in Düsseldorf vom Gärtnermeister: Form- und Rückschnitt zur richtigen Zeit, saubere Kanten, Abtransport inklusive. Jetzt kostenlose Beratung anfragen.",
     h1: "Heckenschnitt & Formschnitt — für Düsseldorf und Umland",
@@ -134,7 +134,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: "baumschnitt",
     serviceId: "baumschnitt",
-    metaTitle: "Baumschnitt Düsseldorf | Gartenmeisterei Dölle – Obstbaum- & Kronenschnitt",
+    metaTitle: "Baumschnitt Düsseldorf | Gärtnermeister Dölle – Obstbaum- & Kronenschnitt",
     metaDescription:
       "Fachgerechter Baumschnitt in Düsseldorf: Obstbaumschnitt, Kronenpflege, Totholz-Entfernung — vom Gärtnermeister, inklusive Entsorgung. Kostenlose Erstberatung.",
     h1: "Baumschnitt & Baumpflege — für Düsseldorf und Umland",
@@ -184,7 +184,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: "rasenpflege",
     serviceId: "rasenpflege",
-    metaTitle: "Rasenpflege Düsseldorf | Gartenmeisterei Dölle – Vertikutieren & Nachsaat",
+    metaTitle: "Rasenpflege Düsseldorf | Gärtnermeister Dölle – Vertikutieren & Nachsaat",
     metaDescription:
       "Rasenpflege in Düsseldorf vom Gärtnermeister: Mähen, Vertikutieren, Düngen und Nachsaat für einen dichten, gesunden Rasen. Kostenlose Erstberatung vor Ort.",
     h1: "Rasenpflege — für Düsseldorf und Umland",
@@ -236,7 +236,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: "rollrasen",
     serviceId: "rollrasen",
-    metaTitle: "Rollrasen legen Düsseldorf | Gartenmeisterei Dölle – Meisterbetrieb",
+    metaTitle: "Rollrasen legen Düsseldorf | Gärtnermeister Dölle – Meisterbetrieb",
     metaDescription:
       "Rollrasen in Düsseldorf vom Gärtnermeister: Bodenvorbereitung, fugenlose Verlegung und Anwuchspflege. Sofort fertiger Rasen statt monatelang warten. Kostenlose Erstberatung.",
     h1: "Rollrasen legen — an einem Tag zum fertigen Rasen",
@@ -293,7 +293,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: "laubentsorgung",
     serviceId: "herbst",
-    metaTitle: "Laubentsorgung Düsseldorf | Gartenmeisterei Dölle – Herbstputz vom Profi",
+    metaTitle: "Laubentsorgung Düsseldorf | Gärtnermeister Dölle – Herbstputz vom Profi",
     metaDescription:
       "Laub entfernen und entsorgen in Düsseldorf: Rasen, Wege und Beete gründlich vom Laub befreit — auf Wunsch mehrmals pro Saison. Jetzt Termin sichern.",
     h1: "Laubentsorgung & Herbstputz — für Düsseldorf und Umland",
@@ -335,7 +335,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: "winterservice",
     serviceId: "saison",
-    metaTitle: "Garten winterfest machen Düsseldorf | Gartenmeisterei Dölle",
+    metaTitle: "Garten winterfest machen Düsseldorf | Gärtnermeister Dölle",
     metaDescription:
       "Garten winterfest machen in Düsseldorf: Herbstschnitt, Winterschutz für Pflanzen und Frühjahrs-Startpflege vom Gärtnermeister. Kostenlose Beratung anfragen.",
     h1: "Garten winterfest machen — und im Frühjahr stark starten",
@@ -380,7 +380,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: "terrasse",
     serviceId: "terrasse",
-    metaTitle: "Terrassen- & Wegereinigung | Gartenmeisterei Dölle – Kärcher K5",
+    metaTitle: "Terrassen- & Wegereinigung | Gärtnermeister Dölle – Kärcher K5",
     metaDescription:
       "Terrassen, Einfahrten und Wege mit dem Kärcher K5 fachgerecht reinigen: Moos, Algen und Schmutz raus, Fugensand nachpflegen. Für Düsseldorf und Umland.",
     h1: "Terrassen- & Wegereinigung — für Düsseldorf und Umland",
@@ -435,7 +435,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-oberkassel",
     name: "Düsseldorf-Oberkassel",
     kind: "Stadtteil",
-    metaTitle: "Gartenpflege Oberkassel | Gartenmeisterei Dölle – Gärtner linksrheinisch",
+    metaTitle: "Gartenpflege Oberkassel | Gärtnermeister Dölle – Gärtner linksrheinisch",
     metaDescription:
       "Gartenpflege in Düsseldorf-Oberkassel: Hecken, Rasen, Bäume und Saisonservice vom Gärtnermeister — kurze Wege linksrheinisch, kostenlose Erstberatung.",
     h1: "Gartenpflege in Oberkassel",
@@ -448,7 +448,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-kaiserswerth",
     name: "Düsseldorf-Kaiserswerth",
     kind: "Stadtteil",
-    metaTitle: "Gartenpflege Kaiserswerth | Gartenmeisterei Dölle – Meisterbetrieb im Norden",
+    metaTitle: "Gartenpflege Kaiserswerth | Gärtnermeister Dölle – Meisterbetrieb im Norden",
     metaDescription:
       "Gartenpflege in Düsseldorf-Kaiserswerth und Wittlaer: große Gärten, alte Bäume, gepflegte Hecken — vom Gärtnermeister mit festen Pflegeterminen.",
     h1: "Gartenpflege in Kaiserswerth",
@@ -461,7 +461,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-benrath",
     name: "Düsseldorf-Benrath",
     kind: "Stadtteil",
-    metaTitle: "Gartenpflege Benrath | Gartenmeisterei Dölle – Gärtner im Düsseldorfer Süden",
+    metaTitle: "Gartenpflege Benrath | Gärtnermeister Dölle – Gärtner im Düsseldorfer Süden",
     metaDescription:
       "Gartenpflege in Düsseldorf-Benrath, Urdenbach und Garath: Rasen, Hecken und Saisonservice vom Gärtnermeister. Kostenlose Erstberatung im Garten.",
     h1: "Gartenpflege in Benrath",
@@ -474,7 +474,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-gerresheim",
     name: "Düsseldorf-Gerresheim",
     kind: "Stadtteil",
-    metaTitle: "Gartenpflege Gerresheim | Gartenmeisterei Dölle – Gärtner im Düsseldorfer Osten",
+    metaTitle: "Gartenpflege Gerresheim | Gärtnermeister Dölle – Gärtner im Düsseldorfer Osten",
     metaDescription:
       "Gartenpflege in Düsseldorf-Gerresheim und Umgebung: Hecken- und Baumschnitt, Rasenpflege und Laubservice vom Gärtnermeister-Betrieb.",
     h1: "Gartenpflege in Gerresheim",
@@ -487,7 +487,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-meerbusch",
     name: "Meerbusch",
     kind: "Umland",
-    metaTitle: "Gartenpflege Meerbusch | Gartenmeisterei Dölle – Gärtnermeister aus Düsseldorf",
+    metaTitle: "Gartenpflege Meerbusch | Gärtnermeister Dölle – Gärtnermeister aus Düsseldorf",
     metaDescription:
       "Gartenpflege in Meerbusch — Büderich, Osterath, Lank-Latum, Strümp: große Gärten linksrheinisch in Meisterhand. Regelmäßige Pflege, fachgerechter Schnitt, faire Anfahrt aus Düsseldorf.",
     h1: "Gartenpflege in Meerbusch",
@@ -502,7 +502,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-neuss",
     name: "Neuss",
     kind: "Umland",
-    metaTitle: "Gartenpflege Neuss | Gartenmeisterei Dölle – Gärtnermeister für Neuss",
+    metaTitle: "Gartenpflege Neuss | Gärtnermeister Dölle – Gärtnermeister für Neuss",
     metaDescription:
       "Gartenpflege in Neuss vom Gärtnermeister: regelmäßige Pflege, Heckenschnitt, Rasen, Baumpflege und Winterservice für Neuss, Grimlinghausen, Weckhoven, Norf. Anfahrt aus Düsseldorf.",
     h1: "Gartenpflege in Neuss",
@@ -516,7 +516,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-ratingen",
     name: "Ratingen",
     kind: "Umland",
-    metaTitle: "Gartenpflege Ratingen | Gartenmeisterei Dölle – Meisterbetrieb aus Düsseldorf",
+    metaTitle: "Gartenpflege Ratingen | Gärtnermeister Dölle – Meisterbetrieb aus Düsseldorf",
     metaDescription:
       "Gartenpflege Ratingen: Heckenschnitt, Baumpflege, Rasenpflege und Winterservice vom Gärtnermeister — für Ratingen-Mitte, Hösel, Lintorf, Homberg und Breitscheid. Feste Termine, faire Preise.",
     h1: "Gartenpflege in Ratingen",
@@ -531,7 +531,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-hilden",
     name: "Hilden",
     kind: "Umland",
-    metaTitle: "Gartenpflege Hilden | Gartenmeisterei Dölle – Gärtner für Hilden & Erkrath",
+    metaTitle: "Gartenpflege Hilden | Gärtnermeister Dölle – Gärtner für Hilden & Erkrath",
     metaDescription:
       "Gartenpflege in Hilden und Erkrath: Rasenpflege, Heckenschnitt, Laubentsorgung und Winterservice vom Gärtnermeister-Betrieb aus Düsseldorf.",
     h1: "Gartenpflege in Hilden",
@@ -544,7 +544,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-erkrath",
     name: "Erkrath",
     kind: "Umland",
-    metaTitle: "Gartenpflege Erkrath | Gartenmeisterei Dölle – Gärtner im Kreis Mettmann",
+    metaTitle: "Gartenpflege Erkrath | Gärtnermeister Dölle – Gärtner im Kreis Mettmann",
     metaDescription:
       "Gartenpflege in Erkrath, Alt-Erkrath und Hochdahl: Heckenschnitt, Rasenpflege und Saisonservice vom Gärtnermeister — kurze Anfahrt aus Düsseldorf.",
     h1: "Gartenpflege in Erkrath",
@@ -557,7 +557,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-langenfeld",
     name: "Langenfeld",
     kind: "Umland",
-    metaTitle: "Gartenpflege Langenfeld | Gartenmeisterei Dölle – Gärtnermeister für Langenfeld",
+    metaTitle: "Gartenpflege Langenfeld | Gärtnermeister Dölle – Gärtnermeister für Langenfeld",
     metaDescription:
       "Gartenpflege in Langenfeld (Rheinland): Rasenpflege, Formschnitt, Baumpflege und Laubentsorgung vom Gärtnermeister-Betrieb — feste Pflegetermine.",
     h1: "Gartenpflege in Langenfeld",
@@ -570,7 +570,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-kaarst",
     name: "Kaarst",
     kind: "Umland",
-    metaTitle: "Gartenpflege Kaarst | Gartenmeisterei Dölle – Gärtner für Kaarst & Rhein-Kreis Neuss",
+    metaTitle: "Gartenpflege Kaarst | Gärtnermeister Dölle – Gärtner für Kaarst & Rhein-Kreis Neuss",
     metaDescription:
       "Gartenpflege in Kaarst, Büttgen und Vorst: Heckenschnitt, Rasen, Beete und Saisonservice vom Gärtnermeister — kurze Wege aus Düsseldorf ins Kaarster Feld.",
     h1: "Gartenpflege in Kaarst",
@@ -583,7 +583,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-mettmann",
     name: "Mettmann",
     kind: "Umland",
-    metaTitle: "Gartenpflege Mettmann | Gartenmeisterei Dölle – Gärtnermeister im Kreis Mettmann",
+    metaTitle: "Gartenpflege Mettmann | Gärtnermeister Dölle – Gärtnermeister im Kreis Mettmann",
     metaDescription:
       "Gartenpflege in Mettmann: Heckenschnitt, Rasenpflege, Baumpflege und Laubentsorgung vom Gärtnermeister-Betrieb — regelmäßige Termine, Anfahrt aus Düsseldorf.",
     h1: "Gartenpflege in Mettmann",
@@ -596,7 +596,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-haan",
     name: "Haan",
     kind: "Umland",
-    metaTitle: "Gartenpflege Haan | Gartenmeisterei Dölle – Gärtner für Haan & Gruiten",
+    metaTitle: "Gartenpflege Haan | Gärtnermeister Dölle – Gärtner für Haan & Gruiten",
     metaDescription:
       "Gartenpflege in Haan (Rheinland) und Gruiten: Rasenpflege, Heckenschnitt und Saisonservice vom Gärtnermeister-Betrieb aus Düsseldorf.",
     h1: "Gartenpflege in Haan",
@@ -609,7 +609,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-monheim",
     name: "Monheim am Rhein",
     kind: "Umland",
-    metaTitle: "Gartenpflege Monheim am Rhein | Gartenmeisterei Dölle – Gärtner für Monheim",
+    metaTitle: "Gartenpflege Monheim am Rhein | Gärtnermeister Dölle – Gärtner für Monheim",
     metaDescription:
       "Gartenpflege in Monheim am Rhein und Baumberg: Rasen, Hecken, Beete und Saisonservice vom Gärtnermeister-Betrieb — feste Pflegetermine, Anfahrt aus Düsseldorf.",
     h1: "Gartenpflege in Monheim am Rhein",
@@ -622,7 +622,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-dormagen",
     name: "Dormagen",
     kind: "Umland",
-    metaTitle: "Gartenpflege Dormagen | Gartenmeisterei Dölle – Gärtnermeister für Dormagen",
+    metaTitle: "Gartenpflege Dormagen | Gärtnermeister Dölle – Gärtnermeister für Dormagen",
     metaDescription:
       "Gartenpflege in Dormagen, Zons und Stürzelberg: Heckenschnitt, Rasenpflege und Saisonservice vom Gärtnermeister-Betrieb — kurze Anfahrt aus Düsseldorf.",
     h1: "Gartenpflege in Dormagen",
@@ -635,7 +635,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-krefeld",
     name: "Krefeld",
     kind: "Umland",
-    metaTitle: "Gartenpflege Krefeld | Gartenmeisterei Dölle – Gärtnermeister aus Düsseldorf für Krefeld",
+    metaTitle: "Gartenpflege Krefeld | Gärtnermeister Dölle – Gärtnermeister aus Düsseldorf für Krefeld",
     metaDescription:
       "Gartenpflege in Krefeld: Heckenschnitt, Rasenpflege, Baumpflege und Saisonservice vom Gärtnermeister-Betrieb — für private Gärten in Krefeld und Umgebung.",
     h1: "Gartenpflege in Krefeld",
@@ -648,7 +648,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-wuelfrath",
     name: "Wülfrath",
     kind: "Umland",
-    metaTitle: "Gartenpflege Wülfrath | Gartenmeisterei Dölle – Gärtner für Wülfrath im Kreis Mettmann",
+    metaTitle: "Gartenpflege Wülfrath | Gärtnermeister Dölle – Gärtner für Wülfrath im Kreis Mettmann",
     metaDescription:
       "Gartenpflege in Wülfrath: Heckenschnitt, Rasenpflege und Saisonservice vom Gärtnermeister-Betrieb — Anfahrt aus Düsseldorf, feste Pflegetermine.",
     h1: "Gartenpflege in Wülfrath",

@@ -111,7 +111,7 @@ const Index = () => {
   return (
     <>
       <Seo
-        title="Gartenpflege Düsseldorf | Gartenmeisterei Dölle – Ihr Gärtnermeister"
+        title="Gartenpflege Düsseldorf | Gärtnermeister Dölle – Meisterbetrieb"
         description="Gartenpflege vom Gärtnermeister in Düsseldorf & Umgebung: Heckenschnitt, Baumschnitt, Rasenpflege, Laubentsorgung und Winterservice. Kostenlose Erstberatung, Antwort meist in 24 h."
         path="/"
         jsonLd={jsonLd}

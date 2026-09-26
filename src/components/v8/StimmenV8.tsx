@@ -35,7 +35,7 @@ const testimonials = [
   },
   {
     quote:
-      "Als Hausverwaltung schätzen wir feste Ansprechpartner. Die Gartenmeisterei ist verlässlich und liefert konstante Qualität — auch bei mehreren Objekten.",
+      "Als Hausverwaltung schätzen wir feste Ansprechpartner. Herr Dölle ist verlässlich und liefert konstante Qualität — auch bei mehreren Objekten.",
     name: "T. Krämer (Hausverwaltung)",
     location: "Düsseldorf",
     service: "Objektbetreuung",

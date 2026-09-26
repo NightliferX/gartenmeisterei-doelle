@@ -10,8 +10,8 @@ import {
 import { siteConfig } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
 
-// Warum-die-Gartenmeisterei-Section (V8):
-// - Zentrierte Header „Warum wir / Darum die Gartenmeisterei."
+// Warum-Gärtnermeister-Dölle-Section (V8):
+// - Zentrierte Header „Warum wir / Darum Gärtnermeister Dölle."
 // - Links: große Meister-Foto-Kachel mit Chip + Überschrift + Fließtext
 // - Rechts oben: „Der Meister"-Vorstellung mit Name, Fließtext und 3
 //   Fact-Rows (Gärtnermeister · Standort · Fokus)
@@ -63,7 +63,7 @@ const WarumV8 = () => (
           id="warum-wir-headline"
           className="mt-3 text-[clamp(2rem,4.6vw,3.4rem)] font-semibold leading-[1.02] tracking-[-0.025em] text-foreground"
         >
-          Darum die Gartenmeisterei.
+          Darum Gärtnermeister Dölle.
         </h2>
       </div>
 

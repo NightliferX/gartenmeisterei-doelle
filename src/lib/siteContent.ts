@@ -1,17 +1,17 @@
 // HINWEIS: Adresse, Telefonnummer, E-Mail und Domain sind MUSTERDATEN
 // für die Pitch-Phase. Vor dem Livegang durch echte Daten ersetzen.
 export const siteConfig = {
-  brandName: "Gartenmeisterei Dölle",
+  brandName: "Gärtnermeister Dölle",
   ownerName: "Benedikt Dölle",
   ownerTitle: "Gärtnermeister",
   legalRepresentative: "Benedikt Dölle",
-  domain: "https://www.gartenmeisterei-doelle.de",
-  email: "info@gartenmeisterei-doelle.de",
+  domain: "https://www.gaertnermeister-doelle.de",
+  email: "info@gaertnermeister-doelle.de",
   phoneDisplay: "0211 / 123 45 67",
   phoneHref: "tel:+492111234567",
   phoneRaw: "+49 211 1234567",
   whatsappHref:
-    "https://wa.me/492111234567?text=Hallo%20Gartenmeisterei%20D%C3%B6lle,%20ich%20m%C3%B6chte%20eine%20Beratung%20f%C3%BCr%20meinen%20Garten%20anfragen.",
+    "https://wa.me/492111234567?text=Hallo%20G%C3%A4rtnermeister%20D%C3%B6lle,%20ich%20m%C3%B6chte%20eine%20Beratung%20f%C3%BCr%20meinen%20Garten%20anfragen.",
   streetAddress: "Musterstraße 12",
   postalCode: "40210",
   city: "Düsseldorf",
@@ -268,7 +268,7 @@ export const serviceAreas = [
 
 export const faqItems = [
   {
-    question: "Welche Leistungen übernimmt die Gartenmeisterei Dölle?",
+    question: "Welche Leistungen übernimmt die Gärtnermeister Dölle?",
     answer:
       "Wir übernehmen alles rund um die Gartenpflege: Hecken- und Baumschnitt, Rasenpflege, Beetpflege, Laubentsorgung, Frühjahrsschnitt und das Winterfest-Machen des Gartens — in Düsseldorf und der näheren Umgebung.",
   },

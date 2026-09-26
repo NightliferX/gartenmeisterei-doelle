@@ -40,7 +40,7 @@ const WhyV8 = ({ meisterImageSrc, meisterImageAlt }: WhyV8Props = {}) => (
           id="darum-v8"
           className="mt-3 text-[clamp(2rem,4.2vw,3rem)] font-semibold leading-[1.05] tracking-[-0.025em] text-foreground"
         >
-          Darum die Gartenmeisterei.
+          Darum Gärtnermeister Dölle.
         </h2>
       </div>
 

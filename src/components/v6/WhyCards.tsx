@@ -34,7 +34,7 @@ const WhyCards = () => (
   <section aria-labelledby="darum-titel" className="bg-secondary py-24 lg:py-36">
     <div className="mx-auto max-w-[1024px] px-4 lg:px-6">
       <h2 id="darum-titel" className="v6-headline max-w-[18ch] text-foreground">
-        Darum die Gartenmeisterei.
+        Darum Gärtnermeister Dölle.
       </h2>
     </div>
 
