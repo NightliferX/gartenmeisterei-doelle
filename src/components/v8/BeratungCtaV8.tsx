@@ -279,10 +279,10 @@ const BeratungCtaV8 = () => {
               <Button
                 size="lg"
                 onClick={() => setOpen(true)}
-                className="h-12 w-full gap-2 rounded-full bg-[#C6FF3E] text-[1rem] font-semibold text-[#0a1f0d] shadow-[0_6px_22px_rgba(198,255,62,0.35)] transition-all hover:bg-[#B9F42E] hover:shadow-[0_8px_28px_rgba(198,255,62,0.45)]"
+                className="h-12 w-full gap-2 rounded-full bg-white text-[1rem] font-semibold text-primary shadow-sm hover:bg-white/95"
               >
                 Beratung anfragen
-                <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
+                <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
               </Button>
               <div className="grid gap-2 sm:grid-cols-2">
                 <a
