@@ -63,7 +63,7 @@ const singleLinks = [
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
 // Mobile-Menü-Bug: onClick={onClose} entfernt das overflow:hidden vom Body,
-// aber die Browser-Anker-Navigation feuert VOR dem useEffect-Cleanup — also
+// aber die Browser-Anker-Navigation feuert VOR dem useEffect-Cleanup , also
 // versucht der Browser zu scrollen, während der Body noch gelockt ist. Erst
 // der nächste Klick auf denselben Link scrollt dann tatsächlich.
 // Lösung: bei internen Anker-Links (/#…) auf der Startseite die Navigation
@@ -276,7 +276,7 @@ const HeaderV8 = () => {
           </div>
         </div>
 
-        {/* Apple-Style-Mega-Menü — sibling der Header-Pill, mittig zum
+        {/* Apple-Style-Mega-Menü , sibling der Header-Pill, mittig zum
             Viewport auf max-w-[1240px]. Full-width Panel mit ruhigem Grid,
             großem Whitespace und Preview-Spalte rechts. */}
         <AnimatePresence>
@@ -307,7 +307,7 @@ const HeaderV8 = () => {
                         key={menu.key}
                         className="grid gap-10 md:grid-cols-[1.6fr_1fr]"
                       >
-                        {/* Item-Grid — linke, breite Spalte */}
+                        {/* Item-Grid , linke, breite Spalte */}
                         <div>
                           <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
                             {menu.label}
@@ -345,7 +345,7 @@ const HeaderV8 = () => {
                           </ul>
                         </div>
 
-                        {/* Preview / Übersicht — rechte, schmale Spalte */}
+                        {/* Preview / Übersicht , rechte, schmale Spalte */}
                         <div className="hidden flex-col justify-between rounded-2xl bg-primary/[0.06] p-6 md:flex">
                           <div>
                             <p className="text-[0.72rem] font-semibold uppercase tracking-[0.18em] text-primary">
@@ -361,11 +361,11 @@ const HeaderV8 = () => {
                             </p>
                             <p className="mt-2 text-[0.88rem] leading-relaxed text-muted-foreground">
                               {menu.key === "leistungen" &&
-                                "Vom regelmäßigen Rasenschnitt bis zum kompletten Pflegevertrag — alles aus einer Hand."}
+                                "Vom regelmäßigen Rasenschnitt bis zum kompletten Pflegevertrag , alles aus einer Hand."}
                               {menu.key === "gartenjahr" &&
                                 "Der richtige Schnitt zur richtigen Zeit. Wir kennen den Takt."}
                               {menu.key === "einsatzgebiete" &&
-                                "Düsseldorf und das nahe Umland — kurze Wege, feste Pflegetermine."}
+                                "Düsseldorf und das nahe Umland , kurze Wege, feste Pflegetermine."}
                             </p>
                           </div>
                           <a

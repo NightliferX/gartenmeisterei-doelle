@@ -79,15 +79,15 @@ export const trustItems = [
 export const valueProps = [
   {
     title: "Dauerhafte Gartenpflege",
-    text: "Regelmäßige Pflege nach Plan: Rasen, Hecken und Beete — auf Wunsch als fester Pflegevertrag mit einem Ansprechpartner.",
+    text: "Regelmäßige Pflege nach Plan: Rasen, Hecken und Beete , auf Wunsch als fester Pflegevertrag mit einem Ansprechpartner.",
   },
   {
     title: "Schnitt vom Profi",
-    text: "Hecken, Sträucher und Bäume werden fachgerecht und zur richtigen Jahreszeit geschnitten — inklusive Abtransport.",
+    text: "Hecken, Sträucher und Bäume werden fachgerecht und zur richtigen Jahreszeit geschnitten , inklusive Abtransport.",
   },
   {
     title: "Meister-Qualität",
-    text: "Beratung und Ausführung direkt vom Gärtnermeister — mit klaren Absprachen und einem sauberen Ergebnis.",
+    text: "Beratung und Ausführung direkt vom Gärtnermeister , mit klaren Absprachen und einem sauberen Ergebnis.",
   },
 ];
 
@@ -96,7 +96,7 @@ export const services = [
     id: "gartenpflege",
     title: "Gartenpflege",
     description:
-      "Regelmäßige Pflege hält Ihren Garten dauerhaft in Form: Wir übernehmen Rasen, Beete, Sträucher und saisonale Arbeiten — zuverlässig nach Plan, auf Wunsch als Pflegevertrag.",
+      "Regelmäßige Pflege hält Ihren Garten dauerhaft in Form: Wir übernehmen Rasen, Beete, Sträucher und saisonale Arbeiten , zuverlässig nach Plan, auf Wunsch als Pflegevertrag.",
     highlights: ["Rasen-, Beet- & Strauchpflege", "Feste Pflegetermine nach Plan", "Pflegeverträge für Privat & Gewerbe"],
     image: "/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg",
   },
@@ -104,7 +104,7 @@ export const services = [
     id: "heckenschnitt",
     title: "Heckenschnitt & Formschnitt",
     description:
-      "Fachgerechter Schnitt zur richtigen Zeit: Wir schneiden Hecken und Sträucher so, dass sie gesund, dicht und in Form bleiben — unter Beachtung der Schnittzeiten zum Vogelschutz.",
+      "Fachgerechter Schnitt zur richtigen Zeit: Wir schneiden Hecken und Sträucher so, dass sie gesund, dicht und in Form bleiben , unter Beachtung der Schnittzeiten zum Vogelschutz.",
     highlights: ["Form- & Rückschnitt", "Dichte, gesunde Hecken", "Abtransport des Schnittguts"],
     image: "/services/heckenschnitt/heckenschnitt-buchsbaum-stihl-formschnitt-detail-duesseldorf.jpg",
   },
@@ -112,7 +112,7 @@ export const services = [
     id: "baumschnitt",
     title: "Baumschnitt & Baumpflege",
     description:
-      "Vom Obstbaumschnitt bis zum Pflegeschnitt großer Bäume: Wir schneiden fachgerecht, erhalten gesunde Kronen und entfernen Totholz — inklusive Entsorgung.",
+      "Vom Obstbaumschnitt bis zum Pflegeschnitt großer Bäume: Wir schneiden fachgerecht, erhalten gesunde Kronen und entfernen Totholz , inklusive Entsorgung.",
     highlights: ["Obstbaum- & Kronenschnitt", "Totholz-Entfernung", "Schnitt zur richtigen Jahreszeit"],
     image: "/services/baumschnitt/baumschnitt-obstbaumschnitt-apfelbaum-gaertnermeister-duesseldorf.png",
   },
@@ -120,7 +120,7 @@ export const services = [
     id: "rasenpflege",
     title: "Rasenpflege",
     description:
-      "Dichter, gesunder Rasen braucht regelmäßige Pflege: Wir mähen, vertikutieren, düngen und säen nach — damit die Rasenfläche das ganze Jahr gut aussieht.",
+      "Dichter, gesunder Rasen braucht regelmäßige Pflege: Wir mähen, vertikutieren, düngen und säen nach , damit die Rasenfläche das ganze Jahr gut aussieht.",
     highlights: ["Mähen & Kanten stechen", "Vertikutieren & Düngen", "Nachsaat kahler Stellen"],
     image: "/services/rasenpflege/rasenpflege-sabo-rasenmaeher-person-nahaufnahme-duesseldorf.png",
   },
@@ -128,7 +128,7 @@ export const services = [
     id: "herbst",
     title: "Laubentsorgung & Herbstputz",
     description:
-      "Wenn das Laub fällt, übernehmen wir: Wege, Rasen und Beete werden gründlich vom Laub befreit — inklusive fachgerechter Entsorgung, auf Wunsch mehrmals pro Saison.",
+      "Wenn das Laub fällt, übernehmen wir: Wege, Rasen und Beete werden gründlich vom Laub befreit , inklusive fachgerechter Entsorgung, auf Wunsch mehrmals pro Saison.",
     highlights: ["Laub entfernen & entsorgen", "Wege & Rinnen frei halten", "Termine über die ganze Saison"],
     image: "/services/herbst/laubentsorgung-stihl-laubblaeser-herbstlaub-nahaufnahme-duesseldorf.png",
   },
@@ -136,7 +136,7 @@ export const services = [
     id: "saison",
     title: "Frühjahrs- & Winterservice",
     description:
-      "Wir machen Ihren Garten fit für die Saison: im Frühjahr mit Schnitt, Bodenpflege und Startdüngung — im Herbst machen wir Pflanzen, Beete und Rasen winterfest.",
+      "Wir machen Ihren Garten fit für die Saison: im Frühjahr mit Schnitt, Bodenpflege und Startdüngung , im Herbst machen wir Pflanzen, Beete und Rasen winterfest.",
     highlights: ["Frühjahrsschnitt & Startpflege", "Garten winterfest machen", "Schutz für empfindliche Pflanzen"],
     image: "/services/fruehjahr/fruehjahrsschnitt-rosen-felco-handschere-narzissen-duesseldorf.png",
   },
@@ -152,13 +152,13 @@ export const services = [
     id: "terrasse",
     title: "Terrassen- & Wegereinigung",
     description:
-      "Wenn Moos, Algen und Schmutz sich zwischen den Steinen festgesetzt haben: Mit dem Kärcher K5 reinigen wir Terrassen, Einfahrten und Gartenwege fachgerecht — inklusive Sichtprüfung und Fugensand-Nachpflege.",
+      "Wenn Moos, Algen und Schmutz sich zwischen den Steinen festgesetzt haben: Mit dem Kärcher K5 reinigen wir Terrassen, Einfahrten und Gartenwege fachgerecht , inklusive Sichtprüfung und Fugensand-Nachpflege.",
     highlights: ["Kärcher-Hochdruckreinigung", "Terrassen, Wege & Einfahrten", "Fugensand nach Bedarf ergänzen"],
     image: "/services/gartenpflege/terrassenreinigung-kaercher-k5-hochdruckreiniger-duesseldorf.jpg",
   },
 ];
 
-// Beispielprojekte für die Pitch-Phase — nach den ersten echten Projekten
+// Beispielprojekte für die Pitch-Phase , nach den ersten echten Projekten
 // durch eigene Vorher-/Nachher-Bilder ersetzen.
 export const projects: ProjectReference[] = [
   {
@@ -225,7 +225,7 @@ export const projects: ProjectReference[] = [
     summary: "Eine vermooste, lückige Rasenfläche wurde ohne Neuanlage wieder dicht.",
     challenge: "Moos und Rasenfilz hatten die Fläche überzogen, dazwischen kahle Stellen und breitblättriges Unkraut.",
     solution: "Vertikutieren, Moos und Filz abtragen, Nachsaat in die offenen Stellen und eine auf den Boden abgestimmte Düngung.",
-    result: "Eine geschlossene, gleichmäßig grüne Fläche — ohne neu anzulegen",
+    result: "Eine geschlossene, gleichmäßig grüne Fläche , ohne neu anzulegen",
     beforeImage: "/references/vorher-rasenpflege-regeneriert.jpg",
     afterImage: "/references/nachher-rasenpflege-regeneriert.jpg",
     beforeAlt: "Vermooste, lückige Rasenfläche mit kahlen Stellen und Unkrautrosetten",
@@ -236,10 +236,10 @@ export const projects: ProjectReference[] = [
     category: "Pflege",
     location: "Meerbusch",
     serviceTags: ["Bodenvorbereitung", "Rollrasen", "Startpflege"],
-    summary: "Rollrasen auf einer alten, vermoosten Fläche neu verlegt — ab dem ersten Tag begehbar.",
+    summary: "Rollrasen auf einer alten, vermoosten Fläche neu verlegt , ab dem ersten Tag begehbar.",
     challenge: "Die alte Rasenfläche war vermoost, lückig und ließ sich mit Nachsaat nicht mehr retten.",
-    solution: "Alte Grasnarbe abgefräst, Boden feinplaniert und gedüngt, hochwertigen Rollrasen versetzt verlegt und gewalzt — inklusive Bewässerungsplan für die ersten Wochen.",
-    result: "Dichte, belastbare Rasenfläche vom ersten Tag an — statt einer Saison Nachsaat.",
+    solution: "Alte Grasnarbe abgefräst, Boden feinplaniert und gedüngt, hochwertigen Rollrasen versetzt verlegt und gewalzt , inklusive Bewässerungsplan für die ersten Wochen.",
+    result: "Dichte, belastbare Rasenfläche vom ersten Tag an , statt einer Saison Nachsaat.",
     beforeImage: "/references/vorher-rasen.jpg",
     afterImage: "/references/nachher-rasen.jpg",
     beforeAlt: "Vermooste, lückige Rasenfläche vor dem Rollrasen-Verlegen",
@@ -273,7 +273,7 @@ export const projects: ProjectReference[] = [
   },
 ];
 
-// Noch keine echten Kundenstimmen — der Bewertungs-Bereich bleibt ausgeblendet,
+// Noch keine echten Kundenstimmen , der Bewertungs-Bereich bleibt ausgeblendet,
 // bis erste Google-Rezensionen für den Betrieb vorliegen.
 export const testimonials: Testimonial[] = [];
 
@@ -298,7 +298,7 @@ export const faqItems = [
   {
     question: "Welche Leistungen übernimmt die Gärtnermeister Dölle?",
     answer:
-      "Wir übernehmen alles rund um die Gartenpflege: Hecken- und Baumschnitt, Rasenpflege, Beetpflege, Laubentsorgung, Frühjahrsschnitt und das Winterfest-Machen des Gartens — in Düsseldorf und der näheren Umgebung.",
+      "Wir übernehmen alles rund um die Gartenpflege: Hecken- und Baumschnitt, Rasenpflege, Beetpflege, Laubentsorgung, Frühjahrsschnitt und das Winterfest-Machen des Gartens , in Düsseldorf und der näheren Umgebung.",
   },
   {
     question: "Bieten Sie regelmäßige Gartenpflege im Pflegevertrag an?",
@@ -308,12 +308,12 @@ export const faqItems = [
   {
     question: "Nehmen Sie Schnittgut und Laub direkt mit?",
     answer:
-      "Ja. Die fachgerechte Entsorgung von Schnittgut und Laub gehört bei uns dazu — Ihr Garten bleibt nach jedem Termin sauber und aufgeräumt zurück.",
+      "Ja. Die fachgerechte Entsorgung von Schnittgut und Laub gehört bei uns dazu , Ihr Garten bleibt nach jedem Termin sauber und aufgeräumt zurück.",
   },
   {
     question: "In welchen Stadtteilen von Düsseldorf sind Sie im Einsatz?",
     answer:
-      "In allen Stadtteilen — von Oberkassel über Kaiserswerth und Derendorf bis Benrath und Gerresheim. Dazu betreuen wir das nahe Umland, unter anderem Meerbusch, Neuss, Ratingen, Erkrath, Hilden, Langenfeld, Kaarst, Mettmann, Haan, Monheim am Rhein, Dormagen, Krefeld und Wülfrath.",
+      "In allen Stadtteilen , von Oberkassel über Kaiserswerth und Derendorf bis Benrath und Gerresheim. Dazu betreuen wir das nahe Umland, unter anderem Meerbusch, Neuss, Ratingen, Erkrath, Hilden, Langenfeld, Kaarst, Mettmann, Haan, Monheim am Rhein, Dormagen, Krefeld und Wülfrath.",
   },
   {
     question: "Was kostet die Erstberatung?",
@@ -332,7 +332,7 @@ export const legalLinks = {
   datenschutz: "/datenschutz",
 };
 
-// Das Gartenjahr — Grundlage der Saison-Leiste und der Saison-Unterseiten.
+// Das Gartenjahr , Grundlage der Saison-Leiste und der Saison-Unterseiten.
 // months: Monatsindizes (0 = Januar), in denen die Saison als „Jetzt gefragt" gilt.
 // slug: URL-Fragment für /gartenpflege-<slug>-duesseldorf.
 export const gartenjahr = [
@@ -366,7 +366,7 @@ export const gartenjahr = [
     ],
     tips: [
       "Buchsbaum: erst schneiden, wenn keine Nachtfröste mehr drohen (meist ab April).",
-      "Rasen erst mähen, wenn die Halme rund 8 cm hoch stehen — dann bleibt er dicht.",
+      "Rasen erst mähen, wenn die Halme rund 8 cm hoch stehen , dann bleibt er dicht.",
       "Beete nicht zu früh freilegen: der Winterschutz schützt auch vor Spätfrost.",
     ],
   },
@@ -378,11 +378,11 @@ export const gartenjahr = [
     heroImage: "/team/heckenschnitt-stihl-motorsaege-nahaufnahme-duesseldorf.jpg",
     heroAlt: "Nahaufnahme einer Heckenschere beim sommerlichen Formschnitt",
     intro:
-      "Der Sommer ist Pflegesaison. Damit Rasen dicht, Hecken in Form und Beete frisch bleiben, kommen wir in festen Intervallen — je nach Wetter, Wachstum und Absprache. So bleibt der Garten das ganze Jahr in Bestform.",
+      "Der Sommer ist Pflegesaison. Damit Rasen dicht, Hecken in Form und Beete frisch bleiben, kommen wir in festen Intervallen , je nach Wetter, Wachstum und Absprache. So bleibt der Garten das ganze Jahr in Bestform.",
     tasks: [
       {
         title: "Hecken- und Formschnitt",
-        text: "Sommerschnitt an Hecken und Formgehölzen. Der zweite Schnitt in der Saison hält Form und Dichte — unter Beachtung der Vogelschutz-Fristen.",
+        text: "Sommerschnitt an Hecken und Formgehölzen. Der zweite Schnitt in der Saison hält Form und Dichte , unter Beachtung der Vogelschutz-Fristen.",
       },
       {
         title: "Rasenpflege",
@@ -398,9 +398,9 @@ export const gartenjahr = [
       },
     ],
     tips: [
-      "Rasen bei Hitze auf 5–6 cm mähen — schützt die Grasnarbe vor dem Austrocknen.",
+      "Rasen bei Hitze auf 5-6 cm mähen , schützt die Grasnarbe vor dem Austrocknen.",
       "Hecken lieber morgens oder abends schneiden, nie in praller Mittagssonne.",
-      "Nach dem Gießen 1 cm Mulch auflegen — hält die Feuchte länger im Beet.",
+      "Nach dem Gießen 1 cm Mulch auflegen , hält die Feuchte länger im Beet.",
     ],
   },
   {
@@ -416,11 +416,11 @@ export const gartenjahr = [
     tasks: [
       {
         title: "Laubentsorgung",
-        text: "Rasen, Wege und Rinnen werden gründlich vom Laub befreit — auf Wunsch mehrmals über die Saison. Entsorgung inklusive.",
+        text: "Rasen, Wege und Rinnen werden gründlich vom Laub befreit , auf Wunsch mehrmals über die Saison. Entsorgung inklusive.",
       },
       {
         title: "Herbstschnitt",
-        text: "Letzter Formschnitt an Hecken, Rückschnitt von Stauden und mehrjährigen Gräsern, wo es sinnvoll ist. Vieles bleibt bewusst bis zum Frühjahr stehen — als Winterschutz und Lebensraum.",
+        text: "Letzter Formschnitt an Hecken, Rückschnitt von Stauden und mehrjährigen Gräsern, wo es sinnvoll ist. Vieles bleibt bewusst bis zum Frühjahr stehen , als Winterschutz und Lebensraum.",
       },
       {
         title: "Obstbaum-Pflegeschnitt",
@@ -432,9 +432,9 @@ export const gartenjahr = [
       },
     ],
     tips: [
-      "Laub auf dem Rasen liegen lassen kostet die Grasnarbe Licht — regelmäßig abnehmen.",
+      "Laub auf dem Rasen liegen lassen kostet die Grasnarbe Licht , regelmäßig abnehmen.",
       "Immergrüne (Kirschlorbeer, Buchs) an frostfreien Tagen bei Trockenheit gießen.",
-      "Ein Teil des Laubs kommt in die Beete — natürlicher Winterschutz für Stauden.",
+      "Ein Teil des Laubs kommt in die Beete , natürlicher Winterschutz für Stauden.",
     ],
   },
   {
@@ -444,9 +444,9 @@ export const gartenjahr = [
     work: "Obstbaum- und Gehölzschnitt, Planung fürs neue Gartenjahr",
     heroImage: "/services/winter/winterschnitt-hecke-gaertnermeister-doelle-duesseldorf.png",
     heroAlt:
-      "Winterschnitt an einer kahlen Hecke in Düsseldorf — Gärtnermeister Benedikt Dölle bei der Winterarbeit",
+      "Winterschnitt an einer kahlen Hecke in Düsseldorf , Gärtnermeister Benedikt Dölle bei der Winterarbeit",
     intro:
-      "Der Winter ist keine Pause — jetzt wird geschnitten, geplant und vorbereitet. Ohne Laub sieht man die Struktur der Bäume, das ist der beste Zeitpunkt für den Formschnitt. Und der Räum- und Streudienst gehört im Rheinland dazu.",
+      "Der Winter ist keine Pause , jetzt wird geschnitten, geplant und vorbereitet. Ohne Laub sieht man die Struktur der Bäume, das ist der beste Zeitpunkt für den Formschnitt. Und der Räum- und Streudienst gehört im Rheinland dazu.",
     tasks: [
       {
         title: "Obstbaum- und Gehölzschnitt",
@@ -458,7 +458,7 @@ export const gartenjahr = [
       },
       {
         title: "Planung fürs neue Jahr",
-        text: "Beetplanung, Neupflanzungen, größere Pflegeprojekte — jetzt in Ruhe besprechen und für die Saison einplanen.",
+        text: "Beetplanung, Neupflanzungen, größere Pflegeprojekte , jetzt in Ruhe besprechen und für die Saison einplanen.",
       },
       {
         title: "Werkzeug und Technik",
@@ -466,9 +466,9 @@ export const gartenjahr = [
       },
     ],
     tips: [
-      "Obstbaumschnitt an frostfreien Tagen — nicht bei starkem Dauerfrost.",
+      "Obstbaumschnitt an frostfreien Tagen , nicht bei starkem Dauerfrost.",
       "Immergrüne bei Trockenfrost gießen: sie verdunsten weiter über die Blätter.",
-      "Kübelpflanzen brauchen Winterlicht — nicht komplett im Dunkeln überwintern.",
+      "Kübelpflanzen brauchen Winterlicht , nicht komplett im Dunkeln überwintern.",
     ],
   },
 ];
@@ -480,4 +480,4 @@ const MONTH_NAMES = [
 
 // months sind in Saison-Reihenfolge angegeben (Winter: [11, 0, 1]).
 export const monthRange = (months: number[]) =>
-  `${MONTH_NAMES[months[0]]} – ${MONTH_NAMES[months[months.length - 1]]}`;
+  `${MONTH_NAMES[months[0]]}, ${MONTH_NAMES[months[months.length - 1]]}`;

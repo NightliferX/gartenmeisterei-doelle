@@ -42,7 +42,7 @@ const AreaBlockV8 = () => {
           Einsatzgebiete
         </p>
         <h2 className="mx-auto mt-3 max-w-[24ch] text-[clamp(2rem,4.2vw,3rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
-          Für Düsseldorf und die Region — von Oberkassel bis Benrath.
+          Für Düsseldorf und die Region , von Oberkassel bis Benrath.
         </h2>
       </div>
 

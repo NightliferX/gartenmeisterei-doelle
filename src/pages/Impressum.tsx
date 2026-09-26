@@ -3,6 +3,7 @@ import Footer from "@/components/Footer";
 import MobileStickyCta from "@/components/MobileStickyCta";
 import Seo from "@/components/Seo";
 import { siteConfig } from "@/lib/siteContent";
+import SkipToContent from "@/components/SkipToContent";
 
 const Impressum = () => {
   return (
@@ -13,8 +14,9 @@ const Impressum = () => {
         path="/impressum"
       />
       <div className="min-h-screen bg-background">
+        <SkipToContent />
         <Header />
-        <main className="container px-4 pb-28 pt-28 md:pt-32">
+        <main id="main" className="container px-4 pb-28 pt-28 md:pt-32">
           <div className="mx-auto max-w-3xl rounded-3xl border bg-card p-8 shadow-sm md:p-10">
             <p className="text-sm font-semibold uppercase tracking-widest text-primary">
               Rechtliches

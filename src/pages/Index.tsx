@@ -113,20 +113,18 @@ const Index = () => {
   return (
     <>
       <Seo
-        title="Gartenpflege Düsseldorf | Gärtnermeister Dölle – Meisterbetrieb"
+        title="Gartenpflege Düsseldorf | Gärtnermeister Dölle, Meisterbetrieb"
         description="Gartenpflege vom Gärtnermeister in Düsseldorf & Umgebung: Heckenschnitt, Baumschnitt, Rasenpflege, Laubentsorgung und Winterservice. Kostenlose Erstberatung, Antwort meist in 24 h."
         path="/"
         jsonLd={jsonLd}
       />
       <div className="min-h-screen">
-        {isV11 ? (
-          <a
-            href="#main"
-            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-5 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground focus:shadow-lg"
-          >
-            Zum Inhalt springen
-          </a>
-        ) : null}
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-5 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground focus:shadow-lg focus:outline focus:outline-2 focus:outline-white"
+        >
+          Zum Inhalt springen
+        </a>
         {isV9 || isV10 ? null : <Header />}
         <main id="main">
           {isV11 ? (

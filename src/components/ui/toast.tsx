@@ -41,7 +41,20 @@ const Toast = React.forwardRef<
   React.ElementRef<typeof ToastPrimitives.Root>,
   React.ComponentPropsWithoutRef<typeof ToastPrimitives.Root> & VariantProps<typeof toastVariants>
 >(({ className, variant, ...props }, ref) => {
-  return <ToastPrimitives.Root ref={ref} className={cn(toastVariants({ variant }), className)} {...props} />;
+  // A11y: destructive/error toasts als "alert" (assertive announce),
+  // Erfolgs- und Info-Toasts als "status" (polite announce).
+  const type = variant === "destructive" ? "foreground" : "background";
+  const role = variant === "destructive" ? "alert" : "status";
+  return (
+    <ToastPrimitives.Root
+      ref={ref}
+      type={type}
+      role={role}
+      aria-live={variant === "destructive" ? "assertive" : "polite"}
+      className={cn(toastVariants({ variant }), className)}
+      {...props}
+    />
+  );
 });
 Toast.displayName = ToastPrimitives.Root.displayName;
 

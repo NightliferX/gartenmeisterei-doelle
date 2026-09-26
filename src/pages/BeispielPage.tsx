@@ -8,6 +8,7 @@ import BeratungCtaV8 from "@/components/v8/BeratungCtaV8";
 import HeaderV8 from "@/components/v8/HeaderV8";
 import Footer from "@/components/Footer";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import SkipToContent from "@/components/SkipToContent";
 
 // Preview-Varianten zum Vergleich: eine Version zeigt Benedikt zweimal
 // (Hero + WhyV8-Portrait), die andere nur im Hero. In beiden Fällen ist
@@ -19,7 +20,8 @@ const BeispielPage = ({ variant }: BeispielProps) => {
   useScrollAnimation();
   return (
     <>
-    <HeaderV8 />
+    <SkipToContent />
+        <HeaderV8 />
     {variant === "1" ? (
       <>
         <HeroV8 />
@@ -37,7 +39,7 @@ const BeispielPage = ({ variant }: BeispielProps) => {
         <WerkstattV8 />
         <WhyV8
           meisterImageSrc="/services/baumschnitt/baumschnitt-obstbaum-bypass-astschere-nahaufnahme-duesseldorf.png"
-          meisterImageAlt="Bypass-Astschere beim Obstbaumschnitt — Handwerk von Gärtnermeister Dölle"
+          meisterImageAlt="Bypass-Astschere beim Obstbaumschnitt , Handwerk von Gärtnermeister Dölle"
         />
         <AreaBlockV8 />
         <FaqV8 />

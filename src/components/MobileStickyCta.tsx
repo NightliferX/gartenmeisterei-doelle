@@ -33,24 +33,26 @@ const MobileStickyCta = () => {
       transition={{ type: "spring", stiffness: 360, damping: 36, mass: 0.7 }}
       className="fixed inset-x-0 bottom-0 z-40 bg-primary/[0.08] px-4 pb-[calc(0.9rem+env(safe-area-inset-bottom))] pt-3 backdrop-blur-md lg:hidden"
     >
-      <div className="mx-auto flex max-w-md gap-3">
+      <nav aria-label="Direktkontakt" className="mx-auto flex max-w-md gap-3">
         <a
           href={siteConfig.phoneHref}
+          aria-label={`Anrufen unter ${siteConfig.phoneDisplay}`}
           className="v8-press flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full bg-white px-4 text-sm font-semibold text-foreground shadow-sm transition-colors hover:bg-muted"
         >
-          <Phone className="h-4 w-4 text-primary" strokeWidth={2.25} />
+          <Phone className="h-4 w-4 text-primary" strokeWidth={2.25} aria-hidden />
           Anrufen
         </a>
         <a
           href={siteConfig.whatsappHref}
           target="_blank"
           rel="noreferrer"
+          aria-label="WhatsApp öffnen (externe Anwendung)"
           className="v8-press flex min-h-12 flex-1 items-center justify-center gap-2 rounded-full bg-primary px-4 text-sm font-semibold text-primary-foreground shadow-sm transition-colors hover:bg-primary/90"
         >
-          <MessageCircle className="h-4 w-4" strokeWidth={2.25} />
+          <MessageCircle className="h-4 w-4" strokeWidth={2.25} aria-hidden />
           WhatsApp
         </a>
-      </div>
+      </nav>
     </motion.div>
   );
 };

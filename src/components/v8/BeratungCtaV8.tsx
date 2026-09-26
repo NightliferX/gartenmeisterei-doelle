@@ -249,7 +249,7 @@ const BeratungCtaV8 = () => {
               </h2>
               <p className="mt-4 max-w-[46ch] text-[1rem] leading-relaxed text-primary-foreground/85">
                 Wir schauen uns Ihren Garten vor Ort an, hören zu und schlagen
-                einen passenden Pflegeplan vor. Unverbindlich — Benedikt Dölle
+                einen passenden Pflegeplan vor. Unverbindlich , Benedikt Dölle
                 meldet sich in kürzester Zeit persönlich bei Ihnen.
               </p>
 
@@ -304,9 +304,9 @@ const BeratungCtaV8 = () => {
                   WhatsApp
                 </a>
               </div>
-              <p className="mt-1 text-[0.8rem] leading-relaxed text-primary-foreground/75">
+              <p className="mt-1 text-[0.8rem] leading-relaxed text-primary-foreground/85">
                 Am schnellsten per WhatsApp oder Telefon. Alternativ das
-                Formular — Benedikt Dölle meldet sich in kürzester Zeit
+                Formular , Benedikt Dölle meldet sich in kürzester Zeit
                 persönlich bei Ihnen.
               </p>
             </div>

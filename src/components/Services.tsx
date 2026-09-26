@@ -27,7 +27,7 @@ const iconMap = {
 const theme = import.meta.env.VITE_THEME;
 const pageFor = (id: string) => servicePages.find((p) => p.serviceId === id);
 
-// V2 „Das Gartenjahr": Magazin-Layout — große Bilder im Wechsel, keine Karten.
+// V2 „Das Gartenjahr": Magazin-Layout , große Bilder im Wechsel, keine Karten.
 const ServicesV2 = () => {
   return (
     <section id="leistungen" className="py-20 md:py-28">
@@ -166,7 +166,7 @@ const Services = () => {
             Unsere Leistungen
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Vom Heckenschnitt bis zum Winterservice — wir halten Ihren Garten
+            Vom Heckenschnitt bis zum Winterservice , wir halten Ihren Garten
             das ganze Jahr über gepflegt, zuverlässig und aus einer Hand.
           </p>
         </div>

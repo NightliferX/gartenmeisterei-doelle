@@ -9,12 +9,13 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { projects, services, siteConfig } from "@/lib/siteContent";
 import { servicePages, type ServicePage as ServicePageData } from "@/lib/subpages";
 import { withBase } from "@/lib/utils";
+import SkipToContent from "@/components/SkipToContent";
 
 // Leistungs-Unterseite im V8-/Apple-Look: Cinematic-Hero, viel Weissraum,
 // weiche Schatten statt Rahmen, dunkles Editorial-Panel für den Ablauf.
 
 // Passendes Referenzprojekt je Leistung (Titel-Teilstring aus siteContent).
-// Zu einer Leistung koennen mehrere Referenzen gehoeren — sie werden dann
+// Zu einer Leistung koennen mehrere Referenzen gehoeren , sie werden dann
 // untereinander gezeigt, jede mit eigenem Namen und Ort.
 const projectMatchFor: Record<string, string[]> = {
   gartenpflege: ["Verwilderten Garten"],
@@ -29,7 +30,7 @@ const projectMatchFor: Record<string, string[]> = {
 const ablauf = [
   {
     title: "Ihre Anfrage",
-    text: `Kurz beschreiben, worum es geht — per Formular, WhatsApp oder Telefon. ${siteConfig.responsePromise}.`,
+    text: `Kurz beschreiben, worum es geht , per Formular, WhatsApp oder Telefon. ${siteConfig.responsePromise}.`,
   },
   {
     title: "Beratung im Garten",
@@ -37,7 +38,7 @@ const ablauf = [
   },
   {
     title: "Angebot mit klarem Umfang",
-    text: "Sie bekommen schriftlich, was gemacht wird — auf Wunsch als Pflegevertrag mit festem Preis pro Termin.",
+    text: "Sie bekommen schriftlich, was gemacht wird , auf Wunsch als Pflegevertrag mit festem Preis pro Termin.",
   },
   {
     title: "Termin nach Plan",
@@ -50,7 +51,7 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
   const service = services.find((s) => s.id === page.serviceId);
   const heroImage = page.heroImage ?? service?.image;
   const heroAlt = page.heroAlt ?? service?.title ?? page.h1;
-  const [headline, subline] = page.h1.split(" — ");
+  const [headline, subline] = page.h1.split(" , ");
   const [aktiveReferenz, setAktiveReferenz] = useState(0);
   const referenzen = (projectMatchFor[page.serviceId] ?? [])
     .map((match) =>
@@ -61,7 +62,7 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
   const photoItems = page.included.filter((item) => item.image);
   const plainItems = page.included.filter((item) => !item.image);
   // Ein einzelner Punkt laeuft ueber die volle Breite, drei stehen zu dritt
-  // nebeneinander — sonst zwei Spalten.
+  // nebeneinander , sonst zwei Spalten.
   const colsFor = (count: number) =>
     count === 1 ? "" : count === 3 ? "md:grid-cols-3" : "md:grid-cols-2";
 
@@ -123,8 +124,9 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
         jsonLd={jsonLd}
       />
       <div className="min-h-screen bg-background">
+        <SkipToContent />
         <HeaderV8 />
-        <main>
+        <main id="main">
           {/* Cinematic Hero */}
           <section className="relative isolate min-h-[84vh] w-full overflow-hidden bg-foreground">
             {heroImage ? (
@@ -207,7 +209,7 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
               </div>
 
               {/* Erst die Punkte mit Foto als große Kacheln, darunter die
-                  übrigen als ruhige Icon-Karten — so bleiben die Reihen
+                  übrigen als ruhige Icon-Karten , so bleiben die Reihen
                   gleich hoch, auch wenn es nicht zu jedem Punkt ein Bild gibt. */}
               {photoItems.length ? (
                 <div
@@ -267,7 +269,7 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
             </div>
           </section>
 
-          {/* Ablauf — dunkles Editorial-Panel */}
+          {/* Ablauf , dunkles Editorial-Panel */}
           <section className="bg-[#0d120d] py-20 md:py-28">
             <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
               <div className="scroll-fade-in mx-auto max-w-3xl text-center">
@@ -300,7 +302,7 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
             </div>
           </section>
 
-          {/* Vorher / Nachher — bei mehreren Beispielen mit Umschalter oben */}
+          {/* Vorher / Nachher , bei mehreren Beispielen mit Umschalter oben */}
           {referenzen.length ? (
             <section className="bg-background py-20 md:py-28">
               <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
@@ -384,7 +386,7 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                   Häufige Fragen
                 </p>
                 <h2 className="mt-3 text-[clamp(2rem,4vw,2.8rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
-                  {service?.title ?? "Diese Leistung"} — kurz erklärt.
+                  {service?.title ?? "Diese Leistung"} , kurz erklärt.
                 </h2>
               </div>
 
@@ -416,6 +418,7 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                 {otherPages.map((other) => {
                   const otherService = services.find((s) => s.id === other.serviceId);
                   const image = other.heroImage ?? otherService?.image;
+                  const otherTitle = otherService?.title ?? other.h1;
                   return (
                     <a
                       key={other.slug}
@@ -425,7 +428,7 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                       {image ? (
                         <img
                           src={image.startsWith("http") ? image : withBase(image)}
-                          alt=""
+                          alt={`${otherTitle} in Düsseldorf`}
                           loading="lazy"
                           decoding="async"
                           className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"

@@ -6,6 +6,7 @@ import BeratungCtaV8, { oeffneBeratung } from "@/components/v8/BeratungCtaV8";
 import { services, siteConfig } from "@/lib/siteContent";
 import { areaPages, servicePages, type AreaPage as AreaPageData } from "@/lib/subpages";
 import { withBase } from "@/lib/utils";
+import SkipToContent from "@/components/SkipToContent";
 
 const serviceSlugFor = (id: string) =>
   ({
@@ -48,9 +49,10 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
         jsonLd={jsonLd}
       />
       <div className="min-h-screen bg-background">
+        <SkipToContent />
         <HeaderV8 />
-        <main>
-          {/* Cinematic Hero — V8/Apple */}
+        <main id="main">
+          {/* Cinematic Hero , V8/Apple */}
           <section className="relative isolate min-h-[62vh] w-full overflow-hidden bg-foreground">
             <img
               src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg")}
@@ -114,7 +116,7 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
             </section>
           ) : null}
 
-          {/* Leistungen in dieser Stadt — Foto-Kacheln im V8-Look */}
+          {/* Leistungen in dieser Stadt , Foto-Kacheln im V8-Look */}
           <section className="bg-background py-20 md:py-24">
             <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
               <div className="mx-auto max-w-3xl text-center">
@@ -139,7 +141,7 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
                         {src ? (
                           <img
                             src={src}
-                            alt=""
+                            alt={`${service.title} in ${shortName}`}
                             loading="lazy"
                             decoding="async"
                             className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
@@ -168,7 +170,7 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
             </div>
           </section>
 
-          {/* Andere Einsatzgebiete — Chip-Wolke im V8-Look */}
+          {/* Andere Einsatzgebiete , Chip-Wolke im V8-Look */}
           <section className="bg-background pb-20 md:pb-24">
             <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
               <div className="mx-auto max-w-3xl text-center">

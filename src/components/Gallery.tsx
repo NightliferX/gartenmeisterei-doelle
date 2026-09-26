@@ -8,7 +8,7 @@ import { withBase } from "@/lib/utils";
 const categories = ["Alle", "Schnitt", "Pflege", "Saison"];
 const theme = import.meta.env.VITE_THEME;
 
-// V2 „Das Gartenjahr": Magazin-Strecke — ein Projekt pro Zeile, Bilder im Wechsel.
+// V2 „Das Gartenjahr": Magazin-Strecke , ein Projekt pro Zeile, Bilder im Wechsel.
 const GalleryV2 = () => {
   return (
     <section id="projekte" className="bg-secondary/50 py-20 md:py-28">
@@ -21,7 +21,7 @@ const GalleryV2 = () => {
             So arbeiten wir
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Beispielprojekte zeigen, was gute Gartenpflege ausmacht — echte
+            Beispielprojekte zeigen, was gute Gartenpflege ausmacht , echte
             Kundengärten folgen mit den ersten Projekten.
           </p>
         </div>
@@ -87,7 +87,7 @@ const GalleryV4 = () => {
             Die Arbeit spricht.
           </h2>
           <p className="mt-4 text-lg text-muted-foreground">
-            Wischen Sie durch die Beispiele — jedes Bild lässt sich zwischen
+            Wischen Sie durch die Beispiele , jedes Bild lässt sich zwischen
             Vorher und Nachher umschalten.
           </p>
         </div>
@@ -149,7 +149,7 @@ const GalleryDefault = () => {
             So arbeiten wir
           </h2>
           <p className="mt-4 text-muted-foreground">
-            Beispielprojekte zeigen, was gute Gartenpflege ausmacht — die
+            Beispielprojekte zeigen, was gute Gartenpflege ausmacht , die
             Vorher-/Nachher-Bilder aus echten Kundengärten folgen mit den
             ersten Projekten.
           </p>

@@ -5,12 +5,12 @@ const values = [
   {
     icon: Shield,
     title: "Meisterhaftes Handwerk",
-    text: "Schnitt, Pflege und Pflanzenauswahl nach Fachwissen aus der Meisterausbildung — zur richtigen Zeit und mit dem richtigen Maß.",
+    text: "Schnitt, Pflege und Pflanzenauswahl nach Fachwissen aus der Meisterausbildung , zur richtigen Zeit und mit dem richtigen Maß.",
   },
   {
     icon: Heart,
     title: "Saubere Kommunikation",
-    text: "Sie erhalten klare Aussagen zu Aufwand, Terminen und den nächsten Schritten — und einen Garten, der aufgeräumt zurückbleibt.",
+    text: "Sie erhalten klare Aussagen zu Aufwand, Terminen und den nächsten Schritten , und einen Garten, der aufgeräumt zurückbleibt.",
   },
   {
     icon: Users,
@@ -40,11 +40,11 @@ const About = () => {
               Über Uns
             </p>
             <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
-              Benedikt Dölle — Gärtnermeister aus Düsseldorf
+              Benedikt Dölle , Gärtnermeister aus Düsseldorf
             </h2>
             <p className="mt-5 text-muted-foreground leading-relaxed">
               Als Gärtnermeister betreue ich Gärten in Düsseldorf und Umgebung
-              persönlich — von der ersten Besichtigung bis zum letzten
+              persönlich , von der ersten Besichtigung bis zum letzten
               Handgriff. Mein Anspruch: verlässliche Kommunikation, saubere
               Arbeit und ein Garten, der zu seinen Besitzern passt.
             </p>
@@ -52,7 +52,7 @@ const About = () => {
               Ein Garten braucht über das Jahr die richtige Pflege zur richtigen
               Zeit. Deshalb denke ich in Jahreszeiten statt in Einzelterminen:
               vom Frühjahrsschnitt über die Sommerpflege bis zum Laub- und
-              Winterservice — alles aus einer Hand.
+              Winterservice , alles aus einer Hand.
             </p>
 
             <div className="mt-8 space-y-5">

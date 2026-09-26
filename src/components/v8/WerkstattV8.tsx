@@ -69,7 +69,7 @@ const WerkstattV8 = () => {
             />
 
             <div className="text-center lg:text-left">
-              <p className="text-[0.75rem] font-medium uppercase tracking-[0.14em] text-white/60">
+              <p className="text-[0.75rem] font-medium uppercase tracking-[0.14em] text-white/85">
                 {project.location}
               </p>
               <h3 className="mt-2 text-[clamp(1.4rem,2.8vw,2.2rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-white">
