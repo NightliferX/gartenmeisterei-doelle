@@ -64,7 +64,7 @@ const HeaderV7 = () => {
           <div className="mx-auto flex h-16 max-w-[1240px] items-center justify-between px-4 lg:px-6">
             <a href={withBase("/")} className="flex items-center gap-2">
               <img
-                src={withBase("/logo-gartenmeisterei.svg")}
+                src={withBase("/logo-gaertnermeister-doelle.png")}
                 alt={`${siteConfig.brandName} Logo`}
                 className="h-10 w-auto md:h-11"
               />

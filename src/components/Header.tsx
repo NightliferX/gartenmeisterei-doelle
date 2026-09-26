@@ -16,7 +16,7 @@ const HeaderDefault = () => {
         {/* Logo */}
         <a href={withBase("/")} className="flex items-center gap-2 font-bold text-xl text-primary">
           <img
-            src={withBase("/logo-gartenmeisterei.svg")}
+            src={withBase("/logo-gaertnermeister-doelle.png")}
             alt={`${siteConfig.brandName} Logo`}
             className="h-12 w-auto md:h-14"
           />
