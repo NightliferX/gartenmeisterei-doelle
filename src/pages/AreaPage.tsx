@@ -3,7 +3,6 @@ import HeaderV8 from "@/components/v8/HeaderV8";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import BeratungCtaV8 from "@/components/v8/BeratungCtaV8";
-import BreadcrumbsV8 from "@/components/v8/BreadcrumbsV8";
 import { services, siteConfig } from "@/lib/siteContent";
 import { areaPages, servicePages, type AreaPage as AreaPageData } from "@/lib/subpages";
 import { withBase } from "@/lib/utils";
@@ -95,14 +94,6 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
               </div>
             </div>
           </section>
-
-          <BreadcrumbsV8
-            items={[
-              { label: "Start", href: "/" },
-              { label: "Einsatzgebiete", href: "/#einsatzgebiete" },
-              { label: shortName },
-            ]}
-          />
 
           {/* Weiterer Intro-Text (Absatz 2+), wenn vorhanden */}
           {page.intro.length > 1 ? (

@@ -3,7 +3,6 @@ import HeaderV8 from "@/components/v8/HeaderV8";
 import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import BeratungCtaV8 from "@/components/v8/BeratungCtaV8";
-import BreadcrumbsV8 from "@/components/v8/BreadcrumbsV8";
 import { gartenjahr, monthRange, siteConfig } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
 
@@ -71,14 +70,6 @@ const SeasonPage = ({ season }: { season: Season }) => {
               </p>
             </div>
           </section>
-
-          <BreadcrumbsV8
-            items={[
-              { label: "Start", href: "/" },
-              { label: "Gartenjahr", href: "/#gartenjahr" },
-              { label: season.season },
-            ]}
-          />
 
           {/* Aufgaben — Apple-Cards mit soften Schatten, viel Whitespace */}
           <section className="bg-background py-20 md:py-28">
