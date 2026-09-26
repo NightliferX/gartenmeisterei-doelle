@@ -5,8 +5,8 @@ import { projects } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
 
 const tabs = [
-  { key: "hecke", label: "Hecke am Weg", match: "Hecke am Hausweg", slug: "heckenschnitt" },
-  { key: "vorgartenhecke", label: "Vorgartenhecke", match: "Vorgartenhecke", slug: "heckenschnitt" },
+  { key: "hecke", label: "Hecke", match: "Hecke am Hausweg", slug: "heckenschnitt" },
+  { key: "vorgarten", label: "Vorgarten", match: "Vorgartenhecke", slug: "heckenschnitt" },
   { key: "garten", label: "Garten", match: "Verwilderten Garten", slug: "gartenpflege" },
   { key: "obstbaum", label: "Obstbaum", match: "Obstbäume", slug: "baumschnitt" },
   { key: "rasen", label: "Rasen", match: "Rollrasen", slug: "rasenpflege" },

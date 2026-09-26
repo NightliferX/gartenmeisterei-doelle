@@ -313,16 +313,12 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                 </div>
 
                 <div className="mt-10 flex flex-col gap-16 md:mt-14 md:gap-20">
-                  {referenzen.map((referenz, index) => (
+                  {referenzen.map((referenz) => (
                     <div
                       key={referenz.title}
-                      className={`grid gap-8 lg:items-center lg:gap-12 ${
-                        index % 2 === 1
-                          ? "lg:grid-cols-[minmax(0,1fr)_minmax(0,1.55fr)]"
-                          : "lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)]"
-                      }`}
+                      className="grid gap-8 lg:grid-cols-[minmax(0,1.55fr)_minmax(0,1fr)] lg:items-center lg:gap-12"
                     >
-                      <div className={index % 2 === 1 ? "lg:order-2" : undefined}>
+                      <div>
                         <BeforeAfterSlider
                           className="border-0 shadow-[0_18px_48px_-24px_rgba(0,0,0,0.45)]"
                           title={referenz.title}
@@ -336,17 +332,21 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                           afterAlt={referenz.afterAlt}
                         />
                       </div>
-                      <div className={`text-center lg:text-left ${index % 2 === 1 ? "lg:order-1" : ""}`}>
+                      <div className="text-center lg:text-left">
                         <p className="text-[0.75rem] font-medium uppercase tracking-[0.14em] text-muted-foreground">
                           {referenz.location}
                         </p>
                         <h3 className="mt-2 text-[clamp(1.4rem,2.8vw,2.2rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
                           {referenz.title}
                         </h3>
-                        <p className="mx-auto mt-4 max-w-[52ch] text-[1rem] leading-relaxed text-muted-foreground lg:mx-0 lg:text-[1.05rem]">
-                          {referenz.solution}
-                        </p>
-                        <p className="mx-auto mt-3 max-w-[52ch] text-[1rem] font-medium leading-relaxed text-foreground lg:mx-0">
+                        {/* Bei mehreren Beispielen nur der Ergebnissatz — sonst
+                            wird die Seite zur Textwand. */}
+                        {referenzen.length === 1 ? (
+                          <p className="mx-auto mt-4 max-w-[52ch] text-[1rem] leading-relaxed text-muted-foreground lg:mx-0 lg:text-[1.05rem]">
+                            {referenz.solution}
+                          </p>
+                        ) : null}
+                        <p className="mx-auto mt-3 max-w-[52ch] text-[1rem] leading-relaxed text-muted-foreground lg:mx-0 lg:text-[1.05rem]">
                           {referenz.result}.
                         </p>
                       </div>
