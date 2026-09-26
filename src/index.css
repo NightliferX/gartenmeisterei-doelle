@@ -80,6 +80,14 @@
        wird deaktiviert, Pinch-Zoom bleibt erhalten). Spürbar schnellere
        Reaktion auf allen Buttons und Links auf iPhone. */
     touch-action: manipulation;
+    /* Safety-Net gegen horizontales Scrollen auf Mobil: falls irgendwo
+       ein Element leicht über den Viewport ragt (Marquee, weite Bilder,
+       breite Grid-Items) klippt der Browser jetzt automatisch. */
+    overflow-x: hidden;
+  }
+  body {
+    overflow-x: hidden;
+    max-width: 100vw;
   }
   body {
     background-image:
