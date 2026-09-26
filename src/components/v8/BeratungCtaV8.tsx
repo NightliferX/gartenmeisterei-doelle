@@ -177,13 +177,13 @@ const BeratungCtaV8 = () => {
             <SelectTrigger className="h-14 text-[1.05rem]">
               <SelectValue placeholder="Bitte wählen" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="text-[0.95rem]">
               {services.map((item) => (
-                <SelectItem key={item.id} value={item.title}>
+                <SelectItem key={item.id} value={item.title} className="text-[0.95rem]">
                   {item.title}
                 </SelectItem>
               ))}
-              <SelectItem value="sonstiges">Sonstiges</SelectItem>
+              <SelectItem value="sonstiges" className="text-[0.95rem]">Sonstiges</SelectItem>
             </SelectContent>
           </Select>
         </label>
@@ -330,7 +330,7 @@ const BeratungCtaV8 = () => {
         </Drawer>
       ) : (
         <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (!v) reset(); }}>
-          <DialogContent className="max-h-[90dvh] max-w-xl overflow-y-auto">
+          <DialogContent className="max-h-[90dvh] max-w-[640px] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>Kostenlose Beratung anfragen</DialogTitle>
               <DialogDescription>
