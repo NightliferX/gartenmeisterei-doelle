@@ -162,9 +162,9 @@ const HeaderV8 = () => {
           {/* Logo */}
           <a href={withBase("/")} className="flex items-center pl-1">
             <img
-              src={withBase("/logo-gaertnermeister-doelle.png")}
+              src={withBase("/logo.svg")}
               alt={siteConfig.brandName}
-              className="h-12 w-auto md:h-14"
+              className="h-11 w-auto md:h-12"
             />
           </a>
 
