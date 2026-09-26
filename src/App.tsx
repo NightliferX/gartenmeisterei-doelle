@@ -31,17 +31,6 @@ const App = () => (
           {servicePages.map((page) => (
             <Route key={page.slug} path={`/${page.slug}`} element={<ServicePage page={page} />} />
           ))}
-          {/* Alte SEO-Slugs weiter aktiv, damit indexierte Links + externe
-              Backlinks nicht 404 werden. */}
-          {servicePages.flatMap((page) =>
-            (page.legacySlugs ?? []).map((legacy) => (
-              <Route
-                key={`legacy-${legacy}`}
-                path={`/${legacy}`}
-                element={<ServicePage page={page} />}
-              />
-            )),
-          )}
           {areaPages.map((page) => (
             <Route key={page.slug} path={`/${page.slug}`} element={<AreaPage page={page} />} />
           ))}
@@ -49,14 +38,6 @@ const App = () => (
             <Route
               key={season.slug}
               path={`/gartenpflege-${season.slug}`}
-              element={<SeasonPage season={season} />}
-            />
-          ))}
-          {/* Alte SEO-Slugs weiter aktiv, damit indexierte Links nicht 404 werden. */}
-          {gartenjahr.map((season) => (
-            <Route
-              key={`legacy-${season.slug}`}
-              path={`/gartenpflege-${season.slug}-duesseldorf`}
               element={<SeasonPage season={season} />}
             />
           ))}

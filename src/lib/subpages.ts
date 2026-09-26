@@ -4,9 +4,6 @@
 export type ServicePage = {
   slug: string;
   serviceId: string; // verweist auf services[].id in siteContent.ts
-  // Alte SEO-Slugs, die weiter live bleiben (301-artiger Doppel-Route),
-  // damit indexierte Backlinks und Google-Einträge nicht 404 werden.
-  legacySlugs?: string[];
   metaTitle: string;
   metaDescription: string;
   h1: string;
@@ -32,7 +29,6 @@ export type AreaPage = {
 export const servicePages: ServicePage[] = [
   {
     slug: "gartenpflege",
-    legacySlugs: ["gartenpflege-duesseldorf"],
     serviceId: "gartenpflege",
     metaTitle: "Gartenpflege Düsseldorf | Gartenmeisterei Dölle – Meisterbetrieb",
     metaDescription:
@@ -85,7 +81,6 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: "heckenschnitt",
-    legacySlugs: ["heckenschnitt-duesseldorf"],
     serviceId: "heckenschnitt",
     metaTitle: "Heckenschnitt Düsseldorf | Gartenmeisterei Dölle – Formschnitt vom Profi",
     metaDescription:
@@ -138,7 +133,6 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: "baumschnitt",
-    legacySlugs: ["baumschnitt-duesseldorf"],
     serviceId: "baumschnitt",
     metaTitle: "Baumschnitt Düsseldorf | Gartenmeisterei Dölle – Obstbaum- & Kronenschnitt",
     metaDescription:
@@ -189,7 +183,6 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: "rasenpflege",
-    legacySlugs: ["rasenpflege-duesseldorf"],
     serviceId: "rasenpflege",
     metaTitle: "Rasenpflege Düsseldorf | Gartenmeisterei Dölle – Vertikutieren & Nachsaat",
     metaDescription:
@@ -242,7 +235,6 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: "rollrasen",
-    legacySlugs: ["rollrasen-duesseldorf"],
     serviceId: "rollrasen",
     metaTitle: "Rollrasen legen Düsseldorf | Gartenmeisterei Dölle – Meisterbetrieb",
     metaDescription:
@@ -300,7 +292,6 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: "laubentsorgung",
-    legacySlugs: ["laubentsorgung-duesseldorf"],
     serviceId: "herbst",
     metaTitle: "Laubentsorgung Düsseldorf | Gartenmeisterei Dölle – Herbstputz vom Profi",
     metaDescription:
@@ -343,7 +334,6 @@ export const servicePages: ServicePage[] = [
   },
   {
     slug: "winterservice",
-    legacySlugs: ["winterservice-duesseldorf"],
     serviceId: "saison",
     metaTitle: "Garten winterfest machen Düsseldorf | Gartenmeisterei Dölle",
     metaDescription:
