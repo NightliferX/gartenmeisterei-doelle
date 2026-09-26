@@ -301,7 +301,7 @@ const BeratungCtaV11 = () => {
               </div>
               <p className="mt-1 text-[0.8rem] leading-relaxed text-primary-foreground/75">
                 Am schnellsten per WhatsApp oder Telefon. Alternativ das
-                Formular , Benedikt Dölle meldet sich in kürzester Zeit
+                Formular, Benedikt Dölle meldet sich in kürzester Zeit
                 persönlich bei Ihnen.
               </p>
             </div>

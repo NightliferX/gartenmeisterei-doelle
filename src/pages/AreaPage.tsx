@@ -52,7 +52,7 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
         <SkipToContent />
         <HeaderV8 />
         <main id="main">
-          {/* Cinematic Hero , V8/Apple */}
+          {/* Cinematic Hero, V8/Apple */}
           <section className="relative isolate min-h-[62vh] w-full overflow-hidden bg-foreground">
             <img
               src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.jpg")}
@@ -116,7 +116,7 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
             </section>
           ) : null}
 
-          {/* Leistungen in dieser Stadt , Foto-Kacheln im V8-Look */}
+          {/* Leistungen in dieser Stadt, Foto-Kacheln im V8-Look */}
           <section className="bg-background py-20 md:py-24">
             <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
               <div className="mx-auto max-w-3xl text-center">
@@ -170,7 +170,7 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
             </div>
           </section>
 
-          {/* Andere Einsatzgebiete , Chip-Wolke im V8-Look */}
+          {/* Andere Einsatzgebiete, Chip-Wolke im V8-Look */}
           <section className="bg-background pb-20 md:pb-24">
             <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
               <div className="mx-auto max-w-3xl text-center">
@@ -189,7 +189,7 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
                     <a
                       key={a.slug}
                       href={withBase(`/${a.slug}`)}
-                      className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-[0.92rem] font-medium text-foreground shadow-sm transition-colors hover:border-primary/40 hover:text-primary"
+                      className="inline-flex min-h-[44px] items-center gap-2 rounded-full border border-border bg-card px-4 py-3 text-[0.92rem] font-medium text-foreground shadow-sm transition-colors hover:border-primary/40 hover:text-primary"
                     >
                       <MapPin
                         className="h-4 w-4 text-primary"

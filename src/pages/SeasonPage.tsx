@@ -13,7 +13,7 @@ const SeasonPage = ({ season }: { season: Season }) => {
   const current = new Date().getMonth();
   const isActive = season.months.includes(current);
   const path = `/gartenpflege-${season.slug}`;
-  const metaTitle = `Gartenpflege im ${season.season} , ${siteConfig.brandName}`;
+  const metaTitle = `Gartenpflege im ${season.season}, ${siteConfig.brandName}`;
   const metaDescription = `${season.intro} Gärtnermeister-Betrieb aus Düsseldorf für ${season.season}-Arbeiten: ${season.work}.`;
 
   const jsonLd = [
@@ -44,7 +44,7 @@ const SeasonPage = ({ season }: { season: Season }) => {
         <SkipToContent />
         <HeaderV8 />
         <main id="main">
-          {/* Cinematic Hero , V8/Apple-Stil */}
+          {/* Cinematic Hero, V8/Apple-Stil */}
           <section className="relative isolate min-h-[80vh] w-full overflow-hidden bg-foreground">
             <img
               src={withBase(season.heroImage)}
@@ -73,7 +73,7 @@ const SeasonPage = ({ season }: { season: Season }) => {
             </div>
           </section>
 
-          {/* Aufgaben , Apple-Cards mit soften Schatten, viel Whitespace */}
+          {/* Aufgaben, Apple-Cards mit soften Schatten, viel Whitespace */}
           <section className="bg-background py-20 md:py-28">
             <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
               <div className="mx-auto max-w-3xl text-center">
@@ -106,7 +106,7 @@ const SeasonPage = ({ season }: { season: Season }) => {
             </div>
           </section>
 
-          {/* Tipps , dunkles Editorial-Panel, wie WerkstattV8 */}
+          {/* Tipps, dunkles Editorial-Panel, wie WerkstattV8 */}
           <section className="bg-[#0d120d] py-20 md:py-24">
             <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
               <div className="mx-auto max-w-3xl text-center">
@@ -132,7 +132,7 @@ const SeasonPage = ({ season }: { season: Season }) => {
             </div>
           </section>
 
-          {/* Andere Jahreszeiten , Foto-Kacheln im V8-Cinematic-Look */}
+          {/* Andere Jahreszeiten, Foto-Kacheln im V8-Cinematic-Look */}
           <section className="bg-background py-20 md:py-28">
             <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
               <div className="mx-auto max-w-3xl text-center">

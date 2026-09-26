@@ -620,6 +620,11 @@
 }
 
 @keyframes v8-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.theme-v8 .v8-marquee, .theme-v11 .v8-marquee { animation: v8-marquee 45s linear infinite; }
+.theme-v8 .v8-marquee[data-paused="true"], .theme-v11 .v8-marquee[data-paused="true"] { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .theme-v8 .v8-marquee, .theme-v11 .v8-marquee { animation: none; }
+}
 .theme-v8 .cv-auto {
   content-visibility: auto;
   contain-intrinsic-size: 1px 900px;

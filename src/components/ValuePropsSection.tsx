@@ -1,7 +1,7 @@
 import { valueProps } from "@/lib/siteContent";
 
 const ValuePropsSection = () => {
-  // V4 („Cinematic") verzichtet auf diese Zwischensektion , die schwarze
+  // V4 („Cinematic") verzichtet auf diese Zwischensektion, die schwarze
   // Statement-Sektion im Hero übernimmt ihre Aussage.
   if (import.meta.env.VITE_THEME === "v4") return null;
   return (

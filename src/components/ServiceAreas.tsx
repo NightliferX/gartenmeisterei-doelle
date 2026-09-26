@@ -14,7 +14,7 @@ const ServiceAreas = () => {
               Einsatzgebiete
             </p>
             <h2 className="text-3xl font-bold tracking-tight md:text-4xl">
-              Für Düsseldorf und die Region , von Oberkassel bis Benrath
+              Für Düsseldorf und die Region, von Oberkassel bis Benrath
             </h2>
             <p className="mt-5 max-w-2xl text-muted-foreground leading-relaxed">
               Wir pflegen Gärten in allen Düsseldorfer Stadtteilen und im nahen

@@ -149,7 +149,7 @@ const Contact = () => {
       toast({
         title: "Senden fehlgeschlagen",
         description:
-          "Bitte rufen Sie uns direkt an oder schreiben Sie per WhatsApp , wir melden uns umgehend.",
+          "Bitte rufen Sie uns direkt an oder schreiben Sie per WhatsApp, wir melden uns umgehend.",
         variant: "destructive",
       });
       console.error(error);

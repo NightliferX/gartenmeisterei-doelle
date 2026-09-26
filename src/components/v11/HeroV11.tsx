@@ -72,7 +72,7 @@ const HeroV11 = ({ imageSrc, imageAlt }: HeroV11Props = {}) => {
             In Meisterhand.
           </h1>
           <p className="v8-rise-2 mx-auto mt-7 max-w-2xl text-lg text-white/85 md:text-xl">
-            Gartenpflege von Gärtnermeister {siteConfig.ownerName} , für Düsseldorf
+            Gartenpflege von Gärtnermeister {siteConfig.ownerName}, für Düsseldorf
             und Umgebung, durch alle Jahreszeiten.
           </p>
           <div className="v8-rise-3 mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -93,7 +93,7 @@ const HeroV11 = ({ imageSrc, imageAlt }: HeroV11Props = {}) => {
         </div>
       </section>
 
-      {/* Gartenjahr-Block ragt von unten in den Hero , nur leicht,
+      {/* Gartenjahr-Block ragt von unten in den Hero, nur leicht,
           damit möglichst viel vom Hero-Foto sichtbar bleibt. */}
       <section id="gartenjahr" className="relative z-20 pt-12 pb-4 md:pt-16">
         <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
@@ -103,7 +103,7 @@ const HeroV11 = ({ imageSrc, imageAlt }: HeroV11Props = {}) => {
                 Das Gartenjahr.
               </h2>
               <p className="hidden text-[0.95rem] text-white/60 sm:block">
-                Jede Jahreszeit hat ihre Arbeit , wir kennen den Takt.
+                Jede Jahreszeit hat ihre Arbeit, wir kennen den Takt.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-2 sm:gap-3 lg:grid-cols-4">

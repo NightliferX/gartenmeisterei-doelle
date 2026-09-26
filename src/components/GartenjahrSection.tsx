@@ -5,7 +5,7 @@ import { withBase } from "@/lib/utils";
 // Gartenjahr-Leiste fuer Design 1: exakt die V2-Aufteilung (ein Block, vier
 // Zellen, aktuelle Saison markiert), nur in den Design-1-Farben und -Schrift.
 // Jede Zelle verlinkt auf die dazugehoerige Saison-Unterseite.
-// V2 und V4 haben ihren eigenen Block bereits im Hero , dort nichts rendern.
+// V2 und V4 haben ihren eigenen Block bereits im Hero, dort nichts rendern.
 const GartenjahrSection = () => {
   const theme = import.meta.env.VITE_THEME;
   if (theme === "v2" || theme === "v4") return null;

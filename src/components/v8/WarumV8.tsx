@@ -28,7 +28,7 @@ const reasons = [
   {
     icon: Leaf,
     title: "Kostenlose Erstberatung.",
-    text: "Wir schauen uns Ihren Garten vor Ort an , unverbindlich.",
+    text: "Wir schauen uns Ihren Garten vor Ort an, unverbindlich.",
   },
   {
     icon: Truck,
@@ -54,7 +54,7 @@ const WarumV8 = () => (
     className="bg-secondary/50 py-20 md:py-28"
   >
     <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
-      {/* Header , zentriert, große Headline */}
+      {/* Header, zentriert, große Headline */}
       <div className="mx-auto max-w-[42rem] text-center">
         <p className="text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-primary">
           Warum wir
@@ -70,7 +70,7 @@ const WarumV8 = () => (
       {/* Grid: links Meister-Foto (Row-Span), rechts oben Meister-Karte,
           rechts unten 4 Reasons */}
       <div className="mt-12 grid gap-5 md:mt-16 md:grid-cols-2 md:gap-6 lg:gap-8">
-        {/* LINKS: große Meister-Foto-Kachel , auf Mobile Portrait-Aspect
+        {/* LINKS: große Meister-Foto-Kachel, auf Mobile Portrait-Aspect
             damit das Gesicht sichtbar ist, auf Desktop row-span-2 mit
             fixer Mindesthöhe. */}
         <article className="relative flex aspect-[4/5] overflow-hidden rounded-[2rem] bg-primary text-primary-foreground shadow-xl shadow-primary/25 md:aspect-auto md:row-span-2 md:min-h-[720px]">
@@ -94,13 +94,13 @@ const WarumV8 = () => (
               Direkt vom Gärtnermeister.
             </h3>
             <p className="mt-3 max-w-[46ch] text-[1rem] leading-relaxed text-primary-foreground/90 md:text-[1.05rem]">
-              Beratung, Angebot und Ausführung aus einer Hand , Sie sprechen
+              Beratung, Angebot und Ausführung aus einer Hand, Sie sprechen
               immer mit dem, der später bei Ihnen im Garten steht.
             </p>
           </div>
         </article>
 
-        {/* RECHTS OBEN: Der Meister , Text offen ohne Card-Container,
+        {/* RECHTS OBEN: Der Meister, Text offen ohne Card-Container,
             darunter die 3 Fact-Rows als eigene kleine weiße Boxen. */}
         <div className="pt-2 md:pt-4">
           <p className="text-[0.8rem] font-semibold uppercase tracking-[0.18em] text-primary">
@@ -110,7 +110,7 @@ const WarumV8 = () => (
             {siteConfig.ownerName}
           </h3>
           <p className="mt-4 max-w-[52ch] text-[0.98rem] leading-relaxed text-muted-foreground md:text-[1rem]">
-            Beratung und Ausführung direkt vom Gärtnermeister , klare
+            Beratung und Ausführung direkt vom Gärtnermeister, klare
             Absprachen, saisongerechtes Handwerk und ein sauberes Ergebnis.
             Wer hier anfragt, spricht mit dem, der später im Garten steht.
           </p>

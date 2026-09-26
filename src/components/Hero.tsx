@@ -37,7 +37,7 @@ const HeroV2 = () => {
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-white/85">
               Die {siteConfig.brandName} hält Gärten in Düsseldorf und Umgebung
-              das ganze Jahr in Form , vom Hecken- und Baumschnitt über Rasen-
+              das ganze Jahr in Form, vom Hecken- und Baumschnitt über Rasen-
               und Beetpflege bis zu Laub- und Winterservice.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -67,7 +67,7 @@ const HeroV2 = () => {
       </div>
 
       <div className="container relative z-20 -mt-24 px-4">
-        {/* Gartenjahr-Leiste: was wann ansteht , die aktuelle Saison ist markiert */}
+        {/* Gartenjahr-Leiste: was wann ansteht, die aktuelle Saison ist markiert */}
         <div className="overflow-hidden rounded-[var(--radius)] bg-[hsl(var(--v2-pine))] text-white shadow-xl shadow-[hsl(var(--v2-pine)/0.3)]">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4">
             {gartenjahr.map((entry) => {
@@ -101,7 +101,7 @@ const HeroV2 = () => {
 };
 
 
-// Design-Variante 4: cinematischer Auftritt , Vollbild-Statement,
+// Design-Variante 4: cinematischer Auftritt, Vollbild-Statement,
 // dann eine dunkle Filmsequenz mit dem Handwerk in Großaufnahme.
 const HeroV4 = () => {
   const month = new Date().getMonth();
@@ -124,7 +124,7 @@ const HeroV4 = () => {
             In Meisterhand.
           </h1>
           <p className="v4-rise-2 mx-auto mt-7 max-w-2xl text-lg text-white/85 md:text-xl">
-            Gartenpflege von Gärtnermeister Benedikt Dölle , für Düsseldorf und
+            Gartenpflege von Gärtnermeister Benedikt Dölle, für Düsseldorf und
             Umgebung, durch alle Jahreszeiten.
           </p>
           <div className="v4-rise-3 mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
@@ -155,7 +155,7 @@ const HeroV4 = () => {
                 Das Gartenjahr.
               </h2>
               <p className="text-base text-white/60">
-                Jede Jahreszeit hat ihre Arbeit , wir kennen den Takt.
+                Jede Jahreszeit hat ihre Arbeit, wir kennen den Takt.
               </p>
             </div>
 
@@ -234,7 +234,7 @@ const Hero = () => {
           <p className="mx-auto mt-6 max-w-3xl text-lg text-primary-foreground/80 md:text-xl">
             Die {siteConfig.brandName} hält Ihren Garten das ganze Jahr in Form:
             Hecken- und Baumschnitt, Rasen- und Beetpflege, Laubentsorgung und
-            Winterservice , zuverlässig und mit Meisterhand.
+            Winterservice, zuverlässig und mit Meisterhand.
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">

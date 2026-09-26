@@ -2,26 +2,26 @@ import { useRef } from "react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 
 // Kundenstimmen-Section (V8): fünf realistische Zitate als
-// horizontaler Snap-Slider , Mobil scrollt per Wisch, Desktop
+// horizontaler Snap-Slider, Mobil scrollt per Wisch, Desktop
 // zusätzlich mit runden Pfeil-Buttons unten rechts.
 const testimonials = [
   {
     quote:
-      "Endlich einer, der wirklich regelmäßig kommt und den Garten kennt. Nach zwei Terminen sah der Rasen aus wie neu , und alles Schnittgut war weg.",
+      "Endlich einer, der wirklich regelmäßig kommt und den Garten kennt. Nach zwei Terminen sah der Rasen aus wie neu, und alles Schnittgut war weg.",
     name: "Familie Weber",
     location: "Düsseldorf-Kaiserswerth",
     service: "Pflegevertrag",
   },
   {
     quote:
-      "Sehr angenehmer Kontakt, klare Absprachen. Der Meister war persönlich vor Ort und hat uns ehrlich beraten, was zu unserem Grundstück passt , und was warten kann.",
+      "Sehr angenehmer Kontakt, klare Absprachen. Der Meister war persönlich vor Ort und hat uns ehrlich beraten, was zu unserem Grundstück passt, und was warten kann.",
     name: "Sabine H.",
     location: "Meerbusch-Büderich",
     service: "Beetneuanlage & Heckenschnitt",
   },
   {
     quote:
-      "Wir hatten einen komplett verwilderten Vorgarten nach unserem Umzug. In drei Terminen war alles wieder in Form , inklusive Entsorgung. Preis war fair und wie besprochen.",
+      "Wir hatten einen komplett verwilderten Vorgarten nach unserem Umzug. In drei Terminen war alles wieder in Form, inklusive Entsorgung. Preis war fair und wie besprochen.",
     name: "Markus L.",
     location: "Neuss",
     service: "Grundpflege",
@@ -35,7 +35,7 @@ const testimonials = [
   },
   {
     quote:
-      "Als Hausverwaltung schätzen wir feste Ansprechpartner. Herr Dölle ist verlässlich und liefert konstante Qualität , auch bei mehreren Objekten.",
+      "Als Hausverwaltung schätzen wir feste Ansprechpartner. Herr Dölle ist verlässlich und liefert konstante Qualität, auch bei mehreren Objekten.",
     name: "T. Krämer (Hausverwaltung)",
     location: "Düsseldorf",
     service: "Objektbetreuung",

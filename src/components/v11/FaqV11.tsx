@@ -2,7 +2,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { faqItems } from "@/lib/siteContent";
 
-// Alle Fragen in einer weissen Editorial-Card, ohne Themen-Filter , nur
+// Alle Fragen in einer weissen Editorial-Card, ohne Themen-Filter, nur
 // Accordion. Apple-Support-Anmutung.
 const FaqV11 = () => (
   <section id="faq" className="cv-auto bg-secondary/40 py-20 md:py-28">

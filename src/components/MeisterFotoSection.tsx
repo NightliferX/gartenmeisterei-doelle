@@ -19,7 +19,7 @@ const MeisterFotoSection = () => (
             Handwerk
           </p>
           <h2 className="mt-2 max-w-2xl text-2xl font-bold leading-tight text-white md:text-4xl">
-            Präzise Schnitte , sauber, ruhig, saisongerecht.
+            Präzise Schnitte, sauber, ruhig, saisongerecht.
           </h2>
         </div>
       </div>

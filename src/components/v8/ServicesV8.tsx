@@ -74,7 +74,7 @@ const ServicesV8 = () => (
 
       {/* Mobil: Karten stapeln sich beim Scrollen (Sticky-Stack).
          `will-change: transform` + eigene Layer verhindern Ruckler beim
-         Scrollen , jede Karte bekommt einen GPU-Composite-Layer. */}
+         Scrollen, jede Karte bekommt einen GPU-Composite-Layer. */}
       <ul className="mt-12 md:hidden">
         {services.map((service, index) => (
           <li

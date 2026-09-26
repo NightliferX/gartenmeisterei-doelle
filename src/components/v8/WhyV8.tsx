@@ -8,7 +8,7 @@ const reasons = [
   {
     icon: Leaf,
     title: "Kostenlose Erstberatung.",
-    text: "Wir schauen uns Ihren Garten vor Ort an , unverbindlich.",
+    text: "Wir schauen uns Ihren Garten vor Ort an, unverbindlich.",
   },
   {
     icon: Truck,
@@ -45,7 +45,7 @@ const WhyV8 = ({ meisterImageSrc, meisterImageAlt }: WhyV8Props = {}) => (
       </div>
 
       <div className="mt-10 grid gap-4 md:mt-12 md:gap-5 lg:grid-cols-3 lg:grid-rows-2">
-        {/* Vier Text-Kacheln zuerst , auf Mobile stehen die Argumente
+        {/* Vier Text-Kacheln zuerst, auf Mobile stehen die Argumente
             direkt unter der Überschrift, damit die Meister-Kachel nicht
             wie das Header-Bild wirkt. */}
         {reasons.map(({ icon: Icon, title, text }, i) => (
@@ -88,7 +88,7 @@ const WhyV8 = ({ meisterImageSrc, meisterImageAlt }: WhyV8Props = {}) => (
               Direkt vom Gärtnermeister.
             </h3>
             <p className="mt-2 text-[0.95rem] leading-relaxed text-primary-foreground/90">
-              Beratung, Angebot und Ausführung aus einer Hand , Sie sprechen
+              Beratung, Angebot und Ausführung aus einer Hand, Sie sprechen
               immer mit dem, der später bei Ihnen im Garten steht.
             </p>
           </div>
