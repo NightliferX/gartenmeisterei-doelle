@@ -252,24 +252,32 @@ export const servicePages: ServicePage[] = [
       "Wenn schnell ein fertiger Rasen her muss — nach einer Baumaßnahme, bei stark vermoosten Flächen oder vor einem geplanten Termin — ist Rollrasen die zuverlässigste Lösung. In wenigen Stunden verlegt, in zwei bis drei Wochen belastbar.",
       "Wir übernehmen alles: Wir prüfen den Untergrund, bereiten das Planum sauber vor, verlegen den Rollrasen fugenlos und begleiten die Anwuchspflege in den ersten Wochen — damit die Fläche dicht und dauerhaft schön bleibt.",
     ],
-    heroImage: "/services/rasenpflege/rasenpflege-sabo-rasenmaeher-reihenhaus-vorgarten-duesseldorf.jpg",
-    heroAlt: "Frisch verlegter, dichter Rollrasen in einem gepflegten Vorgarten in Düsseldorf",
+    heroImage: "/services/rollrasen/rollrasen-verlegen-bahnen-duesseldorf.jpg",
+    heroAlt: "Rollrasenbahn wird auf dem vorbereiteten Planum ausgerollt, daneben die bereits verlegten Bahnen",
     included: [
       {
         title: "Untergrund & Planum",
         text: "Alter Rasen entfernen, Boden lockern, Feinplanum ziehen — die Grundlage für gleichmäßigen Anwuchs.",
+        image: "/services/rollrasen/feinplanum-planierrechen-bodenvorbereitung-duesseldorf.jpg",
+        imageAlt: "Planierrechen zieht das Feinplanum auf der vorbereiteten Erdfläche glatt",
       },
       {
         title: "Rollrasen fugenlos verlegen",
         text: "Frische Rollen von zertifizierten Züchtern, versetzt verlegt und angewalzt — keine sichtbaren Fugen.",
+        image: "/services/rollrasen/rollrasen-stossfuge-verlegen-detail-duesseldorf.jpg",
+        imageAlt: "Zwei Rollrasenbahnen werden an der Stoßfuge dicht aneinandergedrückt",
       },
       {
         title: "Anwuchspflege",
         text: "Bewässerungshinweise, erster Schnitt zur richtigen Zeit, Düngung — wir bleiben in den ersten Wochen ansprechbar.",
+        image: "/services/rollrasen/rollrasen-bewaessern-rasensprenger-duesseldorf.jpg",
+        imageAlt: "Rasensprenger wässert den frisch verlegten Rollrasen im Gegenlicht",
       },
       {
         title: "Kleine Flächen bis große Gärten",
         text: "Vom Vorgartenstreifen bis zum kompletten Hausgarten — wir kalkulieren fair und arbeiten sauber.",
+        image: "/services/rollrasen/rollrasen-fertige-flaeche-vorgarten-duesseldorf.jpg",
+        imageAlt: "Fertig verlegter Rollrasen im Vorgarten mit sauberer Kante zum Weg",
       },
     ],
     faq: [

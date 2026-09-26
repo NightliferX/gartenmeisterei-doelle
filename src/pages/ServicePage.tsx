@@ -19,6 +19,7 @@ const projectMatchFor: Record<string, string> = {
   heckenschnitt: "Hecken in Form",
   baumschnitt: "Obstbäume",
   rasenpflege: "Rollrasen",
+  rollrasen: "Rollrasen",
   herbst: "Garten winterfest",
   saison: "Garten winterfest",
 };

@@ -146,7 +146,7 @@ export const services = [
     description:
       "Sofort fertiger, dichter Rasen statt monatelang auf Nachsaat warten: Wir bereiten den Boden vor, verlegen den Rollrasen fugenlos und begleiten die Anwuchspflege der ersten Wochen.",
     highlights: ["Bodenvorbereitung & Planum", "Rollrasen fugenlos verlegen", "Anwuchspflege in den ersten Wochen"],
-    image: "/services/rasenpflege/rasenpflege-sabo-rasenmaeher-reihenhaus-vorgarten-duesseldorf.jpg",
+    image: "/services/rollrasen/rollrasen-verlegen-bahnen-duesseldorf.jpg",
   },
 ];
 
