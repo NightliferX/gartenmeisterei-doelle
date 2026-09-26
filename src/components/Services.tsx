@@ -1,5 +1,6 @@
 import {
   CalendarClock,
+  Droplets,
   Grid2x2,
   Leaf,
   Scissors,
@@ -20,6 +21,7 @@ const iconMap = {
   herbst: Trash2,
   saison: CalendarClock,
   rollrasen: Grid2x2,
+  terrasse: Droplets,
 };
 
 const theme = import.meta.env.VITE_THEME;
