@@ -330,7 +330,7 @@ const BeratungCtaV8 = () => {
         </Drawer>
       ) : (
         <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (!v) reset(); }}>
-          <DialogContent className="max-h-[90dvh] max-w-2xl overflow-y-auto">
+          <DialogContent className="max-h-[90dvh] max-w-xl overflow-y-auto">
             <DialogHeader>
               <DialogTitle>Kostenlose Beratung anfragen</DialogTitle>
               <DialogDescription>
