@@ -190,62 +190,51 @@ const RatgeberPage = ({ post }: { post: RatgeberPost }) => {
               <aside className="hidden lg:block">
                 <nav aria-label="Inhaltsverzeichnis" className="sticky top-28">
                   <p className="rv4-eyebrow">Inhalt</p>
-                  <ol className="mt-5 space-y-1.5 text-[0.9rem]">
-                    {post.sections.map((s, i) => {
-                      const isActive = activeSectionId === s.id;
+                  <ol className="mt-6 space-y-3 text-[0.9rem]">
+                    {[
+                      ...post.sections.map((s, i) => ({
+                        id: s.id,
+                        href: `#${s.id}`,
+                        num: String(i + 1).padStart(2, "0"),
+                        label: s.heading,
+                      })),
+                      {
+                        id: "faq",
+                        href: "#faq",
+                        num: String(post.sections.length + 1).padStart(2, "0"),
+                        label: "Häufige Fragen",
+                      },
+                    ].map(({ id, href, num, label }) => {
+                      const isActive = activeSectionId === id;
                       return (
-                        <li key={s.id}>
+                        <li key={id}>
                           <a
-                            href={`#${s.id}`}
-                            className={`group -ml-3 flex gap-3 rounded-lg border-l-2 py-1.5 pl-3 pr-2 transition-colors ${
-                              isActive
-                                ? "border-primary text-foreground"
-                                : "border-transparent text-muted-foreground hover:border-primary/40 hover:text-foreground"
-                            }`}
+                            href={href}
+                            aria-current={isActive ? "true" : undefined}
+                            className="group flex items-baseline gap-3 py-1 transition-colors"
                           >
                             <span
-                              className={`tabular-nums text-[0.78rem] leading-relaxed ${
-                                isActive ? "font-semibold text-primary" : "text-primary/60"
+                              className={`tabular-nums text-[0.75rem] transition-colors ${
+                                isActive
+                                  ? "font-semibold text-primary"
+                                  : "text-muted-foreground/60 group-hover:text-primary/70"
                               }`}
                             >
-                              {String(i + 1).padStart(2, "0")}
+                              {num}
                             </span>
                             <span
-                              className={`leading-snug ${
-                                isActive ? "font-semibold" : "font-medium"
+                              className={`leading-snug transition-colors ${
+                                isActive
+                                  ? "font-semibold text-foreground"
+                                  : "font-normal text-muted-foreground group-hover:text-foreground"
                               }`}
                             >
-                              {s.heading}
+                              {label}
                             </span>
                           </a>
                         </li>
                       );
                     })}
-                    <li>
-                      <a
-                        href="#faq"
-                        className={`group -ml-3 flex gap-3 rounded-lg border-l-2 py-1.5 pl-3 pr-2 transition-colors ${
-                          activeSectionId === "faq"
-                            ? "border-primary text-foreground"
-                            : "border-transparent text-muted-foreground hover:border-primary/40 hover:text-foreground"
-                        }`}
-                      >
-                        <span
-                          className={`tabular-nums text-[0.78rem] leading-relaxed ${
-                            activeSectionId === "faq" ? "font-semibold text-primary" : "text-primary/60"
-                          }`}
-                        >
-                          {String(post.sections.length + 1).padStart(2, "0")}
-                        </span>
-                        <span
-                          className={`leading-snug ${
-                            activeSectionId === "faq" ? "font-semibold" : "font-medium"
-                          }`}
-                        >
-                          Häufige Fragen
-                        </span>
-                      </a>
-                    </li>
                   </ol>
                 </nav>
               </aside>
