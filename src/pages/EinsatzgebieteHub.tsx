@@ -17,9 +17,9 @@ const EinsatzgebieteHub = () => {
   const umland = areaPages.filter((a) => a.kind === "Umland");
 
   const stats = [
-    { value: stadtteile.length, label: "Stadtteile mit eigener Seite" },
-    { value: umland.length, label: "Umlandorte im Radius" },
-    { value: "25", suffix: "km", label: "fester Einsatzradius" },
+    { value: stadtteile.length + umland.length, label: "Orte, in denen wir regelmäßig unterwegs sind" },
+    { value: "25", suffix: "km", label: "Umkreis um Düsseldorf, links- und rechtsrheinisch" },
+    { value: "0", suffix: "€", label: "Anfahrtspauschale bei geplanten Pflegeterminen" },
   ] as const;
 
   const values = [
@@ -85,10 +85,10 @@ const EinsatzgebieteHub = () => {
                 Einsatzgebiete
               </p>
               <h1 className="mt-5 text-[clamp(2.2rem,4.8vw,3.4rem)] font-semibold leading-[1.03] tracking-[-0.02em] text-foreground">
-                25 Kilometer Radius. Feste Termine. Faire Anfahrt.
+                Von Kaiserswerth bis Benrath, von Meerbusch bis Ratingen.
               </h1>
               <p className="mt-6 max-w-[62ch] text-[1.1rem] leading-[1.55] text-muted-foreground md:text-[1.2rem]">
-                Wir arbeiten dort, wo kurze Wege regelmässige Pflege wirtschaftlich machen: in Düsseldorf komplett und im Umland innerhalb von 25 Kilometern. Ohne Anfahrtspauschale bei geplanten Terminen.
+                Wir kennen die Gärten in Düsseldorf und den Nachbarorten. Kurze Wege bedeuten pünktliche Termine, feste Ansprechpartner — und keine Anfahrtspauschale bei geplanter Pflege.
               </p>
 
               {/* Stat-Row: Zahlen machen die Reichweite auf einen Blick begreifbar */}
