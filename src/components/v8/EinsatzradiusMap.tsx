@@ -20,7 +20,7 @@ const umland: Ort[] = [
   { name: "Ratingen", dx: 6, dy: -8, labelDx: 8 },
   { name: "Mettmann", dx: 10, dy: -1, labelDx: 8 },
   { name: "Wülfrath", dx: 12, dy: -10, labelDx: 8, labelDy: -6 },
-  { name: "Erkrath", dx: 8, dy: 2, labelDx: 8 },
+  { name: "Erkrath", dx: 10, dy: 5, labelDx: 8, labelDy: 4 },
   { name: "Haan", dx: 14, dy: 2, labelDx: 8 },
   { name: "Hilden", dx: 6, dy: 8, labelDx: 8 },
   { name: "Langenfeld", dx: 0, dy: 15, labelDx: 8 },
