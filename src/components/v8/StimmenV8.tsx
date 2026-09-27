@@ -1,46 +1,12 @@
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { testimonials } from "@/lib/siteContent";
 
-// Kundenstimmen-Section (V8): fünf realistische Zitate als
-// horizontaler Snap-Slider, Mobil scrollt per Wisch, Desktop
-// zusätzlich mit runden Pfeil-Buttons unten rechts.
-const testimonials = [
-  {
-    quote:
-      "Endlich einer, der wirklich regelmäßig kommt und den Garten kennt. Nach zwei Terminen sah der Rasen aus wie neu, und alles Schnittgut war weg.",
-    name: "Familie Weber",
-    location: "Düsseldorf-Kaiserswerth",
-    service: "Pflegevertrag",
-  },
-  {
-    quote:
-      "Sehr angenehmer Kontakt, klare Absprachen. Der Meister war persönlich vor Ort und hat uns ehrlich beraten, was zu unserem Grundstück passt, und was warten kann.",
-    name: "Sabine H.",
-    location: "Meerbusch-Büderich",
-    service: "Beetneuanlage & Heckenschnitt",
-  },
-  {
-    quote:
-      "Wir hatten einen komplett verwilderten Vorgarten nach unserem Umzug. In drei Terminen war alles wieder in Form, inklusive Entsorgung. Preis war fair und wie besprochen.",
-    name: "Markus L.",
-    location: "Neuss",
-    service: "Grundpflege",
-  },
-  {
-    quote:
-      "Der Herbstlaubservice ist Gold wert. Kommt zuverlässig, macht sauber, nimmt alles mit. Ich muss an nichts mehr denken.",
-    name: "Familie Schmitz",
-    location: "Ratingen-Hösel",
-    service: "Herbst-Laubservice",
-  },
-  {
-    quote:
-      "Als Hausverwaltung schätzen wir feste Ansprechpartner. Herr Dölle ist verlässlich und liefert konstante Qualität, auch bei mehreren Objekten.",
-    name: "T. Krämer (Hausverwaltung)",
-    location: "Düsseldorf",
-    service: "Objektbetreuung",
-  },
-];
+// Kundenstimmen-Section (V8): rendert echte Kundenzitate aus dem
+// Content-Kanon `testimonials` in siteContent.ts. Solange keine echten
+// Google-Rezensionen vorliegen (Array leer), wird die Section gar nicht
+// gerendert. Damit sind Fake-Reviews rechtlich ausgeschlossen (UWG § 5,
+// Google Structured Data Spam Policy).
 
 const StimmenV8 = () => {
   const scrollerRef = useRef<HTMLUListElement>(null);
@@ -49,9 +15,12 @@ const StimmenV8 = () => {
     const el = scrollerRef.current;
     if (!el) return;
     const first = el.querySelector<HTMLElement>("li");
-    const step = first ? first.offsetWidth + 24 : el.clientWidth * 0.8;
+    const gap = first ? parseFloat(getComputedStyle(el).columnGap || "0") : 0;
+    const step = first ? first.offsetWidth + gap : el.clientWidth * 0.8;
     el.scrollBy({ left: dir * step, behavior: "smooth" });
   };
+
+  if (testimonials.length === 0) return null;
 
   return (
     <section
@@ -88,10 +57,10 @@ const StimmenV8 = () => {
               </blockquote>
               <div className="mt-6 border-t border-border/60 pt-4">
                 <p className="text-[0.95rem] font-semibold text-foreground">
-                  {t.name}
+                  {t.displayName}
                 </p>
                 <p className="mt-0.5 text-[0.85rem] text-muted-foreground">
-                  {t.location} · {t.service}
+                  {t.location}
                 </p>
               </div>
             </li>

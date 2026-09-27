@@ -1,46 +1,25 @@
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import Gallery from "@/components/Gallery";
-import About from "@/components/About";
-import Testimonials from "@/components/Testimonials";
-import Contact from "@/components/Contact";
+import HeaderV8 from "@/components/v8/HeaderV8";
+import LandingV8 from "@/components/v8/LandingV8";
 import Footer from "@/components/Footer";
 import MobileStickyCta from "@/components/MobileStickyCta";
-import ServiceAreas from "@/components/ServiceAreas";
-import Faq from "@/components/Faq";
 import Seo from "@/components/Seo";
-import ValuePropsSection from "@/components/ValuePropsSection";
-import ProofSection from "@/components/ProofSection";
-import GartenjahrSection from "@/components/GartenjahrSection";
-import MeisterFotoSection from "@/components/MeisterFotoSection";
-import LandingV5 from "@/components/v5/LandingV5";
-import LandingV6 from "@/components/v6/LandingV6";
-import LandingV7 from "@/components/v7/LandingV7";
-import LandingV8 from "@/components/v8/LandingV8";
-import LandingV9 from "@/components/v9/LandingV9";
-import LandingV10 from "@/components/v10/LandingV10";
-import LandingV11 from "@/components/v11/LandingV11";
+import SkipToContent from "@/components/SkipToContent";
 import { faqItems, projects, serviceAreas, services, siteConfig } from "@/lib/siteContent";
 
-const isV5 = import.meta.env.VITE_THEME === "v5";
-const isV6 = import.meta.env.VITE_THEME === "v6";
-const isV7 = import.meta.env.VITE_THEME === "v7";
-const isV8 = import.meta.env.VITE_THEME === "v8";
-const isV9 = import.meta.env.VITE_THEME === "v9";
-const isV10 = import.meta.env.VITE_THEME === "v10";
-const isV11 = import.meta.env.VITE_THEME === "v11";
-
+// Root-Route der Website. V8 ist die aktive Design-Variante, alle anderen
+// Landings (V2/V4/V5/V6/V7/V9/V10/V11) sind aus dem Live-Bundle raus,
+// die Files liegen weiter im Repo als Design-Reserve, werden aber nicht
+// mehr geladen. Ueberarbeitung im Ordner src/components/v8.
 const Index = () => {
-  useScrollAnimation();
-
   const jsonLd = [
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
+      "@id": `${siteConfig.domain}/#website`,
       name: siteConfig.brandName,
       url: siteConfig.domain,
+      inLanguage: "de-DE",
+      publisher: { "@id": `${siteConfig.domain}/#business` },
       description:
         "Gartenpflege vom Gärtnermeister in Düsseldorf und Umgebung: Heckenschnitt, Baumschnitt, Rasenpflege, Laubentsorgung und Winterservice.",
     },
@@ -49,18 +28,34 @@ const Index = () => {
       "@type": "Landscaper",
       "@id": `${siteConfig.domain}/#business`,
       name: siteConfig.brandName,
+      alternateName: "Gaertnermeister Doelle Duesseldorf",
       image: siteConfig.ogImage,
+      logo: `${siteConfig.domain}/logo.svg`,
       url: siteConfig.domain,
       email: siteConfig.email,
       telephone: siteConfig.phoneRaw,
+      priceRange: "€€",
+      currenciesAccepted: "EUR",
+      paymentAccepted: "Bar, Überweisung, Rechnung",
+      slogan: "Gartenpflege vom Meister. Persönlich. Zuverlässig.",
+      description:
+        "Meisterbetrieb für Gartenpflege in Düsseldorf: Hecken- und Baumschnitt, Rasen- und Beetpflege, Rollrasen, Laubentsorgung, Frühjahrs- und Winterservice, Terrassenreinigung.",
       founder: {
         "@type": "Person",
+        "@id": `${siteConfig.domain}/#benedikt`,
         name: siteConfig.ownerName,
-        jobTitle: "Gärtnermeister",
+        jobTitle: siteConfig.ownerTitle,
+        worksFor: { "@id": `${siteConfig.domain}/#business` },
+        hasCredential: {
+          "@type": "EducationalOccupationalCredential",
+          credentialCategory: "Meisterbrief",
+          name: "Gärtnermeister (Meisterprüfung nach § 51 HwO)",
+          recognizedBy: {
+            "@type": "Organization",
+            name: "Handwerkskammer Düsseldorf",
+          },
+        },
       },
-      priceRange: "EUR",
-      description:
-        "Gartenpflege vom Meisterbetrieb in Düsseldorf: Hecken- und Baumschnitt, Rasen- und Beetpflege, Laubentsorgung, Frühjahrs- und Winterservice.",
       areaServed: serviceAreas.map((area) => ({
         "@type": "City",
         name: area,
@@ -72,6 +67,12 @@ const Index = () => {
         addressLocality: siteConfig.city,
         addressRegion: siteConfig.region,
         addressCountry: siteConfig.country,
+      },
+      // Volmarweg 8, 40221 Düsseldorf (grobe Koordinate, vor GBP-Cutover verifizieren)
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: 51.2115,
+        longitude: 6.7469,
       },
       openingHoursSpecification: siteConfig.openingHours.map((slot) => ({
         "@type": "OpeningHoursSpecification",
@@ -86,6 +87,7 @@ const Index = () => {
             "@type": "Service",
             name: service.title,
             description: service.description,
+            provider: { "@id": `${siteConfig.domain}/#business` },
           },
         })),
       },
@@ -95,6 +97,8 @@ const Index = () => {
         description: project.summary,
         areaServed: project.location,
       })),
+      // TODO nach GBP-Anlage ergaenzen: sameAs (Google Business Profile,
+      // Instagram, Facebook), aggregateRating, review.
     },
     {
       "@context": "https://schema.org",
@@ -114,52 +118,18 @@ const Index = () => {
     <>
       <Seo
         title="Gartenpflege Düsseldorf | Gärtnermeister Dölle, Meisterbetrieb"
-        description="Gartenpflege vom Gärtnermeister in Düsseldorf & Umgebung: Heckenschnitt, Baumschnitt, Rasenpflege, Laubentsorgung und Winterservice. Kostenlose Erstberatung, Antwort meist in 24 h."
+        description="Gartenpflege vom Gärtnermeister in Düsseldorf & Umgebung: Heckenschnitt, Baumschnitt, Rasenpflege, Laubentsorgung und Winterservice. Kostenlose Erstberatung, persönliche Rückmeldung."
         path="/"
         jsonLd={jsonLd}
       />
       <div className="min-h-screen">
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-primary focus:px-5 focus:py-2 focus:text-sm focus:font-semibold focus:text-primary-foreground focus:shadow-lg focus:outline focus:outline-2 focus:outline-white"
-        >
-          Zum Inhalt springen
-        </a>
-        {isV9 || isV10 ? null : <Header />}
+        <SkipToContent />
+        <HeaderV8 />
         <main id="main">
-          {isV11 ? (
-            <LandingV11 />
-          ) : isV10 ? (
-            <LandingV10 />
-          ) : isV9 ? (
-            <LandingV9 />
-          ) : isV8 ? (
-            <LandingV8 />
-          ) : isV7 ? (
-            <LandingV7 />
-          ) : isV6 ? (
-            <LandingV6 />
-          ) : isV5 ? (
-            <LandingV5 />
-          ) : (
-            <>
-              <Hero />
-              <GartenjahrSection />
-              <ValuePropsSection />
-              <ProofSection />
-              <MeisterFotoSection />
-              <Services />
-              <Gallery />
-              <About />
-              <Testimonials />
-              <ServiceAreas />
-            </>
-          )}
-          {isV8 || isV9 || isV10 || isV11 ? null : <Faq />}
-          {isV8 || isV9 || isV10 || isV11 ? null : <Contact />}
+          <LandingV8 />
         </main>
-        {isV9 || isV10 ? null : <Footer />}
-        {isV9 || isV10 ? null : <MobileStickyCta />}
+        <Footer />
+        <MobileStickyCta />
       </div>
     </>
   );

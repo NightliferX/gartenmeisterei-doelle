@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import { ArrowRight, CheckCircle2, ChevronDown, Phone } from "lucide-react";
 import HeaderV8 from "@/components/v8/HeaderV8";
 import Footer from "@/components/Footer";
@@ -70,20 +70,12 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
     {
       "@context": "https://schema.org",
       "@type": "Service",
+      serviceType: service?.title ?? page.h1,
       name: service?.title ?? page.h1,
       description: page.metaDescription,
       areaServed: { "@type": "City", name: "Düsseldorf" },
-      provider: {
-        "@type": "Landscaper",
-        name: siteConfig.brandName,
-        telephone: siteConfig.phoneRaw,
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: siteConfig.city,
-          postalCode: siteConfig.postalCode,
-          addressCountry: siteConfig.country,
-        },
-      },
+      provider: { "@id": `${siteConfig.domain}/#business` },
+      url: `${siteConfig.domain}/${page.slug}`,
     },
     {
       "@context": "https://schema.org",
@@ -167,7 +159,7 @@ const ServicePage = ({ page }: { page: ServicePageData }) => {
                   onClick={oeffneBeratung}
                   className="v8-press inline-flex h-12 items-center justify-center gap-1.5 rounded-full bg-white px-7 text-[1rem] font-semibold text-foreground shadow-lg shadow-black/25 hover:bg-white/90"
                 >
-                  Kostenlose Beratung anfragen
+                  Beratung anfragen
                   <ArrowRight className="h-4 w-4" strokeWidth={2.25} />
                 </button>
                 <a
@@ -480,12 +472,16 @@ const FaqRow = ({
   defaultOpen?: boolean;
 }) => {
   const [open, setOpen] = useState(defaultOpen);
+  const panelId = useId();
+  const buttonId = useId();
   return (
     <div className="px-3 sm:px-4">
       <button
+        id={buttonId}
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
+        aria-controls={panelId}
         className="v8-press flex w-full items-center justify-between gap-4 py-5 text-left"
       >
         <span className="text-[1.05rem] font-semibold leading-snug tracking-[-0.005em] text-foreground md:text-[1.15rem]">
@@ -498,6 +494,10 @@ const FaqRow = ({
         />
       </button>
       <div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        aria-hidden={!open}
         className={`grid transition-all duration-300 ease-out ${open ? "grid-rows-[1fr] pb-5" : "grid-rows-[0fr]"}`}
       >
         <div className="overflow-hidden">

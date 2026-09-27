@@ -1,6 +1,21 @@
 // Daten für die SEO-Unterseiten: eine Seite pro Leistung und pro Stadtteil/Umlandort.
 // Routen werden in App.tsx aus diesen Arrays generiert.
 
+// Uebersetzt eine service.id aus siteContent.ts in den URL-Slug der
+// zugehoerigen Leistungsseite. Zentral hier, damit Header, AreaPage
+// und ServicesV8 nicht dieselbe Map dreimal pflegen.
+export const serviceSlugFor = (id: string) =>
+  ({
+    gartenpflege: "gartenpflege",
+    heckenschnitt: "heckenschnitt",
+    baumschnitt: "baumschnitt",
+    rasenpflege: "rasenpflege",
+    herbst: "laubentsorgung",
+    saison: "winterservice",
+    rollrasen: "rollrasen",
+    terrasse: "terrasse",
+  }[id] ?? id);
+
 export type ServicePage = {
   slug: string;
   serviceId: string; // verweist auf services[].id in siteContent.ts
@@ -32,7 +47,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: "gartenpflege",
     serviceId: "gartenpflege",
-    metaTitle: "Gartenpflege Düsseldorf | Gärtnermeister Dölle, Meisterbetrieb",
+    metaTitle: "Gartenpflege Düsseldorf | Gärtnermeister Dölle",
     metaDescription:
       "Regelmäßige Gartenpflege in Düsseldorf vom Gärtnermeister: Rasen, Hecken, Beete und Saisonarbeiten, zuverlässig nach Plan, auf Wunsch als Pflegevertrag. Kostenlose Erstberatung.",
     h1: "Gartenpflege vom Meisterbetrieb, für Düsseldorf und Umland",
@@ -84,9 +99,9 @@ export const servicePages: ServicePage[] = [
   {
     slug: "heckenschnitt",
     serviceId: "heckenschnitt",
-    metaTitle: "Heckenschnitt Düsseldorf | Gärtnermeister Dölle, Formschnitt vom Profi",
+    metaTitle: "Heckenschnitt Düsseldorf | Gärtnermeister Dölle",
     metaDescription:
-      "Heckenschnitt in Düsseldorf vom Gärtnermeister: Form- und Rückschnitt zur richtigen Zeit, saubere Kanten, Abtransport inklusive. Jetzt kostenlose Beratung anfragen.",
+      "Heckenschnitt in Düsseldorf vom Gärtnermeister: Form- und Rückschnitt zur richtigen Zeit, saubere Kanten, Abtransport inklusive. Jetzt Beratung anfragen.",
     h1: "Heckenschnitt & Formschnitt, für Düsseldorf und Umland",
     intro: [
       "Eine gut geschnittene Hecke rahmt den Garten und schützt die Privatsphäre, eine schlecht geschnittene wird von Jahr zu Jahr breiter, kahler und unförmiger. Wir schneiden Hecken fachgerecht: mit geraden Kanten, leicht konischem Aufbau und zum richtigen Zeitpunkt im Jahr.",
@@ -137,7 +152,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: "baumschnitt",
     serviceId: "baumschnitt",
-    metaTitle: "Baumschnitt Düsseldorf | Gärtnermeister Dölle, Obstbaum- & Kronenschnitt",
+    metaTitle: "Baumschnitt Düsseldorf | Gärtnermeister Dölle",
     metaDescription:
       "Fachgerechter Baumschnitt in Düsseldorf: Obstbaumschnitt, Kronenpflege, Totholz-Entfernung, vom Gärtnermeister, inklusive Entsorgung. Kostenlose Erstberatung.",
     h1: "Baumschnitt & Baumpflege, für Düsseldorf und Umland",
@@ -187,7 +202,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: "rasenpflege",
     serviceId: "rasenpflege",
-    metaTitle: "Rasenpflege Düsseldorf | Gärtnermeister Dölle, Vertikutieren & Nachsaat",
+    metaTitle: "Rasenpflege Düsseldorf | Gärtnermeister Dölle",
     metaDescription:
       "Rasenpflege in Düsseldorf vom Gärtnermeister: Mähen, Vertikutieren, Düngen und Nachsaat für einen dichten, gesunden Rasen. Kostenlose Erstberatung vor Ort.",
     h1: "Rasenpflege, für Düsseldorf und Umland",
@@ -239,7 +254,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: "rollrasen",
     serviceId: "rollrasen",
-    metaTitle: "Rollrasen legen Düsseldorf | Gärtnermeister Dölle, Meisterbetrieb",
+    metaTitle: "Rollrasen legen Düsseldorf | Gärtnermeister Dölle",
     metaDescription:
       "Rollrasen in Düsseldorf vom Gärtnermeister: Bodenvorbereitung, fugenlose Verlegung und Anwuchspflege. Sofort fertiger Rasen statt monatelang warten. Kostenlose Erstberatung.",
     h1: "Rollrasen legen, an einem Tag zum fertigen Rasen",
@@ -296,7 +311,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: "laubentsorgung",
     serviceId: "herbst",
-    metaTitle: "Laubentsorgung Düsseldorf | Gärtnermeister Dölle, Herbstputz vom Profi",
+    metaTitle: "Laubentsorgung Düsseldorf | Gärtnermeister Dölle",
     metaDescription:
       "Laub entfernen und entsorgen in Düsseldorf: Rasen, Wege und Beete gründlich vom Laub befreit, auf Wunsch mehrmals pro Saison. Jetzt Termin sichern.",
     h1: "Laubentsorgung & Herbstputz, für Düsseldorf und Umland",
@@ -338,9 +353,9 @@ export const servicePages: ServicePage[] = [
   {
     slug: "winterservice",
     serviceId: "saison",
-    metaTitle: "Garten winterfest machen Düsseldorf | Gärtnermeister Dölle",
+    metaTitle: "Garten winterfest machen | Gärtnermeister Dölle Düsseldorf",
     metaDescription:
-      "Garten winterfest machen in Düsseldorf: Herbstschnitt, Winterschutz für Pflanzen und Frühjahrs-Startpflege vom Gärtnermeister. Kostenlose Beratung anfragen.",
+      "Garten winterfest machen in Düsseldorf: Herbstschnitt, Winterschutz für Pflanzen und Frühjahrs-Startpflege vom Gärtnermeister. Jetzt Beratung anfragen.",
     h1: "Garten winterfest machen, und im Frühjahr stark starten",
     intro: [
       "Was im Herbst versäumt wird, kostet im Frühjahr doppelt: erfrorene Kübelpflanzen, verfilzter Rasen, überalterte Stauden. Mit dem richtigen Saisonabschluss übersteht Ihr Garten den Winter gesund, und startet im Frühjahr ohne Rückstand.",
@@ -383,7 +398,7 @@ export const servicePages: ServicePage[] = [
   {
     slug: "terrasse",
     serviceId: "terrasse",
-    metaTitle: "Terrassen- & Wegereinigung | Gärtnermeister Dölle, Kärcher K5",
+    metaTitle: "Terrassenreinigung Düsseldorf | Gärtnermeister Dölle",
     metaDescription:
       "Terrassen, Einfahrten und Wege mit dem Kärcher K5 fachgerecht reinigen: Moos, Algen und Schmutz raus, Fugensand nachpflegen. Für Düsseldorf und Umland.",
     h1: "Terrassen- & Wegereinigung, für Düsseldorf und Umland",
@@ -438,12 +453,12 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-oberkassel",
     name: "Düsseldorf-Oberkassel",
     kind: "Stadtteil",
-    metaTitle: "Gartenpflege Oberkassel | Gärtnermeister Dölle, Gärtner linksrheinisch",
+    metaTitle: "Gartenpflege Oberkassel | Gärtnermeister Dölle, linksrheinisch",
     metaDescription:
       "Gartenpflege in Düsseldorf-Oberkassel: Hecken, Rasen, Bäume und Saisonservice vom Gärtnermeister, kurze Wege linksrheinisch, kostenlose Erstberatung.",
     h1: "Gartenpflege in Oberkassel",
     intro: [
-      "Altbau mit Vorgarten, gewachsene Hecken, gepflegte Innenhöfe: Die Gärten linksrheinisch in Oberkassel, Niederkassel und Lörick haben Charakter, und verdienen Pflege, die dazu passt.",
+      "Altbau mit Vorgarten, gewachsene Hecken, gepflegte Innenhöfe: Die linksrheinischen Düsseldorfer Stadtteile Oberkassel, Niederkassel (Stadtteil von Düsseldorf, nicht zu verwechseln mit der gleichnamigen Stadt bei Bonn) und Lörick haben Charakter, und verdienen Pflege, die dazu passt.",
       "Wir betreuen Gärten in Oberkassel mit festen Terminen und kurzen Wegen: vom Heckenschnitt an der Grundstücksgrenze über die Rasenpflege bis zum kompletten Pflegevertrag.",
     ],
   },
@@ -451,7 +466,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-kaiserswerth",
     name: "Düsseldorf-Kaiserswerth",
     kind: "Stadtteil",
-    metaTitle: "Gartenpflege Kaiserswerth | Gärtnermeister Dölle, Meisterbetrieb im Norden",
+    metaTitle: "Gartenpflege Kaiserswerth | Gärtnermeister Dölle",
     metaDescription:
       "Gartenpflege in Düsseldorf-Kaiserswerth und Wittlaer: große Gärten, alte Bäume, gepflegte Hecken, vom Gärtnermeister mit festen Pflegeterminen.",
     h1: "Gartenpflege in Kaiserswerth",
@@ -464,7 +479,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-benrath",
     name: "Düsseldorf-Benrath",
     kind: "Stadtteil",
-    metaTitle: "Gartenpflege Benrath | Gärtnermeister Dölle, Gärtner im Düsseldorfer Süden",
+    metaTitle: "Gartenpflege Benrath | Gärtnermeister Dölle, im Düsseldorfer Süden",
     metaDescription:
       "Gartenpflege in Düsseldorf-Benrath, Urdenbach und Garath: Rasen, Hecken und Saisonservice vom Gärtnermeister. Kostenlose Erstberatung im Garten.",
     h1: "Gartenpflege in Benrath",
@@ -477,7 +492,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-gerresheim",
     name: "Düsseldorf-Gerresheim",
     kind: "Stadtteil",
-    metaTitle: "Gartenpflege Gerresheim | Gärtnermeister Dölle, Gärtner im Düsseldorfer Osten",
+    metaTitle: "Gartenpflege Gerresheim | Gärtnermeister Dölle, im Düsseldorfer Osten",
     metaDescription:
       "Gartenpflege in Düsseldorf-Gerresheim und Umgebung: Hecken- und Baumschnitt, Rasenpflege und Laubservice vom Gärtnermeister-Betrieb.",
     h1: "Gartenpflege in Gerresheim",
@@ -490,7 +505,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-meerbusch",
     name: "Meerbusch",
     kind: "Umland",
-    metaTitle: "Gartenpflege Meerbusch | Gärtnermeister Dölle, Gärtnermeister aus Düsseldorf",
+    metaTitle: "Gartenpflege Meerbusch | Gärtnermeister Dölle Düsseldorf",
     metaDescription:
       "Gartenpflege in Meerbusch, Büderich, Osterath, Lank-Latum, Strümp: große Gärten linksrheinisch in Meisterhand. Regelmäßige Pflege, fachgerechter Schnitt, faire Anfahrt aus Düsseldorf.",
     h1: "Gartenpflege in Meerbusch",
@@ -505,12 +520,13 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-neuss",
     name: "Neuss",
     kind: "Umland",
-    metaTitle: "Gartenpflege Neuss | Gärtnermeister Dölle, Gärtnermeister für Neuss",
+    metaTitle: "Gartenpflege Neuss | Gärtnermeister Dölle Düsseldorf",
     metaDescription:
       "Gartenpflege in Neuss vom Gärtnermeister: regelmäßige Pflege, Heckenschnitt, Rasen, Baumpflege und Winterservice für Neuss, Grimlinghausen, Weckhoven, Norf. Anfahrt aus Düsseldorf.",
     h1: "Gartenpflege in Neuss",
     intro: [
-      "Neuss liegt für uns über die Rheinbrücke, ideal für regelmäßige Pflegetermine ohne lange Anfahrtsstrecken. Wir betreuen hier Privatgärten in allen Stadtteilen: vom Reihenhausgarten in Weckhoven über die klassische Vorstadt-Situation in Grimlinghausen bis zu Grundstücken mit altem Baumbestand in Erfttal und Rosellen.","Als Meisterbetrieb übernehmen wir die komplette Pflege: regelmäßiges Mähen, Heckenschnitt zur richtigen Zeit, Vertikutieren im Frühjahr, Herbstlaubservice und Baumpflege im Winter. Entsorgung von Schnittgut und Laub gehört bei jedem Termin dazu, Sie müssen nichts nachbestellen.",
+      "Neuss liegt für uns über die Rheinbrücke, ideal für regelmäßige Pflegetermine ohne lange Anfahrtsstrecken. Wir betreuen hier Privatgärten in allen Stadtteilen: vom Reihenhausgarten in Weckhoven über die klassische Vorstadt-Situation in Grimlinghausen bis zu Grundstücken mit altem Baumbestand in Erfttal und Rosellen.",
+      "Als Meisterbetrieb übernehmen wir die komplette Pflege: regelmäßiges Mähen, Heckenschnitt zur richtigen Zeit, Vertikutieren im Frühjahr, Herbstlaubservice und Baumpflege im Winter. Entsorgung von Schnittgut und Laub gehört bei jedem Termin dazu, Sie müssen nichts nachbestellen.",
       "In Neuss ist die Bodenqualität oft besser als bei uns in Düsseldorf, dafür sind die Rasenflächen häufig größer. Wir kalkulieren fair nach Fläche und Zeitaufwand, mit einem festen Ansprechpartner statt Callcenter.",
       "Auf Wunsch als Pflegevertrag für die ganze Saison, mit festen Wochenintervallen oder monatlich. Beratung und Angebot sind kostenlos und unverbindlich.",
     ],
@@ -519,7 +535,7 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-ratingen",
     name: "Ratingen",
     kind: "Umland",
-    metaTitle: "Gartenpflege Ratingen | Gärtnermeister Dölle, Meisterbetrieb aus Düsseldorf",
+    metaTitle: "Gartenpflege Ratingen | Gärtnermeister Dölle Düsseldorf",
     metaDescription:
       "Gartenpflege Ratingen: Heckenschnitt, Baumpflege, Rasenpflege und Winterservice vom Gärtnermeister, für Ratingen-Mitte, Hösel, Lintorf, Homberg und Breitscheid. Feste Termine, faire Preise.",
     h1: "Gartenpflege in Ratingen",
@@ -534,130 +550,150 @@ export const areaPages: AreaPage[] = [
     slug: "gartenpflege-hilden",
     name: "Hilden",
     kind: "Umland",
-    metaTitle: "Gartenpflege Hilden | Gärtnermeister Dölle, Gärtner für Hilden & Erkrath",
+    metaTitle: "Gartenpflege Hilden | Gärtnermeister Dölle, für Hilden & Erkrath",
     metaDescription:
       "Gartenpflege in Hilden und Erkrath: Rasenpflege, Heckenschnitt, Laubentsorgung und Winterservice vom Gärtnermeister-Betrieb aus Düsseldorf.",
     h1: "Gartenpflege in Hilden",
     intro: [
-      "Hilden und das benachbarte Erkrath erreichen wir aus Düsseldorf in wenigen Minuten, ideal für regelmäßige Pflegetermine ohne lange Anfahrtskosten.",
-      "Wir übernehmen die komplette Gartenpflege: Rasen, Hecken, Beete, Bäume und den Saisonservice im Herbst und Frühjahr. Zuverlässig, sauber und mit einem festen Ansprechpartner.",
+      "Hilden liegt direkt südöstlich von Düsseldorf und ist über die A46 und die B228 in gut 15 Minuten erreichbar. Ideale Entfernung für regelmäßige Pflegetermine ohne teure Anfahrtskosten.",
+      "Typisch für Hilden ist der Mix aus Reihenhaussiedlungen (Hilden-Nord, Hilden-Süd), älteren Zweifamilienhäusern rund um den Bahnhof und größeren Grundstücken im Osten Richtung Karnap. Viele Vorgärten sind kompakt, die Gartenflächen hinter dem Haus dafür intensiv genutzt, mit Rasen, Beeten und einer Hecke zur Grundstücksgrenze.",
+      "Wir übernehmen die komplette Gartenpflege: regelmäßiges Rasenmähen, Heckenschnitt zur richtigen Zeit (mit Blick auf die Vogelschutzfristen), Beetpflege, Baumschnitt und den kompletten Herbstservice inklusive Laubentsorgung. Für Hausverwaltungen und Wohnungseigentümergemeinschaften in Hilden bieten wir Objektbetreuung mit festen Terminen und einer Ansprechperson.",
+      "Auf Wunsch als Pflegevertrag für die ganze Saison. Beratung und Angebot vor Ort sind kostenlos und unverbindlich.",
     ],
   },
   {
     slug: "gartenpflege-erkrath",
     name: "Erkrath",
     kind: "Umland",
-    metaTitle: "Gartenpflege Erkrath | Gärtnermeister Dölle, Gärtner im Kreis Mettmann",
+    metaTitle: "Gartenpflege Erkrath | Gärtnermeister Dölle, im Kreis Mettmann",
     metaDescription:
       "Gartenpflege in Erkrath, Alt-Erkrath und Hochdahl: Heckenschnitt, Rasenpflege und Saisonservice vom Gärtnermeister, kurze Anfahrt aus Düsseldorf.",
     h1: "Gartenpflege in Erkrath",
     intro: [
-      "Zwischen Düsseldorf und dem Neandertal liegt Erkrath mit seinen Ortsteilen Alt-Erkrath, Hochdahl und Unterfeldhaus, viele Reihenhausgärten, gewachsene Hecken und Vorgärten, die den Charme des Bergischen Landes aufnehmen.",
-      "Wir sind aus Düsseldorf in einer Viertelstunde bei Ihnen und übernehmen die komplette Pflege: Rasenmähen nach Plan, Heckenschnitt zur passenden Zeit, Beete richten und den saisonalen Herbstputz, Schnittgut nehmen wir immer mit.",
+      "Zwischen Düsseldorf und dem Neandertal liegt Erkrath mit seinen Ortsteilen Alt-Erkrath, Hochdahl, Unterfeldhaus und Trills. Der Übergang vom Rheinland ins Bergische Land ist im Garten spürbar: mehr Laubbäume, tiefergründige Böden, oft leichte Hanglage.",
+      "Wir betreuen in Alt-Erkrath viele klassische Reihenhausgärten mit gepflegten Hecken und Vorgärten, in Hochdahl größere Einfamilienhaus-Grundstücke aus den 70er- und 80er-Jahren mit altem Baumbestand. In Trills und Unterfeldhaus stehen Neubauviertel mit jungen Rasenflächen, die vor allem in der Anwuchsphase intensive Pflege brauchen.",
+      "Wir sind aus Düsseldorf in einer Viertelstunde bei Ihnen und übernehmen die komplette Pflege: Rasenmähen nach Plan, Heckenschnitt zur passenden Zeit, Beete richten, Baumpflege im Winter und den saisonalen Herbstputz. Schnittgut nehmen wir immer mit.",
+      "Für die Nähe zum Naturschutzgebiet Neandertal beraten wir zusätzlich zu heimischen Gehölzen und insektenfreundlicher Bepflanzung, wenn Sie Ihren Garten in diese Richtung entwickeln wollen.",
     ],
   },
   {
     slug: "gartenpflege-langenfeld",
     name: "Langenfeld",
     kind: "Umland",
-    metaTitle: "Gartenpflege Langenfeld | Gärtnermeister Dölle, Gärtnermeister für Langenfeld",
+    metaTitle: "Gartenpflege Langenfeld | Gärtnermeister Dölle",
     metaDescription:
       "Gartenpflege in Langenfeld (Rheinland): Rasenpflege, Formschnitt, Baumpflege und Laubentsorgung vom Gärtnermeister-Betrieb, feste Pflegetermine.",
     h1: "Gartenpflege in Langenfeld",
     intro: [
-      "Langenfeld liegt zwischen Düsseldorf und Leverkusen an der A3, schnell erreichbar für regelmäßige Pflegeeinsätze in Immigrath, Richrath, Reusrath und Wiescheid.",
-      "Wir kommen zum Rasenmähen, zum Heckenschnitt, für den Frühjahrsstart oder den kompletten Pflegevertrag. Ein Ansprechpartner, klare Termine, saubere Ergebnisse.",
+      "Langenfeld (Rheinland) liegt an der A3 zwischen Düsseldorf und Leverkusen, gut erreichbar für regelmäßige Pflegeeinsätze in Immigrath, Richrath, Reusrath, Wiescheid, Berghausen und Gieslenberg.",
+      "Typisch für Langenfeld: viele Einfamilienhäuser mit mittelgroßen Gärten, gepflegte Vorgärten und Hecken entlang der Wohnstraßen. In den älteren Siedlungen rund um Immigrath und Richrath finden sich noch Obstbäume aus der Zeit vor der Zusammenlegung der Ortsteile, die mit fachgerechtem Winterschnitt Ertrag und Krone in Balance halten.",
+      "Wir kommen für einzelne Einsätze (Frühjahrsstart, Heckenschnitt, Herbstlaub) oder als Pflegevertrag mit festen Terminen über die ganze Saison. Rasen, Hecken, Beete und Bäume aus einer Hand, Schnittgut- und Laubentsorgung inklusive.",
+      "Für Neubaugebiete in Gieslenberg und rund um den Freizeitpark begleiten wir gerne die Startpflege einer frisch angelegten Rasenfläche oder eines neuen Rollrasens, in den ersten Wochen kommt es dort auf jeden Termin an.",
     ],
   },
   {
     slug: "gartenpflege-kaarst",
     name: "Kaarst",
     kind: "Umland",
-    metaTitle: "Gartenpflege Kaarst | Gärtnermeister Dölle, Gärtner für Kaarst & Rhein-Kreis Neuss",
+    metaTitle: "Gartenpflege Kaarst | Gärtnermeister Dölle, für Kaarst & Rhein-Kreis Neuss",
     metaDescription:
       "Gartenpflege in Kaarst, Büttgen und Vorst: Heckenschnitt, Rasen, Beete und Saisonservice vom Gärtnermeister, kurze Wege aus Düsseldorf ins Kaarster Feld.",
     h1: "Gartenpflege in Kaarst",
     intro: [
-      "Zwischen Düsseldorf-Büderich und Neuss liegt Kaarst mit seinen Ortsteilen Kaarst-Mitte, Büttgen, Vorst und Holzbüttgen, klassischer Speckgürtel mit Einfamilienhausgärten, die regelmäßige Pflege verdienen.",
-      "Wir betreuen Kaarster Gärten mit festen Terminen: vom wöchentlichen Rasenschnitt über den Formschnitt der Buchsbaumhecken bis zum Herbstlaub-Service. Kurze Wege bedeuten faire Anfahrtskosten.",
+      "Zwischen Düsseldorf-Büderich und Neuss liegt Kaarst mit seinen Ortsteilen Kaarst-Mitte, Büttgen, Vorst, Holzbüttgen und Driesch. Klassischer linksrheinischer Speckgürtel mit vielen Einfamilienhausgärten und ruhigen Wohnlagen.",
+      "In Kaarst-Mitte und Büttgen dominieren gepflegte Reihen- und Doppelhaussiedlungen mit klaren Vorgärten und Buchsbaum- oder Kirschlorbeerhecken zur Grundstücksgrenze. In Vorst und Richtung Holzbüttgen finden sich mehr freistehende Häuser mit größeren Rasenflächen, teilweise mit altem Baumbestand.",
+      "Wir betreuen Kaarster Gärten mit festen Terminen: vom wöchentlichen Rasenschnitt über den Formschnitt der Buchsbaumhecken (mit Blick auf den Buchsbaumzünsler, den wir bei jedem Termin mit prüfen) bis zum kompletten Herbstlaub-Service. Anfahrt aus Düsseldorf ist kurz, das schlägt sich fair in unseren Anfahrtskosten nieder.",
+      "Auf Wunsch als Pflegevertrag mit festen Terminen über die ganze Saison, mit einer Ansprechperson und klaren Positionen im Angebot.",
     ],
   },
   {
     slug: "gartenpflege-mettmann",
     name: "Mettmann",
     kind: "Umland",
-    metaTitle: "Gartenpflege Mettmann | Gärtnermeister Dölle, Gärtnermeister im Kreis Mettmann",
+    metaTitle: "Gartenpflege Mettmann | Gärtnermeister Dölle",
     metaDescription:
       "Gartenpflege in Mettmann: Heckenschnitt, Rasenpflege, Baumpflege und Laubentsorgung vom Gärtnermeister-Betrieb, regelmäßige Termine, Anfahrt aus Düsseldorf.",
     h1: "Gartenpflege in Mettmann",
     intro: [
-      "Mettmann als Kreisstadt am Übergang ins Bergische, mit vielen gewachsenen Gärten, altem Baumbestand und Hecken, die einen erfahrenen Schnittdienst brauchen.",
-      "Wir kommen aus Düsseldorf regelmäßig nach Mettmann: für die klassische Rasen- und Heckenpflege ebenso wie für den fachgerechten Obstbaum- und Kronenschnitt. Auf Wunsch als kompletter Pflegevertrag.",
+      "Mettmann ist Kreisstadt des Kreises Mettmann und liegt am Übergang vom Rheinland ins Bergische Land. Aus Düsseldorf sind wir über die A3 und A44 in unter 20 Minuten vor Ort.",
+      "In Mettmann-Zentrum und rund um den historischen Stadtkern gibt es viele gewachsene Gärten mit altem Baumbestand, Hainbuchen- und Rotbuchenhecken sowie klassischen Rasenflächen. In den umliegenden Ortsteilen wie Metzkausen und den Wohnlagen am Goldberg finden sich größere Grundstücke, teilweise mit Hanglage.",
+      "Wir übernehmen die klassische Rasen- und Heckenpflege ebenso wie den fachgerechten Obstbaum- und Kronenschnitt. Für alte Bäume in Nähe zu Wegen oder Terrassen prüfen wir die Krone im Winter auf Totholz und statische Auffälligkeiten und schneiden nach Fachregel statt einfach zu kappen.",
+      "Auf Wunsch als kompletter Pflegevertrag mit festen Terminen über die ganze Saison. Erstberatung und Angebot vor Ort sind kostenlos.",
     ],
   },
   {
     slug: "gartenpflege-haan",
     name: "Haan",
     kind: "Umland",
-    metaTitle: "Gartenpflege Haan | Gärtnermeister Dölle, Gärtner für Haan & Gruiten",
+    metaTitle: "Gartenpflege Haan | Gärtnermeister Dölle, für Haan & Gruiten",
     metaDescription:
       "Gartenpflege in Haan (Rheinland) und Gruiten: Rasenpflege, Heckenschnitt und Saisonservice vom Gärtnermeister-Betrieb aus Düsseldorf.",
     h1: "Gartenpflege in Haan",
     intro: [
-      "Haan und der Ortsteil Gruiten sind bekannt als ruhige Gartenstadt zwischen Erkrath und Solingen, viele Einfamilienhäuser, gepflegte Vorgärten und Hecken, die in Form gehalten werden wollen.",
-      "Aus Düsseldorf sind wir schnell bei Ihnen. Wir übernehmen die regelmäßige Pflege ebenso wie einzelne Einsätze: Rasenmähen, Heckenschnitt, Beetpflege, Baumpflege und die komplette Herbstarbeit inklusive Laubentsorgung.",
+      "Haan (Rheinland) und der historische Ortsteil Gruiten liegen zwischen Erkrath und Solingen, verkehrsgünstig an der A46. Aus Düsseldorf sind wir in gut 20 Minuten vor Ort.",
+      "Haan ist als Gartenstadt bekannt: viele Einfamilienhäuser mit mittelgroßen bis großen Grundstücken, gepflegte Vorgärten, klassische Hecken zur Grundstücksgrenze. In Gruiten mit seinem alten Ortskern und den umliegenden Höfen finden sich noch Streuobstwiesen und Obstbäume, die mit fachgerechtem Erhaltungsschnitt lange gesund bleiben.",
+      "Wir übernehmen die regelmäßige Pflege ebenso wie einzelne Einsätze: Rasenmähen, Heckenschnitt zur passenden Jahreszeit, Beetpflege, Baumpflege im Winter und die komplette Herbstarbeit inklusive Laubentsorgung. In den Hanglagen Richtung Solingen arbeiten wir mit passender Technik, damit auch schwierigere Flächen sicher gepflegt werden können.",
+      "Auf Wunsch als Pflegevertrag mit festen Terminen. Ein Ansprechpartner, klare Absprachen, saubere Ergebnisse.",
     ],
   },
   {
     slug: "gartenpflege-monheim",
     name: "Monheim am Rhein",
     kind: "Umland",
-    metaTitle: "Gartenpflege Monheim am Rhein | Gärtnermeister Dölle, Gärtner für Monheim",
+    metaTitle: "Gartenpflege Monheim am Rhein | Gärtnermeister Dölle, für Monheim",
     metaDescription:
       "Gartenpflege in Monheim am Rhein und Baumberg: Rasen, Hecken, Beete und Saisonservice vom Gärtnermeister-Betrieb, feste Pflegetermine, Anfahrt aus Düsseldorf.",
     h1: "Gartenpflege in Monheim am Rhein",
     intro: [
-      "Monheim am Rhein mit Baumberg und der Innenstadt hat sich in den letzten Jahren stark entwickelt, viele neue Reihenhaussiedlungen, aber auch klassische Rhein-Vorgärten brauchen kontinuierliche Pflege.",
-      "Wir sind aus Düsseldorf in kurzer Zeit vor Ort und übernehmen die gesamte Gartenpflege: Rasenschnitt, Heckenschnitt, Beete richten, Baumpflege und den saisonalen Herbstservice, auf Wunsch als Pflegevertrag mit festen Terminen.",
+      "Monheim am Rhein mit den Stadtteilen Baumberg, Monheim-Innenstadt und den Wohnlagen am Rhein hat sich in den letzten Jahren stark entwickelt. Aus Düsseldorf sind wir über die B8 in unter 20 Minuten bei Ihnen.",
+      "In Baumberg finden sich viele klassische Rheinvorgärten mit gepflegten Hecken, Buchskugeln und dichten Rasenflächen. In der Innenstadt und den umliegenden Neubaugebieten stehen dagegen junge Reihenhaussiedlungen mit kleinen, aber intensiv genutzten Gärten. Für beide Situationen bringen wir die passende Herangehensweise mit.",
+      "Wir übernehmen die gesamte Gartenpflege: Rasenschnitt in der richtigen Schnitthöhe, Heckenschnitt zur passenden Zeit, Beete richten, Obstbaum- und Kronenschnitt sowie den saisonalen Herbstservice mit Laubentsorgung. Für die Rheinlagen mit typischer Auenbepflanzung beraten wir zusätzlich zur Bewässerung in Trockenphasen.",
+      "Auf Wunsch als Pflegevertrag mit festen Terminen über die ganze Saison. Beratung und Angebot vor Ort sind kostenlos und unverbindlich.",
     ],
   },
   {
     slug: "gartenpflege-dormagen",
     name: "Dormagen",
     kind: "Umland",
-    metaTitle: "Gartenpflege Dormagen | Gärtnermeister Dölle, Gärtnermeister für Dormagen",
+    metaTitle: "Gartenpflege Dormagen | Gärtnermeister Dölle",
     metaDescription:
       "Gartenpflege in Dormagen, Zons und Stürzelberg: Heckenschnitt, Rasenpflege und Saisonservice vom Gärtnermeister-Betrieb, kurze Anfahrt aus Düsseldorf.",
     h1: "Gartenpflege in Dormagen",
     intro: [
-      "Dormagen im Rhein-Kreis Neuss, mit dem historischen Stadtteil Zons, Stürzelberg und Delhoven, hat viele Gärten, die vom Rheinklima profitieren und deshalb regelmäßig Schnitt und Pflege brauchen.",
-      "Wir übernehmen die komplette Betreuung: von der klassischen Rasenpflege über Heckenschnitt zur richtigen Jahreszeit bis zum Baumschnitt und Herbst-Laubservice. Feste Termine, ein Ansprechpartner, saubere Ausführung.",
+      "Dormagen liegt im Rhein-Kreis Neuss südlich von Düsseldorf, mit dem historischen Stadtteil Zons als Zoll- und Festungsstadt am Rhein, dazu Stürzelberg, Delhoven und Straberg. Aus Düsseldorf sind wir über die B9 in gut 25 Minuten vor Ort.",
+      "Das milde Rheinklima wirkt sich auf die Gärten aus: mediterrane Pflanzen wie Oleander, Feige und Lavendel wachsen hier besser als im Bergischen, Rasenflächen brauchen dafür in Trockenphasen mehr Aufmerksamkeit. In Zons prägen historische Innenhöfe und Rankpflanzen an alten Mauern das Bild, in Delhoven und Straberg finden sich klassische Einfamilienhausgärten mit Rasen, Beeten und Hecken.",
+      "Wir übernehmen die komplette Betreuung: klassische Rasenpflege, Heckenschnitt zur richtigen Jahreszeit, Baumschnitt und Kronenpflege im Winter, den Herbst-Laubservice inklusive Entsorgung. Für Kübelpflanzen an Terrassen und Innenhöfen richten wir auf Wunsch den Winterschutz her und stellen die Bewässerung im Sommer ein.",
+      "Feste Termine, ein Ansprechpartner, saubere Ausführung. Auf Wunsch als Pflegevertrag mit klarem Umfang und planbarem Preis.",
     ],
   },
   {
     slug: "gartenpflege-krefeld",
     name: "Krefeld",
     kind: "Umland",
-    metaTitle: "Gartenpflege Krefeld | Gärtnermeister Dölle, Gärtnermeister aus Düsseldorf für Krefeld",
+    metaTitle: "Gartenpflege Krefeld | Gärtnermeister Dölle Düsseldorf",
     metaDescription:
       "Gartenpflege in Krefeld: Heckenschnitt, Rasenpflege, Baumpflege und Saisonservice vom Gärtnermeister-Betrieb, für private Gärten in Krefeld und Umgebung.",
     h1: "Gartenpflege in Krefeld",
     intro: [
-      "Krefeld mit seinen gewachsenen Villenvierteln in Bockum, Verberg und Uerdingen, aber auch die klassischen Reihenhausgärten in Fischeln und Oppum, profitieren von regelmäßiger, fachgerechter Pflege.",
-      "Wir kommen aus Düsseldorf gezielt für die vereinbarten Pflegetermine: Rasen, Hecken, Beete, Bäume und der komplette Herbstservice inklusive Laubentsorgung. Auf Wunsch im Pflegevertrag mit festen Intervallen.",
+      "Krefeld mit seinen gewachsenen Villenvierteln in Bockum, Verberg, Traar und Uerdingen sowie den klassischen Wohnlagen in Fischeln, Oppum und Linn profitiert von regelmäßiger, fachgerechter Gartenpflege. Aus Düsseldorf sind wir über die A57 in rund 25 Minuten vor Ort.",
+      "In Bockum und Verberg stehen viele repräsentative Grundstücke mit altem Baumbestand, gepflegten Rasenflächen und formsicher geschnittenen Hecken, die Kontinuität in der Pflege brauchen. In Fischeln und Oppum finden sich klassische Einfamilienhaus-Situationen mit kompakten Vorgärten und intensiv genutzten Gartenflächen hinter dem Haus. Uerdingen mit seinen Rheinlagen bringt zusätzliche Anforderungen an feuchte Böden mit.",
+      "Wir kommen aus Düsseldorf gezielt für die vereinbarten Pflegetermine: Rasen, Hecken, Beete, Bäume und der komplette Herbstservice inklusive Laubentsorgung. Für die alten Bäume in den Villenvierteln arbeiten wir mit dem Hochentaster und schneiden Kronen fachgerecht statt zu kappen.",
+      "Auf Wunsch im Pflegevertrag mit festen Intervallen und einem Ansprechpartner. Erstberatung und Angebot sind kostenlos und unverbindlich.",
     ],
   },
   {
     slug: "gartenpflege-wuelfrath",
     name: "Wülfrath",
     kind: "Umland",
-    metaTitle: "Gartenpflege Wülfrath | Gärtnermeister Dölle, Gärtner für Wülfrath im Kreis Mettmann",
+    metaTitle: "Gartenpflege Wülfrath | Gärtnermeister Dölle, für Wülfrath im Kreis Mettmann",
     metaDescription:
       "Gartenpflege in Wülfrath: Heckenschnitt, Rasenpflege und Saisonservice vom Gärtnermeister-Betrieb, Anfahrt aus Düsseldorf, feste Pflegetermine.",
     h1: "Gartenpflege in Wülfrath",
     intro: [
-      "Wülfrath liegt am östlichen Rand des Kreises Mettmann, umgeben von Wald und mit vielen Hanggärten, die eine erfahrene Hand brauchen, für saubere Formschnitte und gesunde Bäume.",
-      "Wir kommen aus Düsseldorf für regelmäßige Pflegeeinsätze: Rasen, Hecken, Beete, Baumpflege und den kompletten Herbstschnitt. Ein Ansprechpartner, feste Termine, klare Absprachen.",
+      "Wülfrath liegt am östlichen Rand des Kreises Mettmann in der Kalkstein-Region zwischen Neandertal und Bergischem Land. Aus Düsseldorf sind wir über die A46 in rund 25 Minuten vor Ort, für Wülfrath-Zentrum, Düssel, Flandersbach, Rohdenhaus und Rützkausen.",
+      "Typisch für Wülfrath sind Hanggärten und teilweise sehr kalkhaltige Böden aus der Region der alten Kalksteinbrüche. Beides stellt eigene Anforderungen: die Hanglagen brauchen sichere Technik und einen Blick für Erosion, der kalkhaltige Boden verlangt eine passende Pflanzenauswahl und angepasste Düngung, damit Rhododendron, Hortensien und Rasen dort dauerhaft gut wachsen.",
+      "Wir kommen aus Düsseldorf für regelmäßige Pflegeeinsätze: Rasen, Hecken, Beete, Baumpflege und den kompletten Herbstschnitt inklusive Laubentsorgung. Für die vielen alten Obstbäume in Wülfrath und Umgebung übernehmen wir Erhaltungs- und Verjüngungsschnitt zur richtigen Jahreszeit.",
+      "Ein Ansprechpartner, feste Termine, klare Absprachen. Auf Wunsch als Pflegevertrag mit klarem Umfang und planbarem Preis.",
     ],
   },
 ];

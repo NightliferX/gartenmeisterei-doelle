@@ -26,6 +26,10 @@ const BeforeAfterSlider = ({
 }: BeforeAfterSliderProps) => {
   const [position, setPosition] = useState(50);
   const [selectedView, setSelectedView] = useState<"before" | "after" | null>(null);
+  // Fade-in-on-load: Bild ist unsichtbar bis das dekodierte Frame steht,
+  // dann sanft eingeblendet. Verhindert den „Pop"-Effekt beim Laden.
+  const [afterLoaded, setAfterLoaded] = useState(false);
+  const [beforeLoaded, setBeforeLoaded] = useState(false);
   const sliderRef = useRef<HTMLDivElement | null>(null);
   const isDraggingRef = useRef(false);
   const hasPair = Boolean(beforeImage && afterImage);
@@ -39,6 +43,7 @@ const BeforeAfterSlider = ({
   const preventImageDrag = useCallback((event: React.DragEvent<HTMLImageElement>) => {
     event.preventDefault();
   }, []);
+  const fadeInClass = "transition-opacity duration-700 ease-out";
 
   const clampPosition = useCallback((value: number) => {
     return Math.max(5, Math.min(95, value));
@@ -115,13 +120,19 @@ const BeforeAfterSlider = ({
     return (
       <>
         <div className={cn("overflow-hidden rounded-[1.75rem] border border-border/80 bg-card", className)}>
-          <div className="relative aspect-[4/3] overflow-hidden">
+          <div className="relative aspect-[4/3] overflow-hidden bg-secondary/60">
             <img
               src={fallbackImage}
               alt={afterAlt ?? beforeAlt ?? title}
-              className="h-full w-full select-none object-cover"
+              className={cn(
+                "h-full w-full select-none object-cover",
+                fadeInClass,
+                afterLoaded ? "opacity-100" : "opacity-0",
+              )}
               loading="lazy"
+              decoding="async"
               draggable={false}
+              onLoad={() => setAfterLoaded(true)}
               onDragStart={preventImageDrag}
             />
             <button
@@ -160,7 +171,7 @@ const BeforeAfterSlider = ({
       <div className={cn("overflow-hidden rounded-[1.75rem] border border-border/80 bg-card", className)}>
         <div
           ref={sliderRef}
-          className="relative aspect-[4/3] cursor-ew-resize overflow-hidden touch-none"
+          className="relative aspect-[4/3] cursor-ew-resize overflow-hidden bg-secondary/60 touch-none"
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
@@ -174,12 +185,29 @@ const BeforeAfterSlider = ({
           aria-valuenow={Math.round(position)}
           tabIndex={0}
         >
+          {/* Sanfter Placeholder: bleibt sichtbar solange die Bilder laden,
+              gleicht den Blitz bei niedrigen Netzwerken aus. */}
+          <div
+            aria-hidden
+            className={cn(
+              "pointer-events-none absolute inset-0 bg-gradient-to-br from-secondary via-secondary/80 to-secondary/60",
+              fadeInClass,
+              afterLoaded ? "opacity-0" : "opacity-100",
+            )}
+          />
+
           <img
             src={afterImage}
             alt={afterAlt ?? `${title} nach der Umsetzung`}
-            className="h-full w-full select-none object-cover"
+            className={cn(
+              "h-full w-full select-none object-cover",
+              fadeInClass,
+              afterLoaded ? "opacity-100" : "opacity-0",
+            )}
             loading="lazy"
+            decoding="async"
             draggable={false}
+            onLoad={() => setAfterLoaded(true)}
             onDragStart={preventImageDrag}
           />
 
@@ -190,15 +218,25 @@ const BeforeAfterSlider = ({
             <img
               src={beforeImage}
               alt={beforeAlt ?? `${title} vor der Umsetzung`}
-              className="h-full w-full select-none object-cover"
+              className={cn(
+                "h-full w-full select-none object-cover",
+                fadeInClass,
+                beforeLoaded ? "opacity-100" : "opacity-0",
+              )}
               loading="lazy"
+              decoding="async"
               draggable={false}
+              onLoad={() => setBeforeLoaded(true)}
               onDragStart={preventImageDrag}
             />
           </div>
 
           <div
-            className="pointer-events-none absolute inset-y-0 z-20"
+            className={cn(
+              "pointer-events-none absolute inset-y-0 z-20",
+              fadeInClass,
+              afterLoaded && beforeLoaded ? "opacity-100" : "opacity-0",
+            )}
             style={{ left: `${position}%` }}
           >
             <div className="relative h-full w-px -translate-x-1/2 bg-white/95 shadow-[0_0_0_1px_rgba(0,0,0,0.08)]" />

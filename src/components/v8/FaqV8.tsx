@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { faqItems } from "@/lib/siteContent";
 
@@ -36,12 +36,16 @@ const FaqRow = ({
   defaultOpen?: boolean;
 }) => {
   const [open, setOpen] = useState(defaultOpen);
+  const panelId = useId();
+  const buttonId = useId();
   return (
     <div className="px-3 sm:px-4">
       <button
+        id={buttonId}
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
+        aria-controls={panelId}
         className="v8-press flex w-full items-center justify-between gap-4 py-5 text-left"
       >
         <span className="text-[1.05rem] font-semibold leading-snug tracking-[-0.005em] text-foreground md:text-[1.15rem]">
@@ -54,6 +58,10 @@ const FaqRow = ({
         />
       </button>
       <div
+        id={panelId}
+        role="region"
+        aria-labelledby={buttonId}
+        aria-hidden={!open}
         className={`grid transition-all duration-300 ease-out ${open ? "grid-rows-[1fr] pb-5" : "grid-rows-[0fr]"}`}
       >
         <div className="overflow-hidden">

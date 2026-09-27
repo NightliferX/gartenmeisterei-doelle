@@ -4,41 +4,53 @@ import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import BeratungCtaV8, { oeffneBeratung } from "@/components/v8/BeratungCtaV8";
 import { services, siteConfig } from "@/lib/siteContent";
-import { areaPages, servicePages, type AreaPage as AreaPageData } from "@/lib/subpages";
+import {
+  areaPages,
+  serviceSlugFor,
+  servicePages,
+  type AreaPage as AreaPageData,
+} from "@/lib/subpages";
 import { withBase } from "@/lib/utils";
 import SkipToContent from "@/components/SkipToContent";
-
-const serviceSlugFor = (id: string) =>
-  ({
-    gartenpflege: "gartenpflege",
-    heckenschnitt: "heckenschnitt",
-    baumschnitt: "baumschnitt",
-    rasenpflege: "rasenpflege",
-    herbst: "laubentsorgung",
-    saison: "winterservice",
-    rollrasen: "rollrasen",
-    terrasse: "terrasse",
-  }[id] ?? id);
 
 const srcFor = (image?: string) =>
   image ? (/^https?:\/\//.test(image) ? image : withBase(image)) : undefined;
 
 const AreaPage = ({ page }: { page: AreaPageData }) => {
   const shortName = page.name.replace("Düsseldorf-", "");
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Landscaper",
-    name: siteConfig.brandName,
-    description: page.metaDescription,
-    telephone: siteConfig.phoneRaw,
-    areaServed: { "@type": "Place", name: page.name },
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: siteConfig.city,
-      postalCode: siteConfig.postalCode,
-      addressCountry: siteConfig.country,
+  // AreaPage referenziert den Business-Node aus Index.tsx per @id, damit
+  // Google/AI eine Firma mit vielen areaServed sehen (nicht 17 Firmen).
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      serviceType: "Gartenpflege",
+      name: `Gartenpflege in ${page.name}`,
+      description: page.metaDescription,
+      areaServed: { "@type": "Place", name: page.name },
+      provider: { "@id": `${siteConfig.domain}/#business` },
+      url: `${siteConfig.domain}/${page.slug}`,
     },
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Start", item: siteConfig.domain },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Einsatzgebiete",
+          item: `${siteConfig.domain}/#einsatzgebiete`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: page.name,
+          item: `${siteConfig.domain}/${page.slug}`,
+        },
+      ],
+    },
+  ];
 
   return (
     <>
@@ -56,7 +68,7 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
           <section className="relative isolate min-h-[62vh] w-full overflow-hidden bg-foreground">
             <img
               src={withBase("/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp")}
-              alt={`Gepflegter Vorgarten in ${shortName}`}
+              alt={`Gärtnermeister Benedikt Dölle beim Buchsbaum-Formschnitt in ${shortName}`}
               width={1536}
               height={1024}
               className="absolute inset-0 h-full w-full object-cover"
@@ -87,7 +99,7 @@ const AreaPage = ({ page }: { page: AreaPageData }) => {
                   onClick={oeffneBeratung}
                   className="v8-press inline-flex h-12 items-center justify-center gap-2 rounded-full bg-primary px-6 text-[0.98rem] font-semibold text-primary-foreground shadow-sm transition-transform hover:scale-[1.02]"
                 >
-                  Kostenlose Beratung anfragen
+                  Beratung anfragen
                   <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
                 </button>
                 <a

@@ -78,7 +78,7 @@ const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
 
         <div className="relative z-10 mx-auto max-w-[1240px] px-4 pb-40 pt-32 text-center sm:px-6 md:pb-44">
           <h1 className="v8-rise mx-auto max-w-5xl text-[clamp(2.9rem,8vw,6.5rem)] font-semibold leading-[0.98] tracking-[-0.02em] text-white">
-            Ihr Garten.
+            Gartenpflege Düsseldorf.
             <br />
             In Meisterhand.
           </h1>
@@ -165,11 +165,11 @@ const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
                           : ""}
                       </span>
                       {active ? (
-                        <span className="inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-[0.1rem] text-[0.55rem] font-semibold uppercase tracking-[0.08em] text-primary-foreground sm:px-2 sm:text-[0.6rem]">
-                          <span
-                            aria-hidden
-                            className="h-1 w-1 rounded-full bg-primary-foreground"
-                          />
+                        <span className="v8-jetzt-chip inline-flex items-center gap-1 rounded-full bg-primary px-1.5 py-[0.1rem] text-[0.55rem] font-semibold uppercase tracking-[0.08em] text-primary-foreground sm:px-2 sm:text-[0.6rem]">
+                          <span className="relative flex h-1 w-1" aria-hidden>
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-foreground/70 opacity-75" />
+                            <span className="relative inline-flex h-1 w-1 rounded-full bg-primary-foreground" />
+                          </span>
                           Jetzt
                         </span>
                       ) : null}
@@ -205,7 +205,7 @@ const HeroV8 = ({ imageSrc, imageAlt }: HeroV8Props = {}) => {
                         active ? "text-primary" : "text-white/90"
                       }`}
                     >
-                      Erfahre mehr
+                      Mehr erfahren
                       <ArrowUpRight aria-hidden className="h-3.5 w-3.5 sm:h-4 sm:w-4" strokeWidth={2.25} />
                     </span>
                   </a>

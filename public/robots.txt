@@ -1,7 +1,18 @@
+# Gärtnermeister Dölle – robots.txt
+# Alle Bots duerfen die Seite crawlen. AI-Crawler explizit gelistet,
+# damit unsere Zustimmung erkennbar ist (fuer Sichtbarkeit in ChatGPT,
+# Claude, Perplexity, Google-AI-Overviews).
+
 User-agent: Googlebot
 Allow: /
 
+User-agent: Google-Extended
+Allow: /
+
 User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
 Allow: /
 
 User-agent: Twitterbot
@@ -10,7 +21,25 @@ Allow: /
 User-agent: facebookexternalhit
 Allow: /
 
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 User-agent: *
 Allow: /
 
-Sitemap: https://www.gartenmeisterei-doelle.de/sitemap.xml
+Sitemap: https://www.gaertnermeister-doelle.de/sitemap.xml

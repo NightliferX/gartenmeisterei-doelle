@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { siteConfig } from "@/lib/siteContent";
 
 type SeoProps = {
@@ -29,6 +29,11 @@ const setMetaTag = (
 };
 
 const Seo = ({ title, description, path = "/", image = siteConfig.ogImage, jsonLd }: SeoProps) => {
+  // jsonLd wird meist als neues Array-Literal uebergeben. Ohne stabile
+  // Identitaet feuert der Effekt bei jedem Render und schreibt alle
+  // Script-Tags neu. Vergleich ueber die serialisierte Form.
+  const jsonLdKey = useMemo(() => (jsonLd ? JSON.stringify(jsonLd) : ""), [jsonLd]);
+
   useEffect(() => {
     const url = new URL(path, siteConfig.domain).toString();
     document.title = title;
@@ -57,8 +62,9 @@ const Seo = ({ title, description, path = "/", image = siteConfig.ogImage, jsonL
     );
     existingScripts.forEach((script) => script.remove());
 
-    if (jsonLd) {
-      const payload = Array.isArray(jsonLd) ? jsonLd : [jsonLd];
+    if (jsonLdKey) {
+      const parsed = JSON.parse(jsonLdKey);
+      const payload = Array.isArray(parsed) ? parsed : [parsed];
       payload.forEach((entry) => {
         const script = document.createElement("script");
         script.type = "application/ld+json";
@@ -73,7 +79,7 @@ const Seo = ({ title, description, path = "/", image = siteConfig.ogImage, jsonL
         (script) => script.remove(),
       );
     };
-  }, [description, image, jsonLd, path, title]);
+  }, [description, image, jsonLdKey, path, title]);
 
   return null;
 };

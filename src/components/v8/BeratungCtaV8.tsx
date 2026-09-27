@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/drawer";
 import { useToast } from "@/hooks/use-toast";
 import { services, siteConfig } from "@/lib/siteContent";
+import { withBase } from "@/lib/utils";
 
 const contactEndpoint =
   import.meta.env.VITE_CONTACT_FORM_ENDPOINT ||
@@ -41,14 +42,21 @@ export const oeffneBeratung = () => {
   window.dispatchEvent(new CustomEvent(BERATUNG_OEFFNEN));
 };
 
+// Beobachtet die 768px-Grenze und schaltet zwischen Dialog (Desktop) und
+// Drawer (Mobile) um. Der Listener wird in useEffect gehaengt, sonst
+// erzeugt jeder Render einen neuen Handler und alte bleiben liegen.
 const useIsMobile = () => {
   const [m, setM] = useState<boolean>(
     typeof window !== "undefined" ? window.matchMedia("(max-width: 768px)").matches : false,
   );
-  if (typeof window !== "undefined") {
+  useEffect(() => {
+    if (typeof window === "undefined") return;
     const mq = window.matchMedia("(max-width: 768px)");
-    mq.onchange = () => setM(mq.matches);
-  }
+    const onChange = () => setM(mq.matches);
+    setM(mq.matches);
+    mq.addEventListener("change", onChange);
+    return () => mq.removeEventListener("change", onChange);
+  }, []);
   return m;
 };
 
@@ -309,7 +317,7 @@ const BeratungCtaV8 = () => {
       </Button>
       <p className="text-[0.78rem] leading-relaxed text-muted-foreground">
         Mit dem Absenden akzeptieren Sie unsere{" "}
-        <a href="/datenschutz" className="underline decoration-muted-foreground/40 underline-offset-2 hover:text-foreground">
+        <a href={withBase("/datenschutz")} className="underline decoration-muted-foreground/40 underline-offset-2 hover:text-foreground">
           Datenschutzerklärung
         </a>
         . Ihre Angaben werden ausschließlich zur Beantwortung Ihrer Anfrage
@@ -396,7 +404,7 @@ const BeratungCtaV8 = () => {
         <Drawer open={open} onOpenChange={(v) => { setOpen(v); if (!v) reset(); }}>
           <DrawerContent className="max-h-[92dvh]">
             <DrawerHeader className="text-left">
-              <DrawerTitle>{submitted ? "Anfrage eingegangen" : "Kostenlose Beratung anfragen"}</DrawerTitle>
+              <DrawerTitle>{submitted ? "Anfrage eingegangen" : "Beratung anfragen"}</DrawerTitle>
               <DrawerDescription>
                 {submitted
                   ? "Vielen Dank für Ihre Anfrage."
@@ -412,7 +420,7 @@ const BeratungCtaV8 = () => {
         <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (!v) reset(); }}>
           <DialogContent className="max-h-[90dvh] max-w-[640px] overflow-y-auto">
             <DialogHeader>
-              <DialogTitle>{submitted ? "Anfrage eingegangen" : "Kostenlose Beratung anfragen"}</DialogTitle>
+              <DialogTitle>{submitted ? "Anfrage eingegangen" : "Beratung anfragen"}</DialogTitle>
               <DialogDescription>
                 {submitted
                   ? "Vielen Dank für Ihre Anfrage."

@@ -55,6 +55,20 @@ const fixDeepLink = () => {
   return true;
 };
 
+// Preview-/Staging-Domain gegen Google-Indexierung schuetzen. Nur die
+// Prod-Hosts sollen indexiert werden, alle anderen (nightliferx.github.io,
+// ionos-preview-URLs, lokale Netzwerk-IPs) bekommen ein noindex.
+const PROD_HOSTS = new Set([
+  "gaertnermeister-doelle.de",
+  "www.gaertnermeister-doelle.de",
+]);
+if (typeof window !== "undefined" && !PROD_HOSTS.has(window.location.hostname)) {
+  const meta = document.createElement("meta");
+  meta.name = "robots";
+  meta.content = "noindex, nofollow";
+  document.head.appendChild(meta);
+}
+
 if (fixDeepLink()) {
   createRoot(document.getElementById("root")!).render(<App />);
 }

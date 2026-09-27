@@ -1,5 +1,5 @@
-// HINWEIS: Adresse, Telefonnummer, E-Mail und Domain sind MUSTERDATEN
-// für die Pitch-Phase. Vor dem Livegang durch echte Daten ersetzen.
+// Echte Betriebsdaten des Meisterbetriebs Benedikt Dölle. E-Mail-Adresse
+// noch mit Domain-Alias, ist vor dem Livegang final einzurichten.
 export const siteConfig = {
   brandName: "Gärtnermeister Dölle",
   ownerName: "Benedikt Dölle",
@@ -7,17 +7,17 @@ export const siteConfig = {
   legalRepresentative: "Benedikt Dölle",
   domain: "https://www.gaertnermeister-doelle.de",
   email: "info@gaertnermeister-doelle.de",
-  phoneDisplay: "0211 / 123 45 67",
-  phoneHref: "tel:+492111234567",
-  phoneRaw: "+49 211 1234567",
+  phoneDisplay: "0171 / 128 77 80",
+  phoneHref: "tel:+491711287780",
+  phoneRaw: "+49 171 1287780",
   whatsappHref:
-    "https://wa.me/492111234567?text=Hallo%20G%C3%A4rtnermeister%20D%C3%B6lle,%20ich%20m%C3%B6chte%20eine%20Beratung%20f%C3%BCr%20meinen%20Garten%20anfragen.",
-  streetAddress: "Musterstraße 12",
-  postalCode: "40210",
+    "https://wa.me/491711287780?text=Hallo%20G%C3%A4rtnermeister%20D%C3%B6lle,%20ich%20m%C3%B6chte%20eine%20Beratung%20f%C3%BCr%20meinen%20Garten%20anfragen.",
+  streetAddress: "Volmarweg 8",
+  postalCode: "40221",
   city: "Düsseldorf",
   region: "Nordrhein-Westfalen",
   country: "DE",
-  openingHoursDisplay: "Mo-Fr: 8:00 - 18:00 Uhr",
+  openingHoursDisplay: "Mo–Fr, 8:00–18:00 Uhr",
   openingHours: [
     { dayOfWeek: "Monday", opens: "08:00", closes: "18:00" },
     { dayOfWeek: "Tuesday", opens: "08:00", closes: "18:00" },
@@ -25,11 +25,11 @@ export const siteConfig = {
     { dayOfWeek: "Thursday", opens: "08:00", closes: "18:00" },
     { dayOfWeek: "Friday", opens: "08:00", closes: "18:00" },
   ],
-  responsePromise: "Antwort meist innerhalb von 24 Stunden",
+  responsePromise: "In kürzester Zeit meldet sich Benedikt Dölle persönlich",
   consultationPromise: "Kostenlose Erstberatung in Ihrem Garten",
   serviceAreaLabel: "Düsseldorf, Meerbusch, Neuss, Ratingen, Hilden, Mettmann, Monheim & Umgebung",
   ogImage:
-    "https://nightliferx.github.io/gartenmeisterei-doelle/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp",
+    "https://www.gaertnermeister-doelle.de/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp",
 };
 
 export type Testimonial = {
@@ -72,7 +72,7 @@ export const navLinks = [
 export const trustItems = [
   "Meisterbetrieb: Gärtnermeister Benedikt Dölle",
   "Vor Ort in Düsseldorf & Umgebung",
-  "Antwort meist innerhalb von 24 Stunden",
+  "Persönliche Rückmeldung in kürzester Zeit",
   "Kostenlose Erstberatung in Ihrem Garten",
 ];
 
@@ -245,32 +245,6 @@ export const projects: ProjectReference[] = [
     beforeAlt: "Vermooste, lückige Rasenfläche vor dem Rollrasen-Verlegen",
     afterAlt: "Frisch verlegter, sattgrüner Rollrasen mit sichtbaren Bahnen",
   },
-  {
-    title: "Garten winterfest gemacht",
-    category: "Saison",
-    location: "Ratingen",
-    serviceTags: ["Winterfest", "Laub", "Pflanzenschutz"],
-    summary: "Kompletter Herbstservice: Laub, Rückschnitt und Winterschutz in einem Termin.",
-    challenge: "Vor dem Winter standen Laub, letzter Schnitt und der Schutz empfindlicher Pflanzen an.",
-    solution: "Laubentsorgung, Herbstschnitt und Winterschutz für Kübel- und Beetpflanzen.",
-    result: "Ein winterfester Garten, der im Frühjahr gesund austreibt",
-    afterImage:
-      "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=80",
-    afterAlt: "Herbstlicher Garten nach dem Winterfest-Service",
-  },
-  {
-    title: "Privatgarten im Pflegevertrag",
-    category: "Pflege",
-    location: "Düsseldorf-Benrath",
-    serviceTags: ["Pflegevertrag", "Rasenpflege", "Beetpflege"],
-    summary: "Ganzjährige Betreuung eines Privatgartens mit festen Pflegeterminen.",
-    challenge: "Den Eigentümern fehlte die Zeit, den großen Garten dauerhaft selbst zu pflegen.",
-    solution: "Fester Pflegeplan mit Rasen-, Hecken- und Beetpflege über die ganze Saison.",
-    result: "Ein dauerhaft gepflegter Garten ohne eigenen Aufwand",
-    afterImage:
-      "https://images.unsplash.com/photo-1589923188900-85dae523342b?auto=format&fit=crop&w=900&q=80",
-    afterAlt: "Regelmäßige Beetpflege im Privatgarten durch die Gärtnerin",
-  },
 ];
 
 // Noch keine echten Kundenstimmen, der Bewertungs-Bereich bleibt ausgeblendet,
@@ -296,7 +270,7 @@ export const serviceAreas = [
 
 export const faqItems = [
   {
-    question: "Welche Leistungen übernimmt die Gärtnermeister Dölle?",
+    question: "Welche Leistungen übernimmt Gärtnermeister Dölle?",
     answer:
       "Wir übernehmen alles rund um die Gartenpflege: Hecken- und Baumschnitt, Rasenpflege, Beetpflege, Laubentsorgung, Frühjahrsschnitt und das Winterfest-Machen des Gartens, in Düsseldorf und der näheren Umgebung.",
   },
@@ -323,7 +297,7 @@ export const faqItems = [
   {
     question: "Wie schnell bekomme ich eine Rückmeldung auf meine Anfrage?",
     answer:
-      "In der Regel melden wir uns innerhalb von 24 Stunden zurück, um Ihr Anliegen kurz einzuordnen und einen Termin für die Besichtigung oder ein erstes Telefonat abzustimmen.",
+      "Benedikt Dölle meldet sich in kürzester Zeit persönlich bei Ihnen, in der Regel innerhalb von 24 Stunden werktags, um Ihr Anliegen kurz einzuordnen und einen Termin für die Besichtigung oder ein erstes Telefonat abzustimmen.",
   },
 ];
 
@@ -410,7 +384,7 @@ export const gartenjahr = [
     work: "Laub entsorgen, letzter Schnitt, Garten winterfest machen",
     heroImage: "/services/herbst/laubentsorgung-stihl-laubblaeser-herbstlaub-nahaufnahme-duesseldorf.webp",
     heroAlt:
-      "Laubbläser wirbelt buntes Herbstlaub vom Gehweg — Laubentsorgung im Herbst",
+      "Laubbläser wirbelt buntes Herbstlaub vom Gehweg, Laubentsorgung im Herbst",
     intro:
       "Im Herbst geht es um zwei Dinge: den letzten Schnitt vor dem Winter und das saubere Beseitigen von Laub. Wir übernehmen Laubberäumung, Herbst­schnitt und alles, was den Garten winterfest macht.",
     tasks: [
@@ -481,3 +455,46 @@ const MONTH_NAMES = [
 // months sind in Saison-Reihenfolge angegeben (Winter: [11, 0, 1]).
 export const monthRange = (months: number[]) =>
   `${MONTH_NAMES[months[0]]}, ${MONTH_NAMES[months[months.length - 1]]}`;
+
+// Empfohlene Leistung + Ratgeber pro Monat. Wird im Header-Mega-Menu
+// als „Aktuell im <Monat>"-Block gezeigt, damit der Besucher direkt
+// den saisonal passenden Deep-Link findet.
+type MonatsEmpfehlung = {
+  service: { label: string; slug: string };
+  ratgeber?: { label: string; slug: string };
+};
+
+const MONATSEMPFEHLUNG: Record<number, MonatsEmpfehlung> = {
+  // Januar
+  0: { service: { label: "Baumschnitt und Obstbaumschnitt", slug: "baumschnitt" }, ratgeber: { label: "Obstbaumschnitt im Winter", slug: "obstbaumschnitt-winter" } },
+  // Februar
+  1: { service: { label: "Baumschnitt und Obstbaumschnitt", slug: "baumschnitt" }, ratgeber: { label: "Baum-Kronen-Check im Winter", slug: "baum-kronen-check-winter" } },
+  // März
+  2: { service: { label: "Rasenpflege und Vertikutieren", slug: "rasenpflege" }, ratgeber: { label: "Vertikutieren im Frühjahr", slug: "vertikutieren-im-fruehjahr" } },
+  // April
+  3: { service: { label: "Gartenpflege im Pflegevertrag", slug: "gartenpflege" }, ratgeber: { label: "Rasen düngen im Frühjahr", slug: "rasen-startduengung-fruehjahr" } },
+  // Mai
+  4: { service: { label: "Heckenschnitt und Formschnitt", slug: "heckenschnitt" }, ratgeber: { label: "Rollrasen-Anwuchspflege", slug: "rollrasen-anwuchspflege" } },
+  // Juni
+  5: { service: { label: "Heckenschnitt und Formschnitt", slug: "heckenschnitt" }, ratgeber: { label: "Buchsbaumzünsler bekämpfen", slug: "buchsbaumzuensler-bekaempfen" } },
+  // Juli
+  6: { service: { label: "Heckenschnitt und Formschnitt", slug: "heckenschnitt" }, ratgeber: { label: "Zweiter Heckenschnitt im Juli", slug: "zweiter-heckenschnitt-im-juli" } },
+  // August
+  7: { service: { label: "Rasenpflege in Trockenperioden", slug: "rasenpflege" }, ratgeber: { label: "Rasen bei Hitze", slug: "rasen-bei-hitze-und-trockenheit" } },
+  // September
+  8: { service: { label: "Heckenschnitt und Herbstschnitt", slug: "heckenschnitt" }, ratgeber: { label: "Buchsbaumzünsler bekämpfen", slug: "buchsbaumzuensler-bekaempfen" } },
+  // Oktober
+  9: { service: { label: "Laubentsorgung und Herbstputz", slug: "laubentsorgung" }, ratgeber: { label: "Herbstlaub: warum nicht liegen lassen", slug: "herbstlaub-warum-nicht-liegen-lassen" } },
+  // November
+  10: { service: { label: "Laubentsorgung und Winterservice", slug: "laubentsorgung" }, ratgeber: { label: "Kübelpflanzen einwintern", slug: "kuebelpflanzen-einwintern" } },
+  // Dezember
+  11: { service: { label: "Winterservice und Räumdienst", slug: "winterservice" }, ratgeber: { label: "Winterschutz für empfindliche Pflanzen", slug: "winterschutz-empfindliche-pflanzen" } },
+};
+
+export const currentMonthName = () => MONTH_NAMES[new Date().getMonth()];
+
+export const currentMonatsEmpfehlung = (): MonatsEmpfehlung =>
+  MONATSEMPFEHLUNG[new Date().getMonth()];
+
+export const currentSaison = () =>
+  gartenjahr.find((s) => s.months.includes(new Date().getMonth()));
