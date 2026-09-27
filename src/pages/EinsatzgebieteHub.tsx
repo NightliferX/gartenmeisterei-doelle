@@ -5,6 +5,8 @@ import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import BeratungCtaV8 from "@/components/v8/BeratungCtaV8";
 import SkipToContent from "@/components/SkipToContent";
+import EinsatzradiusMap from "@/components/v8/EinsatzradiusMap";
+import { stadtteilIconFor } from "@/components/v8/StadtteilSignatures";
 import { siteConfig } from "@/lib/siteContent";
 import { areaPages } from "@/lib/subpages";
 
@@ -142,13 +144,32 @@ const EinsatzgebieteHub = () => {
             </div>
           </section>
 
+          {/* SVG-Radius-Karte: macht die Reichweite visuell, ohne Foto und
+              ohne Karten-Copyright. Duesseldorf zentral, Rhein als weiche
+              Linie, 13 Umlandorte an approximativ geografischen Positionen. */}
+          <section className="bg-background pb-8 pt-4 md:pb-14 md:pt-8">
+            <div className="mx-auto max-w-[1080px] px-4 sm:px-6">
+              <div className="mx-auto max-w-2xl text-center">
+                <p className="text-[0.78rem] font-semibold uppercase tracking-[0.18em] text-primary">
+                  Auf einen Blick
+                </p>
+                <h2 className="mt-3 text-[clamp(1.7rem,3vw,2.4rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
+                  Wo wir für Sie im Garten stehen.
+                </h2>
+              </div>
+              <div className="mt-10 md:mt-14">
+                <EinsatzradiusMap />
+              </div>
+            </div>
+          </section>
+
           {/* Zwei-Karten-Layout Stadtteile + Umland: klare Trennung,
               aber gleiche Card-Sprache, damit beides gleichwertig wirkt */}
           <section className="bg-secondary/40 py-16 md:py-24">
             <div className="mx-auto max-w-[1180px] px-4 sm:px-6">
               <div className="mb-10 max-w-2xl md:mb-12">
                 <p className="text-[0.78rem] font-semibold uppercase tracking-[0.18em] text-primary">
-                  Wo wir arbeiten
+                  Alle Orte im Überblick
                 </p>
                 <h2 className="mt-3 text-[clamp(1.7rem,3vw,2.4rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
                   Düsseldorf und die 13 Nachbarorte im Radius.
@@ -242,21 +263,33 @@ const AreaCard = ({
     </div>
     <p className="mt-4 text-[0.9rem] leading-snug text-muted-foreground">{meta}</p>
     <ul className="mt-6 flex flex-wrap gap-2">
-      {entries.map((entry) => (
-        <li key={entry.slug}>
-          <Link
-            to={`/${entry.slug}`}
-            className="v8-press group inline-flex items-center gap-1.5 rounded-full border border-border/70 bg-background px-3.5 py-1.5 text-[0.9rem] font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary"
-          >
-            {entry.name}
-            <ArrowRight
-              className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:text-primary"
-              strokeWidth={2.25}
-              aria-hidden
-            />
-          </Link>
-        </li>
-      ))}
+      {entries.map((entry) => {
+        const Signature = stadtteilIconFor[entry.slug];
+        return (
+          <li key={entry.slug}>
+            <Link
+              to={`/${entry.slug}`}
+              className={`v8-press group inline-flex items-center gap-2 rounded-full border border-border/70 bg-background text-[0.9rem] font-medium text-foreground transition-colors hover:border-primary/50 hover:text-primary ${
+                Signature ? "py-1.5 pl-2 pr-3.5" : "px-3.5 py-1.5"
+              }`}
+            >
+              {Signature ? (
+                <span className="grid h-7 w-7 place-items-center rounded-full bg-primary/10 text-primary">
+                  <Signature className="h-4 w-4" />
+                </span>
+              ) : null}
+              <span>{entry.name}</span>
+              {Signature ? null : (
+                <ArrowRight
+                  className="h-3.5 w-3.5 shrink-0 text-muted-foreground transition-all group-hover:translate-x-0.5 group-hover:text-primary"
+                  strokeWidth={2.25}
+                  aria-hidden
+                />
+              )}
+            </Link>
+          </li>
+        );
+      })}
     </ul>
   </article>
 );
