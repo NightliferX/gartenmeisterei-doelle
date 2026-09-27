@@ -1,22 +1,18 @@
 import { useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AnimatePresence, LayoutGroup, motion } from "motion/react";
-import { ChevronDown, ChevronRight, Menu, MessageCircle, Phone, X } from "lucide-react";
-import { gartenjahr, monthRange, services, siteConfig } from "@/lib/siteContent";
-import { areaPages } from "@/lib/subpages";
-import { withBase } from "@/lib/utils";
+import { ChevronDown, ChevronRight, Flower2, Leaf, Menu, MessageCircle, Phone, Snowflake, Sun, X } from "lucide-react";
+import {
+  currentMonatsEmpfehlung,
+  currentMonthName,
+  currentSaison,
+  gartenjahr,
+  monthRange,
+  services,
+  siteConfig,
+} from "@/lib/siteContent";
+import { areaPages, serviceSlugFor } from "@/lib/subpages";
 import { oeffneBeratung } from "@/components/v8/BeratungCtaV8";
-
-const serviceSlugFor = (id: string) =>
-  ({
-    gartenpflege: "gartenpflege",
-    heckenschnitt: "heckenschnitt",
-    baumschnitt: "baumschnitt",
-    rasenpflege: "rasenpflege",
-    herbst: "laubentsorgung",
-    saison: "winterservice",
-    rollrasen: "rollrasen",
-    terrasse: "terrasse",
-  }[id] ?? id);
 
 // Mega-Menü-Struktur: die drei Nav-Punkte mit Unterseiten bekommen
 // jeweils ein Dropdown-Panel auf Desktop und ein Accordion-Panel auf
@@ -25,7 +21,7 @@ const megaMenus = [
   {
     key: "leistungen",
     label: "Leistungen",
-    href: "/#leistungen",
+    href: "/leistungen",
     items: services.map((s) => ({
       label: s.title,
       href: `/${serviceSlugFor(s.id)}`,
@@ -35,7 +31,7 @@ const megaMenus = [
   {
     key: "gartenjahr",
     label: "Gartenjahr",
-    href: "/#gartenjahr",
+    href: "/gartenjahr",
     items: gartenjahr.map((s) => ({
       label: `Gartenpflege im ${s.season}`,
       href: `/gartenpflege-${s.slug}`,
@@ -45,7 +41,7 @@ const megaMenus = [
   {
     key: "einsatzgebiete",
     label: "Einsatzgebiete",
-    href: "/#einsatzgebiete",
+    href: "/einsatzgebiete",
     twoColumns: true,
     items: areaPages.map((a) => ({
       label: a.name.replace("Düsseldorf-", ""),
@@ -55,20 +51,30 @@ const megaMenus = [
   },
 ] as const;
 
-// Zusatz-Nav-Punkte ohne Dropdown
+// Zusatz-Nav-Punkte ohne Dropdown. Mischung aus Anker-Links (mit #, per
+// handleAnchorClick smooth-scrollt) und echten Routen (per Link ohne
+// Full-Page-Reload).
 const singleLinks = [
   { label: "Meister", href: "/#warum-wir" },
+  { label: "Ratgeber", href: "/ratgeber" },
   { label: "Kontakt", href: "/#kontakt" },
 ];
 
 const EASE_OUT = [0.23, 1, 0.32, 1] as const;
 
-// Mobile-Menü-Bug: onClick={onClose} entfernt das overflow:hidden vom Body,
-// aber die Browser-Anker-Navigation feuert VOR dem useEffect-Cleanup, also
-// versucht der Browser zu scrollen, während der Body noch gelockt ist. Erst
-// der nächste Klick auf denselben Link scrollt dann tatsächlich.
-// Lösung: bei internen Anker-Links (/#…) auf der Startseite die Navigation
-// selbst übernehmen: Menü schließen, ein Tick warten, dann sanft scrollen.
+// Saison-Icon je Slug fuer das „Jetzt aktuell"-Highlight im Mega-Menu.
+const saisonIconFor = {
+  fruehjahr: Flower2,
+  sommer: Sun,
+  herbst: Leaf,
+  winter: Snowflake,
+} as const;
+
+// Anker-Klick (/#hash) auf der Startseite: fixed Header ueberlappt den
+// Section-Anfang, dazu koennen Sections mit content-visibility auf dem
+// Weg dahin die Zielhoehe verschieben. Loesung: nach dem naechsten
+// Layout-Tick manuell smooth-scrollen. Ausserhalb der Startseite normal
+// navigieren lassen, damit der Browser die Route wechselt.
 const handleAnchorClick = (
   href: string,
   onClose?: () => void,
@@ -88,14 +94,44 @@ const handleAnchorClick = (
   e.preventDefault();
   const targetId = match[1];
   onClose?.();
-  window.setTimeout(() => {
-    const el = document.getElementById(targetId);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-      window.history.replaceState(null, "", `${base || ""}/#${targetId}`);
-    }
-  }, 260);
+  // Zwei Frames Puffer: erst schliesst das Menue (Body-Overflow raus),
+  // dann rechnet der Browser Layout und wir scrollen. Ohne den Puffer
+  // landet der Anker bei Section mit spaeter Hoehen-Berechnung zu weit.
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      const el = document.getElementById(targetId);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.history.replaceState(null, "", `${base || ""}/#${targetId}`);
+      }
+    });
+  });
 };
+
+// smartAnchorClick als eigenstaendige Funktion, damit sowohl HeaderV8 als
+// auch SideMenu sie benutzen koennen. Vorher war sie lokal in HeaderV8 und
+// SideMenu warf ReferenceError beim Rendern -> React unmountete die ganze
+// Seite -> weisse Seite auf Mobile beim Oeffnen des Hamburger-Menues.
+const buildSmartAnchorClick = (
+  navigate: (path: string) => void,
+): ((href: string, onClose?: () => void) => React.MouseEventHandler<HTMLAnchorElement>) =>
+  (href, onClose) => (e) => {
+    const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+    const cleanHref = href.startsWith(base) ? href.slice(base.length) : href;
+    const match = cleanHref.match(/^\/?#(.+)$/);
+    if (!match) {
+      onClose?.();
+      return;
+    }
+    const currentPath = window.location.pathname.replace(base, "") || "/";
+    if (currentPath === "/" || currentPath === "") {
+      handleAnchorClick(href, onClose)(e);
+      return;
+    }
+    e.preventDefault();
+    onClose?.();
+    navigate(`/#${match[1]}`);
+  };
 
 const HeaderV8 = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -104,11 +140,21 @@ const HeaderV8 = () => {
   const [hoveredNav, setHoveredNav] = useState<string | null>(null);
   const closeTimer = useRef<number | null>(null);
   const openerRef = useRef<HTMLButtonElement>(null);
-  const firstLinkRef = useRef<HTMLAnchorElement>(null);
+  const firstLinkRef = useRef<HTMLElement>(null);
   const wasOpenRef = useRef(false);
+  const navigate = useNavigate();
+
+  // Anker-Klick auf Sub-Pages: statt Full-Page-Reload per SPA-Navigation
+  // zur Homepage mit Hash. Der ScrollToTop-Handler scrollt danach zum
+  // Ziel-Element. Auf der Homepage macht handleAnchorClick weiter
+  // seinen smooth-scroll direkt.
+  const smartAnchorClick = buildSmartAnchorClick(navigate);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 8);
+    const onScroll = () => {
+      const next = window.scrollY > 8;
+      setScrolled((prev) => (prev !== next ? next : prev));
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -150,10 +196,9 @@ const HeaderV8 = () => {
       <header
         onMouseLeave={scheduleClose}
         style={{
-          willChange: "transform",
-          transform: scrolled ? "translateY(-0.5rem)" : "translateY(0)",
+          top: scrolled ? "0.5rem" : "1rem",
         }}
-        className="fixed inset-x-0 top-4 z-50 px-3 transition-transform duration-300 sm:px-6"
+        className="fixed inset-x-0 z-50 px-3 transition-[top] duration-300 sm:px-6"
       >
         <div
           className={`v8-material relative mx-auto flex h-16 max-w-[1240px] items-center rounded-full px-3 shadow-[0_6px_28px_-8px_rgba(0,0,0,0.2)] transition-colors duration-200 sm:px-5 ${
@@ -161,15 +206,15 @@ const HeaderV8 = () => {
           }`}
         >
           {/* Logo */}
-          <a href={withBase("/")} className="flex items-center pl-1">
+          <Link to="/" className="flex items-center pl-1">
             <img
-              src={withBase("/logo.svg")}
+              src={`${import.meta.env.BASE_URL}logo.svg`.replace(/\/+/g, "/")}
               width={985}
               height={510}
               alt={siteConfig.brandName}
               className="h-11 w-auto md:h-12"
             />
-          </a>
+          </Link>
 
           {/* Desktop-Nav mit Mega-Menü-Dropdowns + fließender Hover-Pille */}
           <LayoutGroup id="v8-nav-hover">
@@ -233,32 +278,47 @@ const HeaderV8 = () => {
               })}
               {singleLinks.map((link) => {
                 const isHovered = hoveredNav === link.href;
+                const isAnchor = link.href.includes("#");
+                const commonHandlers = {
+                  onMouseEnter: () => {
+                    setActiveMenu(null);
+                    setHoveredNav(link.href);
+                  },
+                  onFocus: () => {
+                    setActiveMenu(null);
+                    setHoveredNav(link.href);
+                  },
+                  onBlur: () => setHoveredNav(null),
+                };
+                const commonClass = `relative isolate rounded-full px-4 py-2.5 text-[1rem] font-medium transition-colors duration-200 ${
+                  isHovered ? "text-primary-foreground" : "text-foreground"
+                }`;
+                const pill = isHovered ? (
+                  <motion.span
+                    layoutId="v8-nav-pill"
+                    transition={{ type: "spring", stiffness: 380, damping: 34, mass: 0.6 }}
+                    className="absolute inset-0 -z-10 rounded-full bg-primary"
+                  />
+                ) : null;
+                if (isAnchor) {
+                  return (
+                    <a
+                      key={link.href}
+                      href={link.href}
+                      onClick={smartAnchorClick(link.href)}
+                      className={commonClass}
+                      {...commonHandlers}
+                    >
+                      {pill}
+                      <span className="relative">{link.label}</span>
+                    </a>
+                  );
+                }
                 return (
-                  <a
-                    key={link.href}
-                    href={withBase(link.href)}
-                    onMouseEnter={() => {
-                      setActiveMenu(null);
-                      setHoveredNav(link.href);
-                    }}
-                    onFocus={() => {
-                      setActiveMenu(null);
-                      setHoveredNav(link.href);
-                    }}
-                    onBlur={() => setHoveredNav(null)}
-                    className={`relative isolate rounded-full px-4 py-2.5 text-[1rem] font-medium transition-colors duration-200 ${
-                      isHovered ? "text-primary-foreground" : "text-foreground"
-                    }`}
-                  >
-                    {isHovered ? (
-                      <motion.span
-                        layoutId="v8-nav-pill"
-                        transition={{ type: "spring", stiffness: 380, damping: 34, mass: 0.6 }}
-                        className="absolute inset-0 -z-10 rounded-full bg-primary"
-                      />
-                    ) : null}
+                  <Link key={link.href} to={link.href} className={commonClass} {...commonHandlers}>
+                    {pill}
                     <span className="relative">{link.label}</span>
-                  </a>
+                  </Link>
                 );
               })}
             </nav>
@@ -323,7 +383,11 @@ const HeaderV8 = () => {
                     return (
                       <div
                         key={menu.key}
-                        className="grid gap-10 md:grid-cols-[1.6fr_1fr]"
+                        className={`grid gap-10 ${
+                          menu.twoColumns
+                            ? "md:grid-cols-[2.2fr_1fr]"
+                            : "md:grid-cols-[1.6fr_1fr]"
+                        }`}
                       >
                         {/* Item-Grid, linke, breite Spalte */}
                         <div>
@@ -333,14 +397,18 @@ const HeaderV8 = () => {
                           <ul
                             className={`mt-5 grid gap-1 ${
                               menu.twoColumns
-                                ? "sm:grid-cols-2 sm:gap-x-6"
+                                ? "sm:grid-cols-2 lg:grid-cols-3 sm:gap-x-5"
                                 : "sm:grid-cols-2 sm:gap-x-8"
                             }`}
                           >
                             {menu.items.map((item) => (
                               <li key={item.href}>
-                                <a
-                                  href={withBase(item.href)}
+                                <Link
+                                  to={item.href}
+                                  onClick={() => {
+                                    setActiveMenu(null);
+                                    setHoveredNav(null);
+                                  }}
                                   className="group -mx-3 flex items-start justify-between gap-4 rounded-xl px-3 py-2.5 transition-colors hover:bg-primary/[0.06]"
                                 >
                                   <div className="min-w-0">
@@ -357,7 +425,7 @@ const HeaderV8 = () => {
                                     className="mt-1 h-4 w-4 shrink-0 text-muted-foreground/60 transition-all group-hover:translate-x-0.5 group-hover:text-primary"
                                     strokeWidth={2.25}
                                   />
-                                </a>
+                                </Link>
                               </li>
                             ))}
                           </ul>
@@ -383,16 +451,117 @@ const HeaderV8 = () => {
                               {menu.key === "gartenjahr" &&
                                 "Der richtige Schnitt zur richtigen Zeit. Wir kennen den Takt."}
                               {menu.key === "einsatzgebiete" &&
-                                "Düsseldorf und das nahe Umland, kurze Wege, feste Pflegetermine."}
+                                "Düsseldorf komplett und das nahe Umland: 4 Stadtteile und 13 Umlandorte im festen Einsatzradius. Kurze Anfahrt macht regelmäßige Pflege wirtschaftlich, auch außerhalb der Stadtgrenze."}
                             </p>
+
+                            {/* „Jetzt aktuell"-Highlight-Card mit Saison-Icon,
+                                pulsierendem Live-Indikator und Farbakzent.
+                                Nur für leistungen und gartenjahr, weil dort
+                                der saisonale Deep-Link Sinn ergibt. */}
+                            {menu.key === "leistungen" ? (() => {
+                              const empf = currentMonatsEmpfehlung();
+                              const saison = currentSaison();
+                              const SaisonIcon = saison ? saisonIconFor[saison.slug as keyof typeof saisonIconFor] : Leaf;
+                              return (
+                                <div className="mt-6 overflow-hidden rounded-2xl border border-primary/25 bg-gradient-to-br from-primary/[0.12] via-primary/[0.05] to-transparent shadow-[0_2px_12px_-4px_rgba(47,96,48,0.15)]">
+                                  <Link
+                                    to={`/${empf.service.slug}`}
+                                    onClick={() => {
+                                      setActiveMenu(null);
+                                      setHoveredNav(null);
+                                    }}
+                                    className="v8-press group flex items-start gap-3 p-4 transition-colors hover:bg-primary/[0.08]"
+                                  >
+                                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary/15 text-primary">
+                                      <SaisonIcon className="h-5 w-5" strokeWidth={2.25} aria-hidden />
+                                    </span>
+                                    <div className="min-w-0 flex-1">
+                                      <span className="v8-jetzt-chip inline-flex items-center gap-1.5 rounded-full bg-primary px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-[0.14em] text-primary-foreground">
+                                        <span className="relative flex h-1.5 w-1.5">
+                                          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-foreground/70 opacity-75" aria-hidden />
+                                          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary-foreground" aria-hidden />
+                                        </span>
+                                        Jetzt aktuell
+                                      </span>
+                                      <p className="mt-1.5 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+                                        Im {currentMonthName()}
+                                      </p>
+                                      <p className="mt-1 text-[0.98rem] font-semibold leading-snug text-foreground group-hover:text-primary">
+                                        {empf.service.label}
+                                      </p>
+                                    </div>
+                                    <ChevronRight className="mt-1 h-4 w-4 shrink-0 text-primary transition-transform group-hover:translate-x-0.5" strokeWidth={2.25} aria-hidden />
+                                  </Link>
+                                </div>
+                              );
+                            })() : null}
+                            {menu.key === "gartenjahr" ? (() => {
+                              const saison = currentSaison();
+                              const empf = currentMonatsEmpfehlung();
+                              const SaisonIcon = saison ? saisonIconFor[saison.slug as keyof typeof saisonIconFor] : Leaf;
+                              return (
+                                <div className="mt-6 overflow-hidden rounded-2xl border border-primary/25 bg-gradient-to-br from-primary/[0.12] via-primary/[0.05] to-transparent shadow-[0_2px_12px_-4px_rgba(47,96,48,0.15)]">
+                                  {saison ? (
+                                    <Link
+                                      to={`/gartenpflege-${saison.slug}`}
+                                      onClick={() => {
+                                        setActiveMenu(null);
+                                        setHoveredNav(null);
+                                      }}
+                                      className="v8-press group flex items-start gap-3 p-4 transition-colors hover:bg-primary/[0.08]"
+                                    >
+                                      <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary/15 text-primary">
+                                        <SaisonIcon className="h-5 w-5" strokeWidth={2.25} aria-hidden />
+                                      </span>
+                                      <div className="min-w-0 flex-1">
+                                        <span className="v8-jetzt-chip inline-flex items-center gap-1.5 rounded-full bg-primary px-2.5 py-1 text-[0.62rem] font-bold uppercase tracking-[0.14em] text-primary-foreground">
+                                          <span className="relative flex h-1.5 w-1.5">
+                                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-foreground/70 opacity-75" aria-hidden />
+                                            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary-foreground" aria-hidden />
+                                          </span>
+                                          Jetzt gefragt
+                                        </span>
+                                        <p className="mt-1.5 text-[0.7rem] font-medium uppercase tracking-[0.12em] text-muted-foreground">
+                                          Im {currentMonthName()}
+                                        </p>
+                                        <p className="mt-1 text-[0.98rem] font-semibold leading-snug text-foreground group-hover:text-primary">
+                                          Gartenpflege im {saison.season}
+                                        </p>
+                                      </div>
+                                      <ChevronRight className="mt-1 h-4 w-4 shrink-0 text-primary transition-transform group-hover:translate-x-0.5" strokeWidth={2.25} aria-hidden />
+                                    </Link>
+                                  ) : null}
+                                  {empf.ratgeber ? (
+                                    <Link
+                                      to={`/ratgeber/${empf.ratgeber.slug}`}
+                                      onClick={() => {
+                                        setActiveMenu(null);
+                                        setHoveredNav(null);
+                                      }}
+                                      className="v8-press group flex items-center gap-2 border-t border-primary/15 px-4 py-3 text-[0.85rem] text-muted-foreground transition-colors hover:bg-primary/[0.08] hover:text-primary"
+                                    >
+                                      <span className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-primary">
+                                        Ratgeber
+                                      </span>
+                                      <span className="truncate">{empf.ratgeber.label}</span>
+                                      <ChevronRight className="ml-auto h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-0.5" strokeWidth={2.25} aria-hidden />
+                                    </Link>
+                                  ) : null}
+                                </div>
+                              );
+                            })() : null}
                           </div>
-                          <a
-                            href={withBase(menu.href)}
+                          <Link
+                            to={menu.href}
+                            onClick={() => {
+                              setActiveMenu(null);
+                              setHoveredNav(null);
+                            }}
                             className="mt-6 inline-flex items-center gap-1.5 text-[0.9rem] font-semibold text-primary hover:underline"
                           >
                             Zur Übersicht
                             <ChevronRight className="h-4 w-4" strokeWidth={2.25} />
-                          </a>
+                          </Link>
                         </div>
                       </div>
                     );
@@ -441,6 +610,7 @@ const HeaderV8 = () => {
             key="v8-side"
             firstLinkRef={firstLinkRef}
             onClose={() => setMobileOpen(false)}
+            smartAnchorClick={smartAnchorClick}
           />
         ) : null}
       </AnimatePresence>
@@ -451,13 +621,45 @@ const HeaderV8 = () => {
 const SideMenu = ({
   firstLinkRef,
   onClose,
+  smartAnchorClick,
 }: {
-  firstLinkRef: React.RefObject<HTMLAnchorElement>;
+  firstLinkRef: React.RefObject<HTMLElement>;
   onClose: () => void;
+  smartAnchorClick: (href: string, onClose?: () => void) => React.MouseEventHandler<HTMLAnchorElement>;
 }) => {
   const [expanded, setExpanded] = useState<string | null>(null);
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  // Focus-Trap: Tab an letztem fokussierbarem Element springt zum ersten,
+  // Shift+Tab am ersten Element springt zum letzten. Ohne Trap wandert
+  // die Tastatur sonst hinter das Modal in die Seitenelemente.
+  useEffect(() => {
+    const dialog = dialogRef.current;
+    if (!dialog) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Tab") return;
+      const focusables = dialog.querySelectorAll<HTMLElement>(
+        'a[href], button:not([disabled]), input:not([disabled]), [tabindex]:not([tabindex="-1"])',
+      );
+      if (focusables.length === 0) return;
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+      if (e.shiftKey && active === first) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && active === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
+    dialog.addEventListener("keydown", onKey);
+    return () => dialog.removeEventListener("keydown", onKey);
+  }, []);
+
   return (
     <div
+      ref={dialogRef}
       id="v8-side-menu"
       role="dialog"
       aria-modal="true"
@@ -505,7 +707,7 @@ const SideMenu = ({
               return (
                 <li key={menu.key} className="py-1">
                   <button
-                    ref={i === 0 ? (firstLinkRef as any) : undefined}
+                    ref={i === 0 ? (firstLinkRef as React.RefObject<HTMLButtonElement>) : undefined}
                     type="button"
                     onClick={() => setExpanded(isOpen ? null : menu.key)}
                     aria-expanded={isOpen}
@@ -536,19 +738,19 @@ const SideMenu = ({
                         className="overflow-hidden"
                       >
                         <li>
-                          <a
-                            href={withBase(menu.href)}
-                            onClick={handleAnchorClick(withBase(menu.href), onClose)}
+                          <Link
+                            to={menu.href}
+                            onClick={onClose}
                             className="block py-2.5 text-[0.92rem] font-semibold text-primary"
                           >
                             → Übersicht
-                          </a>
+                          </Link>
                         </li>
                         {menu.items.map((item) => (
                           <li key={item.href}>
-                            <a
-                              href={withBase(item.href)}
-                              onClick={handleAnchorClick(withBase(item.href), onClose)}
+                            <Link
+                              to={item.href}
+                              onClick={onClose}
                               className="flex items-center justify-between py-2.5 text-[1rem] font-medium text-foreground"
                             >
                               {item.label}
@@ -556,7 +758,7 @@ const SideMenu = ({
                                 className="h-4 w-4 text-muted-foreground"
                                 strokeWidth={2}
                               />
-                            </a>
+                            </Link>
                           </li>
                         ))}
                       </motion.ul>
@@ -565,21 +767,34 @@ const SideMenu = ({
                 </li>
               );
             })}
-            {singleLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={withBase(link.href)}
-                  onClick={handleAnchorClick(withBase(link.href), onClose)}
-                  className="flex items-center justify-between py-4 text-[1.3rem] font-semibold tracking-[-0.005em] text-foreground"
-                >
+            {singleLinks.map((link) => {
+              const isAnchor = link.href.includes("#");
+              const className =
+                "flex items-center justify-between py-4 text-[1.3rem] font-semibold tracking-[-0.005em] text-foreground";
+              const inner = (
+                <>
                   {link.label}
-                  <ChevronRight
-                    className="h-5 w-5 text-muted-foreground"
-                    strokeWidth={2}
-                  />
-                </a>
-              </li>
-            ))}
+                  <ChevronRight className="h-5 w-5 text-muted-foreground" strokeWidth={2} />
+                </>
+              );
+              return (
+                <li key={link.href}>
+                  {isAnchor ? (
+                    <a
+                      href={link.href}
+                      onClick={smartAnchorClick(link.href, onClose)}
+                      className={className}
+                    >
+                      {inner}
+                    </a>
+                  ) : (
+                    <Link to={link.href} onClick={onClose} className={className}>
+                      {inner}
+                    </Link>
+                  )}
+                </li>
+              );
+            })}
           </ul>
 
           <div className="mt-auto flex flex-col gap-3 pt-8 pb-6">
