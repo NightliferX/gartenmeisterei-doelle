@@ -631,20 +631,94 @@
 }
 
 @keyframes v8-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.theme-v8 .v8-marquee, .theme-v11 .v8-marquee { animation: v8-marquee 45s linear infinite; }
+.theme-v8 .v8-marquee, .theme-v11 .v8-marquee {
+  animation: v8-marquee 32s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
+}
 .theme-v8 .v8-marquee[data-paused="true"], .theme-v11 .v8-marquee[data-paused="true"] { animation-play-state: paused; }
+@media (hover: hover) {
+  .theme-v8 .v8-marquee:hover, .theme-v11 .v8-marquee:hover { animation-play-state: paused; }
+}
 @media (prefers-reduced-motion: reduce) {
   .theme-v8 .v8-marquee, .theme-v11 .v8-marquee { animation: none; }
 }
-.theme-v8 .cv-auto {
-  content-visibility: auto;
-  contain-intrinsic-size: 1px 900px;
+/* .cv-auto ist absichtlich als No-Op belassen: content-visibility:auto in
+   Sections VOR dem #kontakt-Anker sorgt dafuer, dass der Browser die
+   Zielhoehe erst berechnet, wenn die Section im Viewport ist. Anker-Sprung
+   landet dann zu weit unten. Die perf-Ersparnis war klein gegenueber
+   diesem UX-Bug. Sollte die Seite spaeter deutlich groesser werden,
+   pro Section wieder einschalten und contain-intrinsic-size messen. */
+.theme-v8 .cv-auto,
+.theme-v11 .cv-auto {
+  content-visibility: visible;
 }
 
-/* V4-artige Load-Rise-Animation fuer V8-Hero */
+/* Druck-Feedback fuer alle interaktiven Elemente mit .v8-press (Buttons,
+   Karten, Nav-Items). Kurzer Scale-Impuls beim Tap, iOS-Tap-Highlight raus. */
+.theme-v8 .v8-press, .theme-v11 .v8-press {
+  transition: transform 140ms cubic-bezier(0.23, 1, 0.32, 1);
+  -webkit-tap-highlight-color: transparent;
+}
+.theme-v8 .v8-press:active, .theme-v11 .v8-press:active { transform: scale(0.97); }
+@media (prefers-reduced-motion: reduce) {
+  .theme-v8 .v8-press:active, .theme-v11 .v8-press:active { transform: none; }
+}
+
+/* Sanfter Halo-Puls um den Kontakt-Nav-Link: der Ring atmet in
+   Groesse und Opazitaet, damit der Nav-Punkt sofort ins Auge faellt
+   ohne aggressiv zu wirken. */
+@keyframes v8-kontakt-halo {
+  0%, 100% { transform: scale(1); opacity: 0.45; }
+  50% { transform: scale(1.08); opacity: 0.15; }
+}
+.theme-v8 .v8-kontakt-halo,
+.theme-v11 .v8-kontakt-halo {
+  animation: v8-kontakt-halo 2.2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* „Jetzt gefragt"-Chip im Mega-Menue: expandierender Ring-Shadow +
+   sanftes Breathing (scale), damit der Chip als Aufmerksamkeits-
+   Anker im Preview-Panel sofort ins Auge springt. */
+@keyframes v8-jetzt-chip-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.55), 0 2px 8px -2px hsl(var(--primary) / 0.35);
+    transform: scale(1);
+  }
+  50% {
+    box-shadow: 0 0 0 8px hsl(var(--primary) / 0), 0 2px 12px -2px hsl(var(--primary) / 0.45);
+    transform: scale(1.04);
+  }
+}
+.theme-v8 .v8-jetzt-chip,
+.theme-v11 .v8-jetzt-chip {
+  animation: v8-jetzt-chip-glow 2.4s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform, box-shadow;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-v8 .v8-kontakt-halo,
+  .theme-v11 .v8-kontakt-halo,
+  .theme-v8 .v8-jetzt-chip,
+  .theme-v11 .v8-jetzt-chip { animation: none; }
+}
+
+/* V4-artige Load-Rise-Animation fuer V8-Hero: Headline, Copy und CTA
+   steigen gestaffelt in Position, dann Ruhe. */
 @keyframes v8-rise {
   from { opacity: 0; transform: translateY(24px); }
   to { opacity: 1; transform: translateY(0); }
+}
+.theme-v8 .v8-rise, .theme-v11 .v8-rise {
+  animation: v8-rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.theme-v8 .v8-rise-2, .theme-v11 .v8-rise-2 {
+  animation: v8-rise 0.9s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.theme-v8 .v8-rise-3, .theme-v11 .v8-rise-3 {
+  animation: v8-rise 0.9s 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 @media (prefers-reduced-motion: reduce) {
   .theme-v8 .v8-rise, .theme-v8 .v8-rise-2, .theme-v8 .v8-rise-3 { animation: none; }
@@ -706,3 +780,66 @@
   contain-intrinsic-size: 1px 900px;
 }
 
+
+/* ============================================================
+   Ratgeber V4-Look (Testflag): Container-Klasse .ratgeber-v4
+   Uebertraegt die V4-DNA (Inter Tight, cinematic Typo, weiche
+   2-lagige Schatten, entfernte Borders, grosszuegiger Whitespace,
+   Eyebrows ohne Uppercase) auf die aktive V8-Ratgeber-Seite.
+   Rueckgaengig: diesen Block loeschen + Klasse in RatgeberPage entfernen.
+   ============================================================ */
+.ratgeber-v4 h1,
+.ratgeber-v4 h2,
+.ratgeber-v4 h3 {
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", sans-serif;
+  letter-spacing: -0.035em;
+  font-weight: 700;
+}
+.ratgeber-v4 h1 { font-weight: 800; }
+
+/* Eyebrow-Labels: unauffaellig, keine Versalien, kein tracking */
+.ratgeber-v4 .rv4-eyebrow {
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  font-weight: 500 !important;
+  font-size: 0.95rem !important;
+  color: hsl(var(--muted-foreground)) !important;
+}
+
+/* V4-Card: transparente Border + weicher zweischichtiger Schatten */
+.ratgeber-v4 .rv4-card {
+  border-color: transparent !important;
+  background: hsl(var(--card));
+  box-shadow:
+    0 2px 10px rgba(10, 20, 10, 0.05),
+    0 12px 32px rgba(10, 20, 10, 0.06);
+  border-radius: 1.4rem;
+}
+.ratgeber-v4 .rv4-card:hover {
+  box-shadow:
+    0 2px 10px rgba(10, 20, 10, 0.05),
+    0 18px 44px rgba(10, 20, 10, 0.09);
+}
+
+/* Grosszuegigere Section-Rhythmen wie V4 */
+.ratgeber-v4 .rv4-section { padding-top: 5.5rem; padding-bottom: 5.5rem; }
+@media (min-width: 768px) {
+  .ratgeber-v4 .rv4-section { padding-top: 7rem; padding-bottom: 7rem; }
+}
+
+/* Pill-Buttons wie V4 */
+.ratgeber-v4 .rv4-pill { border-radius: 9999px; }
+
+/* Cinematic Rise wie V4-Hero */
+@keyframes rv4-rise {
+  from { opacity: 0; transform: translateY(18px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+.ratgeber-v4 .rv4-rise    { animation: rv4-rise 1s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.ratgeber-v4 .rv4-rise-2  { animation: rv4-rise 1s 0.15s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.ratgeber-v4 .rv4-rise-3  { animation: rv4-rise 1s 0.30s cubic-bezier(0.22, 1, 0.36, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .ratgeber-v4 .rv4-rise,
+  .ratgeber-v4 .rv4-rise-2,
+  .ratgeber-v4 .rv4-rise-3 { animation: none; }
+}
