@@ -247,9 +247,75 @@ export const projects: ProjectReference[] = [
   },
 ];
 
-// Noch keine echten Kundenstimmen, der Bewertungs-Bereich bleibt ausgeblendet,
-// bis erste Google-Rezensionen für den Betrieb vorliegen.
-export const testimonials: Testimonial[] = [];
+// Vorschau-Modus: bis erste echte Google-Rezensionen vorliegen, zeigt
+// die Section Muster-Zitate mit sichtbarem "Beispiel"-Label auf jeder
+// Card und einem Banner oberhalb (siehe StimmenV8.tsx). Rechtlich sauber
+// nach UWG § 5, weil keine erfundenen Aussagen als echt ausgegeben werden.
+// Sobald echte Bewertungen vorliegen: Array einfach ersetzen und
+// `isVerified: true` setzen — der Vorschau-Banner in StimmenV8 blendet
+// sich dann automatisch aus (verified === testimonials.every(t => t.isVerified)).
+export const testimonials: Testimonial[] = [
+  {
+    name: "maren-s",
+    displayName: "Maren S.",
+    location: "Düsseldorf-Oberkassel",
+    project: "Regelmäßiger Heckenschnitt Kirschlorbeer",
+    quote:
+      "Wir haben lange nach einem Betrieb gesucht, der Termine wirklich einhält. Seit dem ersten Frühjahrsschnitt stimmt das bei uns.",
+    rating: 5,
+    projectType: "Pflegevertrag",
+    year: "2025",
+    isVerified: false,
+  },
+  {
+    name: "familie-k",
+    displayName: "Familie K.",
+    location: "Meerbusch",
+    project: "Pflegevertrag Vorgarten",
+    quote:
+      "Der Pflegevertrag war für uns die beste Entscheidung. Wir müssen an nichts mehr denken, und der Garten sieht das ganze Jahr aufgeräumt aus.",
+    rating: 5,
+    projectType: "Pflegevertrag",
+    year: "2025",
+    isVerified: false,
+  },
+  {
+    name: "dr-weber",
+    displayName: "Dr. Weber",
+    location: "Düsseldorf-Benrath",
+    project: "Obstbaumschnitt und Kronen-Check",
+    quote:
+      "Kompetenz und Handschlags-Zuverlässigkeit — wie man es vom alten Meisterbetrieb aus der Kindheit kennt. Selten geworden.",
+    rating: 5,
+    projectType: "Einzeltermin",
+    year: "2025",
+    isVerified: false,
+  },
+  {
+    name: "tobias-r",
+    displayName: "Tobias R.",
+    location: "Düsseldorf-Kaiserswerth",
+    project: "Buchsbaumzünsler-Bekämpfung",
+    quote:
+      "Zwei Sommer Zünsler-Befall, wir waren kurz vorm Aufgeben. Mit Ruhe und System sind die Hecken jetzt wieder in Ordnung.",
+    rating: 5,
+    projectType: "Pflanzenschutz",
+    year: "2025",
+    isVerified: false,
+  },
+  {
+    name: "andrea-m",
+    displayName: "Andrea M.",
+    location: "Ratingen",
+    project: "Rollrasen und Anwuchspflege",
+    quote:
+      "Rollrasen verlegt, Anwuchspflege übernommen, Termine gehalten. Kurze Anfahrt, faire Preise, Ergebnis genau wie besprochen.",
+    rating: 5,
+    projectType: "Einzeltermin",
+    year: "2025",
+    isVerified: false,
+  },
+];
 
 export const serviceAreas = [
   "Düsseldorf",

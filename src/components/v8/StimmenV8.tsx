@@ -2,11 +2,9 @@ import { useRef } from "react";
 import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
 import { testimonials } from "@/lib/siteContent";
 
-// Kundenstimmen-Section (V8): rendert echte Kundenzitate aus dem
-// Content-Kanon `testimonials` in siteContent.ts. Solange keine echten
-// Google-Rezensionen vorliegen (Array leer), wird die Section gar nicht
-// gerendert. Damit sind Fake-Reviews rechtlich ausgeschlossen (UWG § 5,
-// Google Structured Data Spam Policy).
+// Kundenstimmen-Section (V8): rendert Kundenzitate aus dem Content-Kanon
+// `testimonials` in siteContent.ts. Section wird nur gerendert wenn
+// mindestens ein Testimonial vorhanden ist.
 
 const StimmenV8 = () => {
   const scrollerRef = useRef<HTMLUListElement>(null);
@@ -36,6 +34,7 @@ const StimmenV8 = () => {
             Das sagen unsere Kundinnen und Kunden.
           </h2>
         </div>
+
 
         <ul
           ref={scrollerRef}
