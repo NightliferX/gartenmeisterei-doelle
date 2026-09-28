@@ -11,6 +11,8 @@ import { serviceSlugFor } from "@/lib/subpages";
 import {
   objektAblauf,
   objektFaq,
+  objektHeroAlt,
+  objektHeroImage,
   objektLeistungen,
   objektReferenzen,
   objektTypen,
@@ -117,6 +119,19 @@ const HausverwaltungPage = () => {
                 </a>
               </div>
             </div>
+
+            {/* Bühnenbild */}
+            <div className="mx-auto mt-12 max-w-[1240px] px-4 sm:px-6 md:mt-14">
+              <img
+                src={withBase(objektHeroImage)}
+                width={1536}
+                height={1024}
+                alt={objektHeroAlt}
+                loading="eager"
+                decoding="async"
+                className="aspect-[16/9] w-full rounded-[1.75rem] object-cover shadow-[0_18px_48px_-24px_rgba(0,0,0,0.45)] md:aspect-[2.4/1]"
+              />
+            </div>
           </section>
 
           {/* Argumente */}
@@ -206,14 +221,27 @@ const HausverwaltungPage = () => {
                 {objektTypen.map((typ) => (
                   <article
                     key={typ.title}
-                    className="rounded-[1.75rem] bg-card p-7 shadow-[0_2px_18px_rgba(0,0,0,0.05)] md:p-8"
+                    className="flex flex-col overflow-hidden rounded-[1.75rem] bg-card shadow-[0_2px_18px_rgba(0,0,0,0.05)]"
                   >
-                    <h3 className="text-[1.2rem] font-semibold leading-tight text-foreground md:text-[1.3rem]">
-                      {typ.title}
-                    </h3>
-                    <p className="mt-3 text-[0.95rem] leading-relaxed text-muted-foreground md:text-[1rem]">
-                      {typ.text}
-                    </p>
+                    {typ.image ? (
+                      <img
+                        src={withBase(typ.image)}
+                        width={1536}
+                        height={1024}
+                        alt={typ.imageAlt ?? ""}
+                        loading="lazy"
+                        decoding="async"
+                        className="aspect-[16/10] w-full object-cover"
+                      />
+                    ) : null}
+                    <div className="flex flex-1 flex-col p-7 md:p-8">
+                      <h3 className="text-[1.2rem] font-semibold leading-tight text-foreground md:text-[1.3rem]">
+                        {typ.title}
+                      </h3>
+                      <p className="mt-3 text-[0.95rem] leading-relaxed text-muted-foreground md:text-[1rem]">
+                        {typ.text}
+                      </p>
+                    </div>
                   </article>
                 ))}
               </div>

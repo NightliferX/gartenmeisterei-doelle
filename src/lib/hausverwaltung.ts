@@ -11,6 +11,13 @@ export type ObjektLeistung = {
   text: string;
 };
 
+export type ObjektTyp = {
+  title: string;
+  text: string;
+  image?: string;
+  imageAlt?: string;
+};
+
 export type ObjektReferenz = {
   objekt: string; // z. B. „Wohnanlage mit 24 Einheiten"
   ort: string;
@@ -78,18 +85,27 @@ export const objektLeistungen: ObjektLeistung[] = [
 ];
 
 /** Objektarten, für die der Zuschnitt passt. */
-export const objektTypen = [
+export const objektTypen: ObjektTyp[] = [
   {
     title: "Mehrfamilienhaus",
     text: "Vorgarten, Hofseite, Zuwegung und Mülleinhausung — meist ein kurzer Turnus über die Saison und zwei Schnitttermine für die Hecke.",
+    image: "/objekte/mehrfamilienhaus-vorgarten-hecke-duesseldorf.webp",
+    imageAlt:
+      "Gepflegter Vorgarten eines Mehrfamilienhauses mit geschnittener Hecke und sauberem Zugang zur Haustür",
   },
   {
     title: "Wohnanlage und WEG",
     text: "Mehrere Hauseingänge, Rasenflächen zwischen den Häusern, Baumbestand. Pflegeplan je Fläche, Nachweise für die Verwaltung.",
+    image: "/objekte/wohnanlage-weg-hauseingaenge-rasenflaeche-duesseldorf.webp",
+    imageAlt:
+      "Wohnanlage mit mehreren Hauseingängen, gemähter Rasenfläche und gepflegten Staudenbeeten",
   },
   {
     title: "Gewerbeobjekt",
     text: "Eingangsbereich, Parkplatzränder und Grünstreifen. Termine früh am Tag oder außerhalb der Öffnungszeiten, wenn es der Betrieb verlangt.",
+    image: "/objekte/gewerbeobjekt-gruenstreifen-eingang-duesseldorf.webp",
+    imageAlt:
+      "Gepflegter Grünstreifen mit geschnittener Hecke vor dem Eingang eines Bürogebäudes",
   },
 ];
 
@@ -146,3 +162,8 @@ export const objektFaq = [
  * Sobald hier Einträge stehen, erscheint der Abschnitt auf der Seite.
  */
 export const objektReferenzen: ObjektReferenz[] = [];
+
+/** Bühnenbild unter dem Seitenkopf. */
+export const objektHeroImage = "/objekte/wohnanlage-gepflegte-gruenflaeche-duesseldorf.webp";
+export const objektHeroAlt =
+  "Gemähte Rasenfläche zwischen zwei Mehrfamilienhäusern, geschnittene Hecke und gepflasterter Weg zu den Hauseingängen";
