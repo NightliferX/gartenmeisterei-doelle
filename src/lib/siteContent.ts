@@ -152,9 +152,9 @@ export const services = [
     id: "terrasse",
     title: "Terrassen- & Wegereinigung",
     description:
-      "Wenn Moos, Algen und Schmutz sich zwischen den Steinen festgesetzt haben: Mit dem Kärcher K5 reinigen wir Terrassen, Einfahrten und Gartenwege fachgerecht, inklusive Sichtprüfung und Fugensand-Nachpflege.",
-    highlights: ["Kärcher-Hochdruckreinigung", "Terrassen, Wege & Einfahrten", "Fugensand nach Bedarf ergänzen"],
-    image: "/services/gartenpflege/terrassenreinigung-kaercher-k5-hochdruckreiniger-duesseldorf.webp",
+      "Wenn Moos, Algen und Schmutz sich zwischen den Steinen festgesetzt haben: Mit dem Hochdruckreiniger säubern wir Terrassen, Einfahrten und Gartenwege fachgerecht, inklusive Sichtprüfung und Fugensand-Nachpflege.",
+    highlights: ["Hochdruckreinigung mit Flächenreiniger", "Terrassen, Wege & Einfahrten", "Fugensand nach Bedarf ergänzen"],
+    image: "/services/gartenpflege/terrassenreinigung-hochdruckreiniger-flaechenreiniger-duesseldorf.webp",
   },
 ];
 
@@ -486,15 +486,15 @@ export const gartenjahr = [
     heroAlt:
       "Winterschnitt an einer kahlen Hecke in Düsseldorf, Gärtnermeister Benedikt Dölle bei der Winterarbeit",
     intro:
-      "Der Winter ist keine Pause, jetzt wird geschnitten, geplant und vorbereitet. Ohne Laub sieht man die Struktur der Bäume, das ist der beste Zeitpunkt für den Formschnitt. Und der Räum- und Streudienst gehört im Rheinland dazu.",
+      "Der Winter ist keine Pause, jetzt wird geschnitten, geplant und vorbereitet. Ohne Laub sieht man die Struktur der Bäume, das ist der beste Zeitpunkt für den Formschnitt. Und es ist Pflanzzeit für wurzelnackte Hecken: Liguster, Hainbuche und Rotbuche kommen an frostfreien Tagen jetzt am günstigsten in den Boden.",
     tasks: [
       {
         title: "Obstbaum- und Gehölzschnitt",
         text: "Bester Zeitpunkt für Winterschnitt an Obstbäumen, Ziergehölzen und Formhecken (frostfreie Tage). Klare Kronenstruktur, gesunder Neuaustrieb im Frühjahr.",
       },
       {
-        title: "Winterservice",
-        text: "Räum- und Streudienst für Gehwege, Einfahrten und Zugänge nach der Räum- und Streupflicht. Feste Einsatzzeiten, Streugut inklusive.",
+        title: "Sturmschäden und Totholz",
+        text: "Nach Winterstürmen: abgebrochene Äste aus der Krone holen, Totholz über Wegen, Stellplätzen und Sitzbereichen entfernen, bevor es von selbst herunterkommt.",
       },
       {
         title: "Planung fürs neue Jahr",
@@ -554,7 +554,7 @@ const MONATSEMPFEHLUNG: Record<number, MonatsEmpfehlung> = {
   // November
   10: { service: { label: "Laubentsorgung und Winterservice", slug: "laubentsorgung" }, ratgeber: { label: "Kübelpflanzen einwintern", slug: "kuebelpflanzen-einwintern" } },
   // Dezember
-  11: { service: { label: "Winterservice und Räumdienst", slug: "winterservice" }, ratgeber: { label: "Winterschutz für empfindliche Pflanzen", slug: "winterschutz-empfindliche-pflanzen" } },
+  11: { service: { label: "Obstbaum- und Gehölzschnitt", slug: "baumschnitt" }, ratgeber: { label: "Winterschutz für empfindliche Pflanzen", slug: "winterschutz-empfindliche-pflanzen" } },
 };
 
 export const currentMonthName = () => MONTH_NAMES[new Date().getMonth()];

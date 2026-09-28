@@ -400,20 +400,20 @@ export const servicePages: ServicePage[] = [
     serviceId: "terrasse",
     metaTitle: "Terrassenreinigung Düsseldorf | Gärtnermeister Dölle",
     metaDescription:
-      "Terrassen, Einfahrten und Wege mit dem Kärcher K5 fachgerecht reinigen: Moos, Algen und Schmutz raus, Fugensand nachpflegen. Für Düsseldorf und Umland.",
+      "Terrassen, Einfahrten und Wege fachgerecht mit dem Hochdruckreiniger säubern: Moos, Algen und Schmutz raus, Fugensand nachpflegen. Für Düsseldorf und Umland.",
     h1: "Terrassen- & Wegereinigung, für Düsseldorf und Umland",
     intro: [
       "Steinterrassen, Betonwege und Klinker-Einfahrten sammeln über den Winter Moos, Algen und einen grauen Schmutzfilm, vor allem in schattigen Ecken. Wer im Frühjahr wieder auf der eigenen Terrasse sitzen will, sollte damit nicht zu lange warten.",
-      "Wir reinigen mit dem Kärcher K5 gründlich und trotzdem materialschonend: Naturstein, Betonwerkstein, Klinker, Waschbeton, je nach Belag mit passender Düse und Druckstufe. Fugensand wird bei Bedarf nachgefüllt, damit die Steine stabil sitzen.",
+      "Wir reinigen gründlich und trotzdem materialschonend: Naturstein, Betonwerkstein, Klinker, Waschbeton, je nach Belag mit passendem Gerät, Aufsatz und Druckstufe. Fugensand wird bei Bedarf nachgefüllt, damit die Steine stabil sitzen.",
     ],
-    heroImage: "/services/gartenpflege/terrassenreinigung-kaercher-k5-hochdruckreiniger-duesseldorf.webp",
-    heroAlt: "Terrassenreinigung mit dem Kärcher K5, Moos und Schmutzfilm werden von Steinplatten entfernt",
+    heroImage: "/services/gartenpflege/terrassenreinigung-hochdruckreiniger-flaechenreiniger-duesseldorf.webp",
+    heroAlt: "Terrassenreinigung mit dem Hochdruckreiniger, Moos und Schmutzfilm werden von Steinplatten entfernt",
     included: [
       {
-        title: "Kärcher-Hochdruckreinigung",
-        text: "Wir arbeiten mit dem Kärcher K5 (mit passendem Terrassenreiniger-Aufsatz für gleichmäßiges Ergebnis ohne Streifen).",
-        image: "/services/gartenpflege/terrassenreinigung-kaercher-k5-hochdruckreiniger-duesseldorf.webp",
-        imageAlt: "Person mit Kärcher K5 reinigt eine Steinterrasse in einem Düsseldorfer Vorgarten",
+        title: "Hochdruckreinigung mit Flächenreiniger",
+        text: "Wir arbeiten mit dem Flächenreiniger-Aufsatz statt mit der Punktdüse. Das gibt ein gleichmäßiges Ergebnis ohne Streifen, Gerät und Druckstufe wählen wir nach Belag.",
+        image: "/services/gartenpflege/terrassenreinigung-hochdruckreiniger-flaechenreiniger-duesseldorf.webp",
+        imageAlt: "Terrasse wird mit dem Flächenreiniger-Aufsatz eines Hochdruckreinigers gesäubert",
       },
       {
         title: "Terrassen, Wege & Einfahrten",
@@ -437,7 +437,7 @@ export const servicePages: ServicePage[] = [
       {
         question: "Nimmt der Hochdruckreiniger die Fugen mit raus?",
         answer:
-          "Nur wenn zu viel Druck auf schmalen Fugen verwendet wird. Wir nutzen den Terrassenreiniger-Aufsatz und passende Druckstufe pro Belag, Fugensand ergänzen wir am Ende, falls doch etwas ausgespült wurde.",
+          "Nur wenn zu viel Druck auf schmalen Fugen verwendet wird. Wir nutzen den Flächenreiniger-Aufsatz und die passende Druckstufe pro Belag, Fugensand ergänzen wir am Ende, falls doch etwas ausgespült wurde.",
       },
       {
         question: "Kann man Naturstein und Terrakotta genauso reinigen?",
