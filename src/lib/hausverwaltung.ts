@@ -18,6 +18,14 @@ export type ObjektTyp = {
   imageAlt?: string;
 };
 
+export type ObjektProfil = {
+  titel: string;
+  groesse: string;
+  flaechen: string;
+  turnus: string;
+  abrechnung: string;
+};
+
 export type ObjektReferenz = {
   objekt: string; // z. B. „Wohnanlage mit 24 Einheiten"
   ort: string;
@@ -154,6 +162,43 @@ export const objektFaq = [
     question: "Übernehmen Sie auch den Winterdienst?",
     answer:
       "Nein. Räum- und Streudienst gehört nicht zu unserem Leistungsumfang — wir machen den Garten winterfest, kümmern uns aber nicht um Schnee und Eis auf Ihren Wegen.",
+  },
+];
+
+/**
+ * Musterobjekte: typische Zuschnitte, damit eine Verwaltung den Umfang
+ * einschätzen kann, bevor sie anfragt. WICHTIG: Das sind ausdrücklich
+ * Beispiele und keine Referenzkunden — die Seite kennzeichnet sie auch so.
+ * Die Zahlen sind Größenordnungen, die Benedikt allein leisten kann.
+ */
+export const objektProfile: ObjektProfil[] = [
+  {
+    titel: "Mehrfamilienhaus",
+    groesse: "8 bis 12 Einheiten",
+    flaechen:
+      "Vorgarten, Rasen auf der Hofseite, Zuwegung und Mülleinhausung — zusammen meist 200 bis 400 m² Grünfläche.",
+    turnus:
+      "Rasen alle zwei Wochen von April bis Oktober, Hecke im Juni und im Spätsommer, Laub im Herbst in drei Durchgängen.",
+    abrechnung: "Eine Rechnung je Termin oder als feste Monatsrate über die Saison.",
+  },
+  {
+    titel: "Wohnanlage / WEG",
+    groesse: "drei Häuser, mehrere Eingänge",
+    flaechen:
+      "Zusammenhängende Rasenflächen zwischen den Häusern, älterer Baumbestand, Wege und Stellplätze — Größenordnung 800 bis 1.500 m².",
+    turnus:
+      "Mähen im festen Rhythmus, zweimal im Jahr Blick auf Totholz über Wegen und Stellplätzen, Herbstlaub in mehreren Durchgängen, Wegereinigung im Frühjahr.",
+    abrechnung:
+      "Eine Rechnung für die WEG mit Positionen je Fläche, dazu der Nachweis für die Eigentümerversammlung.",
+  },
+  {
+    titel: "Gewerbeobjekt",
+    groesse: "Bürogebäude mit Parkplatz",
+    flaechen:
+      "Grünstreifen an der Zufahrt, niedrige Hecke zum Parkplatz, Eingangsbereich mit Pflanzbeeten.",
+    turnus:
+      "Termine vor Betriebsbeginn, Rasen und Beete über die Saison, Hecke zweimal, Laub von Zufahrt und Stellplätzen.",
+    abrechnung: "Feste Monatsrate über die Saison, damit das Budget planbar bleibt.",
   },
 ];
 

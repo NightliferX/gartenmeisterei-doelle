@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowRight, Building2, CheckCircle2, ChevronDown, Phone } from "lucide-react";
+import { ArrowRight, Building2, CheckCircle2, ChevronDown, Phone, Ruler } from "lucide-react";
 import { Link } from "react-router-dom";
 import HeaderV8 from "@/components/v8/HeaderV8";
 import Footer from "@/components/Footer";
@@ -14,6 +14,7 @@ import {
   objektHeroAlt,
   objektHeroImage,
   objektLeistungen,
+  objektProfile,
   objektReferenzen,
   objektTypen,
   objektVorteile,
@@ -275,6 +276,76 @@ const HausverwaltungPage = () => {
                   </li>
                 ))}
               </ol>
+            </div>
+          </section>
+
+          {/* Musterobjekte: Größenordnungen, ausdrücklich als Beispiel gekennzeichnet */}
+          <section className="bg-background py-16 md:py-24">
+            <div className="mx-auto max-w-[1240px] px-4 sm:px-6">
+              <div className="mx-auto max-w-3xl text-center">
+                <p className="text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-primary">
+                  Umfang
+                </p>
+                <h2 className="mt-3 text-[clamp(1.8rem,3.8vw,2.8rem)] font-semibold leading-[1.1] tracking-[-0.015em] text-foreground">
+                  So groß dürfen die Flächen sein.
+                </h2>
+                <p className="mt-5 text-[1.02rem] leading-relaxed text-muted-foreground md:text-[1.08rem]">
+                  Drei typische Zuschnitte, damit Sie den Aufwand einschätzen
+                  können, bevor Sie anfragen. Das sind Beispiele und keine
+                  Referenzkunden — was an Ihrem Objekt anfällt, steht nach der
+                  Begehung schriftlich im Leistungsverzeichnis.
+                </p>
+              </div>
+
+              <div className="mt-12 grid gap-5 md:mt-14 md:grid-cols-3 md:gap-6">
+                {objektProfile.map((profil) => (
+                  <article
+                    key={profil.titel}
+                    className="flex flex-col rounded-[1.75rem] bg-card p-7 shadow-[0_2px_18px_rgba(0,0,0,0.05)] md:p-8"
+                  >
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-primary/10 text-primary">
+                        <Ruler className="h-5 w-5" strokeWidth={2} aria-hidden />
+                      </span>
+                      <span className="rounded-full bg-secondary px-3 py-1 text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                        Beispiel
+                      </span>
+                    </div>
+                    <h3 className="mt-5 text-[1.2rem] font-semibold leading-tight text-foreground md:text-[1.3rem]">
+                      {profil.titel}
+                    </h3>
+                    <p className="mt-1 text-[0.9rem] font-medium text-primary">
+                      {profil.groesse}
+                    </p>
+                    <dl className="mt-5 space-y-4 border-t border-border/60 pt-5">
+                      <div>
+                        <dt className="text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                          Flächen
+                        </dt>
+                        <dd className="mt-1.5 text-[0.95rem] leading-relaxed text-foreground/85">
+                          {profil.flaechen}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                          Turnus
+                        </dt>
+                        <dd className="mt-1.5 text-[0.95rem] leading-relaxed text-foreground/85">
+                          {profil.turnus}
+                        </dd>
+                      </div>
+                      <div>
+                        <dt className="text-[0.78rem] font-semibold uppercase tracking-[0.14em] text-muted-foreground">
+                          Abrechnung
+                        </dt>
+                        <dd className="mt-1.5 text-[0.95rem] leading-relaxed text-foreground/85">
+                          {profil.abrechnung}
+                        </dd>
+                      </div>
+                    </dl>
+                  </article>
+                ))}
+              </div>
             </div>
           </section>
 
