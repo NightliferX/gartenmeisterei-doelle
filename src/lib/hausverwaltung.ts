@@ -16,6 +16,9 @@ export type ObjektTyp = {
   text: string;
   image?: string;
   imageAlt?: string;
+  // Nur setzen, wenn das Bild nicht 1536x1024 ist (Flow liefert 1376x768).
+  imageWidth?: number;
+  imageHeight?: number;
 };
 
 export type ObjektProfil = {
@@ -99,14 +102,18 @@ export const objektTypen: ObjektTyp[] = [
     text: "Vorgarten, Hofseite, Zuwegung und Mülleinhausung — meist ein kurzer Turnus über die Saison und zwei Schnitttermine für die Hecke.",
     image: "/objekte/mehrfamilienhaus-vorgarten-hecke-duesseldorf.webp",
     imageAlt:
-      "Gepflegter Vorgarten eines Mehrfamilienhauses mit geschnittener Hecke und sauberem Zugang zur Haustür",
+      "Vorgarten eines Mehrfamilienhauses mit niedriger Buchsbaumhecke entlang des Plattenwegs, gemähtem Rasen und Mülleinhausung aus Holz",
+    imageWidth: 1376,
+    imageHeight: 768,
   },
   {
     title: "Wohnanlage und WEG",
     text: "Mehrere Hauseingänge, Rasenflächen zwischen den Häusern, Baumbestand. Pflegeplan je Fläche, Nachweise für die Verwaltung.",
     image: "/objekte/wohnanlage-weg-hauseingaenge-rasenflaeche-duesseldorf.webp",
     imageAlt:
-      "Wohnanlage mit mehreren Hauseingängen, gemähter Rasenfläche und gepflegten Staudenbeeten",
+      "Wohnanlage mit mehreren Hauseingängen, großer gemähter Rasenfläche, Staudenbeeten an der Hauswand und altem Baumbestand",
+    imageWidth: 1376,
+    imageHeight: 768,
   },
   {
     title: "Gewerbeobjekt",

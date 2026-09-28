@@ -226,8 +226,8 @@ const HausverwaltungPage = () => {
                     {typ.image ? (
                       <img
                         src={withBase(typ.image)}
-                        width={1536}
-                        height={1024}
+                        width={typ.imageWidth ?? 1536}
+                        height={typ.imageHeight ?? 1024}
                         alt={typ.imageAlt ?? ""}
                         loading="lazy"
                         decoding="async"
