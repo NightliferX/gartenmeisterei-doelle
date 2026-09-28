@@ -125,10 +125,13 @@ const Datenschutz = () => {
                     3. Hosting und Server-Logfiles
                   </h2>
                   <p className="mt-4 text-[1.02rem] leading-[1.7] text-foreground/85">
-                    Diese Website wird derzeit über GitHub Pages (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA) bereitgestellt. Beim Aufruf verarbeitet der Hosting-Anbieter die technisch erforderlichen Verbindungsdaten (insbesondere IP-Adresse, Datum und Uhrzeit des Zugriffs, aufgerufene Seiten, Browsertyp, Betriebssystem und Referrer-URL), um die Website auszuliefern und die Stabilität sowie Sicherheit des Systems zu gewährleisten. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO.
+                    Diese Website wird über die IONOS SE, Elgendorfer Straße 57, 56410 Montabaur, Deutschland bereitgestellt. Die Auslieferung erfolgt aus einem Rechenzentrum der IONOS SE innerhalb der Europäischen Union. Eine Übermittlung personenbezogener Daten in Drittstaaten außerhalb der EU/EWR findet im Zuge des Hostings nicht statt.
                   </p>
                   <p className="mt-4 text-[1.02rem] leading-[1.7] text-foreground/85">
-                    Eine Übermittlung in Drittstaaten (USA) kann dabei nicht ausgeschlossen werden. GitHub ist nach dem EU-US Data Privacy Framework zertifiziert. Weitere Informationen finden Sie in den Datenschutzhinweisen von GitHub.
+                    Beim Aufruf der Website werden aus technischen Gründen die üblichen Verbindungsdaten in Server-Logfiles verarbeitet: IP-Adresse, Datum und Uhrzeit des Zugriffs, aufgerufene Seite, HTTP-Statuscode, übertragene Datenmenge, verwendeter Browser (User-Agent) und die aufrufende Vorseite (Referrer). Die Verarbeitung dient dem sicheren und stabilen Betrieb der Website und der Abwehr von Missbrauch und beruht auf Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse). Die Zugriffsprotokolle werden nach spätestens sieben Tagen automatisch gelöscht, sofern nicht im Einzelfall ein sicherheitsrelevanter Vorfall eine längere Aufbewahrung erforderlich macht.
+                  </p>
+                  <p className="mt-4 text-[1.02rem] leading-[1.7] text-foreground/85">
+                    Die Übertragung zwischen Ihrem Endgerät und dem Server erfolgt verschlüsselt über HTTPS (TLS). Zwischen der IONOS SE und dem Verantwortlichen besteht ein Auftragsverarbeitungsvertrag nach Art. 28 DSGVO.
                   </p>
                 </section>
 
