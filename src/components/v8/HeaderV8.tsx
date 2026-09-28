@@ -56,6 +56,7 @@ const megaMenus = [
 // Full-Page-Reload).
 const singleLinks = [
   { label: "Meister", href: "/#warum-wir" },
+  { label: "Hausverwaltung", href: "/hausverwaltung" },
   { label: "Ratgeber", href: "/ratgeber" },
   { label: "Kontakt", href: "/#kontakt" },
 ];

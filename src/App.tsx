@@ -12,6 +12,7 @@ import AreaPage from "./pages/AreaPage.tsx";
 import SeasonPage from "./pages/SeasonPage.tsx";
 import BeispielPage from "./pages/BeispielPage.tsx";
 import RatgeberHub from "./pages/RatgeberHub.tsx";
+import HausverwaltungPage from "./pages/HausverwaltungPage.tsx";
 import RatgeberPage from "./pages/RatgeberPage.tsx";
 import LeistungenHub from "./pages/LeistungenHub.tsx";
 import GartenjahrHub from "./pages/GartenjahrHub.tsx";
@@ -53,6 +54,7 @@ const App = () => (
             />
           ))}
           <Route path="/ratgeber" element={<RatgeberHub />} />
+          <Route path="/hausverwaltung" element={<HausverwaltungPage />} />
           {ratgeber.map((post) => (
             <Route
               key={post.slug}
