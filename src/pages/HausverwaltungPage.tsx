@@ -6,8 +6,7 @@ import Footer from "@/components/Footer";
 import Seo from "@/components/Seo";
 import SkipToContent from "@/components/SkipToContent";
 import BeratungCtaV8, { oeffneBeratung } from "@/components/v8/BeratungCtaV8";
-import { services, siteConfig } from "@/lib/siteContent";
-import { serviceSlugFor } from "@/lib/subpages";
+import { siteConfig } from "@/lib/siteContent";
 import {
   objektAblauf,
   objektFaq,
@@ -196,7 +195,7 @@ const HausverwaltungPage = () => {
               <p className="mt-10 text-center text-[0.95rem] text-muted-foreground">
                 Jede Position gibt es auch einzeln —{" "}
                 <Link
-                  to={`/${serviceSlugFor(services[0]?.id ?? "gartenpflege")}`}
+                  to="/leistungen"
                   className="font-semibold text-primary underline-offset-4 hover:underline"
                 >
                   alle Leistungen im Detail
