@@ -1,6 +1,6 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigationType } from "react-router-dom";
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "motion/react";
 import HeaderV8 from "@/components/v8/HeaderV8";
 import Footer from "@/components/Footer";
@@ -16,9 +16,35 @@ const ALLE = "Alle";
 // Ratgeber-Hub: Scroll-Gartenfahrt als Einstieg, darunter die Artikel mit
 // Themenfilter. Reine Fachpraxis-Artikel, keine Rechtsberatung.
 const RatgeberHub = () => {
-  const [topic, setTopic] = useState(ALLE);
-  const reduceMotion = useReducedMotion();
   const topics = useMemo(() => [ALLE, ...new Set(ratgeber.map((p) => p.category))], []);
+  const [topic, setTopic] = useState(() => {
+    const gemerkt = sessionStorage.getItem("ratgeber-thema");
+    return gemerkt && topics.includes(gemerkt) ? gemerkt : ALLE;
+  });
+  const reduceMotion = useReducedMotion();
+  const location = useLocation();
+  const navigationType = useNavigationType();
+
+  useEffect(() => {
+    sessionStorage.setItem("ratgeber-thema", topic);
+  }, [topic]);
+
+  // Zurück aus einem Artikel (Button oder Browser-Zurück): direkt zur Liste
+  // springen statt an den Anfang der Gartenfahrt.
+  useEffect(() => {
+    const ausArtikel = sessionStorage.getItem("ratgeber-zur-liste") === "1";
+    sessionStorage.removeItem("ratgeber-zur-liste");
+    const zurListe = (location.state as { zurListe?: boolean } | null)?.zurListe;
+    if (!zurListe && !(navigationType === "POP" && ausArtikel)) return;
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        const liste = document.getElementById("ratgeber-liste");
+        if (liste) window.scrollTo({ top: liste.getBoundingClientRect().top + window.scrollY - 96, behavior: "auto" });
+      }),
+    );
+    // Nur beim Betreten der Seite auswerten.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   const posts = ratgeber.filter((p) => topic === ALLE || p.category === topic);
 
   const jsonLd = {

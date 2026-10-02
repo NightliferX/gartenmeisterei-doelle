@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
 import {
+  ArrowLeft,
   ArrowRight,
   Bug,
   CalendarDays,
@@ -31,6 +32,36 @@ const kategorieIconFor: Record<string, typeof Leaf> = {
   Baum: TreePine,
   Rasen: Sprout,
   Hecke: Scissors,
+};
+
+// Schwebender Zurück-Button für Handys: erscheint, sobald der Kopf des
+// Artikels aus dem Bild gescrollt ist. Merkt sich, dass der Besucher aus
+// einem Artikel kommt, damit die Ratgeber-Seite direkt bei der Liste landet.
+const ZurueckZumRatgeber = () => {
+  const [sichtbar, setSichtbar] = useState(false);
+
+  useEffect(() => {
+    sessionStorage.setItem("ratgeber-zur-liste", "1");
+    const onScroll = () => setSichtbar(window.scrollY > 480);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <Link
+      to="/ratgeber"
+      state={{ zurListe: true }}
+      aria-hidden={!sichtbar}
+      tabIndex={sichtbar ? 0 : -1}
+      className={`v8-press fixed bottom-[calc(1rem+env(safe-area-inset-bottom))] left-4 z-40 inline-flex h-12 items-center gap-2 rounded-full bg-white/90 px-5 text-[0.95rem] font-semibold text-foreground shadow-[0_10px_30px_-8px_rgba(0,0,0,0.3)] backdrop-blur-md transition-[opacity,transform] duration-300 lg:hidden ${
+        sichtbar ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
+      }`}
+    >
+      <ArrowLeft className="h-4 w-4" strokeWidth={2.25} aria-hidden />
+      Alle Ratgeber
+    </Link>
+  );
 };
 
 const RatgeberPage = ({ post }: { post: RatgeberPost }) => {
@@ -128,8 +159,16 @@ const RatgeberPage = ({ post }: { post: RatgeberPost }) => {
         <main id="main">
           {/* Hero im V4-Look: Inter Tight, sehr grosse Headline, weicher
               cremiger Hintergrund, Eyebrow ohne Uppercase, Rise-Animation. */}
-          <section className="rv4-section bg-secondary/40 pt-32 md:pt-40">
+          <section className="rv4-section bg-secondary/40 pt-28 md:pt-36">
             <div className="mx-auto max-w-[900px] px-4 sm:px-6">
+              <Link
+                to="/ratgeber"
+                state={{ zurListe: true }}
+                className="v8-press group mb-8 inline-flex h-10 items-center gap-2 rounded-full bg-white px-4 text-[0.92rem] font-semibold text-foreground shadow-[0_2px_10px_rgba(10,20,10,0.06)] transition-colors hover:text-primary"
+              >
+                <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" strokeWidth={2.25} aria-hidden />
+                Alle Ratgeber
+              </Link>
               <div className="rv4-rise flex items-center gap-3">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-primary/12 text-primary">
                   <KategorieIcon className="h-5 w-5" strokeWidth={2.25} aria-hidden />
@@ -338,6 +377,7 @@ const RatgeberPage = ({ post }: { post: RatgeberPost }) => {
           </section>
 
           <BeratungCtaV8 />
+          <ZurueckZumRatgeber />
         </main>
         <Footer />
       </div>
