@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ArrowRight, Clock } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { AnimatePresence, LayoutGroup, motion, useReducedMotion } from "motion/react";
 import HeaderV8 from "@/components/v8/HeaderV8";
@@ -50,40 +50,40 @@ const RatgeberHub = () => {
         <main id="main">
           <GartenFilm onTopic={zeigeThema} />
 
-          <section id="ratgeber-liste" className="scroll-mt-28 bg-background pb-16 pt-14 md:pb-20 md:pt-16">
-            <div className="mx-auto max-w-[1080px] px-4 sm:px-6">
-              <p className="text-[0.85rem] font-semibold uppercase tracking-[0.22em] text-primary">Ratgeber</p>
-              <div className="mt-4 grid gap-5 md:grid-cols-[1.3fr_1fr] md:items-end md:gap-12">
-                <h2 className="text-[clamp(2rem,4.6vw,3.4rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-foreground">
-                  Fachwissen aus dem Meisterbetrieb.
+          <section id="ratgeber-liste" className="scroll-mt-28 bg-background pb-24 pt-16">
+            <div className="mx-auto max-w-[1240px] px-4 sm:px-8">
+              <p className="text-[0.75rem] font-semibold uppercase tracking-[0.18em] text-primary">Ratgeber</p>
+              <div className="mb-12 mt-5 grid gap-5 md:grid-cols-[1.3fr_1fr] md:items-end md:gap-16">
+                <h2 className="pb-[0.06em] text-[clamp(2.5rem,5.5vw,4.5rem)] font-extrabold leading-[1.04] tracking-[-0.03em] text-foreground">
+                  Für alles, was bei Ihnen <em className="pr-[0.06em] italic text-primary">wächst.</em>
                 </h2>
-                <p className="text-[1.05rem] leading-relaxed text-muted-foreground">
-                  Pflanzenschutz, Pflegetipps und praktische Antworten rund um den Garten in Düsseldorf und Umgebung,
-                  direkt vom Gärtnermeister.
+                <p className="max-w-[40ch] font-['Inter'] text-[1.06rem] leading-relaxed tracking-normal text-muted-foreground">
+                  Praktische Antworten statt grüner Mythen. Unsere Ratgeber begleiten Sie durch Ihr Gartenjahr in
+                  Düsseldorf und Umgebung.
                 </p>
               </div>
 
-              <div role="group" aria-label="Ratgeber nach Thema filtern" className="mt-10 flex flex-wrap gap-2">
+              <div role="group" aria-label="Ratgeber nach Thema filtern" className="flex flex-wrap gap-2">
                 {topics.map((t) => (
                   <button
                     key={t}
                     type="button"
                     aria-pressed={topic === t}
                     onClick={() => setTopic(t)}
-                    className={`v8-press h-10 rounded-full px-5 text-[0.95rem] font-medium shadow-[0_2px_12px_rgba(0,0,0,0.05)] transition-colors ${
-                      topic === t ? "bg-primary text-primary-foreground" : "bg-card text-foreground hover:text-primary"
+                    className={`h-10 rounded-full px-[18px] font-['Inter'] text-[0.94rem] font-medium tracking-normal shadow-[0_2px_10px_rgba(10,20,10,0.04),0_12px_32px_rgba(10,20,10,0.06)] transition-colors active:scale-[0.97] ${
+                      topic === t ? "bg-primary text-primary-foreground" : "bg-white text-foreground hover:text-primary"
                     }`}
                   >
                     {t}
                   </button>
                 ))}
               </div>
-              <p aria-live="polite" className="mt-5 text-[0.9rem] text-muted-foreground">
+              <p aria-live="polite" className="mb-5 mt-5 font-['Inter'] text-[0.875rem] tracking-normal text-muted-foreground">
                 {posts.length} Ratgeber {topic === ALLE ? "für Ihr Gartenjahr" : `zum Thema ${topic}`}
               </p>
 
               <LayoutGroup>
-                <motion.ul layout={!reduceMotion} className="mt-5 grid gap-5 md:gap-6 lg:grid-cols-2">
+                <motion.ul layout={!reduceMotion} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
                   <AnimatePresence mode="popLayout" initial={false}>
                     {posts.map((post, i) => (
                       <motion.li
@@ -96,24 +96,20 @@ const RatgeberHub = () => {
                       >
                         <Link
                           to={`/ratgeber/${post.slug}`}
-                          className="v8-press group flex h-full flex-col rounded-[1.75rem] bg-card p-7 shadow-[0_2px_18px_rgba(0,0,0,0.05)] transition-shadow duration-300 hover:shadow-[0_10px_32px_rgba(0,0,0,0.08)] md:p-8"
+                          className="group flex h-full min-h-[260px] flex-col gap-3.5 rounded-[22px] bg-white px-[26px] pb-6 pt-[26px] shadow-[0_2px_10px_rgba(10,20,10,0.04),0_12px_32px_rgba(10,20,10,0.06)] transition-[transform,box-shadow] duration-300 hover:-translate-y-[3px] hover:shadow-[0_2px_10px_rgba(10,20,10,0.05),0_20px_48px_rgba(10,20,10,0.1)]"
                         >
-                          <div className="flex items-center gap-3 text-[0.78rem] font-medium uppercase tracking-[0.16em] text-muted-foreground">
-                            <span className="text-primary">{post.category}</span>
-                            <span aria-hidden>·</span>
-                            <span className="inline-flex items-center gap-1">
-                              <Clock className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
-                              {post.readingMinutes} Min
+                          <span className="flex items-baseline gap-2.5 font-['Inter'] text-[0.75rem]">
+                            <span className="font-semibold uppercase tracking-[0.14em] text-primary">{post.category}</span>
+                            <span className="font-medium tracking-[0.02em] text-muted-foreground">
+                              {post.readingMinutes} Min. Lesezeit
                             </span>
-                          </div>
-                          <h3 className="mt-4 text-[1.35rem] font-semibold leading-tight tracking-[-0.01em] text-foreground group-hover:text-primary md:text-[1.5rem]">
-                            {post.h1}
-                          </h3>
-                          <p className="mt-3 flex-1 text-[0.98rem] leading-relaxed text-muted-foreground md:text-[1rem]">
+                          </span>
+                          <h3 className="text-[1.31rem] leading-[1.2] text-foreground">{post.h1}</h3>
+                          <p className="line-clamp-4 flex-1 font-['Inter'] text-[0.94rem] leading-[1.55] tracking-normal text-muted-foreground">
                             {post.lead}
                           </p>
-                          <span className="mt-5 inline-flex items-center gap-1.5 text-[0.9rem] font-semibold text-primary">
-                            Zum Ratgeber
+                          <span className="inline-flex items-center gap-1.5 text-[0.94rem] font-semibold text-primary">
+                            Ratgeber lesen
                             <ArrowRight
                               className="h-4 w-4 transition-transform group-hover:translate-x-0.5"
                               strokeWidth={2.25}
