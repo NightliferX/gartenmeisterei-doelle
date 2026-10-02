@@ -402,9 +402,12 @@ const BeratungCtaV8 = () => {
 
       {isMobile ? (
         <Drawer open={open} onOpenChange={(v) => { setOpen(v); if (!v) reset(); }}>
-          <DrawerContent className="max-h-[92dvh]">
-            <DrawerHeader className="text-left">
-              <DrawerTitle>{submitted ? "Anfrage eingegangen" : "Beratung anfragen"}</DrawerTitle>
+          <DrawerContent
+            className="max-h-[92dvh] rounded-t-[1.75rem] border-0 shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.35)]"
+            overlayClassName="bg-[rgba(18,24,18,0.45)] backdrop-blur-[6px]"
+          >
+            <DrawerHeader className="px-5 pt-4 text-left">
+              <DrawerTitle className="text-[1.6rem] font-extrabold leading-tight tracking-[-0.025em]">{submitted ? "Anfrage eingegangen" : "Beratung anfragen"}</DrawerTitle>
               <DrawerDescription>
                 {submitted
                   ? "Vielen Dank für Ihre Anfrage."
@@ -418,10 +421,14 @@ const BeratungCtaV8 = () => {
         </Drawer>
       ) : (
         <Dialog open={open} onOpenChange={(v) => { setOpen(v); if (!v) reset(); }}>
-          <DialogContent className="max-h-[90dvh] max-w-[640px] overflow-y-auto">
-            <DialogHeader>
-              <DialogTitle>{submitted ? "Anfrage eingegangen" : "Beratung anfragen"}</DialogTitle>
-              <DialogDescription>
+          <DialogContent
+            className="max-h-[88dvh] max-w-[680px] overflow-y-auto rounded-[1.75rem] border-0 p-8 shadow-[0_32px_96px_-24px_rgba(0,0,0,0.4)] sm:rounded-[1.75rem] sm:p-10"
+            overlayClassName="bg-[rgba(18,24,18,0.45)] backdrop-blur-[6px]"
+            closeClassName="right-5 top-5 grid h-11 w-11 place-items-center rounded-full bg-secondary opacity-100 hover:bg-secondary/70 data-[state=open]:bg-secondary [&_svg]:h-[18px] [&_svg]:w-[18px]"
+          >
+            <DialogHeader className="pr-12">
+              <DialogTitle className="text-[clamp(1.75rem,3.2vw,2.25rem)] font-extrabold leading-[1.08] tracking-[-0.025em]">{submitted ? "Anfrage eingegangen" : "Beratung anfragen"}</DialogTitle>
+              <DialogDescription className="pt-1 text-[1.02rem] leading-relaxed">
                 {submitted
                   ? "Vielen Dank für Ihre Anfrage."
                   : "Benedikt Dölle meldet sich in kürzester Zeit persönlich bei Ihnen."}
