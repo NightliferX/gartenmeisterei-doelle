@@ -12,6 +12,7 @@ import AreaPage from "./pages/AreaPage.tsx";
 import SeasonPage from "./pages/SeasonPage.tsx";
 import BeispielPage from "./pages/BeispielPage.tsx";
 import RatgeberHub from "./pages/RatgeberHub.tsx";
+import RatgeberWeltRedirect from "./pages/RatgeberWeltRedirect.tsx";
 import HausverwaltungPage from "./pages/HausverwaltungPage.tsx";
 import RatgeberPage from "./pages/RatgeberPage.tsx";
 import LeistungenHub from "./pages/LeistungenHub.tsx";
@@ -53,7 +54,10 @@ const App = () => (
               element={<SeasonPage season={season} />}
             />
           ))}
-          <Route path="/ratgeber" element={<RatgeberHub />} />
+          <Route
+            path="/ratgeber"
+            element={import.meta.env.VITE_RATGEBER_WELT === "1" ? <RatgeberWeltRedirect /> : <RatgeberHub />}
+          />
           <Route path="/hausverwaltung" element={<HausverwaltungPage />} />
           {ratgeber.map((post) => (
             <Route

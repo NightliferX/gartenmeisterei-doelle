@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<script>
+  // Relative Pfade brauchen den Slash am Ende (/ratgeber -> /ratgeber/).
+  if (!location.pathname.endsWith('/')) location.replace(location.pathname + '/' + location.search + location.hash);
+</script>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f8f8f5">
+<title>Ratgeber | Gärtnermeister Dölle</title>
+<meta name="description" content="Fachwissen aus dem Meisterbetrieb: Pflanzenschutz, Pflegetipps und praktische Antworten rund um den Garten in Düsseldorf und Umgebung.">
+<link rel="canonical" href="https://www.gaertnermeister-doelle.de/ratgeber">
+<script>
+  // Vorschau-Hosts (GitHub Pages, Ionos-Preview) nicht indexieren, wie in src/main.tsx.
+  if (!['gaertnermeister-doelle.de', 'www.gaertnermeister-doelle.de'].includes(location.hostname)) {
+    document.write('<meta name="robots" content="noindex, nofollow">');
+  }
+</script>
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:url" content="https://www.gaertnermeister-doelle.de/ratgeber">
+<meta property="og:title" content="Ratgeber | Gärtnermeister Dölle">
+<meta property="og:description" content="Fachwissen aus dem Meisterbetrieb: Pflanzenschutz, Pflegetipps und praktische Antworten rund um den Garten in Düsseldorf und Umgebung.">
+<meta property="og:image" content="https://www.gaertnermeister-doelle.de/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp">
+
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-tight-800.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="assets/fonts/inter-400.woff2" crossorigin>
+<link rel="stylesheet" href="style.css?v=7">
+<script defer src="assets/gsap.min.js"></script>
+<script defer src="assets/ScrollTrigger.min.js"></script>
+<script defer src="app.js?v=7"></script>
+</head>
+<body>
+
+<a class="skip" href="#ratgeber">Direkt zu den Ratgebern</a>
+
+<header class="site-header">
+  <div class="bar">
+    <a class="logo" href="../" aria-label="Gärtnermeister Dölle · zur Startseite">
+      <img src="../logo.svg" alt="Gärtnermeister Dölle" width="94" height="49">
+    </a>
+    <nav aria-label="Hauptnavigation">
+      <ul class="nav-list">
+      <li class="has-menu">
+        <a href="../leistungen" class="nav-top" aria-haspopup="true">Leistungen<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+        <div class="mega"><p>Leistungen</p><ul><li><a href="../gartenpflege">Gartenpflege</a></li><li><a href="../heckenschnitt">Heckenschnitt &amp; Formschnitt</a></li><li><a href="../baumschnitt">Baumschnitt &amp; Baumpflege</a></li><li><a href="../rasenpflege">Rasenpflege</a></li><li><a href="../laubentsorgung">Laubentsorgung &amp; Herbstputz</a></li><li><a href="../winterservice">Frühjahrs- &amp; Winterservice</a></li><li><a href="../rollrasen">Rollrasen legen</a></li><li><a href="../terrasse">Terrassen- &amp; Wegereinigung</a></li></ul><a class="mega-all" href="../leistungen">Alle anzeigen →</a></div>
+      </li>
+      <li class="has-menu">
+        <a href="../gartenjahr" class="nav-top" aria-haspopup="true">Gartenjahr<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+        <div class="mega"><p>Gartenjahr</p><ul><li><a href="../gartenpflege-fruehjahr">Gartenpflege im Frühjahr</a></li><li><a href="../gartenpflege-sommer">Gartenpflege im Sommer</a></li><li><a href="../gartenpflege-herbst">Gartenpflege im Herbst</a></li><li><a href="../gartenpflege-winter">Gartenpflege im Winter</a></li></ul><a class="mega-all" href="../gartenjahr">Alle anzeigen →</a></div>
+      </li>
+      <li class="has-menu">
+        <a href="../einsatzgebiete" class="nav-top" aria-haspopup="true">Einsatzgebiete<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></a>
+        <div class="mega two"><p>Einsatzgebiete</p><ul><li><a href="../gartenpflege-oberkassel">Oberkassel</a></li><li><a href="../gartenpflege-kaiserswerth">Kaiserswerth</a></li><li><a href="../gartenpflege-benrath">Benrath</a></li><li><a href="../gartenpflege-gerresheim">Gerresheim</a></li><li><a href="../gartenpflege-meerbusch">Meerbusch</a></li><li><a href="../gartenpflege-neuss">Neuss</a></li><li><a href="../gartenpflege-ratingen">Ratingen</a></li><li><a href="../gartenpflege-hilden">Hilden</a></li><li><a href="../gartenpflege-erkrath">Erkrath</a></li><li><a href="../gartenpflege-langenfeld">Langenfeld</a></li><li><a href="../gartenpflege-kaarst">Kaarst</a></li><li><a href="../gartenpflege-mettmann">Mettmann</a></li><li><a href="../gartenpflege-haan">Haan</a></li><li><a href="../gartenpflege-monheim">Monheim am Rhein</a></li><li><a href="../gartenpflege-dormagen">Dormagen</a></li><li><a href="../gartenpflege-krefeld">Krefeld</a></li><li><a href="../gartenpflege-wuelfrath">Wülfrath</a></li></ul><a class="mega-all" href="../einsatzgebiete">Alle anzeigen →</a></div>
+      </li>
+      <li><a class="nav-top" href="../#warum-wir">Meister</a></li>
+      <li><a class="nav-top" href="../hausverwaltung">Hausverwaltung</a></li>
+      <li><a class="nav-top" href="./" aria-current="page">Ratgeber</a></li>
+      <li><a class="nav-top" href="../#kontakt">Kontakt</a></li>
+      </ul>
+    </nav>
+    <a class="cta" href="../#kontakt">Beratung anfragen</a>
+    <button class="burger" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobile-menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    <details><summary>Leistungen</summary><a href="../gartenpflege">Gartenpflege</a><a href="../heckenschnitt">Heckenschnitt &amp; Formschnitt</a><a href="../baumschnitt">Baumschnitt &amp; Baumpflege</a><a href="../rasenpflege">Rasenpflege</a><a href="../laubentsorgung">Laubentsorgung &amp; Herbstputz</a><a href="../winterservice">Frühjahrs- &amp; Winterservice</a><a href="../rollrasen">Rollrasen legen</a><a href="../terrasse">Terrassen- &amp; Wegereinigung</a></details>
+    <details><summary>Gartenjahr</summary><a href="../gartenpflege-fruehjahr">Gartenpflege im Frühjahr</a><a href="../gartenpflege-sommer">Gartenpflege im Sommer</a><a href="../gartenpflege-herbst">Gartenpflege im Herbst</a><a href="../gartenpflege-winter">Gartenpflege im Winter</a></details>
+    <details><summary>Einsatzgebiete</summary><a href="../gartenpflege-oberkassel">Oberkassel</a><a href="../gartenpflege-kaiserswerth">Kaiserswerth</a><a href="../gartenpflege-benrath">Benrath</a><a href="../gartenpflege-gerresheim">Gerresheim</a><a href="../gartenpflege-meerbusch">Meerbusch</a><a href="../gartenpflege-neuss">Neuss</a><a href="../gartenpflege-ratingen">Ratingen</a><a href="../gartenpflege-hilden">Hilden</a><a href="../gartenpflege-erkrath">Erkrath</a><a href="../gartenpflege-langenfeld">Langenfeld</a><a href="../gartenpflege-kaarst">Kaarst</a><a href="../gartenpflege-mettmann">Mettmann</a><a href="../gartenpflege-haan">Haan</a><a href="../gartenpflege-monheim">Monheim am Rhein</a><a href="../gartenpflege-dormagen">Dormagen</a><a href="../gartenpflege-krefeld">Krefeld</a><a href="../gartenpflege-wuelfrath">Wülfrath</a></details>
+    <a href="../#warum-wir">Meister</a>
+    <a href="../hausverwaltung">Hausverwaltung</a>
+    <a href="./">Ratgeber</a>
+    <a href="../#kontakt">Kontakt</a>
+  </div>
+</header>
+
+<main>
+
+<section class="film" id="reise" aria-label="Gartenreise: vom Keim bis zur Blüte">
+  <div class="film-sticky">
+    <canvas class="film-canvas" aria-hidden="true"></canvas>
+    <img class="film-poster" src="frames/pfingstrose/d/001.webp" alt="" aria-hidden="true">
+    <div class="film-shade" aria-hidden="true"></div>
+
+    <div class="film-intro">
+      <span class="eyebrow">Gartenratgeber vom Meisterbetrieb</span>
+      <h1>Wissen,<br>das <em>wächst.</em></h1>
+      <p>Scrollen Sie durch ein Gartenjahr: vom ersten Austrieb bis zur vollen Blüte.</p>
+      <span class="scroll-hint" aria-hidden="true"><i></i>Scrollen</span>
+    </div>
+
+    <div class="chapters"></div>
+
+    <ol class="rail" aria-label="Kapitel"></ol>
+    <div class="film-fade" aria-hidden="true"></div>
+  </div>
+</section>
+
+<section id="ratgeber" class="library">
+  <span class="eyebrow">Ratgeber</span>
+  <div class="section-heading">
+    <h2>Für alles, was bei Ihnen <em>wächst.</em></h2>
+    <p>Praktische Antworten statt grüner Mythen. Unsere Ratgeber begleiten Sie durch Ihr Gartenjahr in Düsseldorf und Umgebung.</p>
+  </div>
+  <div class="filters" role="group" aria-label="Ratgeber nach Thema filtern"></div>
+  <div class="articles"></div>
+</section>
+
+<section class="beratung" id="kontakt" aria-labelledby="beratung-titel">
+  <div class="beratung-card">
+    <div>
+      <h2 id="beratung-titel">Kostenlose Erstberatung in Ihrem Garten.</h2>
+      <p>Benedikt Dölle meldet sich in kürzester Zeit persönlich bei Ihnen.</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Mo–Fr, 8:00–18:00 Uhr</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Düsseldorf und Umgebung</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><a href="mailto:info@gaertnermeister-doelle.de">info@gaertnermeister-doelle.de</a></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><a href="tel:+491711287780">0171 / 128 77 80</a></li>
+      </ul>
+    </div>
+    <div class="beratung-actions">
+      <a class="beratung-main" href="../#kontakt">Beratung anfragen <span aria-hidden="true">→</span></a>
+      <div class="beratung-row">
+        <a href="tel:+491711287780">Anrufen</a>
+        <a href="https://wa.me/491711287780?text=Hallo%20G%C3%A4rtnermeister%20D%C3%B6lle,%20ich%20m%C3%B6chte%20eine%20Beratung%20f%C3%BCr%20meinen%20Garten%20anfragen." target="_blank" rel="noreferrer">WhatsApp</a>
+      </div>
+      <p>Am schnellsten per WhatsApp oder Telefon. Alternativ das Formular, Benedikt Dölle meldet sich in kürzester Zeit persönlich bei Ihnen.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../" aria-label="Zur Startseite"><img src="../logo-weiss.svg" alt="Gärtnermeister Dölle Logo" width="985" height="510"></a>
+        <p>Gartenpflege vom Gärtnermeister in Düsseldorf und Umgebung.</p>
+      </div>
+      <div>
+        <h4>Leistungen</h4>
+        <ul>
+          <li><a href="../gartenpflege">Gartenpflege</a></li>
+          <li><a href="../heckenschnitt">Heckenschnitt</a></li>
+          <li><a href="../baumschnitt">Baumschnitt</a></li>
+          <li><a href="../rasenpflege">Rasenpflege</a></li>
+          <li><a href="../laubentsorgung">Laubentsorgung</a></li>
+          <li><a href="../winterservice">Winterservice</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Unternehmen</h4>
+        <ul>
+          <li><a href="../#warum-wir">Über Uns</a></li>
+          <li><a href="../#projekte">Projekte</a></li>
+          <li><a href="../#einsatzgebiete">Einsatzgebiete</a></li>
+          <li><a href="./">Ratgeber</a></li>
+          <li><a href="../#kontakt">Kontakt</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li>Volmarweg 8</li>
+          <li>40221 Düsseldorf</li>
+          <li class="gap"><a href="tel:+491711287780">0171 / 128 77 80</a></li>
+          <li><a href="mailto:info@gaertnermeister-doelle.de">info@gaertnermeister-doelle.de</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Gärtnermeister Dölle. Alle Rechte vorbehalten.</p>
+      <div><a href="../impressum">Impressum</a><a href="../datenschutz">Datenschutz</a></div>
+    </div>
+  </div>
+</footer>
+
+<dialog id="reader" aria-label="Gartenratgeber">
+  <button class="close" aria-label="Ratgeber schließen">✕</button>
+  <div class="reader-content"></div>
+</dialog>
+
+</body>
+</html>
