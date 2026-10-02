@@ -60,6 +60,11 @@ const useIsMobile = () => {
   return m;
 };
 
+// Android-Chrome scrollt das fokussierte Feld selbst in den sichtbaren
+// Bereich. Schiebt vaul den Drawer zusätzlich hoch, addieren sich beide
+// Ausgleiche und unter dem Formular bleibt eine leere weiße Fläche.
+const IST_ANDROID = typeof navigator !== "undefined" && /android/i.test(navigator.userAgent);
+
 // Einfache Email-Validierung: passt auf "text@text.text" mit einem Punkt
 // in der Domain. Kein RFC-perfekt, aber fängt 99 % der Tippfehler ab.
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
@@ -401,7 +406,7 @@ const BeratungCtaV8 = () => {
       </div>
 
       {isMobile ? (
-        <Drawer open={open} onOpenChange={(v) => { setOpen(v); if (!v) reset(); }}>
+        <Drawer repositionInputs={!IST_ANDROID} open={open} onOpenChange={(v) => { setOpen(v); if (!v) reset(); }}>
           <DrawerContent
             className="max-h-[92dvh] rounded-t-[1.75rem] border-0 shadow-[0_-20px_60px_-20px_rgba(0,0,0,0.35)]"
             overlayClassName="bg-[rgba(18,24,18,0.45)] backdrop-blur-[6px]"
