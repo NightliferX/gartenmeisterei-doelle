@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -24,7 +24,10 @@ const BeforeAfterSlider = ({
   afterAlt,
   className,
 }: BeforeAfterSliderProps) => {
-  const [position, setPosition] = useState(50);
+  // Position lebt in einer Ref und wird per rAF als CSS-Variable geschrieben.
+  // Ein React-Render pro pointermove ruckelte auf dem iPhone.
+  const positionRef = useRef(50);
+  const frameRef = useRef<number | null>(null);
   const [selectedView, setSelectedView] = useState<"before" | "after" | null>(null);
   // Fade-in-on-load: Bild ist unsichtbar bis das dekodierte Frame steht,
   // dann sanft eingeblendet. Verhindert den „Pop"-Effekt beim Laden.
@@ -49,6 +52,28 @@ const BeforeAfterSlider = ({
     return Math.max(5, Math.min(95, value));
   }, []);
 
+  const setPosition = useCallback(
+    (value: number) => {
+      positionRef.current = clampPosition(value);
+      if (frameRef.current !== null) return;
+      frameRef.current = requestAnimationFrame(() => {
+        frameRef.current = null;
+        const el = sliderRef.current;
+        if (!el) return;
+        el.style.setProperty("--pos", `${positionRef.current}%`);
+        el.setAttribute("aria-valuenow", String(Math.round(positionRef.current)));
+      });
+    },
+    [clampPosition],
+  );
+
+  useEffect(
+    () => () => {
+      if (frameRef.current !== null) cancelAnimationFrame(frameRef.current);
+    },
+    [],
+  );
+
   const updatePositionFromClientX = useCallback(
     (clientX: number) => {
       const bounds = sliderRef.current?.getBoundingClientRect();
@@ -57,10 +82,9 @@ const BeforeAfterSlider = ({
         return;
       }
 
-      const nextPosition = ((clientX - bounds.left) / bounds.width) * 100;
-      setPosition(clampPosition(nextPosition));
+      setPosition(((clientX - bounds.left) / bounds.width) * 100);
     },
-    [clampPosition],
+    [setPosition],
   );
 
   const handlePointerDown = useCallback(
@@ -92,15 +116,15 @@ const BeforeAfterSlider = ({
     (event: React.KeyboardEvent<HTMLDivElement>) => {
       if (event.key === "ArrowLeft") {
         event.preventDefault();
-        setPosition((current) => clampPosition(current - 3));
+        setPosition(positionRef.current - 3);
       }
 
       if (event.key === "ArrowRight") {
         event.preventDefault();
-        setPosition((current) => clampPosition(current + 3));
+        setPosition(positionRef.current + 3);
       }
     },
-    [clampPosition],
+    [setPosition],
   );
 
   if (!fallbackImage) {
@@ -171,7 +195,8 @@ const BeforeAfterSlider = ({
       <div className={cn("overflow-hidden rounded-[1.75rem] border border-border/80 bg-card", className)}>
         <div
           ref={sliderRef}
-          className="relative aspect-[4/3] cursor-ew-resize overflow-hidden bg-secondary/60 touch-none"
+          className="relative aspect-[4/3] cursor-ew-resize touch-pan-y overflow-hidden bg-secondary/60"
+          style={{ "--pos": "50%" } as React.CSSProperties}
           onPointerDown={handlePointerDown}
           onPointerMove={handlePointerMove}
           onPointerUp={handlePointerUp}
@@ -182,7 +207,7 @@ const BeforeAfterSlider = ({
           aria-label={`Vorher-Nachher-Vergleich für ${title}`}
           aria-valuemin={5}
           aria-valuemax={95}
-          aria-valuenow={Math.round(position)}
+          aria-valuenow={50}
           tabIndex={0}
         >
           {/* Sanfter Placeholder: bleibt sichtbar solange die Bilder laden,
@@ -211,18 +236,21 @@ const BeforeAfterSlider = ({
             onDragStart={preventImageDrag}
           />
 
+          {/* Vorher-Bild über zwei gegenläufige Transforms freigelegt statt
+              per clip-path: läuft komplett auf der GPU, kein Repaint. */}
           <div
-            className="absolute inset-0 overflow-hidden"
-            style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+            className="absolute inset-0 overflow-hidden will-change-transform"
+            style={{ transform: "translate3d(calc(var(--pos) - 100%), 0, 0)" }}
           >
             <img
               src={beforeImage}
               alt={beforeAlt ?? `${title} vor der Umsetzung`}
               className={cn(
-                "h-full w-full select-none object-cover",
+                "h-full w-full select-none object-cover will-change-transform",
                 fadeInClass,
                 beforeLoaded ? "opacity-100" : "opacity-0",
               )}
+              style={{ transform: "translate3d(calc(100% - var(--pos)), 0, 0)" }}
               loading="lazy"
               decoding="async"
               draggable={false}
@@ -233,14 +261,14 @@ const BeforeAfterSlider = ({
 
           <div
             className={cn(
-              "pointer-events-none absolute inset-y-0 z-20",
+              "pointer-events-none absolute inset-0 z-20 will-change-transform",
               fadeInClass,
               afterLoaded && beforeLoaded ? "opacity-100" : "opacity-0",
             )}
-            style={{ left: `${position}%` }}
+            style={{ transform: "translate3d(var(--pos), 0, 0)" }}
           >
             <div className="relative h-full w-px -translate-x-1/2 bg-white/95 shadow-[0_0_0_1px_rgba(0,0,0,0.08)]" />
-            <div className="absolute left-1/2 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/80 bg-background/95 text-xs font-semibold text-foreground shadow-lg">
+            <div className="absolute left-0 top-1/2 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-white/80 bg-background/95 text-xs font-semibold text-foreground shadow-lg">
               ↔
             </div>
           </div>

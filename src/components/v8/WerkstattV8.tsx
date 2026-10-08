@@ -5,6 +5,7 @@ import BeforeAfterSlider from "@/components/BeforeAfterSlider";
 import { projects } from "@/lib/siteContent";
 import { withBase } from "@/lib/utils";
 import { oeffneBeratung } from "@/components/v8/BeratungCtaV8";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const tabs = [
   { key: "hecke", label: "Hecke", match: "Hecke am Hausweg", slug: "heckenschnitt" },
@@ -17,6 +18,9 @@ const tabs = [
 type TabKey = (typeof tabs)[number]["key"];
 
 const WerkstattV8 = () => {
+  // Die Überschrift nutzt .scroll-fade-in; ohne Observer bliebe sie auf
+  // Seiten, die den Hook nicht selbst aufrufen, unsichtbar.
+  useScrollAnimation();
   const [active, setActive] = useState<TabKey>("hecke");
   const tab = tabs.find((t) => t.key === active) ?? tabs[0];
   const project =
