@@ -29,7 +29,7 @@ export const siteConfig = {
   consultationPromise: "Kostenlose Erstberatung in Ihrem Garten",
   serviceAreaLabel: "Düsseldorf, Meerbusch, Neuss, Ratingen, Hilden, Mettmann, Monheim & Umgebung",
   ogImage:
-    "https://www.gaertnermeister-doelle.de/team/gaertnermeister-buchsbaum-formschnitt-duesseldorf.webp",
+    "https://www.gaertnermeister-doelle.de/og/gaertnermeister-doelle-gartenpflege-duesseldorf.jpg",
 };
 
 export type Testimonial = {

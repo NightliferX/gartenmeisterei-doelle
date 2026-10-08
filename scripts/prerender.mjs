@@ -27,6 +27,13 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.resolve(__dirname, "..", "dist");
 const DOMAIN = "https://www.gaertnermeister-doelle.de";
 const BUSINESS_ID = `${DOMAIN}/#business`;
+// Adresse, unter der dieser Build tatsächlich erreichbar ist (GitHub Pages,
+// Ionos-Vorschau, später die echte Domain). WhatsApp & Co. laden das
+// Vorschaubild über og:image; zeigt das auf eine noch nicht erreichbare
+// Domain, bleibt die Link-Vorschau ohne Bild. Canonical bleibt DOMAIN.
+const SITE_URL = (process.env.SITE_URL || DOMAIN).replace(/\/$/, "");
+const OG_STANDARD = "/og/gaertnermeister-doelle-gartenpflege-duesseldorf.jpg";
+const OG_RATGEBER = "/og/ratgeber-gaertnermeister-doelle-duesseldorf.jpg";
 
 const routes = [
   {
@@ -148,9 +155,19 @@ async function main() {
       /<meta name="twitter:description" content="[^"]*" \/>/,
       `<meta name="twitter:description" content="${description}" />`,
     );
+    const shareUrl = `${SITE_URL}${route.path === "/" ? "/" : `${route.path}/`}`;
+    const shareImage = `${SITE_URL}${route.path.startsWith("/ratgeber") ? OG_RATGEBER : OG_STANDARD}`;
     html = html.replace(
       /<meta property="og:url" content="[^"]*" \/>/,
-      `<meta property="og:url" content="${escapeHtml(url)}" />`,
+      `<meta property="og:url" content="${escapeHtml(shareUrl)}" />`,
+    );
+    html = html.replace(
+      /<meta property="og:image" content="[^"]*" \/>/,
+      `<meta property="og:image" content="${escapeHtml(shareImage)}" />`,
+    );
+    html = html.replace(
+      /<meta name="twitter:image" content="[^"]*" \/>/,
+      `<meta name="twitter:image" content="${escapeHtml(shareImage)}" />`,
     );
 
     // JSON-LD-Stub: mindestens WebPage + Business-Ref. Vollstaendige
