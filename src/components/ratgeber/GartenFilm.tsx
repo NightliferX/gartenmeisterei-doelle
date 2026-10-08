@@ -12,6 +12,10 @@ import { ArrowRight } from "lucide-react";
 // die beim Scrollen im Canvas abgespielt wird. Kapitel-Karten wechseln links/rechts.
 const FRAME_COUNT = 160;
 const FILM_PATH = `${import.meta.env.BASE_URL}film/pfingstrose-2k`;
+// Auflösung der Einzelbilder (d = Desktop 1600×900, m = Handy 720×900).
+// Das Canvas wird nie größer gerechnet als das Bild hergibt: mehr Pixel
+// bringen keine Schärfe, kosten auf dem iPhone aber jede Frame Füllrate.
+const FRAME_SIZE = { d: { w: 1600, h: 900 }, m: { w: 720, h: 900 } } as const;
 
 type Kapitel = { from: number; to: number; dark?: boolean; topic: string; title: string; text: string };
 
@@ -76,30 +80,40 @@ const GartenFilm = ({ onTopic }: Props) => {
   const current = useRef(0);
   const target = useRef(0);
   const raf = useRef(0);
-  const [posterHidden, setPosterHidden] = useState(false);
+  const drawn = useRef(-1);
+  const posterRef = useRef<HTMLImageElement>(null);
   const [active, setActive] = useState(-1);
   const reduceMotion = useReducedMotion();
   const isPhone = useMedia("(max-width: 640px)");
   const set = useMedia("(max-width: 767px) and (orientation: portrait)") ? "m" : "d";
   const frameSrc = (i: number) => `${FILM_PATH}/${set}/${String(i + 1).padStart(3, "0")}.webp`;
 
-  const draw = useCallback((index: number) => {
+  // Kein React-State im Zeichenpfad: jeder Render pro Frame kostet auf dem
+  // Handy spürbar. Gezeichnet wird nur, wenn sich das Bild wirklich ändert.
+  const draw = useCallback((index: number, force = false) => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (!canvas || !ctx) return;
     let img: HTMLImageElement | undefined;
-    for (let d = 0; d < FRAME_COUNT && !img; d++) img = frames.current[index - d] ?? frames.current[index + d];
-    if (!img) return;
+    let found = -1;
+    for (let d = 0; d < FRAME_COUNT && !img; d++) {
+      if (frames.current[index - d]) found = index - d;
+      else if (frames.current[index + d]) found = index + d;
+      img = frames.current[found];
+    }
+    if (!img || (!force && found === drawn.current)) return;
+    drawn.current = found;
     const scale = Math.max(canvas.width / img.naturalWidth, canvas.height / img.naturalHeight);
     const w = img.naturalWidth * scale;
     const h = img.naturalHeight * scale;
     ctx.drawImage(img, (canvas.width - w) / 2, (canvas.height - h) / 2, w, h);
-    setPosterHidden(true);
+    if (posterRef.current) posterRef.current.style.opacity = "0";
   }, []);
 
   // Bilder laden (6 parallel), bei Wechsel Desktop/Handy neu.
   useEffect(() => {
     frames.current = [];
+    drawn.current = -1;
     let next = 0;
     let cancelled = false;
     const loadMore = () => {
@@ -108,10 +122,17 @@ const GartenFilm = ({ onTopic }: Props) => {
       const img = new Image();
       img.decoding = "async";
       img.onload = () => {
-        if (cancelled) return;
-        frames.current[i] = img;
-        if (Math.abs(i - Math.round(current.current)) < 4) draw(Math.round(current.current));
-        loadMore();
+        // Vorab dekodieren, sonst dekodiert drawImage beim ersten Zeichnen
+        // synchron auf dem Hauptthread und der Scroll stockt.
+        img
+          .decode()
+          .catch(() => undefined)
+          .then(() => {
+            if (cancelled) return;
+            frames.current[i] = img;
+            if (Math.abs(i - Math.round(current.current)) < 4) draw(Math.round(current.current), true);
+            loadMore();
+          });
       };
       img.onerror = loadMore;
       img.src = frameSrc(i);
@@ -126,11 +147,20 @@ const GartenFilm = ({ onTopic }: Props) => {
   useEffect(() => {
     const resize = () => {
       const canvas = canvasRef.current;
-      if (!canvas) return;
-      const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      canvas.width = Math.round(canvas.clientWidth * dpr);
-      canvas.height = Math.round(canvas.clientHeight * dpr);
-      draw(Math.round(current.current));
+      if (!canvas || !canvas.clientWidth || !canvas.clientHeight) return;
+      const src = FRAME_SIZE[set];
+      // Bildpixel je CSS-Pixel bei object-fit: cover.
+      const cover = Math.min(src.w / canvas.clientWidth, src.h / canvas.clientHeight);
+      const ratio = Math.max(1, Math.min(window.devicePixelRatio || 1, 2, cover));
+      const w = Math.round(canvas.clientWidth * ratio);
+      const h = Math.round(canvas.clientHeight * ratio);
+      // Safari feuert beim Ein-/Ausblenden der Adressleiste resize. Ein neu
+      // gesetztes canvas.width leert und alloziert das Canvas: nur bei echter
+      // Größenänderung anfassen.
+      if (canvas.width === w && canvas.height === h) return;
+      canvas.width = w;
+      canvas.height = h;
+      draw(Math.round(current.current), true);
     };
     resize();
     window.addEventListener("resize", resize);
@@ -138,7 +168,7 @@ const GartenFilm = ({ onTopic }: Props) => {
       window.removeEventListener("resize", resize);
       cancelAnimationFrame(raf.current);
     };
-  }, [draw]);
+  }, [draw, set]);
 
   // Weiches Nachziehen des Bildes hinter dem Scroll (scrub).
   const tick = useCallback(() => {
@@ -200,12 +230,15 @@ const GartenFilm = ({ onTopic }: Props) => {
       aria-label="Gartenreise: vom Austrieb bis zur Blüte"
       className="relative h-[560vh] bg-[hsl(120_12%_8%)] sm:h-[640vh]"
     >
-      <div className="sticky top-0 h-[100dvh] overflow-hidden">
+      {/* 100lvh statt 100dvh: dvh ändert sich auf dem iPhone während des
+          Scrollens mit der Adressleiste und erzwingt Layout + Canvas-Neuaufbau. */}
+      <div className="sticky top-0 h-[100lvh] overflow-hidden">
         <img
+          ref={posterRef}
           src={frameSrc(0)}
           alt=""
           aria-hidden
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${posterHidden ? "opacity-0" : ""}`}
+          className="absolute inset-0 h-full w-full object-cover transition-opacity duration-500"
         />
         <canvas ref={canvasRef} aria-hidden className="absolute inset-0 h-full w-full" />
         <div
@@ -216,7 +249,7 @@ const GartenFilm = ({ onTopic }: Props) => {
 
         <div
           ref={introRef}
-          className="absolute bottom-14 left-4 right-4 max-w-[640px] text-white sm:bottom-[clamp(48px,12vh,140px)] sm:left-[clamp(16px,6vw,96px)]"
+          className="absolute bottom-[calc(100lvh-100svh+3.5rem)] left-4 right-4 max-w-[640px] text-white sm:bottom-[clamp(48px,12vh,140px)] sm:left-[clamp(16px,6vw,96px)]"
         >
           <p className="text-[0.8rem] font-semibold uppercase tracking-[0.2em] text-[hsl(147_55%_72%)]">
             Ratgeber vom Meisterbetrieb
@@ -243,11 +276,11 @@ const GartenFilm = ({ onTopic }: Props) => {
               animate={{ opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }}
               exit={hidden(active)}
               transition={reduceMotion ? { duration: 0.2 } : { type: "spring", stiffness: 140, damping: 22 }}
-              className={`absolute bottom-5 left-3 right-3 rounded-[1.5rem] p-6 shadow-[0_24px_64px_-20px_rgba(0,0,0,0.35)] backdrop-blur-xl sm:bottom-[clamp(40px,10vh,120px)] sm:w-[440px] sm:rounded-[1.75rem] sm:p-7 ${
+              className={`absolute bottom-[calc(100lvh-100svh+1.25rem)] left-3 right-3 rounded-[1.5rem] p-6 shadow-[0_24px_64px_-20px_rgba(0,0,0,0.35)] will-change-transform sm:bottom-[clamp(40px,10vh,120px)] sm:backdrop-blur-xl sm:w-[440px] sm:rounded-[1.75rem] sm:p-7 ${
                 active % 2
                   ? "sm:left-auto sm:right-[calc(clamp(16px,3vw,40px)+76px)]"
                   : "sm:left-[clamp(16px,6vw,96px)] sm:right-auto"
-              } ${kapitel[active].dark ? "bg-[rgba(14,22,14,0.55)] text-white" : "bg-white/85 text-foreground"}`}
+              } ${kapitel[active].dark ? "bg-[rgba(14,22,14,0.82)] text-white sm:bg-[rgba(14,22,14,0.55)]" : "bg-white/95 text-foreground sm:bg-white/85"}`}
             >
               <p
                 className={`text-[0.8rem] font-bold uppercase tracking-[0.16em] ${
